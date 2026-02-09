@@ -1,0 +1,146 @@
+{
+  "Actor": {
+    "types": ["character", "npc"],
+    "templates": {
+      "base": {
+        "vitality": {
+          "value": 8,
+          "max": 8
+        },
+        "wyrd": {
+          "value": 0,
+          "max": 0
+        },
+        "biography": ""
+      },
+      "characteristics": {
+        "body": {
+          "strength": {
+            "value": 3
+          },
+          "dexterity": {
+            "value": 3
+          },
+          "endurance": {
+            "value": 3
+          }
+        },
+        "mind": {
+          "wits": {
+            "value": 3
+          },
+          "perception": {
+            "value": 3
+          },
+          "tech": {
+            "value": 3
+          }
+        },
+        "spirit": {
+          "extrovert": {
+            "value": 3,
+            "primary": true
+          },
+          "introvert": {
+            "value": 1,
+            "primary": false
+          },
+          "passion": {
+            "value": 3,
+            "primary": true
+          },
+          "calm": {
+            "value": 1,
+            "primary": false
+          },
+          "faith": {
+            "value": 3,
+            "primary": true
+          },
+          "ego": {
+            "value": 1,
+            "primary": false
+          }
+        },
+        "occult": {
+          "psi": {
+            "value": 0
+          },
+          "theurgy": {
+            "value": 0
+          }
+        }
+      }
+    },
+    "character": {
+      "templates": ["base", "characteristics"],
+      "details": {
+        "faction": "",
+        "house": "",
+        "rank": "",
+        "homeworld": "",
+        "age": "",
+        "gender": ""
+      }
+    },
+    "npc": {
+      "templates": ["base", "characteristics"],
+      "details": {
+        "type": "",
+        "faction": ""
+      }
+    }
+  },
+  "Item": {
+    "types": ["weapon", "armor", "equipment", "skill", "psychic-power", "theurgic-rite"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "weapon": {
+      "templates": ["base"],
+      "damage": {
+        "dice": 2,
+        "type": "wound"
+      },
+      "characteristic": "dexterity",
+      "skill": "shoot",
+      "range": {
+        "short": 10,
+        "medium": 50,
+        "long": 100
+      }
+    },
+    "armor": {
+      "templates": ["base"],
+      "protection": {
+        "dice": 2
+      },
+      "coverage": "body"
+    },
+    "equipment": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
+    },
+    "skill": {
+      "templates": ["base"],
+      "value": 0,
+      "characteristic": "wits",
+      "type": "learned"
+    },
+    "psychic-power": {
+      "templates": ["base"],
+      "level": 1,
+      "path": "",
+      "cost": 1
+    },
+    "theurgic-rite": {
+      "templates": ["base"],
+      "level": 1,
+      "ritual": "",
+      "cost": 1
+    }
+  }
+}

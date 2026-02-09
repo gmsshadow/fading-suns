@@ -1,0 +1,18 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="NPC Name"/></h1>
+      <div class="resource">
+        <label>Vitality:</label>
+        <input type="text" name="system.vitality.value" value="{{system.vitality.value}}" data-dtype="Number"/>
+        <span> / </span>
+        <input type="text" name="system.vitality.max" value="{{system.vitality.max}}" data-dtype="Number"/>
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+    {{editor enrichedBiography target="system.biography" button=true owner=owner editable=editable}}
+  </section>
+</form>

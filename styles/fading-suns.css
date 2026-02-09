@@ -1,0 +1,316 @@
+/* Fading Suns System Styles */
+
+.fading-suns {
+  font-family: "Signika", sans-serif;
+}
+
+/* Sheet Header */
+.fading-suns .sheet-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid #782e22;
+}
+
+.fading-suns .sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  border: 2px solid #782e22;
+  cursor: pointer;
+}
+
+.fading-suns .sheet-header .header-fields {
+  flex: 1;
+}
+
+.fading-suns .charname {
+  margin: 0;
+  border-bottom: 0;
+}
+
+.fading-suns .charname input {
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+}
+
+.fading-suns .resource {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+.fading-suns .resource label {
+  font-weight: bold;
+  flex: 0 0 auto;
+}
+
+.fading-suns .resource input {
+  width: 50px;
+  text-align: center;
+}
+
+/* Tabs */
+.fading-suns .tabs {
+  display: flex;
+  gap: 5px;
+  border-bottom: 2px solid #782e22;
+  padding: 0 10px;
+  margin: 0;
+}
+
+.fading-suns .tabs .item {
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #782e22;
+  border-bottom: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fading-suns .tabs .item.active {
+  background: white;
+  font-weight: bold;
+}
+
+/* Sheet Body */
+.fading-suns .sheet-body {
+  flex: 1;
+  overflow: hidden;
+}
+
+.fading-suns .sheet-body .tab {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Characteristics */
+.fading-suns .characteristics-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.fading-suns .characteristic {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #ccc;
+}
+
+.fading-suns .characteristic label {
+  flex: 1;
+  font-weight: bold;
+}
+
+.fading-suns .characteristic input[type="text"],
+.fading-suns .characteristic input[type="number"] {
+  width: 50px;
+  text-align: center;
+}
+
+.fading-suns .characteristic input[type="checkbox"] {
+  margin: 0 5px;
+}
+
+.fading-suns .characteristic button.rollable {
+  padding: 5px 10px;
+  background: #782e22;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.fading-suns .characteristic button.rollable:hover {
+  background: #5a2218;
+}
+
+/* Items */
+.fading-suns .items-section {
+  margin-bottom: 20px;
+}
+
+.fading-suns .items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 2px solid #782e22;
+  margin-bottom: 10px;
+}
+
+.fading-suns .items-header h3 {
+  margin: 0;
+}
+
+.fading-suns .item-create {
+  padding: 5px 10px;
+  background: #782e22;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.fading-suns .item-create:hover {
+  background: #5a2218;
+}
+
+.fading-suns .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fading-suns .items-list .item {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 2px;
+  background: white;
+}
+
+.fading-suns .items-list .item:hover {
+  background: rgba(120, 46, 34, 0.1);
+}
+
+.fading-suns .items-list .item-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.fading-suns .items-list .item-value {
+  margin: 0 10px;
+}
+
+.fading-suns .items-list .item-value input {
+  width: 50px;
+  text-align: center;
+}
+
+.fading-suns .items-list .item-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.fading-suns .items-list .item-control,
+.fading-suns .items-list button.rollable {
+  padding: 2px 8px;
+  background: #782e22;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.fading-suns .items-list .item-control:hover,
+.fading-suns .items-list button.rollable:hover {
+  background: #5a2218;
+}
+
+/* Form groups for item sheets */
+.fading-suns .form-group {
+  margin-bottom: 15px;
+}
+
+.fading-suns .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.fading-suns .form-group input,
+.fading-suns .form-group select {
+  width: 100%;
+  padding: 5px;
+}
+
+/* Chat Messages */
+.fading-suns.roll-result {
+  border: 2px solid #782e22;
+  padding: 10px;
+  background: white;
+}
+
+.fading-suns.roll-result .roll-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.fading-suns.roll-result .roll-header h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.fading-suns.roll-result .roll-formula {
+  font-style: italic;
+  color: #666;
+}
+
+.fading-suns.roll-result .roll-details {
+  margin: 10px 0;
+}
+
+.fading-suns.roll-result .roll-breakdown {
+  margin-bottom: 10px;
+}
+
+.fading-suns.roll-result .characteristic-value,
+.fading-suns.roll-result .skill-value,
+.fading-suns.roll-result .modifier-value {
+  font-weight: bold;
+  color: #782e22;
+}
+
+.fading-suns.roll-result .dice-roll {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.fading-suns.roll-result .roll-result-status {
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.fading-suns.roll-result .roll-result-status.success {
+  background: #90ee90;
+  color: #006400;
+}
+
+.fading-suns.roll-result .roll-result-status.failure {
+  background: #ffcccb;
+  color: #8b0000;
+}
+
+.fading-suns.roll-result .victory-points {
+  text-align: center;
+  padding: 10px;
+  background: rgba(120, 46, 34, 0.1);
+  border-radius: 5px;
+}
+
+.fading-suns.roll-result .accomplishment {
+  margin-top: 5px;
+  font-style: italic;
+  color: #666;
+}

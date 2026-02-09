@@ -1,0 +1,40 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Skill Name"/></h1>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+    <div class="form-group">
+      <label>Skill Value:</label>
+      <input type="number" name="system.value" value="{{system.value}}" data-dtype="Number"/>
+    </div>
+
+    <div class="form-group">
+      <label>Characteristic:</label>
+      <select name="system.characteristic">
+        <option value="body.strength" {{#if (eq system.characteristic "body.strength")}}selected{{/if}}>Strength</option>
+        <option value="body.dexterity" {{#if (eq system.characteristic "body.dexterity")}}selected{{/if}}>Dexterity</option>
+        <option value="body.endurance" {{#if (eq system.characteristic "body.endurance")}}selected{{/if}}>Endurance</option>
+        <option value="mind.wits" {{#if (eq system.characteristic "mind.wits")}}selected{{/if}}>Wits</option>
+        <option value="mind.perception" {{#if (eq system.characteristic "mind.perception")}}selected{{/if}}>Perception</option>
+        <option value="mind.tech" {{#if (eq system.characteristic "mind.tech")}}selected{{/if}}>Tech</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Type:</label>
+      <select name="system.type">
+        <option value="natural" {{#if (eq system.type "natural")}}selected{{/if}}>Natural</option>
+        <option value="learned" {{#if (eq system.type "learned")}}selected{{/if}}>Learned</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>

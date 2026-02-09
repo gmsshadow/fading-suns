@@ -1,0 +1,227 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
+      <div class="resource">
+        <label>Vitality:</label>
+        <input type="text" name="system.vitality.value" value="{{system.vitality.value}}" data-dtype="Number"/>
+        <span> / </span>
+        <input type="text" name="system.vitality.max" value="{{system.vitality.max}}" data-dtype="Number" disabled/>
+      </div>
+      <div class="resource">
+        <label>Wyrd:</label>
+        <input type="text" name="system.wyrd.value" value="{{system.wyrd.value}}" data-dtype="Number"/>
+        <span> / </span>
+        <input type="text" name="system.wyrd.max" value="{{system.wyrd.max}}" data-dtype="Number"/>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="characteristics">Characteristics</a>
+    <a class="item" data-tab="skills">Skills</a>
+    <a class="item" data-tab="items">Items</a>
+    <a class="item" data-tab="biography">Biography</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Characteristics Tab --}}
+    <div class="tab characteristics" data-group="primary" data-tab="characteristics">
+      <h3>Body</h3>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Strength</label>
+          <input type="text" name="system.body.strength.value" value="{{system.body.strength.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="body.strength">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+        <div class="characteristic">
+          <label>Dexterity</label>
+          <input type="text" name="system.body.dexterity.value" value="{{system.body.dexterity.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="body.dexterity">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+        <div class="characteristic">
+          <label>Endurance</label>
+          <input type="text" name="system.body.endurance.value" value="{{system.body.endurance.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="body.endurance">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+      </div>
+
+      <h3>Mind</h3>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Wits</label>
+          <input type="text" name="system.mind.wits.value" value="{{system.mind.wits.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="mind.wits">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+        <div class="characteristic">
+          <label>Perception</label>
+          <input type="text" name="system.mind.perception.value" value="{{system.mind.perception.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="mind.perception">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+        <div class="characteristic">
+          <label>Tech</label>
+          <input type="text" name="system.mind.tech.value" value="{{system.mind.tech.value}}" data-dtype="Number"/>
+          <button class="rollable" data-roll-type="characteristic" data-characteristic="mind.tech">
+            <i class="fas fa-dice-d20"></i>
+          </button>
+        </div>
+      </div>
+
+      <h3>Spirit</h3>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Extrovert</label>
+          <input type="text" name="system.spirit.extrovert.value" value="{{system.spirit.extrovert.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.extrovert.primary" {{checked system.spirit.extrovert.primary}} title="Primary"/>
+        </div>
+        <div class="characteristic">
+          <label>Introvert</label>
+          <input type="text" name="system.spirit.introvert.value" value="{{system.spirit.introvert.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.introvert.primary" {{checked system.spirit.introvert.primary}} title="Primary"/>
+        </div>
+      </div>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Passion</label>
+          <input type="text" name="system.spirit.passion.value" value="{{system.spirit.passion.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.passion.primary" {{checked system.spirit.passion.primary}} title="Primary"/>
+        </div>
+        <div class="characteristic">
+          <label>Calm</label>
+          <input type="text" name="system.spirit.calm.value" value="{{system.spirit.calm.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.calm.primary" {{checked system.spirit.calm.primary}} title="Primary"/>
+        </div>
+      </div>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Faith</label>
+          <input type="text" name="system.spirit.faith.value" value="{{system.spirit.faith.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.faith.primary" {{checked system.spirit.faith.primary}} title="Primary"/>
+        </div>
+        <div class="characteristic">
+          <label>Ego</label>
+          <input type="text" name="system.spirit.ego.value" value="{{system.spirit.ego.value}}" data-dtype="Number"/>
+          <input type="checkbox" name="system.spirit.ego.primary" {{checked system.spirit.ego.primary}} title="Primary"/>
+        </div>
+      </div>
+
+      <h3>Occult</h3>
+      <div class="characteristics-group">
+        <div class="characteristic">
+          <label>Psi</label>
+          <input type="text" name="system.occult.psi.value" value="{{system.occult.psi.value}}" data-dtype="Number"/>
+        </div>
+        <div class="characteristic">
+          <label>Theurgy</label>
+          <input type="text" name="system.occult.theurgy.value" value="{{system.occult.theurgy.value}}" data-dtype="Number"/>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      <div class="items-header">
+        <h3>Skills</h3>
+        <button class="item-create" data-type="skill"><i class="fas fa-plus"></i> Add Skill</button>
+      </div>
+      <ol class="items-list">
+        {{#each skills as |skill id|}}
+          <li class="item flexrow" data-item-id="{{skill._id}}">
+            <div class="item-name">{{skill.name}}</div>
+            <div class="item-value">
+              <input type="text" value="{{skill.system.value}}" data-dtype="Number" disabled/>
+            </div>
+            <div class="item-controls">
+              <button class="rollable" data-roll-type="skill" data-skill-name="{{skill.name}}" data-characteristic="{{skill.system.characteristic}}" title="Roll {{skill.name}}">
+                <i class="fas fa-dice-d20"></i>
+              </button>
+              <a class="item-control item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+              <a class="item-control item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    </div>
+
+    {{!-- Items Tab --}}
+    <div class="tab items" data-group="primary" data-tab="items">
+      
+      <div class="items-section">
+        <div class="items-header">
+          <h3>Weapons</h3>
+          <button class="item-create" data-type="weapon"><i class="fas fa-plus"></i> Add Weapon</button>
+        </div>
+        <ol class="items-list">
+          {{#each weapons as |weapon id|}}
+            <li class="item flexrow" data-item-id="{{weapon._id}}">
+              <div class="item-name">{{weapon.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+              </div>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      <div class="items-section">
+        <div class="items-header">
+          <h3>Armor</h3>
+          <button class="item-create" data-type="armor"><i class="fas fa-plus"></i> Add Armor</button>
+        </div>
+        <ol class="items-list">
+          {{#each armor as |armor id|}}
+            <li class="item flexrow" data-item-id="{{armor._id}}">
+              <div class="item-name">{{armor.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+              </div>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      <div class="items-section">
+        <div class="items-header">
+          <h3>Equipment</h3>
+          <button class="item-create" data-type="equipment"><i class="fas fa-plus"></i> Add Equipment</button>
+        </div>
+        <ol class="items-list">
+          {{#each equipment as |item id|}}
+            <li class="item flexrow" data-item-id="{{item._id}}">
+              <div class="item-name">{{item.name}}</div>
+              <div class="item-controls">
+                <a class="item-control item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                <a class="item-control item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+              </div>
+            </li>
+          {{/each}}
+        </ol>
+      </div>
+
+    </div>
+
+    {{!-- Biography Tab --}}
+    <div class="tab biography" data-group="primary" data-tab="biography">
+      {{editor enrichedBiography target="system.biography" button=true owner=owner editable=editable}}
+    </div>
+
+  </section>
+</form>

@@ -1,0 +1,31 @@
+{
+  "id": "fading-suns",
+  "title": "Fading Suns 2nd Edition Revised",
+  "description": "A game system for Fading Suns 2nd Edition Revised",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Your Name Here"
+    }
+  ],
+  "esmodules": ["module/fading-suns.mjs"],
+  "styles": ["styles/fading-suns.css"],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "vitality",
+  "secondaryTokenAttribute": "wyrd"
+}

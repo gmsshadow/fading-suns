@@ -1,0 +1,53 @@
+<div class="fading-suns roll-result">
+  <div class="roll-header">
+    <h3>{{actor}}</h3>
+    <div class="roll-formula">
+      {{#if skillName}}
+        {{characteristic}} + {{skillName}}
+      {{else}}
+        {{characteristic}}
+      {{/if}}
+      {{#if modifier}}
+        {{#if (gt modifier 0)}}+{{/if}}{{modifier}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="roll-details">
+    <div class="roll-breakdown">
+      <span class="characteristic-value" title="Characteristic">{{charValue}}</span>
+      {{#if skillName}}
+        + <span class="skill-value" title="Skill">{{skillValue}}</span>
+      {{/if}}
+      {{#if modifier}}
+        {{#if (gt modifier 0)}}+{{else}}{{/if}}<span class="modifier-value" title="Modifier">{{modifier}}</span>
+      {{/if}}
+      = <strong>Goal: {{goalNumber}}</strong>
+    </div>
+
+    <div class="dice-roll">
+      <strong>Rolled: {{diceResult}}</strong>
+    </div>
+  </div>
+
+  <div class="roll-result-status {{#if isSuccess}}success{{else}}failure{{/if}}">
+    {{#if isCriticalSuccess}}
+      <strong>CRITICAL SUCCESS!</strong>
+    {{else if isAutoSuccess}}
+      <strong>AUTOMATIC SUCCESS!</strong>
+    {{else if isCriticalFailure}}
+      <strong>CRITICAL FAILURE!</strong>
+    {{else if isSuccess}}
+      <strong>SUCCESS</strong>
+    {{else}}
+      <strong>FAILURE</strong>
+    {{/if}}
+  </div>
+
+  {{#if isSuccess}}
+    <div class="victory-points">
+      <strong>Victory Points: {{victoryPoints}}</strong>
+      <div class="accomplishment">{{accomplishment}}</div>
+    </div>
+  {{/if}}
+</div>

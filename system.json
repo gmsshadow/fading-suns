@@ -28,4 +28,7 @@
   },
   "primaryTokenAttribute": "vitality",
   "secondaryTokenAttribute": "wyrd"
+  "url": "https://github.com/gmsshadow/fading-suns",
+  "manifest": "https://raw.githubusercontent.com/gmsshadow/fading-suns/refs/heads/main/system.json",
+  "download": "https://github.com/gmsshadow/fading-suns/archive/refs/heads/main.zip"
 }

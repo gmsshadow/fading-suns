@@ -1,0 +1,29 @@
+{
+  "_id": "FdTK8Xo7y3CbBy8G",
+  "name": "Alchemy",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The occult study of substances, their purity and the correspondences between them.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.faith",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

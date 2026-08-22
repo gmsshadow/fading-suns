@@ -1,0 +1,29 @@
+{
+  "_id": "X0lfbWFCs2wuBQLV",
+  "name": "Social (Oratory)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Moving a crowd with a speech.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.passion",
+    "specialty": "Oratory",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

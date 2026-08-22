@@ -1,0 +1,29 @@
+{
+  "_id": "lE6RX3J0zKEohSMQ",
+  "name": "Social (Leadership)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Commanding others and holding them together under pressure.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.extrovert",
+    "specialty": "Leadership",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

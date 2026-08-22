@@ -1,0 +1,29 @@
+{
+  "_id": "yL2zsTvxoLvbTw0C",
+  "name": "Stoic Body",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Enduring physical pain, hardship and deprivation without breaking.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.calm",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

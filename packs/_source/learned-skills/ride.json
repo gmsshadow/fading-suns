@@ -1,0 +1,29 @@
+{
+  "_id": "9tjNzY0qU9p57fqr",
+  "name": "Ride",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Riding beasts, and staying on them when things go wrong.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

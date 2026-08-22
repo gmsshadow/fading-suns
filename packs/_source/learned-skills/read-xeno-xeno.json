@@ -1,0 +1,29 @@
+{
+  "_id": "5ngoE4H3hRazxuri",
+  "name": "Read (Xeno)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Reading an alien script. Name the tongue in the specialty.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Xeno",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

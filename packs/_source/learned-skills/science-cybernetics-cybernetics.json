@@ -1,0 +1,29 @@
+{
+  "_id": "qUuNEBG8dkjJdjgx",
+  "name": "Science (Cybernetics)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The theory behind machine augmentation of the body.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "Cybernetics",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_id": "y2wcl5aUau9LjhRq",
+  "name": "Science (Anthropology)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The study of human cultures and their development.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Anthropology",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

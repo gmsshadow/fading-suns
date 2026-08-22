@@ -1,0 +1,29 @@
+{
+  "_id": "lXed5dHaSLv6Okcm",
+  "name": "Arts (Sculpture)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Working stone, metal or clay into three-dimensional form.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.introvert",
+    "specialty": "Sculpture",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

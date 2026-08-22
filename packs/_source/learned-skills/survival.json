@@ -1,0 +1,29 @@
+{
+  "_id": "t3Li5BePcimdFW30",
+  "name": "Survival",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Staying alive in the wild: shelter, water, forage and direction.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

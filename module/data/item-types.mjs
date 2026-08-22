@@ -149,10 +149,16 @@ export class FadingSunsSkill extends FadingSunsItemBase {
     return super.migrateData(source);
   }
 
-  /** The skill's display name including any specialty. */
+  /**
+   * The skill's display name including any specialty, e.g. "Speak (Latin)".
+   *
+   * Compendium skills are named with the specialty already in place so that the
+   * sidebar is readable, so it is only appended when it is not there already.
+   */
   get label() {
     const name = this.parent?.name ?? "";
-    return this.specialty ? `${name} (${this.specialty})` : name;
+    if (!this.specialty) return name;
+    return name.includes(this.specialty) ? name : `${name} (${this.specialty})`;
   }
 }
 

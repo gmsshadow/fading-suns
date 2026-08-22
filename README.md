@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.2.1** — full rewrite onto ApplicationV2 and TypeDataModel.
+Version **0.3.0** — ApplicationV2 rewrite plus the Learned Skills compendium.
 
 ---
 
@@ -56,6 +56,14 @@ Reading the resolution code against the Core Rules turned up several errors, all
 - **Accomplishment labels are keyed off successes, not victory points** (p.64), so "Mediocre" was previously unreachable.
 - **Excessive Goal Numbers** (p.66) are now implemented: Goal Numbers above 20 grant bonus victory points from the Extended Victory Chart, and a result of 18 becomes the critical success in place of the Goal Number.
 - **Effect dice** (p.65) were entirely missing.
+
+### Compendiums
+
+**Learned Skills** ships as a compendium of 87 skill items covering the full list on p.99, including every sub-skill: five Lore specialties, five Read and seven Speak languages, thirteen Sciences, four Tech Redemptions, four Warfare specialties and four Social specialties.
+
+Drag any of them onto a character sheet to add it at rating 0. Each carries the characteristic pairing the rulebook gives in that skill's *Roll:* line as a sheet default, which can be changed per character since the gamemaster may call for any pairing. Guild-restricted skills (Science, Spacesuit, Think Machine, Tech Redemption, Drive (Spacecraft)) are flagged as such, and faction-restricted ones — Speak (Graceful Tongue), Speak (Scraver Cant) — carry a `factionSkill` flag.
+
+Sub-skills are named with the specialty in place, so the sidebar reads `Speak (Latin)` rather than seven identical entries called `Speak`.
 
 ### New in this release
 
@@ -132,6 +140,19 @@ Tests are anchored to the book's own worked examples — Gorgool's Goal 9 rollin
 
 Throughout the source, rulebook page numbers are used as traceability anchors in comments.
 
+### Compendium packs
+
+Pack contents live in `packs/_source/` as one readable JSON file per document, which keeps them diffable in version control. The LevelDB directories Foundry actually loads are build artefacts, compiled by:
+
+```bash
+npm install
+npm run build:packs
+```
+
+Document ids are derived deterministically by hashing the document's natural key, so rebuilding never churns ids or breaks links from other documents. The build fails loudly on duplicate slugs or id collisions.
+
+To add a pack, add a builder to `PACKS` in `tools/build-packs.mjs` and declare it in `system.json`.
+
 ### Public API
 
 ```js
@@ -144,7 +165,8 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: the full learned skill list (p.99), weapons and armour from Chapter Seven
+- Compendiums: weapons and armour from Chapter Seven
+- Character creation: lifepath stages as compendium items, with a guided wizard
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

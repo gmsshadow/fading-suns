@@ -1,0 +1,29 @@
+{
+  "_id": "PTeaQ4gR9O79YhOo",
+  "name": "Speak (Dialects)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Regional variants and the ability to place a speaker by their accent.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Dialects",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

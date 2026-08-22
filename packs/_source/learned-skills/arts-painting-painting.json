@@ -1,0 +1,29 @@
+{
+  "_id": "BVAvRVpttaAg7Cui",
+  "name": "Arts (Painting)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Composition, pigment and technique in two dimensions.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.introvert",
+    "specialty": "Painting",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns",
+    "systemVersion": "0.3.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_key": "!items!kLXfUgrKlouekXOo",
+  "_id": "kLXfUgrKlouekXOo",
+  "name": "Ally",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Someone in a position of power who will go out of their way to help. Costs two points less than buying that rank of Status outright — a Hawkwood duke as an ally is 11 points against the 13 the title itself would cost.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

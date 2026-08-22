@@ -1,0 +1,41 @@
+{
+  "_key": "!items!7Xg2JQ2FFeHFSMli",
+  "_id": "7Xg2JQ2FFeHFSMli",
+  "name": "Well-Travelled",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Counts as Folk Lore 1 for every major planet within the travel radius.</p>",
+    "polarity": "benefice",
+    "category": "background",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "A Royal House's fiefs",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "The Known Worlds",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

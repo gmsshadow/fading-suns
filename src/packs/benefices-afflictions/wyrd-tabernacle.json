@@ -1,0 +1,28 @@
+{
+  "_key": "!items!GvkKmSe60JRzmPvj",
+  "_id": "GvkKmSe60JRzmPvj",
+  "name": "Wyrd Tabernacle",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A holy vessel of spiritual energy. Two points per point of Wyrd it holds.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 2,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

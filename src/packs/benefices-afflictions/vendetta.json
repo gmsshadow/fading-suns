@@ -1,0 +1,53 @@
+{
+  "_key": "!items!ZI33PJZujnulBhNa",
+  "_id": "ZI33PJZujnulBhNa",
+  "name": "Vendetta",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>An unyielding enemy earned by the character, their family or their friends.</p>",
+    "polarity": "affliction",
+    "category": "community",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Content to make the character's life miserable",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Wants the character dead",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "A group",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Multiple groups",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

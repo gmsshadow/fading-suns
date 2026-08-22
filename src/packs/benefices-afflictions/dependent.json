@@ -1,0 +1,28 @@
+{
+  "_key": "!items!Bi745iypJqh0fy4a",
+  "_id": "Bi745iypJqh0fy4a",
+  "name": "Dependent",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Somebody relies on the character heavily — an ageing relative, a child, a friend forever in trouble.</p>",
+    "polarity": "affliction",
+    "category": "community",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

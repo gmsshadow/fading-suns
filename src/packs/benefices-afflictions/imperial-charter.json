@@ -1,0 +1,28 @@
+{
+  "_key": "!items!Pdnhae6HLNTQK0ca",
+  "_id": "Pdnhae6HLNTQK0ca",
+  "name": "Imperial Charter",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Granted to Questing Knights. Carries 300 firebirds a year, free Imperial Navy transport, the right to inspect public Church and League records, freedom from feudal tolls and immunity from outside prosecution. Also a 3 point Oath of Fealty.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 4,
+    "ranks": [],
+    "firebirds": 300,
+    "income": 0,
+    "requires": "Nobility at 3 points or better",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

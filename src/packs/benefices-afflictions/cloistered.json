@@ -1,0 +1,28 @@
+{
+  "_key": "!items!bQtkWlzDKMUKmAsD",
+  "_id": "bQtkWlzDKMUKmAsD",
+  "name": "Cloistered",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Raised apart from other people and never quite over it. Awkward with others, and others find them odd.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

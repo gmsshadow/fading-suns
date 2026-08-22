@@ -1,0 +1,53 @@
+{
+  "_key": "!items!uf6ZMJSz2m4J9vme",
+  "_id": "uf6ZMJSz2m4J9vme",
+  "name": "Stigma",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Something that would unnerve a superstitious peasant. Occultists and the cybernetically altered have a mild Stigma already and gain no points for it.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Mild — a wandering eye, hair on the palms",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Severe — dwarfism, a hunched back",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Fearsome — pointed fangs",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Unholy — red eyes, a forked tongue",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

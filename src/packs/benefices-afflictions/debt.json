@@ -1,0 +1,53 @@
+{
+  "_key": "!items!N0DHIcIHEuOXHdwL",
+  "_id": "N0DHIcIHEuOXHdwL",
+  "name": "Debt",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Money owed, and someone impatient to have it back.</p>",
+    "polarity": "affliction",
+    "category": "riches",
+    "value": 2,
+    "ranks": [
+      {
+        "value": 2,
+        "label": "Modest debt",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Major debt — must work hard to pay it off",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 6,
+        "label": "Catastrophic — risks losing fief and rank",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Catastrophic, with life at risk",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "_key": "!items!gKcOa2GHDT3pvaKk",
+  "_id": "gKcOa2GHDT3pvaKk",
+  "name": "Fief",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A form of Assets: land and the serfs who work it. Resources matter more than size — a single gold mine may be worth a province of farmland.</p>",
+    "polarity": "benefice",
+    "category": "riches",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "Shire or village (baronet), tenant farms",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Borough or town (baron) with a silver mine",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Province or city (earl or marquis), prime farmland",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "County or capital city (count), living on taxation",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "Continent or moon (duke), raw or refined resources",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

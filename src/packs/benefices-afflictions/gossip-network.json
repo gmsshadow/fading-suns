@@ -1,0 +1,53 @@
+{
+  "_key": "!items!xeSk6aPMr1ZOkrHG",
+  "_id": "xeSk6aPMr1ZOkrHG",
+  "name": "Gossip Network",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Informants who keep the character current. The wider the net, the less reliable each strand.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "A city or community",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Planetwide",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "An entire Royal House's holdings",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "The Known Worlds",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

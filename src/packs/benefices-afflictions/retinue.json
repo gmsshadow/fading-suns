@@ -1,0 +1,53 @@
+{
+  "_key": "!items!Y2d3GC1S8hj117av",
+  "_id": "Y2d3GC1S8hj117av",
+  "name": "Retinue",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Servants whose loyalty is bought with points rather than wages.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Unskilled — butler, handmaiden",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Noncombat specialist — cook, chauffeur",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Combat able or multitalented — bodyguard, seneschal",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Fanatically loyal",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

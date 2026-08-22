@@ -1,0 +1,47 @@
+{
+  "_key": "!items!iPkVluMKG9oSl3fC",
+  "_id": "iPkVluMKG9oSl3fC",
+  "name": "Vow",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Something the character has sworn to give up. The gamemaster sets the value by its weight in play.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Celibacy",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Poverty",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Silence",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

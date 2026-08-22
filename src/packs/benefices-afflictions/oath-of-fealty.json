@@ -1,0 +1,47 @@
+{
+  "_key": "!items!z4mSv0p4rSgVpXqs",
+  "_id": "z4mSv0p4rSgVpXqs",
+  "name": "Oath of Fealty",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>An oath owed above and beyond the character's ordinary obligations, usually with something given in return.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Serious — will aid in major dealings, in exchange for the same",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Martial — will risk life for a great boon",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Extreme — will undertake a suicide mission",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

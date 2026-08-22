@@ -1,0 +1,59 @@
+{
+  "_key": "!items!TA7PpGqfBGdkFsEs",
+  "_id": "TA7PpGqfBGdkFsEs",
+  "name": "Assets",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Land, a business or loans producing regular income. The character controls it rather than owning it, and begins play with a tenth of the yearly figure in hand.</p>",
+    "polarity": "benefice",
+    "category": "riches",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "Good — 3,000 a year",
+        "firebirds": 300,
+        "income": 3000
+      },
+      {
+        "value": 5,
+        "label": "Well-off — 5,000 a year",
+        "firebirds": 500,
+        "income": 5000
+      },
+      {
+        "value": 7,
+        "label": "Wealthy — 10,000 a year",
+        "firebirds": 1000,
+        "income": 10000
+      },
+      {
+        "value": 9,
+        "label": "Rich — 15,000 a year",
+        "firebirds": 1500,
+        "income": 15000
+      },
+      {
+        "value": 11,
+        "label": "Filthy Rich — 20,000 a year",
+        "firebirds": 2000,
+        "income": 20000
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

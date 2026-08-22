@@ -1,0 +1,28 @@
+{
+  "_key": "!items!c6lXQTmqhIFvFuHB",
+  "_id": "c6lXQTmqhIFvFuHB",
+  "name": "Flux Sword",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>An energy sword built on advanced blaster and shield technology. Rare, though still occasionally made.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 11,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

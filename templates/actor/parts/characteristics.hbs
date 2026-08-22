@@ -103,4 +103,38 @@
     <p class="hint">{{localize "FADINGSUNS.Hint.BlessingLimit"}}</p>
   </div>
 
+  <div class="items-section benefices">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.BeneficesAfflictions"}}</h3>
+      <span class="point-total {{#if (lt benefices.remaining 0)}}is-over{{/if}}">
+        {{benefices.spent}} / {{benefices.budget}} {{localize "FADINGSUNS.Benefice.Points"}}
+      </span>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="benefice">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.benefice as |entry|}}
+        <li class="item draggable {{#if entry.system.isAffliction}}is-curse{{/if}}" data-item-id="{{entry.id}}">
+          <img class="item-img" src="{{entry.img}}" alt="{{entry.name}}"/>
+          <span class="item-name">{{entry.name}}</span>
+          <input class="item-value" type="number" value="{{entry.system.value}}"
+                 data-item-field="system.value" data-dtype="Number" min="0"
+                 data-tooltip="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+          <span class="item-restriction">{{entry.system.summary}}</span>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.BeneficesAfflictions"}}</li>
+      {{/each}}
+    </ol>
+    {{#if benefices.firebirds}}
+      <p class="hint">{{localize "FADINGSUNS.Benefice.Firebirds"}}: <strong>{{benefices.firebirds}}</strong>{{#if benefices.income}} &mdash; {{localize "FADINGSUNS.Benefice.Income"}}: <strong>{{benefices.income}}</strong>{{/if}}</p>
+    {{/if}}
+    <p class="hint">{{localize "FADINGSUNS.Hint.BeneficePoints"}}</p>
+  </div>
+
 </section>

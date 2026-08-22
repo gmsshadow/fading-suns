@@ -30,6 +30,7 @@ import { fileURLToPath } from "node:url";
 
 import { LEARNED_SKILLS } from "./learned-skills.mjs";
 import { BLESSINGS_AND_CURSES } from "./blessings-curses.mjs";
+import { BENEFICES_AND_AFFLICTIONS } from "./benefices.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -111,10 +112,46 @@ function buildBlessings() {
   }));
 }
 
+/**
+ * Build the documents for the Benefices and Afflictions pack (p.117).
+ * @returns {object[]}
+ */
+function buildBenefices() {
+  return BENEFICES_AND_AFFLICTIONS.map((entry, index) => ({
+    _id: stableId(`Item.benefices-afflictions.${entry.p}.${entry.n}`),
+    name: entry.n,
+    type: "benefice",
+    img: entry.p === "affliction" ? "icons/svg/downgrade.svg" : "icons/svg/coins.svg",
+    system: {
+      description: `<p>${entry.d}</p>`,
+      polarity: entry.p,
+      category: entry.cat,
+      value: entry.c,
+      ranks: (entry.ranks ?? []).map(r => ({
+        value: r.value,
+        label: r.label,
+        firebirds: r.fb ?? 0,
+        income: r.inc ?? 0
+      })),
+      firebirds: entry.fb ?? 0,
+      income: entry.inc ?? 0,
+      requires: entry.req ?? "",
+      excludes: entry.excl ?? ""
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
 /** Packs to build, keyed by the pack name declared in system.json. */
 const PACKS = {
   "learned-skills": { type: "Item", documents: buildLearnedSkills },
-  "blessings-curses": { type: "Item", documents: buildBlessings }
+  "blessings-curses": { type: "Item", documents: buildBlessings },
+  "benefices-afflictions": { type: "Item", documents: buildBenefices }
 };
 
 /* -------------------------------------------- */

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!hzpXn9YKs2gTfdvq",
+  "_id": "hzpXn9YKs2gTfdvq",
+  "name": "Obligation",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>A duty that cannot be avoided, and unlike an Oath of Fealty nothing comes back in return.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Hindrance — must be somewhere particular at set times",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Hazardous — puts the character's life at risk",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Extreme",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

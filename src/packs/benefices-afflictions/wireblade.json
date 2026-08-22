@@ -1,0 +1,28 @@
+{
+  "_key": "!items!64601F1Uc72wcWbd",
+  "_id": "64601F1Uc72wcWbd",
+  "name": "Wireblade",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A monomolecular blade that parts ceramsteel, and clumsy wielders with it. No longer manufactured.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 12,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

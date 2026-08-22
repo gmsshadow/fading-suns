@@ -1,0 +1,59 @@
+{
+  "_key": "!items!E72ANCADXXn3AjhB",
+  "_id": "E72ANCADXXn3AjhB",
+  "name": "Tariffs/Loans",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A form of Assets, and the most volatile: taxation on trade, or money lent at a fee. Debtors default and merchants refuse to pay.</p>",
+    "polarity": "benefice",
+    "category": "riches",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "An agora, taxing the stallholders",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Small loans to prominent locals",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Agora taxation continent- or planetwide",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "An interstellar trade route monopoly",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "An interstellar banking institution",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

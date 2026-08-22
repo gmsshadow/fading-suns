@@ -1,0 +1,28 @@
+{
+  "_key": "!items!Bqqt5DvSinF0u96e",
+  "_id": "Bqqt5DvSinF0u96e",
+  "name": "Family Ties",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Exceptionally loyal relations of similar standing. It cuts both ways: kin killed must be avenged.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

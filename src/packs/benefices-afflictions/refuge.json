@@ -1,0 +1,59 @@
+{
+  "_key": "!items!TxO03VctVSqpYwj6",
+  "_id": "TxO03VctVSqpYwj6",
+  "name": "Refuge",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Somewhere the character can go and feel safe, almost always open to them.</p>",
+    "polarity": "benefice",
+    "category": "possessions",
+    "value": 2,
+    "ranks": [
+      {
+        "value": 2,
+        "label": "Small farm",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Guild safe house",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 6,
+        "label": "Monastery",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 8,
+        "label": "Castle",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 10,
+        "label": "Military base",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

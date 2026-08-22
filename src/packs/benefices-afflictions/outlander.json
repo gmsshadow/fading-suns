@@ -1,0 +1,28 @@
+{
+  "_key": "!items!JxeUPXDww7jDPCMx",
+  "_id": "JxeUPXDww7jDPCMx",
+  "name": "Outlander",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>An outsider to Known Worlds society, looked at askance by every class. May begin with no more than three points in Etiquette.</p>",
+    "polarity": "affliction",
+    "category": "status",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "_key": "!items!LB1zHLfhB95nc43Z",
+  "_id": "LB1zHLfhB95nc43Z",
+  "name": "Business",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A form of Assets: an enterprise producing wealth, run by the character or by a trusted partner.</p>",
+    "polarity": "benefice",
+    "category": "riches",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "A hospital for those who can pay",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Crafting or manufacture of luxury goods",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "A weaponscrafter mill",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "High-tech manufacturing — ceramsteel, think machines, fusion",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "A starport, shipyard or starbase",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

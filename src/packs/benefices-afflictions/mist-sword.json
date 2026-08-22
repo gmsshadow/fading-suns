@@ -1,0 +1,28 @@
+{
+  "_key": "!items!IlyapFNIxgoyfXoe",
+  "_id": "IlyapFNIxgoyfXoe",
+  "name": "Mist Sword",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A flux sword psychically attuned to its wielder. Sought after by psychic covens.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 13,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -2,7 +2,7 @@
   "id": "fading-suns",
   "title": "Fading Suns 2nd Edition Revised",
   "description": "An unofficial game system for Fading Suns 2nd Edition Revised, built for Foundry VTT v13/v14 using ApplicationV2 sheets and TypeDataModel schemas.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
@@ -35,6 +35,17 @@
       "name": "blessings-curses",
       "label": "Blessings & Curses",
       "path": "packs/blessings-curses",
+      "type": "Item",
+      "system": "fading-suns",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "benefices-afflictions",
+      "label": "Benefices & Afflictions",
+      "path": "packs/benefices-afflictions",
       "type": "Item",
       "system": "fading-suns",
       "ownership": {
@@ -95,6 +106,11 @@
         ]
       },
       "blessing": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "benefice": {
         "htmlFields": [
           "description"
         ]

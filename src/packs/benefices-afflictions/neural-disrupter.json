@@ -1,0 +1,28 @@
+{
+  "_key": "!items!KxkS3hneMARNX24t",
+  "_id": "KxkS3hneMARNX24t",
+  "name": "Neural Disrupter",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A banned weapon that attacks the victim's brain cells.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 10,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

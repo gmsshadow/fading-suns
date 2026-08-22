@@ -1,0 +1,28 @@
+{
+  "_key": "!items!MMCkpQoV6gSra0lP",
+  "_id": "MMCkpQoV6gSra0lP",
+  "name": "Psi Cloak",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Second Republic technology that shields the wearer against psychic attack and neural disrupters.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 10,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.5.0** — ApplicationV2 rewrite, two compendiums, and the lifepath grant engine.
+Version **0.6.0** — ApplicationV2 rewrite, three compendiums, and the lifepath grant engine.
 
 ---
 
@@ -65,7 +65,7 @@ Reading the resolution code against the Core Rules turned up several errors, all
 
 ### Compendiums
 
-Two compendiums ship with the system.
+Three compendiums ship with the system.
 
 **Blessings & Curses** — all 91 entries from p.115–116, across the six printed categories:
 Appearance (6), Behaviour (38), Injury (11), Knack (24), Reputation (8) and Size (4).
@@ -83,6 +83,26 @@ are pre-ticked. Whatever is ticked is folded into the Goal Number.
 Six entries carry no die modifier at all and change derived statistics instead: Giant and Tall add
 base Vitality, Dwarf, Short and Incurable Disease subtract it, and Limp, Missing Leg and Dwarf set
 base run. The Vitality contribution is applied automatically.
+
+**Benefices & Afflictions** — 52 entries from p.117–124, across Background, Community,
+Possessions, Artifacts & Relics, Riches and Status.
+
+These carry no die modifiers, because they are not that kind of trait: *"Benefices and Afflictions
+are based on the individual's place in society"* (p.117). What they carry is a point cost, and
+most of them are **ranked** — the cost varies with how much of the benefice you want, and each
+rank means something particular:
+
+| | |
+|---|---|
+| Refuge | 2 = small farm … 10 = military base |
+| Cash | 1 = 100 firebirds … 11 = 4,000 firebirds |
+| Nobility | 3 = knight … 13 = duke |
+
+Those rank tables are stored as data rather than prose, so a sheet can show *Refuge 6 — Monastery*
+and total the spend correctly. The character sheet keeps a running count against the five starting
+points, adding whatever Afflictions return, and turns red when overspent. Cash and Assets ranks
+also carry their firebird figures, so starting money and yearly income are totalled automatically —
+Assets at 7 gives 10,000 a year and 1,000 in hand, being the tenth the rules allow at the start.
 
 **Learned Skills** ships as a compendium of 87 skill items covering the full list on p.99, including every sub-skill: five Lore specialties, five Read and seven Speak languages, thirteen Sciences, four Tech Redemptions, four Warfare specialties and four Social specialties.
 
@@ -257,7 +277,7 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: weapons and armour from Chapter Seven; Benefices and Afflictions (p.119)
+- Compendiums: weapons and armour from Chapter Seven
 - Character creation: lifepath stages as compendium items, with a guided wizard
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

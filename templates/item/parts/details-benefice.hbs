@@ -1,0 +1,55 @@
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Polarity"}}</span>
+    <select name="system.polarity">{{selectOptions config.beneficePolarities selected=system.polarity localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Category"}}</span>
+    <select name="system.category">{{selectOptions config.beneficeCategories selected=system.category localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Value"}}</span>
+    <input type="number" name="system.value" value="{{system.value}}" min="0"/>
+  </label>
+</div>
+
+{{#if system.ranks.length}}
+  <fieldset class="rank-table">
+    <legend>{{localize "FADINGSUNS.Benefice.Ranks"}}</legend>
+    <ol class="ranks">
+      {{#each system.ranks as |rank|}}
+        <li class="rank {{#if (eq rank.value ../system.value)}}is-current{{/if}}">
+          <span class="rank-cost">{{rank.value}}</span>
+          <span class="rank-label">{{rank.label}}</span>
+          {{#if rank.firebirds}}<span class="rank-firebirds">{{rank.firebirds}} {{localize "FADINGSUNS.Firebirds"}}</span>{{/if}}
+          {{#if rank.income}}<span class="rank-income">{{rank.income}}/{{localize "FADINGSUNS.Benefice.PerYear"}}</span>{{/if}}
+        </li>
+      {{/each}}
+    </ol>
+    <p class="hint">{{localize "FADINGSUNS.Hint.Ranks"}}</p>
+  </fieldset>
+{{/if}}
+
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Firebirds"}}</span>
+    <input type="number" name="system.firebirds" value="{{system.firebirds}}" min="0"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Income"}}</span>
+    <input type="number" name="system.income" value="{{system.income}}" min="0"/>
+  </label>
+</div>
+
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Requires"}}</span>
+    <input type="text" name="system.requires" value="{{system.requires}}"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Benefice.Excludes"}}</span>
+    <input type="text" name="system.excludes" value="{{system.excludes}}"/>
+  </label>
+</div>

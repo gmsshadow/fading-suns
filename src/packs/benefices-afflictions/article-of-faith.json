@@ -1,0 +1,28 @@
+{
+  "_key": "!items!x8EsnmSnhqaLkt8L",
+  "_id": "x8EsnmSnhqaLkt8L",
+  "name": "Article of Faith",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>An item that aids a theurge in one particular rite. One point per +1 bonus.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

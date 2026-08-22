@@ -1,0 +1,28 @@
+{
+  "_key": "!items!KXehMQK2jsH4Cd9C",
+  "_id": "KXehMQK2jsH4Cd9C",
+  "name": "Infamous Family",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>The family has a reputation, and it is not a good one. Can be taken alongside Nobility.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!snfeMt5rY8AC8zLK",
+  "_id": "snfeMt5rY8AC8zLK",
+  "name": "Nobility",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Membership of a noble house. A minor house title carries less power than the same title in a royal house.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "Knight",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Baronet",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Baron",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "Marquis or Earl",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "Count",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 13,
+        "label": "Duke",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

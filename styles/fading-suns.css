@@ -700,3 +700,56 @@
   font-style: italic;
   text-align: right;
 }
+
+/* ---------- Benefices and Afflictions ---------- */
+
+.fading-suns .point-total {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  color: var(--fs-muted);
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+}
+
+.fading-suns .point-total.is-over {
+  border-color: var(--fs-failure);
+  color: var(--fs-failure);
+}
+
+.fading-suns .rank-table .ranks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fading-suns .rank {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.15rem 0.2rem;
+}
+
+.fading-suns .rank.is-current {
+  background: rgba(201, 162, 39, 0.12);
+  border-radius: 2px;
+}
+
+.fading-suns .rank-cost {
+  color: var(--fs-gold);
+  flex: 0 0 2ch;
+  font-weight: 700;
+  text-align: right;
+}
+
+.fading-suns .rank-label {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.fading-suns .rank-firebirds,
+.fading-suns .rank-income {
+  color: var(--fs-muted);
+  font-size: 0.7rem;
+}

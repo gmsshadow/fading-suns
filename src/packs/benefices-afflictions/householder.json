@@ -1,0 +1,28 @@
+{
+  "_key": "!items!90eqdXFpnLv9YCLt",
+  "_id": "90eqdXFpnLv9YCLt",
+  "name": "Householder",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Employed by a noble house, guild or sect without holding rank in it. A guardsman, groundskeeper or cook, with the small courtesies that brings.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

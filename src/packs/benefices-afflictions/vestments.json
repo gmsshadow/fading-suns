@@ -1,0 +1,28 @@
+{
+  "_key": "!items!WPFa7IJ6hZjqqkyT",
+  "_id": "WPFa7IJ6hZjqqkyT",
+  "name": "Vestments",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Properly blessed Church equipment. Earned through service, never bought with money.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

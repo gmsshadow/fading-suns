@@ -1,0 +1,28 @@
+{
+  "_key": "!items!Uh6wgLlUe6imRj3V",
+  "_id": "Uh6wgLlUe6imRj3V",
+  "name": "Orphan",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Lost their family young and nothing replaced it. Cannot be taken with Nobility or Alien Upbringing.</p>",
+    "polarity": "affliction",
+    "category": "background",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": "Nobility"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -72,7 +72,8 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       tabs: this._prepareTabs?.("primary") ?? {},
       items: this.#categoriseItems(),
       characteristics: this.#prepareCharacteristics(),
-      spiritPairs: this.#prepareSpiritPairs()
+      spiritPairs: this.#prepareSpiritPairs(),
+      benefices: this.#prepareBeneficeTotals()
     });
 
     context.enrichedBiography = await TextEditor.implementation.enrichHTML(
@@ -126,12 +127,39 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /**
+   * Running totals for the Benefices and Afflictions block (p.118).
+   *
+   * Characters begin with five points of Benefices; Afflictions are negative
+   * Benefices and return points to be spent elsewhere.
+   *
+   * @returns {{spent: number, granted: number, budget: number, remaining: number,
+   *            firebirds: number, income: number}}
+   */
+  #prepareBeneficeTotals() {
+    let spent = 0;
+    let granted = 0;
+    let firebirds = 0;
+    let income = 0;
+
+    for (const item of this.actor.items) {
+      if (item.type !== "benefice") continue;
+      if (item.system.isAffliction) granted += item.system.value;
+      else spent += item.system.value;
+      firebirds += item.system.startingFirebirds;
+      income += item.system.yearlyIncome;
+    }
+
+    const budget = CONFIG.FADING_SUNS.startingBeneficePoints + granted;
+    return { spent, granted, budget, remaining: budget - spent, firebirds, income };
+  }
+
+  /**
    * Group the actor's items by type for display.
    * @returns {Record<string, Item[]>}
    */
   #categoriseItems() {
     const groups = {
-      skill: [], weapon: [], armour: [], equipment: [], blessing: [],
+      skill: [], weapon: [], armour: [], equipment: [], blessing: [], benefice: [],
       psychicPower: [], theurgicRite: []
     };
     for (const item of this.actor.items) {
@@ -142,6 +170,7 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     groups.blessing.sort((a, b) => a.name.localeCompare(b.name));
     groups.blessings = groups.blessing.filter(i => i.system.polarity === "blessing");
     groups.curses = groups.blessing.filter(i => i.system.polarity === "curse");
+    groups.benefice.sort((a, b) => a.name.localeCompare(b.name));
     groups.naturalSkills = groups.skill.filter(i => i.system.skillType === "natural");
     groups.learnedSkills = groups.skill.filter(i => i.system.skillType !== "natural");
     for (const key of ["weapon", "armour", "equipment", "psychicPower", "theurgicRite"]) {

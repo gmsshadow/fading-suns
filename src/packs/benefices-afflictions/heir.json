@@ -1,0 +1,28 @@
+{
+  "_key": "!items!VbAfZKSdx7z5aKXq",
+  "_id": "VbAfZKSdx7z5aKXq",
+  "name": "Heir",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Next in line for a position of importance, though when it falls due is anyone's guess. A noble heir still needs the Nobility Benefice.</p>",
+    "polarity": "benefice",
+    "category": "background",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_key": "!items!0q0X1iZy3fccDWcv",
+  "_id": "0q0X1iZy3fccDWcv",
+  "name": "Advisor",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A hand-held think machine with an artificial intelligence. Crude, and more annoying than helpful at times.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 5,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

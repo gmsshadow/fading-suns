@@ -1,0 +1,28 @@
+{
+  "_key": "!items!6azVoBMLsaYJel51",
+  "_id": "6azVoBMLsaYJel51",
+  "name": "Contact",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>An acquaintance who helps in small ways — information, a fair price, a place to stay.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_key": "!items!8I3uUffYXLzm1SrK",
+  "_id": "8I3uUffYXLzm1SrK",
+  "name": "Protection",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Someone is looking out for the character. Something is usually owed in return.</p>",
+    "polarity": "benefice",
+    "category": "community",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

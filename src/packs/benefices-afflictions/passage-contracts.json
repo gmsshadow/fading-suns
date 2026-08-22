@@ -1,0 +1,59 @@
+{
+  "_key": "!items!nrLtlieWPe991vW0",
+  "_id": "nrLtlieWPe991vW0",
+  "name": "Passage Contracts",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A standing arrangement with a guild for starship passage. The accommodation varies considerably.</p>",
+    "polarity": "benefice",
+    "category": "possessions",
+    "value": 2,
+    "ranks": [
+      {
+        "value": 2,
+        "label": "Tramp freighter — you ride with the cargo",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 4,
+        "label": "Transport — a room shared with nine others",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 6,
+        "label": "Stateroom — built for two, known to hold eight",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 8,
+        "label": "Luxury liner",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 10,
+        "label": "The ship is at your command",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

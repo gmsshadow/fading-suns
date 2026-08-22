@@ -1,0 +1,28 @@
+{
+  "_key": "!items!2biT0HYjVoEILa3W",
+  "_id": "2biT0HYjVoEILa3W",
+  "name": "Saint's Lore",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A relic esteemed by the faithful. Two points per rite, plus one per level of that rite.</p>",
+    "polarity": "benefice",
+    "category": "artifacts",
+    "value": 2,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

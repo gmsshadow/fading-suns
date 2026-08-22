@@ -1,0 +1,47 @@
+{
+  "_key": "!items!OnffCKYgbzaURWy8",
+  "_id": "OnffCKYgbzaURWy8",
+  "name": "Black Sheep",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Ostracised by their own family. Requires the Nobility Benefice.</p>",
+    "polarity": "affliction",
+    "category": "status",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Ostracised — never at court, nor where the family goes",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Actively opposed by the family",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Hunted by the family",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "Nobility",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_key": "!items!orYJiWWJnCZFX0cr",
+  "_id": "orYJiWWJnCZFX0cr",
+  "name": "Bastard",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>The bastard child of a noble. May still buy a title, but will inherit nothing.</p>",
+    "polarity": "affliction",
+    "category": "status",
+    "value": 1,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

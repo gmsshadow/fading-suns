@@ -1,0 +1,65 @@
+{
+  "_key": "!items!C71AYPZdXGwYJw1J",
+  "_id": "C71AYPZdXGwYJw1J",
+  "name": "Commissioned",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Rank within a Merchant League guild.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "Associate",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Manager",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Boss",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "Jonin",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "Consul",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 13,
+        "label": "Dean",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

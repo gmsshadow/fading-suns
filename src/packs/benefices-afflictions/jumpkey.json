@@ -1,0 +1,28 @@
+{
+  "_key": "!items!P5eQ4KyKE2GbacOU",
+  "_id": "P5eQ4KyKE2GbacOU",
+  "name": "Jumpkey",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Holds the coordinates of one jumproute, working both ways between two worlds. The Charioteers take a dim view of others carrying them.</p>",
+    "polarity": "benefice",
+    "category": "possessions",
+    "value": 2,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

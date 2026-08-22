@@ -306,3 +306,91 @@ export class FadingSunsBlessing extends FadingSunsItemBase {
     return parts.join(", ");
   }
 }
+
+/**
+ * A Benefice or Affliction (p.117).
+ *
+ * "While Blessings and Curses represent features inherent to an individual
+ *  (directly modifying characteristics or skills), Benefices and Afflictions are
+ *  based on the individual's place in society." (p.117)
+ *
+ * They carry no die modifiers. What they carry is a point cost, and most are
+ * ranked — Refuge runs from a small farm at 2 points to a military base at 10 —
+ * so the rank table is data rather than prose, and the chosen rank is stored on
+ * the character's copy of the item.
+ */
+export class FadingSunsBenefice extends FadingSunsItemBase {
+
+  /** @inheritDoc */
+  static defineSchema() {
+    const schema = super.defineSchema();
+    delete schema.techLevel;
+    delete schema.cost;
+    return Object.assign(schema, {
+      polarity: new fields.StringField({
+        required: true, blank: false, initial: "benefice",
+        choices: () => CONFIG.FADING_SUNS.beneficePolarities
+      }),
+      category: new fields.StringField({
+        required: true, blank: false, initial: "background",
+        choices: () => CONFIG.FADING_SUNS.beneficeCategories
+      }),
+      // The rank the character has actually bought. Benefices cost points;
+      // Afflictions grant them. Stored as a magnitude either way.
+      value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
+      // The published rank table, where the entry is ranked at all.
+      ranks: new fields.ArrayField(new fields.SchemaField({
+        value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
+        label: new fields.StringField({ required: true, blank: true, initial: "" }),
+        firebirds: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
+        income: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
+      })),
+      // Starting firebirds and yearly income, for entries that carry them (p.121).
+      firebirds: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+      income: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+      requires: new fields.StringField({ required: false, blank: true, initial: "" }),
+      excludes: new fields.StringField({ required: false, blank: true, initial: "" })
+    });
+  }
+
+  /** Whether this entry is an Affliction. */
+  get isAffliction() {
+    return this.polarity === "affliction";
+  }
+
+  /**
+   * The rank table entry matching the bought value, if there is one.
+   * @returns {object|null}
+   */
+  get rank() {
+    if (!this.ranks.length) return null;
+    // The highest published rank at or below what the character bought.
+    const eligible = this.ranks.filter(r => r.value <= this.value);
+    return eligible.length ? eligible[eligible.length - 1] : this.ranks[0];
+  }
+
+  /**
+   * Points this entry costs a character. Afflictions return points, so they are
+   * reported as a negative cost (p.118).
+   * @returns {number}
+   */
+  get pointCost() {
+    return this.isAffliction ? -this.value : this.value;
+  }
+
+  /** Starting firebirds granted, taking the chosen rank into account (p.121). */
+  get startingFirebirds() {
+    return this.rank?.firebirds || this.firebirds || 0;
+  }
+
+  /** Yearly income granted, taking the chosen rank into account (p.121). */
+  get yearlyIncome() {
+    return this.rank?.income || this.income || 0;
+  }
+
+  /** A short summary such as "Refuge 6 — Monastery". */
+  get summary() {
+    const rank = this.rank;
+    return rank?.label ? `${this.value} — ${rank.label}` : `${this.value}`;
+  }
+}

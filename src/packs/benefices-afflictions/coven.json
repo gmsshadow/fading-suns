@@ -1,0 +1,28 @@
+{
+  "_key": "!items!FW1CHmQSq1EXwiGa",
+  "_id": "FW1CHmQSq1EXwiGa",
+  "name": "Coven",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Membership of a psychic coven. Non-psychics may join by pledging service. Membership is illegal in the eyes of the Church.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 2,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

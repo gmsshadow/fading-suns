@@ -1,0 +1,65 @@
+{
+  "_key": "!items!DA2NPdmHjSeBMEju",
+  "_id": "DA2NPdmHjSeBMEju",
+  "name": "Ordained",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>An ordained minister of the Church.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 3,
+    "ranks": [
+      {
+        "value": 3,
+        "label": "Novice",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 5,
+        "label": "Deacon",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 7,
+        "label": "Fellow",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 9,
+        "label": "Crafter",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 11,
+        "label": "Engineer",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 13,
+        "label": "Master",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

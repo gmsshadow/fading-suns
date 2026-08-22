@@ -1,0 +1,28 @@
+{
+  "_key": "!items!ssid0uJh002yHAAa",
+  "_id": "ssid0uJh002yHAAa",
+  "name": "Cohort Badge",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>An Imperial Cohort — aide to a Questing Knight. Carries 100 firebirds a year, free Imperial Navy transport, freedom from feudal tolls and free counsel at law. Also a 3 point Oath of Fealty.</p>",
+    "polarity": "benefice",
+    "category": "status",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 100,
+    "income": 0,
+    "requires": "Ordained or Commissioned at 3 points or better",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

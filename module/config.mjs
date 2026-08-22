@@ -198,3 +198,24 @@ FADING_SUNS.modifierTargets = {
   skill: "FADINGSUNS.Blessing.TargetSkill",
   all: "FADINGSUNS.Blessing.TargetAll"
 };
+
+/* -------------------------------------------- */
+/*  Benefices and Afflictions (p.117)           */
+/* -------------------------------------------- */
+
+FADING_SUNS.beneficePolarities = {
+  benefice: "FADINGSUNS.Benefice.Benefice",
+  affliction: "FADINGSUNS.Benefice.Affliction"
+};
+
+FADING_SUNS.beneficeCategories = {
+  background: "FADINGSUNS.Benefice.Background",
+  community: "FADINGSUNS.Benefice.Community",
+  possessions: "FADINGSUNS.Benefice.Possessions",
+  artifacts: "FADINGSUNS.Benefice.Artifacts",
+  riches: "FADINGSUNS.Benefice.Riches",
+  status: "FADINGSUNS.Benefice.Status"
+};
+
+/** Points of Benefices every character begins with (p.118). */
+FADING_SUNS.startingBeneficePoints = 5;

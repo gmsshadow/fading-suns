@@ -1,15 +1,16 @@
 {
   "id": "fading-suns",
   "title": "Fading Suns 2nd Edition Revised",
-  "description": "A game system for Fading Suns 2nd Edition Revised",
-  "version": "0.1.0",
+  "description": "An unofficial game system for Fading Suns 2nd Edition Revised, built for Foundry VTT v13/v14 using ApplicationV2 sheets and TypeDataModel schemas.",
+  "version": "0.2.1",
   "compatibility": {
-    "minimum": "11",
-    "verified": "13"
+    "minimum": "13",
+    "verified": "14"
   },
   "authors": [
     {
-      "name": "Your Name Here"
+      "name": "Nicholas",
+      "github": "GMsShadow"
     }
   ],
   "esmodules": ["module/fading-suns.mjs"],
@@ -22,6 +23,24 @@
       "path": "lang/en.json"
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["biography"]
+      },
+      "npc": {
+        "htmlFields": ["biography"]
+      }
+    },
+    "Item": {
+      "weapon": { "htmlFields": ["description"] },
+      "armour": { "htmlFields": ["description"] },
+      "equipment": { "htmlFields": ["description"] },
+      "skill": { "htmlFields": ["description"] },
+      "psychicPower": { "htmlFields": ["description"] },
+      "theurgicRite": { "htmlFields": ["description"] }
+    }
+  },
   "grid": {
     "distance": 1,
     "units": "m"
@@ -30,5 +49,6 @@
   "secondaryTokenAttribute": "wyrd",
   "url": "https://github.com/gmsshadow/fading-suns",
   "manifest": "https://raw.githubusercontent.com/gmsshadow/fading-suns/refs/heads/main/system.json",
-  "download": "https://github.com/gmsshadow/fading-suns/archive/refs/heads/main.zip"
+  "download": "https://github.com/gmsshadow/fading-suns/archive/refs/heads/main.zip",
+  "readme": "README.md"
 }

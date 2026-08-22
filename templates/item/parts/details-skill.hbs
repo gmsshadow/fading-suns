@@ -1,0 +1,27 @@
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.SkillValue"}}</span>
+    <input type="number" name="system.value" value="{{system.value}}" min="0" max="20"/>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.SkillType"}}</span>
+    <select name="system.skillType">{{selectOptions config.skillTypes selected=system.skillType localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.Characteristic"}}</span>
+    <select name="system.characteristic">{{selectOptions config.rollableCharacteristics selected=system.characteristic localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.Specialty"}}</span>
+    <input type="text" name="system.specialty" value="{{system.specialty}}" placeholder="{{localize 'FADINGSUNS.Placeholder.Specialty'}}"/>
+  </label>
+
+  <label class="form-group checkbox">
+    <input type="checkbox" name="system.guildSkill" {{checked system.guildSkill}}/>
+    <span>{{localize "FADINGSUNS.Field.GuildSkill"}}</span>
+  </label>
+</div>
+<p class="hint">{{localize "FADINGSUNS.Hint.Skill"}}</p>

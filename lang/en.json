@@ -1,8 +1,283 @@
 {
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "Gamemaster Character"
+    },
+    "Item": {
+      "weapon": "Weapon",
+      "armour": "Armour",
+      "equipment": "Equipment",
+      "skill": "Skill",
+      "psychicPower": "Psychic Power",
+      "theurgicRite": "Theurgic Rite"
+    }
+  },
+
   "FADINGSUNS": {
     "SheetLabels": {
       "Actor": "Fading Suns Character Sheet",
       "Item": "Fading Suns Item Sheet"
+    },
+
+    "Vitality": "Vitality",
+    "Wyrd": "Wyrd",
+    "Firebirds": "Firebirds",
+    "Versus": "vs.",
+
+    "Tab": {
+      "Primary": "Sheet Sections",
+      "Characteristics": "Characteristics",
+      "Skills": "Skills",
+      "Combat": "Combat",
+      "Occult": "Occult",
+      "Biography": "Biography",
+      "Details": "Details",
+      "Description": "Description"
+    },
+
+    "Group": {
+      "Body": "Body",
+      "Mind": "Mind",
+      "Spirit": "Spirit",
+      "Occult": "Occult"
+    },
+
+    "Characteristic": {
+      "Strength": "Strength",
+      "Dexterity": "Dexterity",
+      "Endurance": "Endurance",
+      "Wits": "Wits",
+      "Perception": "Perception",
+      "Tech": "Tech",
+      "Extrovert": "Extrovert",
+      "Introvert": "Introvert",
+      "Passion": "Passion",
+      "Calm": "Calm",
+      "Faith": "Faith",
+      "Ego": "Ego",
+      "Psi": "Psi",
+      "Urge": "Urge",
+      "Theurgy": "Theurgy",
+      "Hubris": "Hubris"
+    },
+
+    "SkillType": {
+      "Natural": "Natural",
+      "Learned": "Learned",
+      "NaturalPlural": "Natural Skills",
+      "LearnedPlural": "Learned Skills"
+    },
+
+    "Difficulty": {
+      "Effortless": "Effortless (+10)",
+      "ChildsPlay": "Child's Play (+8)",
+      "PieceOfCake": "Piece of Cake (+6)",
+      "Easy": "Easy (+4)",
+      "Natural": "Natural (+2)",
+      "Average": "Average (0)",
+      "Hard": "Hard (-2)",
+      "Demanding": "Demanding (-4)",
+      "Tough": "Tough (-6)",
+      "Severe": "Severe (-8)",
+      "Herculean": "Herculean (-10)"
+    },
+
+    "DamageType": {
+      "Wound": "Wound",
+      "Energy": "Energy",
+      "Stun": "Stun"
+    },
+
+    "WeaponType": {
+      "Melee": "Melee",
+      "Fight": "Unarmed",
+      "Ranged": "Ranged",
+      "Thrown": "Thrown"
+    },
+
+    "Coverage": {
+      "Full": "Full Body",
+      "Body": "Body",
+      "Torso": "Torso",
+      "Head": "Head",
+      "Arms": "Arms",
+      "Legs": "Legs"
+    },
+
+    "PsiPath": {
+      "FarHand": "Far Hand",
+      "Soma": "Soma",
+      "SixthSense": "Sixth Sense",
+      "Psyche": "Psyche",
+      "EverForm": "Ever Form",
+      "FireDance": "Fire Dance",
+      "Omen": "Omen",
+      "Sympathy": "Sympathy",
+      "Vis": "Vis Crackdown"
+    },
+
+    "WyrdSource": {
+      "Mundane": "Passion or Calm (non-occultist)",
+      "Psi": "Extrovert or Introvert (psychic)",
+      "Theurgy": "Faith (theurge)"
+    },
+
+    "Accomplishment": {
+      "Failure": "Failure",
+      "BarelySatisfactory": "Barely satisfactory",
+      "Mediocre": "Mediocre",
+      "PrettyGood": "Pretty good",
+      "GoodJob": "Good job",
+      "Excellent": "Excellent",
+      "Brilliant": "Brilliant",
+      "Virtuoso": "Virtuoso performance"
+    },
+
+    "Outcome": {
+      "Success": "Success",
+      "Failure": "Failure",
+      "CriticalSuccess": "Critical Success",
+      "CriticalFailure": "Critical Failure",
+      "AutomaticSuccess": "Automatic Success",
+      "AutomaticFailure": "Automatic Failure"
+    },
+
+    "Roll": {
+      "Roll": "Roll",
+      "Tooltip": "Roll — hold Shift to skip the dialog",
+      "Goal": "Goal",
+      "Characteristic": "Characteristic",
+      "Skill": "Skill",
+      "Modifier": "Modifier",
+      "Difficulty": "Difficulty",
+      "Situational": "Situational Modifier",
+      "Accent": "Accent",
+      "VictoryPoints": "Victory Points",
+      "VictoryDice": "Victory Dice",
+      "WeaponDice": "weapon",
+      "ExcessiveBonus": "Excessive Goal",
+      "Damage": "Damage",
+      "Protection": "Protection",
+      "WoundPoints": "wound points",
+      "ArmourPoints": "armour points"
+    },
+
+    "Section": {
+      "Weapons": "Weapons",
+      "Armour": "Armour",
+      "Equipment": "Equipment",
+      "PsychicPowers": "Psychic Powers",
+      "TheurgicRites": "Theurgic Rites"
+    },
+
+    "Control": {
+      "Add": "Add",
+      "AddSkill": "Add Skill",
+      "Edit": "Edit",
+      "Delete": "Delete",
+      "Use": "Use",
+      "Attack": "Attack",
+      "Damage": "Roll Damage",
+      "Protection": "Roll Protection",
+      "Invoke": "Invoke",
+      "Equipped": "Equipped",
+      "ToChat": "Post to Chat",
+      "RollDamage": "Roll Damage",
+      "ApplyDamage": "Apply to Selected Tokens"
+    },
+
+    "Field": {
+      "Name": "Name",
+      "Type": "Type",
+      "Faction": "Faction",
+      "Rank": "Rank",
+      "Homeworld": "Homeworld",
+      "Level": "Level",
+      "Path": "Path",
+      "Ritual": "Ritual",
+      "WyrdCost": "Wyrd Cost",
+      "Characteristic": "Characteristic",
+      "Skill": "Skill",
+      "SkillValue": "Skill Value",
+      "SkillType": "Skill Type",
+      "Specialty": "Specialty",
+      "GuildSkill": "Guild Skill",
+      "WeaponType": "Weapon Type",
+      "DamageDice": "Damage Dice",
+      "DamageType": "Damage Type",
+      "ProtectionDice": "Protection Dice",
+      "Coverage": "Coverage",
+      "Penalty": "Penalty",
+      "Range": "Range",
+      "RangeShort": "Short",
+      "RangeMedium": "Medium",
+      "RangeLong": "Long",
+      "RateOfFire": "Rate of Fire",
+      "Shots": "Shots",
+      "ShotsMax": "Magazine",
+      "TechLevel": "Tech Level",
+      "Cost": "Cost",
+      "Weight": "Weight",
+      "Quantity": "Quantity",
+      "Duration": "Duration"
+    },
+
+    "Placeholder": {
+      "Specialty": "e.g. Jumproads, Latin, lute",
+      "PsiPath": "e.g. Psyche, Soma, Far Hand"
+    },
+
+    "Hint": {
+      "Vitality": "Five vital levels plus Endurance (p.125).",
+      "Wyrd": "Derived from your occult path, plus any bonus (p.125).",
+      "WyrdSource": "Wyrd is derived from:",
+      "WoundPenalty": "Wound penalty from lost vital levels (p.125). Applied automatically to Goal Rolls.",
+      "SpiritPairs": "Each pair is opposed; tick the trait that is primary (p.93).",
+      "Primary": "Primary trait",
+      "ExcessiveGoal": "Bonus Victory Points from a Goal Number above 20 (p.66).",
+      "PullPunch": "Ctrl-click to pull the punch and use only one victory die (p.65).",
+      "EffectDice": "Effect dice succeed on 1–4; each success is one point (p.65).",
+      "Range": "Ranges are in metres. Long range is Hard (-2), maximum range Demanding (-4).",
+      "Armour": "Armour dice are rolled without victory dice. Each armour point cancels one wound point (p.65).",
+      "Skill": "Natural skills start at 3; learned skills must be bought (p.97, p.99).",
+      "OccultCost": "Wyrd is spent only if the roll succeeds, or on a critical failure (p.128).",
+      "Accent": "Spend one Wyrd point to add to your die result — but beware of overshooting the Goal (p.69)."
+    },
+
+    "Empty": {
+      "Skills": "No natural skills. Add the nine natural skills to begin.",
+      "LearnedSkills": "No learned skills yet.",
+      "Weapons": "No weapons.",
+      "Armour": "No armour.",
+      "Equipment": "No equipment.",
+      "PsychicPowers": "No psychic powers.",
+      "TheurgicRites": "No theurgic rites."
+    },
+
+    "Item": {
+      "New": "New {type}",
+      "DeleteTitle": "Delete {name}?",
+      "DeleteConfirm": "Permanently delete <strong>{name}</strong>? This cannot be undone."
+    },
+
+    "Warning": {
+      "NoWyrd": "Not enough Wyrd points.",
+      "NoOwningActor": "This item is not owned by an actor.",
+      "NotOwner": "You do not own this actor.",
+      "NoTargets": "Select one or more tokens you own first."
+    },
+
+    "Migration": {
+      "Begin": "Fading Suns: migrating world data to the new data models…",
+      "Complete": "Fading Suns: migration complete."
+    },
+
+    "Settings": {
+      "ApplyWoundPenalties": {
+        "Name": "Apply Wound Penalties Automatically",
+        "Hint": "Subtract the wound penalty from lost vital levels (p.125) from every Goal Roll."
+      }
     }
   }
 }

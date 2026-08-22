@@ -1,0 +1,11 @@
+<header class="sheet-header">
+  <img class="profile-img" src="{{item.img}}" data-action="editImage" data-field="img"
+       alt="{{item.name}}" data-tooltip="{{item.name}}"/>
+  <div class="header-fields">
+    <input class="itemname" name="name" type="text" value="{{item.name}}"
+           placeholder="{{localize 'FADINGSUNS.Field.Name'}}"/>
+    <span class="item-type">{{localize (concat "TYPES.Item." item.type)}}</span>
+  </div>
+  <button type="button" class="icon-btn" data-action="toChat"
+          data-tooltip="{{localize 'FADINGSUNS.Control.ToChat'}}"><i class="fa-solid fa-comment"></i></button>
+</header>

@@ -1,0 +1,61 @@
+<div class="fading-suns chat-card goal-roll">
+  <header class="card-header">
+    <h3>{{actorName}}</h3>
+    <div class="formula">
+      {{characteristicLabel}}
+      {{#if skillLabel}} + {{skillLabel}}{{/if}}
+      {{#if modifier}} {{fsSigned modifier}}{{/if}}
+      {{#if woundPenalty}} <span class="wounds">{{fsSigned woundPenalty}}</span>{{/if}}
+      {{#if accent}} <span class="accent">{{localize "FADINGSUNS.Roll.Accent"}} {{fsSigned accent}}</span>{{/if}}
+    </div>
+    {{#if itemName}}<div class="item-name">{{itemName}}</div>{{/if}}
+  </header>
+
+  <div class="card-body">
+    <div class="breakdown">
+      <span class="chip" data-tooltip="{{localize 'FADINGSUNS.Roll.Characteristic'}}">{{characteristicValue}}</span>
+      {{#if skillLabel}}<span class="op">+</span>
+        <span class="chip" data-tooltip="{{localize 'FADINGSUNS.Roll.Skill'}}">{{skillValue}}</span>{{/if}}
+      {{#if modifier}}<span class="chip mod" data-tooltip="{{localize 'FADINGSUNS.Roll.Modifier'}}">{{fsSigned modifier}}</span>{{/if}}
+      {{#if woundPenalty}}<span class="chip wounds" data-tooltip="{{localize 'FADINGSUNS.Hint.WoundPenalty'}}">{{fsSigned woundPenalty}}</span>{{/if}}
+      <span class="op">=</span>
+      <span class="chip goal" data-tooltip="{{localize 'FADINGSUNS.Roll.Goal'}}">{{goal}}</span>
+    </div>
+
+    <div class="dice-result {{#if success}}is-success{{else}}is-failure{{/if}}">
+      <span class="die">{{natural}}</span>
+      {{#if accent}}<span class="accented">&rarr; {{successes}}</span>{{/if}}
+    </div>
+
+    <div class="outcome {{#if success}}is-success{{else}}is-failure{{/if}}">
+      {{#if criticalSuccess}}<strong>{{localize "FADINGSUNS.Outcome.CriticalSuccess"}}</strong>
+      {{else if automaticSuccess}}<strong>{{localize "FADINGSUNS.Outcome.AutomaticSuccess"}}</strong>
+      {{else if criticalFailure}}<strong>{{localize "FADINGSUNS.Outcome.CriticalFailure"}}</strong>
+      {{else if automaticFailure}}<strong>{{localize "FADINGSUNS.Outcome.AutomaticFailure"}}</strong>
+      {{else if success}}<strong>{{localize "FADINGSUNS.Outcome.Success"}}</strong>
+      {{else}}<strong>{{localize "FADINGSUNS.Outcome.Failure"}}</strong>{{/if}}
+    </div>
+
+    {{#if success}}
+      <div class="victory">
+        <span class="vp">{{localize "FADINGSUNS.Roll.VictoryPoints"}}: <strong>{{victoryPoints}}</strong></span>
+        <span class="accomplishment">{{accomplishmentLabel}}</span>
+        {{#if excessiveBonus}}
+          <span class="excessive" data-tooltip="{{localize 'FADINGSUNS.Hint.ExcessiveGoal'}}">
+            {{localize "FADINGSUNS.Roll.ExcessiveBonus"}} {{fsSigned excessiveBonus}}
+          </span>
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+
+  {{#if canRollDamage}}
+    <footer class="card-footer">
+      <button type="button" class="card-btn" data-fs-action="rollDamage"
+              data-tooltip="{{localize 'FADINGSUNS.Hint.PullPunch'}}">
+        <i class="fa-solid fa-burst"></i>
+        {{localize "FADINGSUNS.Control.RollDamage"}} ({{localize "FADINGSUNS.Roll.VictoryDice"}} {{fsSigned victoryDice}})
+      </button>
+    </footer>
+  {{/if}}
+</div>

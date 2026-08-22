@@ -1,0 +1,32 @@
+<div class="fading-suns chat-card effect-roll">
+  <header class="card-header">
+    <h3>{{#if label}}{{label}}{{else}}{{actorName}}{{/if}}</h3>
+    <div class="formula">
+      {{#if isDamage}}{{localize "FADINGSUNS.Roll.Damage"}}{{else}}{{localize "FADINGSUNS.Roll.Protection"}}{{/if}}
+      &mdash; {{pool}}d6
+      {{#if weaponDice}}<span class="split">({{weaponDice}} {{localize "FADINGSUNS.Roll.WeaponDice"}}
+        {{#if victoryDice}}+ {{victoryDice}} {{localize "FADINGSUNS.Roll.VictoryDice"}}{{/if}})</span>{{/if}}
+    </div>
+  </header>
+
+  <div class="card-body">
+    <ol class="effect-dice">
+      {{#each results as |die|}}
+        <li class="effect-die {{#if die.success}}is-success{{/if}}">{{die.result}}</li>
+      {{/each}}
+    </ol>
+    <p class="hint">{{localize "FADINGSUNS.Hint.EffectDice"}}</p>
+    <div class="points">
+      <strong>{{points}}</strong>
+      {{#if isDamage}}{{localize "FADINGSUNS.Roll.WoundPoints"}}{{else}}{{localize "FADINGSUNS.Roll.ArmourPoints"}}{{/if}}
+    </div>
+  </div>
+
+  {{#if isDamage}}
+    <footer class="card-footer">
+      <button type="button" class="card-btn" data-fs-action="applyDamage" data-points="{{points}}">
+        <i class="fa-solid fa-heart-crack"></i> {{localize "FADINGSUNS.Control.ApplyDamage"}}
+      </button>
+    </footer>
+  {{/if}}
+</div>

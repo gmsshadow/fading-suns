@@ -1,0 +1,79 @@
+<section class="tab characteristics {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+
+  <div class="characteristic-block">
+    <h3>{{localize "FADINGSUNS.Group.Body"}}</h3>
+    <div class="characteristic-grid">
+      {{#each characteristics.body as |char|}}
+        <div class="characteristic">
+          <span class="char-name">{{char.label}}</span>
+          <input type="number" name="system.{{char.path}}.value" value="{{char.value}}" min="0" max="20"/>
+          <button type="button" class="roll-btn" data-action="roll" data-characteristic="{{char.path}}"
+                  data-tooltip="{{localize 'FADINGSUNS.Roll.Tooltip'}}">
+            <i class="fa-solid fa-dice-d20"></i>
+          </button>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="characteristic-block">
+    <h3>{{localize "FADINGSUNS.Group.Mind"}}</h3>
+    <div class="characteristic-grid">
+      {{#each characteristics.mind as |char|}}
+        <div class="characteristic">
+          <span class="char-name">{{char.label}}</span>
+          <input type="number" name="system.{{char.path}}.value" value="{{char.value}}" min="0" max="20"/>
+          <button type="button" class="roll-btn" data-action="roll" data-characteristic="{{char.path}}"
+                  data-tooltip="{{localize 'FADINGSUNS.Roll.Tooltip'}}">
+            <i class="fa-solid fa-dice-d20"></i>
+          </button>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="characteristic-block spirit">
+    <h3>{{localize "FADINGSUNS.Group.Spirit"}}</h3>
+    <p class="hint">{{localize "FADINGSUNS.Hint.SpiritPairs"}}</p>
+    {{#each spiritPairs as |pair|}}
+      <div class="spirit-pair">
+        <div class="characteristic {{#if pair.primary.isPrimary}}is-primary{{/if}}">
+          <span class="char-name">{{pair.primary.label}}</span>
+          <input type="number" name="system.{{pair.primary.path}}.value" value="{{pair.primary.value}}" min="0" max="20"/>
+          <label class="primary-toggle" data-tooltip="{{localize 'FADINGSUNS.Hint.Primary'}}">
+            <input type="checkbox" name="system.{{pair.primary.path}}.primary" {{checked pair.primary.isPrimary}}/>
+          </label>
+          <button type="button" class="roll-btn" data-action="roll" data-characteristic="{{pair.primary.path}}">
+            <i class="fa-solid fa-dice-d20"></i>
+          </button>
+        </div>
+
+        <span class="versus">{{localize "FADINGSUNS.Versus"}}</span>
+
+        <div class="characteristic {{#if pair.opposed.isPrimary}}is-primary{{/if}}">
+          <span class="char-name">{{pair.opposed.label}}</span>
+          <input type="number" name="system.{{pair.opposed.path}}.value" value="{{pair.opposed.value}}" min="0" max="20"/>
+          <label class="primary-toggle" data-tooltip="{{localize 'FADINGSUNS.Hint.Primary'}}">
+            <input type="checkbox" name="system.{{pair.opposed.path}}.primary" {{checked pair.opposed.isPrimary}}/>
+          </label>
+          <button type="button" class="roll-btn" data-action="roll" data-characteristic="{{pair.opposed.path}}">
+            <i class="fa-solid fa-dice-d20"></i>
+          </button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="characteristic-block">
+    <h3>{{localize "FADINGSUNS.Group.Occult"}}</h3>
+    <div class="characteristic-grid">
+      {{#each characteristics.occult as |char|}}
+        <div class="characteristic">
+          <span class="char-name">{{char.label}}</span>
+          <input type="number" name="system.{{char.path}}.value" value="{{char.value}}" min="0" max="20"/>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+</section>

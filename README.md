@@ -1,137 +1,159 @@
-# Fading Suns 2nd Edition Revised - Foundry VTT System
+# Fading Suns 2nd Edition Revised — Foundry VTT System
 
-A game system implementation for Fading Suns 2nd Edition Revised in Foundry Virtual Tabletop.
+An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
+
+Version **0.2.1** — full rewrite onto ApplicationV2 and TypeDataModel.
+
+---
 
 ## Installation
 
-### Manual Installation
+Paste the manifest URL into Foundry's *Install System* dialog:
 
-1. Locate your Foundry VTT data folder:
-   - **Windows**: `%localappdata%/FoundryVTT/Data/systems`
-   - **Mac**: `~/Library/Application Support/FoundryVTT/Data/systems`
-   - **Linux**: `~/.local/share/FoundryVTT/Data/systems`
+```
+https://raw.githubusercontent.com/gmsshadow/fading-suns/refs/heads/main/system.json
+```
 
-2. Copy the `fading-suns` folder into the `systems` directory
+Or copy the `fading-suns` folder into your Foundry `Data/systems` directory and restart.
 
-3. Restart Foundry VTT
+- **Windows**: `%localappdata%\FoundryVTT\Data\systems`
+- **macOS**: `~/Library/Application Support/FoundryVTT/Data/systems`
+- **Linux**: `~/.local/share/FoundryVTT/Data/systems`
 
-4. Create a new world and select "Fading Suns 2nd Edition Revised" as the game system
+---
 
-## Features
+## What changed in 0.2.x
 
-### Core Mechanics
-- **d20 Roll-Under System**: Roll equal to or under your Goal Number (Characteristic + Skill + Modifiers)
-- **Victory Points**: Automatically calculated based on your roll result
-- **Critical Success/Failure**: Natural 1 always succeeds, natural 20 always fails critically
-- **Victory Chart**: Translates successes into accomplishment levels
+### Foundry v14 compatibility
 
-### Character Sheet
-- **Characteristics**: Body (Strength, Dexterity, Endurance), Mind (Wits, Perception, Tech), Spirit (Extrovert/Introvert, Passion/Calm, Faith/Ego), and Occult (Psi, Theurgy)
-- **Skills**: Add skills as items with associated characteristics
-- **Items**: Weapons, Armor, Equipment
-- **Vitality Tracking**: Automatically calculated (5 + Endurance)
-- **Wyrd Points**: Track occult energy
+Version 0.1.0 was built on the Application V1 framework, which is deprecated in v13 and **removed in v16**. Everything has been moved onto the modern API:
 
-### Rolling Dice
-1. Click any dice icon next to a characteristic or skill
-2. Enter a modifier when prompted (positive or negative)
-3. The system rolls 1d20 and compares it to your Goal Number
-4. Chat displays the result with victory points and accomplishment level
+| v0.1.0 | v0.2.0 |
+|---|---|
+| `extends ActorSheet` / `ItemSheet` | `HandlebarsApplicationMixin(ActorSheetV2 / ItemSheetV2)` |
+| `Actors.registerSheet(...)` | `foundry.applications.apps.DocumentSheetConfig.registerSheet` |
+| `getData()` | `_prepareContext()` / `_preparePartContext()` |
+| `activateListeners(html)` with jQuery | `static actions` map + plain DOM listeners |
+| `new Dialog({...})` | `DialogV2.prompt` / `DialogV2.confirm` |
+| `loadTemplates` / `renderTemplate` globals | `foundry.applications.handlebars.*` |
+| `TextEditor.enrichHTML` | `foundry.applications.ux.TextEditor.implementation.enrichHTML` |
+| `{{editor}}` helper (TinyMCE) | `<prose-mirror>` element — TinyMCE is gone in v14 |
+| `CONST.CHAT_MESSAGE_TYPES` | omitted; `rolls: [roll]` is sufficient |
+| `template.json` | `documentTypes` in `system.json` + `TypeDataModel` schemas |
+| single monolithic sheet template | `static PARTS` + `static TABS` |
 
-## Current Status
+Two v14-specific traps are handled explicitly:
 
-This is version 0.1.0 - A minimal working implementation with:
-- ✅ Character and NPC sheets
-- ✅ Characteristic and skill rolling
-- ✅ Victory point calculation
-- ✅ Item system (weapons, armor, equipment, skills, psychic powers, theurgic rites)
-- ⏳ Combat system (coming soon)
-- ⏳ Damage and armor rolls (coming soon)
-- ⏳ Psychic powers and theurgy mechanics (coming soon)
+- `Actor#prepareBaseData()` resets Active Effect phase tracking in v14. Overriding it without calling `super` makes every update after the first throw. The override in `documents/actor.mjs` always calls `super`.
+- The core AppV1 sheet classes are being withdrawn across versions, so the unregistration in `registerSheets()` is guarded rather than assuming `globalThis.ActorSheet` exists.
 
-## How to Use
+### Rules corrections
 
-### Creating a Character
+Reading the resolution code against the Core Rules turned up several errors, all now fixed and covered by tests:
 
-1. Create a new Actor and select "Character"
-2. Fill in characteristics (default is 3 for Body/Mind, paired values for Spirit)
-3. Add skills by clicking "Add Skill" in the Skills tab
-4. Edit each skill to set its value and associated characteristic
-5. Add weapons, armor, and equipment in the Items tab
+- **Victory Chart bands were wrong.** The chart (p.64) is 1–2 → 1, 3–5 → 1, 6–8 → 2, 9–11 → 3, 12–14 → 4, 15–17 → 5, 18–20 → 6.
+- **A natural 19 always fails** (p.66). This was not handled at all; only a natural 20 was.
+- **Accomplishment labels are keyed off successes, not victory points** (p.64), so "Mediocre" was previously unreachable.
+- **Excessive Goal Numbers** (p.66) are now implemented: Goal Numbers above 20 grant bonus victory points from the Extended Victory Chart, and a result of 18 becomes the critical success in place of the Goal Number.
+- **Effect dice** (p.65) were entirely missing.
 
-### Making a Roll
+### New in this release
 
-**Characteristic Only:**
-- Click the dice icon next to any characteristic
-- Enter a modifier (if any)
-- The system calculates: Goal = Characteristic + Modifier
+- **Effect dice** — d6 pools where 1–4 succeed. Weapon damage adds victory dice 1-for-1; armour rolls without them. Attackers may pull the punch (Ctrl-click the damage button on the attack card).
+- **Wound penalties** (p.125) — once vital levels are lost, the Penalty Chart modifier is derived and applied to every Goal Roll automatically. Toggleable in system settings.
+- **Wyrd derivation** (p.125) — base Wyrd follows the character's occult path: Faith for theurges, primary of Extrovert/Introvert for psychics, primary of Passion/Calm otherwise. A `bonus` field covers Extras and Blessings.
+- **Accents** (p.69, optional rule) — spend a Wyrd point to add to the die result, using the accented Victory Charts. Natural 1, 19 and 20 correctly ignore accents.
+- **Occult powers spend Wyrd only on success or critical failure** (p.128).
+- New characters are created with the nine natural skills at their base rating of 3 (p.97).
+- Spirit traits are displayed as opposed pairs with a primary marker (p.93).
+- Chat cards for goal rolls, effect dice and item descriptions, with damage and apply-damage buttons.
 
-**Characteristic + Skill:**
-- Click the dice icon next to a skill in the Skills tab
-- The system uses the skill's associated characteristic
-- Goal = Characteristic + Skill + Modifier
+### Data migration
 
-### Understanding Results
+`template.json` is gone. Each data model's `migrateData()` converts the v0.1.0 shape on read:
 
-The chat message shows:
-- **Goal Number**: What you needed to roll equal to or under
-- **Dice Result**: What you actually rolled
-- **Success/Failure**: Whether you succeeded
-- **Victory Points**: How well you succeeded (if applicable)
-- **Accomplishment**: Descriptive level of success
+- `vitality.max` → `vitality.bonus` (the maximum is now derived from Endurance)
+- skill `type` → `skillType` (the old key collided with the Item subtype)
+- power/rite `cost` → `wyrdCost`
+- bare characteristic names (`"dexterity"`) → dot paths (`"body.dexterity"`)
 
-Victory Points:
-- 1 VP: Barely satisfactory
-- 2 VP: Mediocre
-- 3 VP: Pretty good
-- 4 VP: Good job
-- 5 VP: Excellent
-- 6 VP: Brilliant
-- 7+ VP: Virtuoso performance
+On first load as GM the system touches every actor and item once to persist the migrated shape. **Back up your world first.**
 
-## Roadmap
+### Item type identifiers
 
-### Phase 2 - Combat
-- Combat rolls with victory dice
-- Damage rolling (weapon dice + victory dice)
-- Armor protection rolls
-- Initiative system
+Three item type ids changed in 0.2.1, before any world had been built on the system:
 
-### Phase 3 - Advanced Features
-- Psychic powers implementation
-- Theurgic rites implementation
-- Wyrd point expenditure
-- Sustained actions
-- Contested rolls
+| 0.1.0 | 0.2.1 |
+|---|---|
+| `armor` | `armour` |
+| `psychic-power` | `psychicPower` |
+| `theurgic-rite` | `theurgicRite` |
 
-### Phase 4 - Polish
-- Compendiums with pre-made skills
-- Weapon and armor compendiums
-- House and faction templates
-- Improved styling and layouts
+Type ids are not something `migrateData()` can rewrite, so **items of the old types will not load**. This is deliberate: renaming was free while no worlds existed, and it removes the last spelling inconsistency in the codebase, which otherwise mixed `armor` as a type id with `armour` everywhere else.
+
+---
+
+## Playing
+
+**Goal Rolls.** Click any d20 icon beside a characteristic or skill. Hold **Shift** to skip the configuration dialog. The dialog offers the standard difficulty chart (p.64), a free-text situational modifier, and an accent field.
+
+**Combat.** Click the d20 on a weapon to attack. A successful attack card offers a damage roll carrying the victory dice through automatically. Ctrl-click that button to pull the punch. Damage cards offer *Apply to Selected Tokens*, which subtracts wound points from the selected actors' Vitality.
+
+**Armour.** Click the shield icon on an armour item to roll protection dice. Armour points cancel wound points one for one (p.65).
+
+**Initiative** is decided by comparing skill ratings, with Wits as the tie-breaker (p.64), so the combat tracker orders by Wits rather than rolling.
+
+---
 
 ## Development
 
-The system uses:
-- **JavaScript (ES6 modules)**: Core logic
-- **Handlebars**: Templating
-- **CSS**: Styling
+```
+module/
+  config.mjs                  characteristics, spirit pairs, natural skills, chart data
+  fading-suns.mjs             init hook, sheet registration, settings, migration
+  dice/victory-chart.mjs      pure rules engine — charts, criticals, accents, wound penalty
+  dice/effect-dice.mjs        pure — d6 pools, pulled punches, armour subtraction
+  dice/rolls.mjs              Foundry-facing roll and chat card orchestration
+  data/                       TypeDataModel schemas with migrateData()
+  documents/                  Actor and Item document classes
+  applications/               ApplicationV2 sheets and the roll dialog
+  helpers/                    Handlebars preloading, helpers, chat listeners
+templates/                    actor parts, item parts, chat cards, dialogs
+tests/rules.test.mjs          29 tests against the rulebook's worked examples
+```
 
-Key files:
-- `system.json`: System manifest
-- `template.json`: Data models
-- `module/fading-suns.mjs`: Main initialization
-- `module/actor/actor.mjs`: Actor document class with roll mechanics
-- `module/actor/actor-sheet.mjs`: Character sheet logic
-- `templates/`: Handlebars templates for sheets
+The two `dice/` modules import nothing from Foundry, so the rules engine is testable in plain Node:
+
+```bash
+node --test tests/rules.test.mjs
+```
+
+Tests are anchored to the book's own worked examples — Gorgool's Goal 9 rolling 8 for two victory points (p.65), the paramour's Goal 10 rolling 7 for four damage dice (p.66), the Goal 24 rolling 18 for sixteen victory points (p.66), and Lars the axeman's accented critical (p.67).
+
+Throughout the source, rulebook page numbers are used as traceability anchors in comments.
+
+### Public API
+
+```js
+game.fadingsuns.rules      // victory charts, resolveGoalRoll, vitalityPenalty
+game.fadingsuns.effects    // countEffectSuccesses, damagePool, applyArmour
+game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
+```
+
+---
+
+## Roadmap
+
+- Compendiums: the full learned skill list (p.99), weapons and armour from Chapter Seven
+- Range band penalties applied automatically from token distance (p.174)
+- Contested action helper wired to the chat cards (`resolveContest` already exists)
+- Psi and Theurgy path structures with level prerequisites (p.128)
+- Urge and Hubris tracking (p.143, p.160)
+- Sustained and extended actions (p.67)
+- Blessings and Curses as Active Effects
+
+---
 
 ## Credits
 
-- **Game System**: Fading Suns 2nd Edition Revised by Holistic Design Inc. & RedBrick Limited
-- **Foundry System**: Created for Foundry Virtual Tabletop
-
-## License
-
-This system implementation is unofficial and not affiliated with Holistic Design Inc. or RedBrick Limited.
-
-The Fading Suns game system and setting are copyrighted by Holistic Design Inc.
+Fading Suns is © Holistic Design Inc. and RedBrick Limited. This system implementation is unofficial, contains no rules text or artwork from the published books, and is not affiliated with or endorsed by the rights holders. You must own the rulebook to play.

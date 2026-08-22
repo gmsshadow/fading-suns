@@ -1,0 +1,60 @@
+<section class="tab occult {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+
+  <p class="hint">{{localize "FADINGSUNS.Hint.WyrdSource"}}
+    <strong>{{localize (lookup config.wyrdSources system.wyrd.source)}}</strong></p>
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.PsychicPowers"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="psychicPower">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.psychicPower as |power|}}
+        <li class="item draggable" data-item-id="{{power.id}}">
+          <img class="item-img" src="{{power.img}}" alt="{{power.name}}"/>
+          <span class="item-name">{{power.name}}</span>
+          <span class="item-tag">{{localize "FADINGSUNS.Field.Level"}} {{power.system.level}}</span>
+          <span class="item-tag wyrd-cost">{{power.system.wyrdCost}} {{localize "FADINGSUNS.Wyrd"}}</span>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Invoke'}}"><i class="fa-solid fa-dice-d20"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.PsychicPowers"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.TheurgicRites"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="theurgicRite">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.theurgicRite as |rite|}}
+        <li class="item draggable" data-item-id="{{rite.id}}">
+          <img class="item-img" src="{{rite.img}}" alt="{{rite.name}}"/>
+          <span class="item-name">{{rite.name}}</span>
+          <span class="item-tag">{{localize "FADINGSUNS.Field.Level"}} {{rite.system.level}}</span>
+          <span class="item-tag wyrd-cost">{{rite.system.wyrdCost}} {{localize "FADINGSUNS.Wyrd"}}</span>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Invoke'}}"><i class="fa-solid fa-dice-d20"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.TheurgicRites"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+</section>

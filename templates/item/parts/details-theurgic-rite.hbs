@@ -1,0 +1,19 @@
+<div class="form-grid">
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Level"}}</span>
+    <input type="number" name="system.level" value="{{system.level}}" min="1" max="9"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Ritual"}}</span>
+    <input type="text" name="system.ritual" value="{{system.ritual}}"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.WyrdCost"}}</span>
+    <input type="number" name="system.wyrdCost" value="{{system.wyrdCost}}" min="0"/></label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.Characteristic"}}</span>
+    <select name="system.characteristic">{{selectOptions config.rollableCharacteristics selected=system.characteristic localize=true}}</select>
+  </label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Skill"}}</span>
+    <input type="text" name="system.skill" value="{{system.skill}}" placeholder="Focus"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Duration"}}</span>
+    <input type="text" name="system.duration" value="{{system.duration}}"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Range"}}</span>
+    <input type="text" name="system.range" value="{{system.range}}"/></label>
+</div>
+<p class="hint">{{localize "FADINGSUNS.Hint.OccultCost"}}</p>

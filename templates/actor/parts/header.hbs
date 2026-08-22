@@ -1,0 +1,53 @@
+<header class="sheet-header">
+  <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-field="img"
+       alt="{{actor.name}}" data-tooltip="{{actor.name}}"/>
+
+  <div class="header-fields">
+    <input class="charname" name="name" type="text" value="{{actor.name}}"
+           placeholder="{{localize 'FADINGSUNS.Field.Name'}}"/>
+
+    {{#if isCharacter}}
+      <div class="detail-row">
+        <label>{{localize "FADINGSUNS.Field.Faction"}}
+          <input type="text" name="system.details.faction" value="{{system.details.faction}}"/></label>
+        <label>{{localize "FADINGSUNS.Field.Rank"}}
+          <input type="text" name="system.details.rank" value="{{system.details.rank}}"/></label>
+        <label>{{localize "FADINGSUNS.Field.Homeworld"}}
+          <input type="text" name="system.details.homeworld" value="{{system.details.homeworld}}"/></label>
+      </div>
+    {{else}}
+      <div class="detail-row">
+        <label>{{localize "FADINGSUNS.Field.Type"}}
+          <input type="text" name="system.details.type" value="{{system.details.type}}"/></label>
+        <label>{{localize "FADINGSUNS.Field.Faction"}}
+          <input type="text" name="system.details.faction" value="{{system.details.faction}}"/></label>
+      </div>
+    {{/if}}
+
+    <div class="resources">
+      <div class="resource vitality">
+        <span class="resource-label">{{localize "FADINGSUNS.Vitality"}}</span>
+        <input type="number" name="system.vitality.value" value="{{system.vitality.value}}"/>
+        <span class="separator">/</span>
+        <span class="resource-max" data-tooltip="{{localize 'FADINGSUNS.Hint.Vitality'}}">{{system.vitality.max}}</span>
+        {{#if system.vitality.penalty}}
+          <span class="wound-penalty" data-tooltip="{{localize 'FADINGSUNS.Hint.WoundPenalty'}}">{{fsSigned system.vitality.penalty}}</span>
+        {{/if}}
+      </div>
+
+      <div class="resource wyrd">
+        <span class="resource-label">{{localize "FADINGSUNS.Wyrd"}}</span>
+        <input type="number" name="system.wyrd.value" value="{{system.wyrd.value}}"/>
+        <span class="separator">/</span>
+        <span class="resource-max" data-tooltip="{{localize 'FADINGSUNS.Hint.Wyrd'}}">{{system.wyrd.max}}</span>
+      </div>
+
+      {{#if isCharacter}}
+        <div class="resource firebirds">
+          <span class="resource-label">{{localize "FADINGSUNS.Firebirds"}}</span>
+          <input type="number" name="system.firebirds" value="{{system.firebirds}}"/>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</header>

@@ -1,0 +1,91 @@
+<section class="tab combat {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.Weapons"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="weapon">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.weapon as |weapon|}}
+        <li class="item draggable" data-item-id="{{weapon.id}}">
+          <img class="item-img" src="{{weapon.img}}" alt="{{weapon.name}}"/>
+          <span class="item-name">{{weapon.name}}</span>
+          <span class="item-tag">{{weapon.system.damage.dice}}d {{localize (lookup ../config.damageTypes weapon.system.damage.type)}}</span>
+          <label class="equip-toggle" data-tooltip="{{localize 'FADINGSUNS.Control.Equipped'}}">
+            <input type="checkbox" data-item-field="system.equipped" {{checked weapon.system.equipped}}/>
+          </label>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Attack'}}"><i class="fa-solid fa-dice-d20"></i></button>
+          <button type="button" class="icon-btn" data-action="rollDamage"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Damage'}}"><i class="fa-solid fa-burst"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.Weapons"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.Armour"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="armour">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.armour as |armour|}}
+        <li class="item draggable" data-item-id="{{armour.id}}">
+          <img class="item-img" src="{{armour.img}}" alt="{{armour.name}}"/>
+          <span class="item-name">{{armour.name}}</span>
+          <span class="item-tag">{{armour.system.protection.dice}}d {{localize (lookup ../config.armourCoverage armour.system.coverage)}}</span>
+          <label class="equip-toggle" data-tooltip="{{localize 'FADINGSUNS.Control.Equipped'}}">
+            <input type="checkbox" data-item-field="system.equipped" {{checked armour.system.equipped}}/>
+          </label>
+          <button type="button" class="icon-btn" data-action="rollArmour"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Protection'}}"><i class="fa-solid fa-shield-halved"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.Armour"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.Equipment"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="equipment">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.equipment as |gear|}}
+        <li class="item draggable" data-item-id="{{gear.id}}">
+          <img class="item-img" src="{{gear.img}}" alt="{{gear.name}}"/>
+          <span class="item-name">{{gear.name}}</span>
+          <input class="item-value" type="number" value="{{gear.system.quantity}}"
+                 data-item-field="system.quantity" data-dtype="Number" min="0"
+                 data-tooltip="{{localize 'FADINGSUNS.Field.Quantity'}}"/>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.ToChat'}}"><i class="fa-solid fa-comment"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.Equipment"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+</section>

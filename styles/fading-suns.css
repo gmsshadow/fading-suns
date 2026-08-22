@@ -1,170 +1,325 @@
-/* Fading Suns System Styles */
+/* =============================================================
+   Fading Suns 2nd Edition Revised — system styles
+
+   Foundry v13 introduced CSS layers for core styles. Package stylesheets are
+   loaded outside those layers and therefore win on precedence, so everything
+   here is scoped tightly to .fading-suns rather than relying on core classes.
+   ============================================================= */
 
 .fading-suns {
-  font-family: "Signika", sans-serif;
+  --fs-void: #10131f;
+  --fs-deep: #1a1f33;
+  --fs-panel: #232942;
+  --fs-line: #3b4467;
+  --fs-gold: #c9a227;
+  --fs-gold-dim: #8a6f1c;
+  --fs-text: #e8e6df;
+  --fs-muted: #9aa0b8;
+  --fs-success: #4caf7d;
+  --fs-failure: #c1543f;
+  --fs-crit: #d8b13a;
 }
 
-/* Sheet Header */
+/* ---------- Sheet frame ---------- */
+
+.fading-suns.sheet .window-content {
+  background: linear-gradient(160deg, var(--fs-deep) 0%, var(--fs-void) 100%);
+  color: var(--fs-text);
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.fading-suns.sheet input,
+.fading-suns.sheet select {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  color: var(--fs-text);
+  font-family: inherit;
+}
+
+.fading-suns.sheet input:focus,
+.fading-suns.sheet select:focus {
+  border-color: var(--fs-gold);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.25);
+}
+
+.fading-suns.sheet h3 {
+  border-bottom: 1px solid var(--fs-gold-dim);
+  color: var(--fs-gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.4rem;
+  padding-bottom: 0.15rem;
+  text-transform: uppercase;
+}
+
+.fading-suns .hint {
+  color: var(--fs-muted);
+  font-size: 0.75rem;
+  margin: 0.2rem 0 0.5rem;
+}
+
+/* ---------- Header ---------- */
+
 .fading-suns .sheet-header {
+  align-items: flex-start;
+  border-bottom: 2px solid var(--fs-gold-dim);
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.05);
-  border-bottom: 2px solid #782e22;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
 }
 
 .fading-suns .sheet-header .profile-img {
-  flex: 0 0 100px;
-  height: 100px;
-  border: 2px solid #782e22;
+  border: 2px solid var(--fs-gold-dim);
+  border-radius: 4px;
   cursor: pointer;
+  flex: 0 0 96px;
+  height: 96px;
+  object-fit: cover;
+  width: 96px;
 }
 
-.fading-suns .sheet-header .header-fields {
+.fading-suns.item .sheet-header .profile-img {
+  flex-basis: 64px;
+  height: 64px;
+  width: 64px;
+}
+
+.fading-suns .header-fields {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.fading-suns .charname {
-  margin: 0;
-  border-bottom: 0;
-}
-
-.fading-suns .charname input {
-  font-size: 24px;
-  font-weight: bold;
-  border: none;
+.fading-suns .charname,
+.fading-suns .itemname {
   background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--fs-line);
+  color: var(--fs-gold);
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 0.1rem 0.2rem;
+}
+
+.fading-suns .item-type {
+  color: var(--fs-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fading-suns .detail-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fading-suns .detail-row label {
+  color: var(--fs-muted);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 0.7rem;
+  gap: 0.15rem;
+  text-transform: uppercase;
+}
+
+.fading-suns .detail-row input {
+  padding: 0.15rem 0.3rem;
+}
+
+/* ---------- Resources ---------- */
+
+.fading-suns .resources {
+  display: flex;
+  gap: 0.75rem;
 }
 
 .fading-suns .resource {
-  display: flex;
   align-items: center;
-  gap: 5px;
-  margin: 5px 0;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.2rem 0.45rem;
 }
 
-.fading-suns .resource label {
-  font-weight: bold;
-  flex: 0 0 auto;
+.fading-suns .resource-label {
+  color: var(--fs-gold);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .fading-suns .resource input {
-  width: 50px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
   text-align: center;
+  width: 3ch;
 }
 
-/* Tabs */
-.fading-suns .tabs {
+.fading-suns .resource-max {
+  color: var(--fs-muted);
+  font-weight: 600;
+}
+
+.fading-suns .wound-penalty {
+  background: var(--fs-failure);
+  border-radius: 3px;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-left: 0.25rem;
+  padding: 0.05rem 0.3rem;
+}
+
+/* ---------- Tabs ---------- */
+
+.fading-suns .sheet-tabs {
+  border-bottom: 1px solid var(--fs-line);
   display: flex;
-  gap: 5px;
-  border-bottom: 2px solid #782e22;
-  padding: 0 10px;
-  margin: 0;
+  gap: 0.15rem;
+  margin: 0.4rem 0;
 }
 
-.fading-suns .tabs .item {
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid #782e22;
-  border-bottom: none;
-  cursor: pointer;
+.fading-suns .sheet-tabs .item {
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  color: var(--fs-muted);
+  display: flex;
+  font-size: 0.8rem;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
   text-decoration: none;
-  color: inherit;
 }
 
-.fading-suns .tabs .item.active {
-  background: white;
-  font-weight: bold;
+.fading-suns .sheet-tabs .item:hover {
+  color: var(--fs-text);
 }
 
-/* Sheet Body */
-.fading-suns .sheet-body {
-  flex: 1;
-  overflow: hidden;
+.fading-suns .sheet-tabs .item.active {
+  border-bottom-color: var(--fs-gold);
+  color: var(--fs-gold);
 }
 
-.fading-suns .sheet-body .tab {
-  height: 100%;
+/* Never set a display property on a container of .tab elements, or every tab
+   renders at once. Layout goes on inner wrappers instead. */
+.fading-suns .tab {
   overflow-y: auto;
-  padding: 10px;
 }
 
-/* Characteristics */
-.fading-suns .characteristics-group {
+/* ---------- Characteristics ---------- */
+
+.fading-suns .characteristic-block {
+  margin-bottom: 0.9rem;
+}
+
+.fading-suns .characteristic-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 0.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .fading-suns .characteristic {
-  display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px;
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid #ccc;
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.25rem 0.45rem;
 }
 
-.fading-suns .characteristic label {
+.fading-suns .characteristic.is-primary {
+  border-color: var(--fs-gold-dim);
+  box-shadow: inset 3px 0 0 var(--fs-gold);
+}
+
+.fading-suns .char-name {
   flex: 1;
-  font-weight: bold;
+  font-size: 0.82rem;
 }
 
-.fading-suns .characteristic input[type="text"],
 .fading-suns .characteristic input[type="number"] {
-  width: 50px;
+  font-weight: 600;
+  padding: 0.1rem;
   text-align: center;
+  width: 3.2ch;
 }
 
-.fading-suns .characteristic input[type="checkbox"] {
-  margin: 0 5px;
+.fading-suns .spirit-pair {
+  align-items: center;
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 1fr auto 1fr;
+  margin-bottom: 0.4rem;
 }
 
-.fading-suns .characteristic button.rollable {
-  padding: 5px 10px;
-  background: #782e22;
-  color: white;
-  border: none;
+.fading-suns .versus {
+  color: var(--fs-muted);
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+/* ---------- Buttons ---------- */
+
+.fading-suns .roll-btn,
+.fading-suns .icon-btn,
+.fading-suns .add-btn,
+.fading-suns .card-btn {
+  align-items: center;
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  color: var(--fs-text);
   cursor: pointer;
+  display: inline-flex;
+  gap: 0.3rem;
+  justify-content: center;
+  line-height: 1;
+  padding: 0.25rem 0.4rem;
 }
 
-.fading-suns .characteristic button.rollable:hover {
-  background: #5a2218;
+.fading-suns .roll-btn:hover,
+.fading-suns .icon-btn:hover,
+.fading-suns .add-btn:hover,
+.fading-suns .card-btn:hover {
+  background: var(--fs-gold-dim);
+  border-color: var(--fs-gold);
+  color: #fff;
 }
 
-/* Items */
+.fading-suns .icon-btn.danger:hover {
+  background: var(--fs-failure);
+  border-color: var(--fs-failure);
+}
+
+.fading-suns .add-btn {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+/* ---------- Item lists ---------- */
+
 .fading-suns .items-section {
-  margin-bottom: 20px;
+  margin-bottom: 0.9rem;
 }
 
 .fading-suns .items-header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
-  border-bottom: 2px solid #782e22;
-  margin-bottom: 10px;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
 }
 
 .fading-suns .items-header h3 {
-  margin: 0;
-}
-
-.fading-suns .item-create {
-  padding: 5px 10px;
-  background: #782e22;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.fading-suns .item-create:hover {
-  background: #5a2218;
+  flex: 1;
+  margin-bottom: 0.2rem;
 }
 
 .fading-suns .items-list {
@@ -174,143 +329,321 @@
 }
 
 .fading-suns .items-list .item {
-  display: flex;
   align-items: center;
-  padding: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 2px;
-  background: white;
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  padding: 0.22rem 0.4rem;
 }
 
 .fading-suns .items-list .item:hover {
-  background: rgba(120, 46, 34, 0.1);
+  border-color: var(--fs-gold-dim);
 }
 
-.fading-suns .items-list .item-name {
-  flex: 1;
-  font-weight: bold;
+.fading-suns .items-list .item.draggable {
+  cursor: grab;
 }
 
-.fading-suns .items-list .item-value {
-  margin: 0 10px;
-}
-
-.fading-suns .items-list .item-value input {
-  width: 50px;
-  text-align: center;
-}
-
-.fading-suns .items-list .item-controls {
-  display: flex;
-  gap: 5px;
-}
-
-.fading-suns .items-list .item-control,
-.fading-suns .items-list button.rollable {
-  padding: 2px 8px;
-  background: #782e22;
-  color: white;
+.fading-suns .item-img {
   border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 12px;
+  border-radius: 2px;
+  flex: 0 0 22px;
+  height: 22px;
+  width: 22px;
 }
 
-.fading-suns .items-list .item-control:hover,
-.fading-suns .items-list button.rollable:hover {
-  background: #5a2218;
+.fading-suns .item-name {
+  flex: 1;
+  font-size: 0.85rem;
 }
 
-/* Form groups for item sheets */
+.fading-suns .item-tag {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  color: var(--fs-muted);
+  font-size: 0.68rem;
+  padding: 0.08rem 0.3rem;
+  white-space: nowrap;
+}
+
+.fading-suns .item-tag.wyrd-cost {
+  color: var(--fs-gold);
+}
+
+.fading-suns .item-value {
+  font-weight: 600;
+  padding: 0.1rem;
+  text-align: center;
+  width: 3.5ch;
+}
+
+.fading-suns .items-list .empty {
+  color: var(--fs-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  padding: 0.35rem 0.4rem;
+}
+
+/* ---------- Item sheet forms ---------- */
+
+.fading-suns .form-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
 .fading-suns .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.fading-suns .form-group label {
+.fading-suns .form-group > span {
+  color: var(--fs-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.fading-suns .form-group.checkbox {
+  align-items: center;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
+.fading-suns fieldset {
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  margin: 0.6rem 0;
+  padding: 0.5rem;
+}
+
+.fading-suns fieldset legend {
+  color: var(--fs-gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.fading-suns prose-mirror,
+.fading-suns .editor-content {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
   display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+  min-height: 220px;
+  padding: 0.4rem;
 }
 
-.fading-suns .form-group input,
-.fading-suns .form-group select {
+/* ---------- Roll dialog ---------- */
+
+.fading-suns.goal-roll-config,
+.goal-roll-dialog .fading-suns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fading-suns .summary {
+  align-items: center;
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.4rem;
+}
+
+.fading-suns .summary .base-goal {
+  color: var(--fs-gold);
+  margin-left: auto;
+}
+
+.fading-suns .summary .wounds {
+  color: var(--fs-failure);
+  font-weight: 700;
+}
+
+/* ---------- Chat cards ---------- */
+
+.fading-suns.chat-card {
+  background: linear-gradient(160deg, var(--fs-deep) 0%, var(--fs-void) 100%);
+  border: 1px solid var(--fs-gold-dim);
+  border-radius: 5px;
+  color: var(--fs-text);
+  overflow: hidden;
+}
+
+.fading-suns.chat-card .card-header {
+  align-items: center;
+  border-bottom: 1px solid var(--fs-gold-dim);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.fading-suns.chat-card .card-header img {
+  border: none;
+  border-radius: 3px;
+  height: 32px;
+  width: 32px;
+}
+
+.fading-suns.chat-card h3 {
+  border: none;
+  color: var(--fs-gold);
+  flex: 1;
+  font-size: 0.95rem;
+  margin: 0;
+  padding: 0;
+}
+
+.fading-suns.chat-card .formula {
+  color: var(--fs-muted);
+  font-size: 0.72rem;
   width: 100%;
-  padding: 5px;
 }
 
-/* Chat Messages */
-.fading-suns.roll-result {
-  border: 2px solid #782e22;
-  padding: 10px;
-  background: white;
+.fading-suns.chat-card .card-body {
+  padding: 0.5rem 0.55rem;
 }
 
-.fading-suns.roll-result .roll-header {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+.fading-suns .breakdown {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
 }
 
-.fading-suns.roll-result .roll-header h3 {
-  margin: 0 0 5px 0;
-  font-size: 16px;
+.fading-suns .chip {
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  min-width: 2ch;
+  padding: 0.1rem 0.35rem;
+  text-align: center;
 }
 
-.fading-suns.roll-result .roll-formula {
+.fading-suns .chip.goal {
+  background: var(--fs-gold-dim);
+  border-color: var(--fs-gold);
+  color: #fff;
+  font-weight: 700;
+}
+
+.fading-suns .chip.wounds {
+  border-color: var(--fs-failure);
+  color: var(--fs-failure);
+}
+
+.fading-suns .op {
+  color: var(--fs-muted);
+}
+
+.fading-suns .dice-result {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.35rem 0;
+  text-align: center;
+}
+
+.fading-suns .dice-result.is-success {
+  color: var(--fs-success);
+}
+
+.fading-suns .dice-result.is-failure {
+  color: var(--fs-failure);
+}
+
+.fading-suns .dice-result .accented {
+  color: var(--fs-gold);
+  font-size: 1.1rem;
+}
+
+.fading-suns .outcome {
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+  padding: 0.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.fading-suns .outcome.is-success {
+  background: rgba(76, 175, 125, 0.18);
+  color: var(--fs-success);
+}
+
+.fading-suns .outcome.is-failure {
+  background: rgba(193, 84, 63, 0.18);
+  color: var(--fs-failure);
+}
+
+.fading-suns .victory {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.fading-suns .victory .vp {
+  color: var(--fs-gold);
+}
+
+.fading-suns .victory .accomplishment {
+  color: var(--fs-muted);
   font-style: italic;
-  color: #666;
 }
 
-.fading-suns.roll-result .roll-details {
-  margin: 10px 0;
+.fading-suns .effect-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.fading-suns.roll-result .roll-breakdown {
-  margin-bottom: 10px;
-}
-
-.fading-suns.roll-result .characteristic-value,
-.fading-suns.roll-result .skill-value,
-.fading-suns.roll-result .modifier-value {
-  font-weight: bold;
-  color: #782e22;
-}
-
-.fading-suns.roll-result .dice-roll {
-  font-size: 18px;
+.fading-suns .effect-die {
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  color: var(--fs-muted);
+  font-weight: 600;
+  height: 1.7rem;
+  line-height: 1.6rem;
   text-align: center;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
+  width: 1.7rem;
 }
 
-.fading-suns.roll-result .roll-result-status {
+.fading-suns .effect-die.is-success {
+  background: rgba(76, 175, 125, 0.25);
+  border-color: var(--fs-success);
+  color: var(--fs-text);
+}
+
+.fading-suns .points {
+  color: var(--fs-gold);
+  font-size: 1.05rem;
   text-align: center;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  font-size: 18px;
 }
 
-.fading-suns.roll-result .roll-result-status.success {
-  background: #90ee90;
-  color: #006400;
+.fading-suns.chat-card .card-footer {
+  border-top: 1px solid var(--fs-line);
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.35rem;
 }
 
-.fading-suns.roll-result .roll-result-status.failure {
-  background: #ffcccb;
-  color: #8b0000;
-}
-
-.fading-suns.roll-result .victory-points {
-  text-align: center;
-  padding: 10px;
-  background: rgba(120, 46, 34, 0.1);
-  border-radius: 5px;
-}
-
-.fading-suns.roll-result .accomplishment {
-  margin-top: 5px;
-  font-style: italic;
-  color: #666;
+.fading-suns.chat-card .card-btn {
+  flex: 1;
+  font-size: 0.78rem;
 }

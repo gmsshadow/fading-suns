@@ -1,0 +1,52 @@
+<section class="tab skills {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.SkillType.NaturalPlural"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="skill">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.AddSkill"}}
+      </button>
+    </header>
+    <ol class="items-list skill-list">
+      {{#each items.naturalSkills as |skill|}}
+        <li class="item draggable" data-item-id="{{skill.id}}">
+          <span class="item-name">{{skill.system.label}}</span>
+          <input class="item-value" type="number" value="{{skill.system.value}}"
+                 data-item-field="system.value" data-dtype="Number" min="0" max="20"/>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Roll.Tooltip'}}"><i class="fa-solid fa-dice-d20"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.Skills"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.SkillType.LearnedPlural"}}</h3>
+    </header>
+    <ol class="items-list skill-list">
+      {{#each items.learnedSkills as |skill|}}
+        <li class="item draggable" data-item-id="{{skill.id}}">
+          <span class="item-name">{{skill.system.label}}</span>
+          <input class="item-value" type="number" value="{{skill.system.value}}"
+                 data-item-field="system.value" data-dtype="Number" min="0" max="20"/>
+          <button type="button" class="icon-btn" data-action="itemUse"
+                  data-tooltip="{{localize 'FADINGSUNS.Roll.Tooltip'}}"><i class="fa-solid fa-dice-d20"></i></button>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.LearnedSkills"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
+</section>

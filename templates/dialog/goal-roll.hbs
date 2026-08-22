@@ -1,0 +1,29 @@
+<div class="fading-suns goal-roll-config">
+  <div class="summary">
+    <span>{{characteristicLabel}} <strong>{{characteristicValue}}</strong></span>
+    {{#if skillLabel}}<span>+ {{skillLabel}} <strong>{{skillValue}}</strong></span>{{/if}}
+    {{#if woundPenalty}}
+      <span class="wounds" data-tooltip="{{localize 'FADINGSUNS.Hint.WoundPenalty'}}">
+        {{fsSigned woundPenalty}}
+      </span>
+    {{/if}}
+    <span class="base-goal">= {{localize "FADINGSUNS.Roll.Goal"}} <strong>{{baseGoal}}</strong></span>
+  </div>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Roll.Difficulty"}}</span>
+    <select name="difficulty">{{selectOptions difficulties selected="0" localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Roll.Situational"}}</span>
+    <input type="number" name="situational" value="0" autofocus/>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Roll.Accent"}}</span>
+    <input type="number" name="accent" value="0" min="-10" max="10"
+           {{#unless wyrdAvailable}}disabled{{/unless}}/>
+  </label>
+  <p class="hint">{{localize "FADINGSUNS.Hint.Accent"}} ({{localize "FADINGSUNS.Wyrd"}}: {{wyrdAvailable}})</p>
+</div>

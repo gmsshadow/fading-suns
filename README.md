@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.3.1** — ApplicationV2 rewrite plus the Learned Skills compendium.
+Version **0.3.2** — ApplicationV2 rewrite plus the Learned Skills compendium.
 
 ---
 
@@ -142,27 +142,22 @@ Throughout the source, rulebook page numbers are used as traceability anchors in
 
 ### Compendium packs
 
-Pack contents live in `packs/_source/` as one readable JSON file per document, which keeps them diffable in version control. The LevelDB directories Foundry actually loads are build artefacts, compiled by:
+Pack source lives in `src/packs/` as one readable JSON file per document, which keeps it diffable in version control. The LevelDB directories Foundry loads are build artefacts, compiled by:
 
 ```bash
 npm install
 npm run build:packs
 ```
 
-Document ids are derived deterministically by hashing the document's natural key, so rebuilding never churns ids or breaks links from other documents. The build fails loudly on duplicate slugs or id collisions.
+Compilation goes through Foundry's own `@foundryvtt/foundryvtt-cli` rather than driving LevelDB by hand, so the output is guaranteed to match what Foundry expects. Document ids are derived deterministically by hashing each document's natural key, so rebuilding never churns ids or breaks links from other documents.
 
-**A LevelDB gotcha worth knowing:** closing the database cleanly leaves every write sitting in the write-ahead log (`000003.log`) and produces no `.ldb` table file. Foundry does not replay that log when it opens a pack, so the compendium loads as empty even though the data is intact. The build therefore calls `compactRange()` over the whole keyspace to flush the memtable into `.ldb` files, deletes the `LOCK` and `LOG` scratch files, and asserts that at least one table file exists before it reports success. A correctly built pack looks like this:
+**Three ways a pack fails silently**, all of which the build now guards against:
 
-```
-000004.log        0 bytes   (empty — everything has been compacted out)
-000005.ldb       ~15 KB     (the actual data)
-CURRENT
-MANIFEST-000002
-```
+1. **Missing `_key`.** The CLI keys each document off a `_key` field of the form `!items!<id>`. Without it the pack compiles to an empty database *and reports success*. The build adds it and asserts it does not leak into the stored document.
+2. **Non-LevelDB content under `packs/`.** Source JSON therefore lives in `src/packs/`, and `packs/` holds nothing but compiled databases.
+3. **A merged pack directory.** LevelDB directories must be replaced wholesale, never extracted over the top of an older copy — a stale `MANIFEST` or `CURRENT` from the previous build will shadow the new table files and the compendium loads empty.
 
-If you ever see a fat `.log` and no `.ldb`, the pack will silently load empty.
-
-To add a pack, add a builder to `PACKS` in `tools/build-packs.mjs` and declare it in `system.json`.
+After compiling, the build copies the pack to a scratch directory and reads all 87 documents back the way Foundry does, with `createIfMissing: false`, asserting the count and key format. It fails loudly rather than shipping an empty pack.
 
 ### Public API
 

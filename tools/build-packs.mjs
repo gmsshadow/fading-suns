@@ -1,21 +1,30 @@
 /**
  * Compendium build script.
  *
- * Writes each pack's documents to packs/_source/<pack>/ as readable JSON (so the
- * data is diffable in version control) and then compiles them into the LevelDB
- * directory that Foundry v11+ expects at packs/<pack>/.
+ * Source documents are written to src/packs/<pack>/ as readable JSON — one file
+ * per document, so the data is diffable in version control — and then compiled
+ * into the LevelDB directory Foundry loads at packs/<pack>/.
+ *
+ * Compilation uses Foundry's own @foundryvtt/foundryvtt-cli rather than driving
+ * LevelDB by hand, so the output is guaranteed to match what Foundry expects.
+ *
+ * Two things about the layout are easy to get wrong and both fail silently:
+ *
+ *   1. Nothing but LevelDB directories may live under packs/. Source JSON is
+ *      kept in src/packs/ and excluded from the distributed archive.
+ *   2. The CLI keys each document off a "_key" field of the form "!items!<id>"
+ *      (or "!actors!<id>"). Without it the pack compiles to an empty database
+ *      and reports success. The field is stripped from the stored document.
  *
  * Usage:
  *   npm install
  *   npm run build:packs
- *
- * Document ids are derived deterministically from the document's natural key, so
- * rebuilding a pack does not churn ids or break links from other documents.
  */
 
+import { compilePack } from "@foundryvtt/foundryvtt-cli";
 import { ClassicLevel } from "classic-level";
 import { createHash } from "node:crypto";
-import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -25,7 +34,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 /**
- * Derive a stable 16-character Foundry document id from a natural key.
+ * Derive a stable 16-character Foundry document id from a natural key, so that
+ * rebuilding a pack never churns ids or breaks links from other documents.
  * @param {string} key
  * @returns {string}
  */
@@ -37,15 +47,15 @@ function stableId(key) {
 }
 
 /**
- * Build the documents for the Learned Skills pack.
+ * Build the documents for the Learned Skills pack (p.99).
  * @returns {object[]}
  */
 function buildLearnedSkills() {
   return LEARNED_SKILLS.map((skill, index) => {
-    const key = skill.specialty ? `${skill.name} (${skill.specialty})` : skill.name;
+    const name = skill.specialty ? `${skill.name} (${skill.specialty})` : skill.name;
     return {
-      _id: stableId(`Item.learned-skills.${key}`),
-      name: key,
+      _id: stableId(`Item.learned-skills.${name}`),
+      name,
       type: "skill",
       img: "icons/svg/book.svg",
       system: {
@@ -61,12 +71,10 @@ function buildLearnedSkills() {
       sort: (index + 1) * 100000,
       ownership: { default: 0 },
       flags: {
-        "fading-suns": {
-          // Faction-restricted skills such as Speak (Graceful Tongue), p.99.
-          factionSkill: skill.f ?? null
-        }
+        // Faction-restricted skills such as Speak (Graceful Tongue), p.99.
+        "fading-suns": { factionSkill: skill.f ?? null }
       },
-      _stats: { systemId: "fading-suns", systemVersion: "0.3.0" }
+      _stats: { systemId: "fading-suns" }
     };
   });
 }
@@ -82,51 +90,60 @@ for (const [name, config] of Object.entries(PACKS)) {
   const documents = config.documents();
   const collection = config.type === "Item" ? "items" : "actors";
 
-  // 1. Human-readable source, one file per document, for version control.
-  const sourceDir = path.join(ROOT, "packs", "_source", name);
+  // 1. Human-readable source, one file per document.
+  const sourceDir = path.join(ROOT, "src", "packs", name);
   rmSync(sourceDir, { recursive: true, force: true });
   mkdirSync(sourceDir, { recursive: true });
 
-  const seen = new Map();
+  const slugs = new Set();
+  const ids = new Set();
   for (const doc of documents) {
-    const label = doc.system?.specialty ? `${doc.name}-${doc.system.specialty}` : doc.name;
-    const slug = label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-    if (seen.has(slug)) throw new Error(`Duplicate document slug "${slug}" in pack "${name}"`);
-    seen.set(slug, doc._id);
-    writeFileSync(path.join(sourceDir, `${slug}.json`), JSON.stringify(doc, null, 2) + "\n");
-  }
+    const slug = doc.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    if (slugs.has(slug)) throw new Error(`Duplicate slug "${slug}" in pack "${name}"`);
+    if (ids.has(doc._id)) throw new Error(`Duplicate id "${doc._id}" in pack "${name}"`);
+    slugs.add(slug);
+    ids.add(doc._id);
 
-  // Guard against hash collisions in the derived ids.
-  const ids = new Set(documents.map(d => d._id));
-  if (ids.size !== documents.length) throw new Error(`Duplicate document id in pack "${name}"`);
+    const source = { _key: `!${collection}!${doc._id}`, ...doc };
+    writeFileSync(path.join(sourceDir, `${slug}.json`), JSON.stringify(source, null, 2) + "\n");
+  }
 
   // 2. Compile to the LevelDB directory Foundry loads.
   const packDir = path.join(ROOT, "packs", name);
   rmSync(packDir, { recursive: true, force: true });
   mkdirSync(packDir, { recursive: true });
+  await compilePack(sourceDir, packDir, { log: false });
 
-  const db = new ClassicLevel(packDir, { valueEncoding: "json" });
+  // 3. Verify by reading the pack back the way Foundry will. This is done on a
+  //    throwaway copy, because opening a LevelDB writes recovery files into the
+  //    directory and the shipped pack should stay exactly as the CLI left it.
+  const verifyDir = path.join(ROOT, ".verify", name);
+  rmSync(verifyDir, { recursive: true, force: true });
+  mkdirSync(verifyDir, { recursive: true });
+  cpSync(packDir, verifyDir, { recursive: true });
+
+  const db = new ClassicLevel(verifyDir, { valueEncoding: "json", createIfMissing: false });
   await db.open();
-  const batch = db.batch();
-  for (const doc of documents) batch.put(`!${collection}!${doc._id}`, doc);
-  await batch.write();
-
-  // A clean close leaves everything in the write-ahead log, which Foundry does
-  // not replay when it opens a pack — the compendium then shows as empty even
-  // though the data is present. Compacting the full keyspace flushes the
-  // memtable into .ldb table files, which is what Foundry actually reads.
-  await db.compactRange("\u0000", "\uffff");
+  let count = 0;
+  for await (const [key, value] of db.iterator()) {
+    if (!key.startsWith(`!${collection}!`)) throw new Error(`Malformed key "${key}"`);
+    if ("_key" in value) throw new Error(`_key leaked into stored document ${key}`);
+    count++;
+  }
   await db.close();
+  rmSync(path.join(ROOT, ".verify"), { recursive: true, force: true });
 
-  // LOCK and LOG are runtime scratch files; shipping them serves no purpose.
-  for (const scratch of ["LOCK", "LOG"]) {
+  if (count !== documents.length) {
+    throw new Error(`Pack "${name}" holds ${count} documents, expected ${documents.length}`);
+  }
+
+  // LOCK and LOG are runtime scratch; shipping them serves no purpose.
+  for (const scratch of ["LOCK", "LOG", "LOG.old"]) {
     rmSync(path.join(packDir, scratch), { force: true });
   }
 
-  const tables = readdirSync(packDir).filter(f => f.endsWith(".ldb"));
-  if (!tables.length) throw new Error(`Pack "${name}" produced no .ldb table files`);
-
-  console.log(`  built ${name}: ${documents.length} documents, ${tables.length} table file(s)`);
+  const files = readdirSync(packDir).sort().join(", ");
+  console.log(`  ${name}: ${count} documents verified — ${files}`);
 }
 
 console.log("Packs built.");

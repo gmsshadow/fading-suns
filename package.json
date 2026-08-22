@@ -1,6 +1,6 @@
 {
   "name": "fading-suns",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "private": true,
   "type": "module",
   "description": "Build tooling for the Fading Suns Foundry VTT system.",
@@ -9,6 +9,7 @@
     "build:packs": "node tools/build-packs.mjs"
   },
   "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^1.0.4",
     "classic-level": "^1.4.1"
   }
 }

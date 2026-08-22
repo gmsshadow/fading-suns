@@ -1,6 +1,5 @@
 node_modules/
 *.zip
 
-# Compiled LevelDB packs are build artefacts; packs/_source/ is the tracked data.
-packs/*/
-!packs/_source/
+# Compiled LevelDB packs are build artefacts; src/packs/ is the tracked data.
+packs/

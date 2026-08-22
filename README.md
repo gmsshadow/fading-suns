@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.3.2** — ApplicationV2 rewrite plus the Learned Skills compendium.
+Version **0.3.3** — ApplicationV2 rewrite plus the Learned Skills compendium.
 
 ---
 
@@ -11,14 +11,26 @@ Version **0.3.2** — ApplicationV2 rewrite plus the Learned Skills compendium.
 Paste the manifest URL into Foundry's *Install System* dialog:
 
 ```
-https://raw.githubusercontent.com/gmsshadow/fading-suns/refs/heads/main/system.json
+https://github.com/gmsshadow/fading-suns/releases/latest/download/system.json
 ```
 
-Or copy the `fading-suns` folder into your Foundry `Data/systems` directory and restart.
+> **Do not install from the repository's source archive** (`.../archive/refs/heads/main.zip`).
+> The compiled compendium packs are build artefacts and are deliberately not committed, so
+> the source archive contains no `packs/` directory and every compendium loads empty. Releases
+> are built by CI and carry the packs; the manifest above points at them.
+
+To install by hand, download `fading-suns.zip` from the
+[latest release](https://github.com/gmsshadow/fading-suns/releases/latest) and extract it into
+your Foundry `Data/systems` directory.
 
 - **Windows**: `%localappdata%\FoundryVTT\Data\systems`
 - **macOS**: `~/Library/Application Support/FoundryVTT/Data/systems`
 - **Linux**: `~/.local/share/FoundryVTT/Data/systems`
+
+**When upgrading, delete the whole `fading-suns` folder first rather than extracting over it.**
+LevelDB pack directories must be replaced wholesale — a stale `MANIFEST` or `CURRENT` left behind
+from an older build will shadow the new table files and the compendium will load empty even
+though the data is there.
 
 ---
 
@@ -158,6 +170,26 @@ Compilation goes through Foundry's own `@foundryvtt/foundryvtt-cli` rather than 
 3. **A merged pack directory.** LevelDB directories must be replaced wholesale, never extracted over the top of an older copy — a stale `MANIFEST` or `CURRENT` from the previous build will shadow the new table files and the compendium loads empty.
 
 After compiling, the build copies the pack to a scratch directory and reads all 87 documents back the way Foundry does, with `createIfMissing: false`, asserting the count and key format. It fails loudly rather than shipping an empty pack.
+
+### Releasing
+
+Packs are compiled by CI, never committed. Tag and push:
+
+```bash
+npm version 0.3.4 --no-git-tag-version   # also bump system.json by hand
+git commit -am "Release 0.3.4"
+git tag v0.3.4 && git push --follow-tags
+```
+
+The release workflow verifies the tag matches `system.json`, builds the packs, runs validation
+and tests, rewrites the manifest and download URLs to point at the release, asserts the archive
+actually contains `packs/`, and publishes `fading-suns.zip` plus `system.json` as assets.
+
+`npm run validate` also runs on every push and pull request. It checks that every template
+compiles, every `FADINGSUNS.*` and `TYPES.*` key referenced in code or templates exists in
+`lang/en.json`, every referenced template path resolves, the four item-type registries agree with
+`system.json`, declared packs contain LevelDB data, and nothing but compiled packs lives under
+`packs/`.
 
 ### Public API
 

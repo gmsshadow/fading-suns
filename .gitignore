@@ -3,3 +3,5 @@ node_modules/
 
 # Compiled LevelDB packs are build artefacts; src/packs/ is the tracked data.
 packs/
+.verify/
+fading-suns.zip

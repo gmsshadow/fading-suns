@@ -2,7 +2,7 @@
   "id": "fading-suns",
   "title": "Fading Suns 2nd Edition Revised",
   "description": "An unofficial game system for Fading Suns 2nd Edition Revised, built for Foundry VTT v13/v14 using ApplicationV2 sheets and TypeDataModel schemas.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
@@ -13,8 +13,12 @@
       "github": "GMsShadow"
     }
   ],
-  "esmodules": ["module/fading-suns.mjs"],
-  "styles": ["styles/fading-suns.css"],
+  "esmodules": [
+    "module/fading-suns.mjs"
+  ],
+  "styles": [
+    "styles/fading-suns.css"
+  ],
   "packs": [
     {
       "name": "learned-skills",
@@ -38,19 +42,47 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "htmlFields": ["biography"]
+        "htmlFields": [
+          "biography"
+        ]
       },
       "npc": {
-        "htmlFields": ["biography"]
+        "htmlFields": [
+          "biography"
+        ]
       }
     },
     "Item": {
-      "weapon": { "htmlFields": ["description"] },
-      "armour": { "htmlFields": ["description"] },
-      "equipment": { "htmlFields": ["description"] },
-      "skill": { "htmlFields": ["description"] },
-      "psychicPower": { "htmlFields": ["description"] },
-      "theurgicRite": { "htmlFields": ["description"] }
+      "weapon": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "armour": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "equipment": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "skill": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "psychicPower": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "theurgicRite": {
+        "htmlFields": [
+          "description"
+        ]
+      }
     }
   },
   "grid": {
@@ -60,7 +92,7 @@
   "primaryTokenAttribute": "vitality",
   "secondaryTokenAttribute": "wyrd",
   "url": "https://github.com/gmsshadow/fading-suns",
-  "manifest": "https://raw.githubusercontent.com/gmsshadow/fading-suns/refs/heads/main/system.json",
-  "download": "https://github.com/gmsshadow/fading-suns/archive/refs/heads/main.zip",
+  "manifest": "https://github.com/gmsshadow/fading-suns/releases/latest/download/system.json",
+  "download": "https://github.com/gmsshadow/fading-suns/releases/download/v0.3.3/fading-suns.zip",
   "readme": "README.md"
 }

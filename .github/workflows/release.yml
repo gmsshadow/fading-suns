@@ -1,0 +1,79 @@
+name: Release
+
+# Publishes a release whenever a v* tag is pushed. The compiled compendium packs
+# are build artefacts and are not committed, so the GitHub source archive is NOT
+# a usable install — Foundry would get a system with no packs. This workflow
+# builds the packs and attaches a complete archive as a release asset, which is
+# what system.json's download URL points at.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Derive version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Check the tag matches system.json
+        run: |
+          MANIFEST=$(node -p "require('./system.json').version")
+          if [ "$MANIFEST" != "${{ steps.version.outputs.version }}" ]; then
+            echo "::error::Tag ${{ steps.version.outputs.version }} does not match system.json version $MANIFEST"
+            exit 1
+          fi
+
+      - name: Build compendium packs
+        run: npm run build:packs
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Test
+        run: npm test
+
+      - name: Point the manifest at this release
+        run: |
+          node -e '
+            const fs = require("fs");
+            const version = process.argv[1];
+            const repo = process.env.GITHUB_REPOSITORY;
+            const system = JSON.parse(fs.readFileSync("system.json", "utf8"));
+            system.download = `https://github.com/${repo}/releases/download/v${version}/fading-suns.zip`;
+            system.manifest = `https://github.com/${repo}/releases/latest/download/system.json`;
+            fs.writeFileSync("system.json", JSON.stringify(system, null, 2) + "\n");
+          ' "${{ steps.version.outputs.version }}"
+
+      - name: Assemble the archive
+        run: |
+          zip -r fading-suns.zip \
+            system.json README.md LICENSE \
+            module/ templates/ styles/ lang/ packs/ \
+            --exclude '*.DS_Store'
+          unzip -l fading-suns.zip | grep packs/ || { echo "::error::Archive contains no packs"; exit 1; }
+
+      - name: Publish
+        uses: softprops/action-gh-release@v2
+        with:
+          name: v${{ steps.version.outputs.version }}
+          files: |
+            fading-suns.zip
+            system.json
+          generate_release_notes: true

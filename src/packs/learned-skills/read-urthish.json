@@ -1,0 +1,29 @@
+{
+  "_key": "!items!nNFrPhMIdUd6Iq3V",
+  "_id": "nNFrPhMIdUd6Iq3V",
+  "name": "Read (Urthish)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Reading Urthish, the common written tongue of the Known Worlds.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Urthish",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

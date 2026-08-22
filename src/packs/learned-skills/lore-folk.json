@@ -1,0 +1,29 @@
+{
+  "_key": "!items!og0DCAPRdbXaXWhY",
+  "_id": "og0DCAPRdbXaXWhY",
+  "name": "Lore (Folk)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Common belief, custom and superstition among the peasantry.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Folk",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

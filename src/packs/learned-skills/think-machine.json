@@ -1,0 +1,29 @@
+{
+  "_key": "!items!YBlkWAGJWdf9ysl7",
+  "_id": "YBlkWAGJWdf9ysl7",
+  "name": "Think Machine",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Operating and coaxing results from thinking machines — a Church-watched art.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

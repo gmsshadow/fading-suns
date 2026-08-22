@@ -1,0 +1,29 @@
+{
+  "_key": "!items!nd1ddzlfz7EGid7M",
+  "_id": "nd1ddzlfz7EGid7M",
+  "name": "Drive (Watercraft)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Handling boats and ships on water.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "Watercraft",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

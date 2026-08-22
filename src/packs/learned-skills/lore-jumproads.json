@@ -1,0 +1,29 @@
+{
+  "_key": "!items!daPczEz1NwH0Bv7N",
+  "_id": "daPczEz1NwH0Bv7N",
+  "name": "Lore (Jumproads)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The jumpweb — routes, gate keys and which lanes are closed.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "Jumproads",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

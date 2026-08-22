@@ -1,0 +1,29 @@
+{
+  "_key": "!items!slBMkwI5SSMFify1",
+  "_id": "slBMkwI5SSMFify1",
+  "name": "Read (Barbarian)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Reading a barbarian script. Name the tongue in the specialty.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Barbarian",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

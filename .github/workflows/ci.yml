@@ -1,5 +1,10 @@
 name: CI
 
+# Runs on every push and pull request. As well as the tests, this rebuilds the
+# compendium packs and fails if the result differs from what is committed —
+# which catches the case where src/packs/ was edited but the compiled databases
+# in packs/ were not rebuilt, so an installed copy would be silently stale.
+
 on:
   push:
     branches: [main]
@@ -10,14 +15,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
       - run: npm ci
-      - name: Build packs
+
+      - name: Rebuild compendium packs
         run: npm run build:packs
+
+      - name: Committed packs are up to date
+        run: |
+          if ! git diff --quiet -- packs/; then
+            echo "::error::packs/ is stale. Run 'npm run build:packs' and commit the result."
+            git diff --stat -- packs/
+            exit 1
+          fi
+
       - name: Validate manifest, templates and localisation
         run: npm run validate
+
       - name: Rules engine tests
         run: npm test

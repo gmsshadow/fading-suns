@@ -1,0 +1,29 @@
+{
+  "_key": "!items!Hkss6W1Gnx3vgMnS",
+  "_id": "Hkss6W1Gnx3vgMnS",
+  "name": "Sleight of Hand",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Palming, planting and picking pockets.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

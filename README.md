@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.3.3** — ApplicationV2 rewrite plus the Learned Skills compendium.
+Version **0.3.4** — ApplicationV2 rewrite plus the Learned Skills compendium.
 
 ---
 
@@ -11,17 +11,11 @@ Version **0.3.3** — ApplicationV2 rewrite plus the Learned Skills compendium.
 Paste the manifest URL into Foundry's *Install System* dialog:
 
 ```
-https://github.com/gmsshadow/fading-suns/releases/latest/download/system.json
+https://raw.githubusercontent.com/gmsshadow/fading-suns/main/system.json
 ```
 
-> **Do not install from the repository's source archive** (`.../archive/refs/heads/main.zip`).
-> The compiled compendium packs are build artefacts and are deliberately not committed, so
-> the source archive contains no `packs/` directory and every compendium loads empty. Releases
-> are built by CI and carry the packs; the manifest above points at them.
-
-To install by hand, download `fading-suns.zip` from the
-[latest release](https://github.com/gmsshadow/fading-suns/releases/latest) and extract it into
-your Foundry `Data/systems` directory.
+To install by hand, download the repository archive and extract it into your Foundry
+`Data/systems` directory:
 
 - **Windows**: `%localappdata%\FoundryVTT\Data\systems`
 - **macOS**: `~/Library/Application Support/FoundryVTT/Data/systems`
@@ -171,25 +165,30 @@ Compilation goes through Foundry's own `@foundryvtt/foundryvtt-cli` rather than 
 
 After compiling, the build copies the pack to a scratch directory and reads all 87 documents back the way Foundry does, with `createIfMissing: false`, asserting the count and key format. It fails loudly rather than shipping an empty pack.
 
-### Releasing
+### Packs are committed, deliberately
 
-Packs are compiled by CI, never committed. Tag and push:
+The compiled LevelDB databases in `packs/` are checked into the repository even though they are
+build output. They have to be: Foundry installs from the source archive, so a repository without
+`packs/` produces an install whose compendiums are all empty — with no error to explain why.
+
+The build is byte-deterministic, so rebuilding produces no diff unless the data in `src/packs/`
+has actually changed. **Edit `src/packs/` or `tools/learned-skills.mjs`, run `npm run build:packs`,
+and commit both.** CI rebuilds and fails if `packs/` is stale, so a forgotten rebuild is caught
+rather than shipped.
+
+### Releasing (optional)
+
+`.github/workflows/release.yml` is available but not required — installing from the branch works
+as-is. If you would rather distribute versioned releases, tag and push:
 
 ```bash
-npm version 0.3.4 --no-git-tag-version   # also bump system.json by hand
-git commit -am "Release 0.3.4"
-git tag v0.3.4 && git push --follow-tags
+git tag v0.3.5 && git push --follow-tags
 ```
 
-The release workflow verifies the tag matches `system.json`, builds the packs, runs validation
-and tests, rewrites the manifest and download URLs to point at the release, asserts the archive
-actually contains `packs/`, and publishes `fading-suns.zip` plus `system.json` as assets.
-
-`npm run validate` also runs on every push and pull request. It checks that every template
-compiles, every `FADINGSUNS.*` and `TYPES.*` key referenced in code or templates exists in
-`lang/en.json`, every referenced template path resolves, the four item-type registries agree with
-`system.json`, declared packs contain LevelDB data, and nothing but compiled packs lives under
-`packs/`.
+The workflow checks the tag matches `system.json`, builds, validates, tests, rewrites the download
+URL, asserts the archive really contains compiled packs, and publishes `fading-suns.zip`. Switch
+the `manifest` URL in `system.json` to `releases/latest/download/system.json` at the same time,
+or Foundry will keep checking the branch.
 
 ### Public API
 

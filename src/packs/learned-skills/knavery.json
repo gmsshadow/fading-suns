@@ -1,0 +1,29 @@
+{
+  "_key": "!items!CYJxqjVxSy2UyOYt",
+  "_id": "CYJxqjVxSy2UyOYt",
+  "name": "Knavery",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Deception, misdirection and the confidence trick.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.extrovert",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

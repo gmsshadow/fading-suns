@@ -1,0 +1,29 @@
+{
+  "_key": "!items!vr7qzpI9zrabXTzT",
+  "_id": "vr7qzpI9zrabXTzT",
+  "name": "Artisan",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Skilled handcraft — smithing, carpentry, tailoring and similar trades.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_key": "!items!uWttWvQ0Fq93LCrb",
+  "_id": "uWttWvQ0Fq93LCrb",
+  "name": "Lore (Xeno)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The culture, history and habits of one alien race.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Xeno",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

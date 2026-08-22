@@ -1,0 +1,29 @@
+{
+  "_key": "!items!sNJNgAedyTNufqid",
+  "_id": "sNJNgAedyTNufqid",
+  "name": "Read (Urthtech)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Reading technical Urthtech — manuals, schematics and Second Republic records.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Urthtech",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

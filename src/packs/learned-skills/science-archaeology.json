@@ -1,0 +1,29 @@
+{
+  "_key": "!items!MgNcEbDhbtKPGfhD",
+  "_id": "MgNcEbDhbtKPGfhD",
+  "name": "Science (Archaeology)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Recovering and interpreting the material remains of the past.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Archaeology",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

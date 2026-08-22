@@ -1,0 +1,29 @@
+{
+  "_key": "!items!01WCbzISD8lQYPiZ",
+  "_id": "01WCbzISD8lQYPiZ",
+  "name": "Performance",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Performing before an audience. Take a specialty for each art practised.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.extrovert",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

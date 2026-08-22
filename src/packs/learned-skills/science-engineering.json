@@ -1,0 +1,29 @@
+{
+  "_key": "!items!RO7TwxpsUQKyS4Wg",
+  "_id": "RO7TwxpsUQKyS4Wg",
+  "name": "Science (Engineering)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Design and analysis of structures, engines and power systems.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "Engineering",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

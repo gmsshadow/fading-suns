@@ -1,0 +1,29 @@
+{
+  "_key": "!items!9dKEz03szybafMcx",
+  "_id": "9dKEz03szybafMcx",
+  "name": "Arts (Writing)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Poetry, prose and dramatic composition.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.introvert",
+    "specialty": "Writing",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

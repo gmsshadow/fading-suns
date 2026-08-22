@@ -1,0 +1,29 @@
+{
+  "_key": "!items!uEf044jaIuSpnla4",
+  "_id": "uEf044jaIuSpnla4",
+  "name": "Science (Meteorology)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Weather patterns and their prediction.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Meteorology",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

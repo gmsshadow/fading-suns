@@ -1,6 +1,6 @@
 {
   "name": "fading-suns",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "type": "module",
   "description": "Build tooling for the Fading Suns Foundry VTT system.",

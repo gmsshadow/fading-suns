@@ -1,0 +1,29 @@
+{
+  "_key": "!items!O9j1p2XduxnEtFjv",
+  "_id": "O9j1p2XduxnEtFjv",
+  "name": "Acrobatics",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Tumbling, balance and complex bodily movement, including work on apparatus.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

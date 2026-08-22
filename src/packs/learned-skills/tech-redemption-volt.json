@@ -1,0 +1,29 @@
+{
+  "_key": "!items!dQT0vebHYsnfrcRV",
+  "_id": "dQT0vebHYsnfrcRV",
+  "name": "Tech Redemption (Volt)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Repairing electrical and electronic systems.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "Volt",
+    "guildSkill": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_key": "!items!sY7X1X8aPwEhkCbM",
+  "_id": "sY7X1X8aPwEhkCbM",
+  "name": "Social (Acting)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Sustaining a false persona convincingly and at length.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "spirit.extrovert",
+    "specialty": "Acting",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

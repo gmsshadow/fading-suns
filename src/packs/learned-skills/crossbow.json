@@ -1,0 +1,29 @@
+{
+  "_key": "!items!Umdl8qMILw9NR3iF",
+  "_id": "Umdl8qMILw9NR3iF",
+  "name": "Crossbow",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Use of crossbows, common on low-tech and firearm-restricted worlds.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "body.dexterity",
+    "specialty": "",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

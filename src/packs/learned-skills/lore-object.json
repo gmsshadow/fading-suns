@@ -1,0 +1,29 @@
+{
+  "_key": "!items!ZxLM4vzM5IyUHUCt",
+  "_id": "ZxLM4vzM5IyUHUCt",
+  "name": "Lore (Object)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Deep knowledge of a single class of object or subject. Name it in the specialty.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.wits",
+    "specialty": "Object",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

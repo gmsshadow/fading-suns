@@ -1,10 +1,15 @@
 name: Release
 
-# Publishes a release whenever a v* tag is pushed. The compiled compendium packs
-# are build artefacts and are not committed, so the GitHub source archive is NOT
-# a usable install — Foundry would get a system with no packs. This workflow
-# builds the packs and attaches a complete archive as a release asset, which is
-# what system.json's download URL points at.
+# OPTIONAL. Installing from the repository's source archive works without this,
+# because packs/ is committed. Adopt this workflow only if you would rather
+# distribute versioned releases; if you do, change the manifest and download
+# URLs in system.json to:
+#
+#   manifest: https://github.com/<owner>/fading-suns/releases/latest/download/system.json
+#   download: https://github.com/<owner>/fading-suns/releases/download/v<version>/fading-suns.zip
+#
+# (the workflow rewrites the download URL itself, but the manifest URL has to be
+# committed pointing at releases/latest, or Foundry will keep checking the branch).
 
 on:
   push:
@@ -25,8 +30,7 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
       - name: Derive version from tag
         id: version
@@ -40,16 +44,10 @@ jobs:
             exit 1
           fi
 
-      - name: Build compendium packs
-        run: npm run build:packs
+      - name: Build, validate and test
+        run: npm run build
 
-      - name: Validate
-        run: npm run validate
-
-      - name: Test
-        run: npm test
-
-      - name: Point the manifest at this release
+      - name: Point the download URL at this release
         run: |
           node -e '
             const fs = require("fs");
@@ -57,17 +55,17 @@ jobs:
             const repo = process.env.GITHUB_REPOSITORY;
             const system = JSON.parse(fs.readFileSync("system.json", "utf8"));
             system.download = `https://github.com/${repo}/releases/download/v${version}/fading-suns.zip`;
-            system.manifest = `https://github.com/${repo}/releases/latest/download/system.json`;
             fs.writeFileSync("system.json", JSON.stringify(system, null, 2) + "\n");
           ' "${{ steps.version.outputs.version }}"
 
       - name: Assemble the archive
         run: |
           zip -r fading-suns.zip \
-            system.json README.md LICENSE \
+            system.json README.md \
             module/ templates/ styles/ lang/ packs/ \
             --exclude '*.DS_Store'
-          unzip -l fading-suns.zip | grep packs/ || { echo "::error::Archive contains no packs"; exit 1; }
+          unzip -l fading-suns.zip | grep -q 'packs/learned-skills/.*\.ldb' \
+            || { echo "::error::Archive contains no compiled packs"; exit 1; }
 
       - name: Publish
         uses: softprops/action-gh-release@v2

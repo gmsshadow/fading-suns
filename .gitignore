@@ -1,7 +1,8 @@
 node_modules/
-*.zip
-
-# Compiled LevelDB packs are build artefacts; src/packs/ is the tracked data.
-packs/
 .verify/
 fading-suns.zip
+
+# Note: packs/ IS committed. The compiled LevelDB databases must be present in
+# the repository, otherwise installing from the GitHub source archive yields a
+# system with no compendiums. The build is byte-deterministic, so rebuilding
+# produces no diff unless the underlying data in src/packs/ has actually changed.

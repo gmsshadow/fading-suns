@@ -1,0 +1,29 @@
+{
+  "_key": "!items!bnYMauWjJEWe9iSL",
+  "_id": "bnYMauWjJEWe9iSL",
+  "name": "Warfare (Artillery)",
+  "type": "skill",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Crewing and directing indirect-fire weapons.</p>",
+    "value": 0,
+    "skillType": "learned",
+    "characteristic": "mind.tech",
+    "specialty": "Artillery",
+    "guildSkill": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "fading-suns": {
+      "factionSkill": null
+    }
+  },
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.3.4** — ApplicationV2 rewrite plus the Learned Skills compendium.
+Version **0.4.0** — ApplicationV2 rewrite, the Learned Skills compendium, and the lifepath grant engine.
 
 ---
 
@@ -145,6 +145,42 @@ node --test tests/rules.test.mjs
 Tests are anchored to the book's own worked examples — Gorgool's Goal 9 rolling 8 for two victory points (p.65), the paramour's Goal 10 rolling 7 for four damage dice (p.66), the Goal 24 rolling 18 for sixteen victory points (p.66), and Lars the axeman's accented critical (p.67).
 
 Throughout the source, rulebook page numbers are used as traceability anchors in comments.
+
+### Lifepath grant engine
+
+`module/lifepath/grants.mjs` resolves Character History stages (p.70–p.89). It has no Foundry
+imports, so it is tested in plain Node against the rulebook's own worked examples.
+
+A stage grants a bundle of modifications. The schema has to round-trip all four shapes that
+appear in a single printed line — this is the Hawkwood High-Court entry from p.73:
+
+> Characteristics—Strength +1, Dexterity +1, Wits +1, Extrovert (primary) +2;
+> Skills—Melee +1, Etiquette 1, Lore (Heraldry) 1, Read Urthish (2 pts);
+> Blessing—Unyielding; Curse—Prideful
+
+| Grant kind | Handles |
+|---|---|
+| `characteristic` | a delta, optionally flagging the trait primary and demoting its opposite |
+| `skill` | a delta, optionally against a named specialty |
+| `language` | a fixed point cost, refunded if the character already has it (p.72) |
+| `blessing` / `curse` | a reference to a Blessing or Curse item |
+| `choice` | "Extrovert or Introvert +1" — resolved by player selection, never guessed |
+
+Three rules the engine enforces that are easy to miss:
+
+- **Bonuses are cumulative.** Remedy 1 in Apprenticeship plus Remedy 1 in Early Career is
+  Remedy 2, not Remedy 1 (p.72).
+- **Duplicate languages refund.** A second grant of Read (Urthish) does not stack; its two points
+  are freed to spend elsewhere (p.72).
+- **The cap of 8 frees points rather than discarding them.** The rulebook's al-Malik duelist ends
+  with Dexterity 9; `clampToCap` returns the one point for the player to place (p.72).
+
+Unresolved choices are reported as `pending` rather than silently defaulted, and applying one
+throws. An unknown grant kind throws too — a typo in stage data should fail loudly, not produce a
+quietly wrong character.
+
+The three stage budgets sum to exactly the Custom Creation totals of 20 characteristic and 30
+skill points, which the test suite asserts as a consistency check on the transcription.
 
 ### Compendium packs
 

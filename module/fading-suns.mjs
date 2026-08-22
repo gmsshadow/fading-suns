@@ -20,6 +20,7 @@ import {
 import * as dice from "./dice/rolls.mjs";
 import * as rules from "./dice/victory-chart.mjs";
 import * as effects from "./dice/effect-dice.mjs";
+import * as lifepath from "./lifepath/grants.mjs";
 
 const SYSTEM_ID = "fading-suns";
 
@@ -36,7 +37,8 @@ Hooks.once("init", () => {
     FadingSunsItem,
     dice,
     rules,
-    effects
+    effects,
+    lifepath
   };
 
   CONFIG.FADING_SUNS = FADING_SUNS;

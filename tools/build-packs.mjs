@@ -15,7 +15,7 @@
 
 import { ClassicLevel } from "classic-level";
 import { createHash } from "node:crypto";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -110,9 +110,23 @@ for (const [name, config] of Object.entries(PACKS)) {
   const batch = db.batch();
   for (const doc of documents) batch.put(`!${collection}!${doc._id}`, doc);
   await batch.write();
+
+  // A clean close leaves everything in the write-ahead log, which Foundry does
+  // not replay when it opens a pack — the compendium then shows as empty even
+  // though the data is present. Compacting the full keyspace flushes the
+  // memtable into .ldb table files, which is what Foundry actually reads.
+  await db.compactRange("\u0000", "\uffff");
   await db.close();
 
-  console.log(`  built ${name}: ${documents.length} documents`);
+  // LOCK and LOG are runtime scratch files; shipping them serves no purpose.
+  for (const scratch of ["LOCK", "LOG"]) {
+    rmSync(path.join(packDir, scratch), { force: true });
+  }
+
+  const tables = readdirSync(packDir).filter(f => f.endsWith(".ldb"));
+  if (!tables.length) throw new Error(`Pack "${name}" produced no .ldb table files`);
+
+  console.log(`  built ${name}: ${documents.length} documents, ${tables.length} table file(s)`);
 }
 
 console.log("Packs built.");

@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.3.0** — ApplicationV2 rewrite plus the Learned Skills compendium.
+Version **0.3.1** — ApplicationV2 rewrite plus the Learned Skills compendium.
 
 ---
 
@@ -150,6 +150,17 @@ npm run build:packs
 ```
 
 Document ids are derived deterministically by hashing the document's natural key, so rebuilding never churns ids or breaks links from other documents. The build fails loudly on duplicate slugs or id collisions.
+
+**A LevelDB gotcha worth knowing:** closing the database cleanly leaves every write sitting in the write-ahead log (`000003.log`) and produces no `.ldb` table file. Foundry does not replay that log when it opens a pack, so the compendium loads as empty even though the data is intact. The build therefore calls `compactRange()` over the whole keyspace to flush the memtable into `.ldb` files, deletes the `LOCK` and `LOG` scratch files, and asserts that at least one table file exists before it reports success. A correctly built pack looks like this:
+
+```
+000004.log        0 bytes   (empty — everything has been compacted out)
+000005.ldb       ~15 KB     (the actual data)
+CURRENT
+MANIFEST-000002
+```
+
+If you ever see a fat `.log` and no `.ldb`, the pack will silently load empty.
 
 To add a pack, add a builder to `PACKS` in `tools/build-packs.mjs` and declare it in `system.json`.
 

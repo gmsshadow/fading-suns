@@ -1,0 +1,35 @@
+{
+  "_key": "!items!iGlhRoPygnleoq9w",
+  "_id": "iGlhRoPygnleoq9w",
+  "name": "Clueless",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Noticing social cues",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

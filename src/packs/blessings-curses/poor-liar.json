@@ -1,0 +1,35 @@
+{
+  "_key": "!items!BU3w78tNDemnLc3N",
+  "_id": "BU3w78tNDemnLc3N",
+  "name": "Poor Liar",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "mind.wits",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When lying",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

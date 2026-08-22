@@ -1,0 +1,35 @@
+{
+  "_key": "!items!VxZiSEhnaiofDiiS",
+  "_id": "VxZiSEhnaiofDiiS",
+  "name": "Loyal",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "spirit.passion",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When following liege",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

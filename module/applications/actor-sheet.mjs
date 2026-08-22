@@ -131,7 +131,7 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
    */
   #categoriseItems() {
     const groups = {
-      skill: [], weapon: [], armour: [], equipment: [],
+      skill: [], weapon: [], armour: [], equipment: [], blessing: [],
       psychicPower: [], theurgicRite: []
     };
     for (const item of this.actor.items) {
@@ -139,6 +139,9 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     }
 
     groups.skill.sort((a, b) => a.system.label.localeCompare(b.system.label));
+    groups.blessing.sort((a, b) => a.name.localeCompare(b.name));
+    groups.blessings = groups.blessing.filter(i => i.system.polarity === "blessing");
+    groups.curses = groups.blessing.filter(i => i.system.polarity === "curse");
     groups.naturalSkills = groups.skill.filter(i => i.system.skillType === "natural");
     groups.learnedSkills = groups.skill.filter(i => i.system.skillType !== "natural");
     for (const key of ["weapon", "armour", "equipment", "psychicPower", "theurgicRite"]) {

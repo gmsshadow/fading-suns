@@ -1,0 +1,29 @@
+{
+  "_key": "!items!VCbr4W7EbspHYcml",
+  "_id": "VCbr4W7EbspHYcml",
+  "name": "Dwarf",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "size",
+    "cost": 5,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": -2,
+    "baseRun": 6,
+    "note": "Requires tailored clothing."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

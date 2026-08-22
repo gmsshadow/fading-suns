@@ -1,0 +1,35 @@
+{
+  "_key": "!items!er7p00TRh03WfSAZ",
+  "_id": "er7p00TRh03WfSAZ",
+  "name": "Handsome",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "appearance",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": 1,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "In social interaction",
+    "always": true,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "_key": "!items!ebSc7RtMBbSa3QTQ",
+  "_id": "ebSc7RtMBbSa3QTQ",
+  "name": "Homely",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "appearance",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": -1,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "In social interaction",
+    "always": true,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

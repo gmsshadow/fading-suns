@@ -1,0 +1,29 @@
+{
+  "_key": "!items!IUfJ6p77SIflz2Xz",
+  "_id": "IUfJ6p77SIflz2Xz",
+  "name": "Giant",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "size",
+    "cost": 5,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": 2,
+    "baseRun": 14,
+    "note": "Requires tailored clothing."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 9100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

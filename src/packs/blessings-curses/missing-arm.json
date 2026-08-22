@@ -1,0 +1,35 @@
+{
+  "_key": "!items!kQrLJG8cPwq0RzXK",
+  "_id": "kQrLJG8cPwq0RzXK",
+  "name": "Missing Arm",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 4,
+    "modifiers": [
+      {
+        "value": -4,
+        "target": "body.dexterity",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "For tasks requiring two arms",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

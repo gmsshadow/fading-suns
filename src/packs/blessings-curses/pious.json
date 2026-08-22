@@ -1,0 +1,35 @@
+{
+  "_key": "!items!zCV4Z4nCI9fUPLef",
+  "_id": "zCV4Z4nCI9fUPLef",
+  "name": "Pious",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "spirit.extrovert",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Among the sinful",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

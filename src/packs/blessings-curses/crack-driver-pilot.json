@@ -1,0 +1,35 @@
+{
+  "_key": "!items!wZZsZbd5D6STPUAs",
+  "_id": "wZZsZbd5D6STPUAs",
+  "name": "Crack Driver/Pilot",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 4,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "",
+        "targetType": "all"
+      }
+    ],
+    "restriction": "With all Drive skills",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

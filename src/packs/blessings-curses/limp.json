@@ -1,0 +1,29 @@
+{
+  "_key": "!items!UdDq4Sdg9aw0G8Li",
+  "_id": "UdDq4Sdg9aw0G8Li",
+  "name": "Limp",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 1,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": 0,
+    "baseRun": 8,
+    "note": "Base run is reduced to 8 metres."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -30,7 +30,8 @@ export function preloadTemplates() {
     "fadingSuns.detailsEquipment": `${ROOT}/item/parts/details-equipment.hbs`,
     "fadingSuns.detailsSkill": `${ROOT}/item/parts/details-skill.hbs`,
     "fadingSuns.detailsPsychicPower": `${ROOT}/item/parts/details-psychic-power.hbs`,
-    "fadingSuns.detailsTheurgicRite": `${ROOT}/item/parts/details-theurgic-rite.hbs`
+    "fadingSuns.detailsTheurgicRite": `${ROOT}/item/parts/details-theurgic-rite.hbs`,
+    "fadingSuns.detailsBlessing": `${ROOT}/item/parts/details-blessing.hbs`
   });
 }
 

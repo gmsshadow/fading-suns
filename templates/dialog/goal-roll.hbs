@@ -26,4 +26,19 @@
            {{#unless wyrdAvailable}}disabled{{/unless}}/>
   </label>
   <p class="hint">{{localize "FADINGSUNS.Hint.Accent"}} ({{localize "FADINGSUNS.Wyrd"}}: {{wyrdAvailable}})</p>
+
+  {{#if traits.length}}
+    <fieldset class="traits">
+      <legend>{{localize "FADINGSUNS.Roll.Blessings"}}</legend>
+      {{#each traits as |trait|}}
+        <label class="trait {{#if trait.isCurse}}is-curse{{/if}}">
+          <input type="checkbox" name="trait.{{trait.id}}" {{checked trait.checked}}/>
+          <span class="trait-name">{{trait.name}}</span>
+          <span class="trait-mod">{{fsSigned trait.modifier}}</span>
+          <span class="trait-restriction">{{trait.restriction}}</span>
+        </label>
+      {{/each}}
+      <p class="hint">{{localize "FADINGSUNS.Hint.Restriction"}}</p>
+    </fieldset>
+  {{/if}}
 </div>

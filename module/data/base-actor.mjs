@@ -110,8 +110,14 @@ export class FadingSunsActorBase extends foundry.abstract.TypeDataModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    // Some Blessings and Curses change base Vitality outright — Giant +2,
+    // Dwarf -2, Incurable Disease -1 (p.116).
+    this.vitality.traitModifier = this.#traitVitality();
+
     // Vitality is Endurance plus five vital levels (p.125).
-    this.vitality.max = Math.max(1, 5 + this.body.endurance.value + this.vitality.bonus);
+    this.vitality.max = Math.max(
+      1, 5 + this.body.endurance.value + this.vitality.bonus + this.vitality.traitModifier
+    );
     this.vitality.value = Math.min(this.vitality.value, this.vitality.max);
 
     // Wound penalties apply to every task once vital levels are lost (p.125).
@@ -126,6 +132,18 @@ export class FadingSunsActorBase extends foundry.abstract.TypeDataModel {
   }
 
   /* -------------------------------------------- */
+
+  /**
+   * Total Vitality modifier from owned Blessings and Curses (p.116).
+   * @returns {number}
+   */
+  #traitVitality() {
+    let total = 0;
+    for (const item of this.parent?.items ?? []) {
+      if (item.type === "blessing") total += item.system.vitalityModifier ?? 0;
+    }
+    return total;
+  }
 
   /**
    * Beginning Wyrd (p.125):

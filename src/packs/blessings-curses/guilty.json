@@ -1,0 +1,35 @@
+{
+  "_key": "!items!C3HdjGw0H3J72uWz",
+  "_id": "C3HdjGw0H3J72uWz",
+  "name": "Guilty",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "",
+        "targetType": "all"
+      }
+    ],
+    "restriction": "On all rolls when opposing Church officials",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

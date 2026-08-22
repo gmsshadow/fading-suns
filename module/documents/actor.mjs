@@ -93,7 +93,8 @@ export class FadingSunsActor extends Actor {
         skillValue: skill?.system.value ?? 0,
         skillLabel: skill?.system.label ?? "",
         woundPenalty,
-        wyrdAvailable: this.system.wyrd.value
+        wyrdAvailable: this.system.wyrd.value,
+        traits: this.applicableTraits({ characteristic: charPath, skill: skill?.name })
       });
       if (!config) return null;
       modifier += config.modifier;
@@ -113,6 +114,37 @@ export class FadingSunsActor extends Actor {
     return goalRoll({
       actor: this, characteristic: charPath, skillId, modifier, accent, woundPenalty, item
     });
+  }
+
+  /**
+   * Blessings and Curses whose modifier could bear on a given roll (p.115).
+   *
+   * Whether a trait actually applies depends on the situation, which no system
+   * can judge, so this returns the candidates and the player ticks what is true
+   * at the table. Traits flagged `always` — Size and Appearance — are pre-ticked.
+   *
+   * @param {object} options
+   * @param {string} [options.characteristic]
+   * @param {string} [options.skill]
+   * @returns {Array<{id: string, name: string, modifier: number, restriction: string,
+   *                  isCurse: boolean, checked: boolean}>}
+   */
+  applicableTraits({ characteristic, skill } = {}) {
+    const traits = [];
+    for (const item of this.items) {
+      if (item.type !== "blessing") continue;
+      const modifier = item.system.modifierFor({ characteristic, skill });
+      if (!modifier) continue;
+      traits.push({
+        id: item.id,
+        name: item.name,
+        modifier,
+        restriction: item.system.restriction,
+        isCurse: item.system.isCurse,
+        checked: item.system.always
+      });
+    }
+    return traits.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**

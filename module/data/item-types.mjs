@@ -217,3 +217,92 @@ export class FadingSunsTheurgicRite extends FadingSunsItemBase {
     return super.migrateData(source);
   }
 }
+
+/**
+ * A Blessing or Curse (p.115).
+ *
+ * These are stored as data rather than Active Effects because they are
+ * situational by nature: "Blessings and Curses have restrictions, or situations
+ * which activate their modifiers. If the situation does not come into play, then
+ * the character does not receive that modifier." (p.115)
+ *
+ * The roll dialog therefore offers a character's Blessings and Curses as
+ * checkboxes with their restriction text, and the player ticks what applies.
+ * Traits flagged `always` — Size and Appearance — are ticked by default.
+ */
+export class FadingSunsBlessing extends FadingSunsItemBase {
+
+  /** @inheritDoc */
+  static defineSchema() {
+    const schema = super.defineSchema();
+    delete schema.techLevel;
+    return Object.assign(schema, {
+      polarity: new fields.StringField({
+        required: true, blank: false, initial: "blessing",
+        choices: () => CONFIG.FADING_SUNS.blessingPolarities
+      }),
+      category: new fields.StringField({
+        required: true, blank: false, initial: "behavior",
+        choices: () => CONFIG.FADING_SUNS.blessingCategories
+      }),
+      // Blessings cost Extra points; Curses grant them. Stored as a magnitude.
+      cost: new fields.NumberField({ required: true, integer: true, min: 0, initial: 2 }),
+      modifiers: new fields.ArrayField(new fields.SchemaField({
+        value: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+        target: new fields.StringField({ required: false, blank: true, initial: "" }),
+        targetType: new fields.StringField({
+          required: true, blank: false, initial: "characteristic",
+          choices: () => CONFIG.FADING_SUNS.modifierTargets
+        })
+      })),
+      restriction: new fields.StringField({ required: true, blank: true, initial: "" }),
+      always: new fields.BooleanField({ initial: false }),
+      // Some traits change derived statistics outright rather than a die roll.
+      vitalityModifier: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+      baseRun: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
+      note: new fields.StringField({ required: false, blank: true, initial: "" })
+    });
+  }
+
+  /** Whether this trait is a Curse. */
+  get isCurse() {
+    return this.polarity === "curse";
+  }
+
+  /**
+   * Total modifier magnitude, used to check the limit of seven (p.115).
+   * @returns {number}
+   */
+  get totalModifier() {
+    return this.modifiers.reduce((n, m) => n + Math.abs(m.value ?? 0), 0);
+  }
+
+  /**
+   * The modifier this trait contributes to a given roll, or 0 if it does not apply.
+   * @param {object} options
+   * @param {string} [options.characteristic]  Dot path of the characteristic rolled.
+   * @param {string} [options.skill]           Name of the skill rolled.
+   * @returns {number}
+   */
+  modifierFor({ characteristic, skill } = {}) {
+    let total = 0;
+    for (const mod of this.modifiers) {
+      if (mod.targetType === "all") total += mod.value;
+      else if (mod.targetType === "characteristic" && mod.target === characteristic) total += mod.value;
+      else if (mod.targetType === "skill" && skill && mod.target === skill) total += mod.value;
+    }
+    return total;
+  }
+
+  /** A short summary such as "+2 Calm — In combat situations". */
+  get summary() {
+    const parts = this.modifiers.map(m => {
+      const sign = m.value >= 0 ? "+" : "";
+      const label = m.targetType === "all"
+        ? game.i18n.localize("FADINGSUNS.Blessing.AllRolls")
+        : (game.i18n.localize(CONFIG.FADING_SUNS.rollableCharacteristics[m.target] ?? "") || m.target);
+      return `${sign}${m.value} ${label}`.trim();
+    });
+    return parts.join(", ");
+  }
+}

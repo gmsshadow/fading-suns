@@ -1,0 +1,35 @@
+{
+  "_key": "!items!v2DTVtmhKyvledN8",
+  "_id": "v2DTVtmhKyvledN8",
+  "name": "Shrewd",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "mind.wits",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Against attempts to fast-talk",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

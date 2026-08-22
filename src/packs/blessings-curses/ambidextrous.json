@@ -1,0 +1,35 @@
+{
+  "_key": "!items!kdv4LobvFQUlkz6s",
+  "_id": "kdv4LobvFQUlkz6s",
+  "name": "Ambidextrous",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 4,
+    "modifiers": [
+      {
+        "value": 4,
+        "target": "",
+        "targetType": "all"
+      }
+    ],
+    "restriction": "To offset the -4 penalty for an off-hand weapon",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

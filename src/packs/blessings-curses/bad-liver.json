@@ -1,0 +1,35 @@
+{
+  "_key": "!items!wBqr3sxrj1WUPBBt",
+  "_id": "wBqr3sxrj1WUPBBt",
+  "name": "Bad Liver",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "body.endurance",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Against toxins",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "_key": "!items!meQjR5KQA6MIW0WK",
+  "_id": "meQjR5KQA6MIW0WK",
+  "name": "Angelic",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "appearance",
+    "cost": 3,
+    "modifiers": [
+      {
+        "value": 3,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "In social interaction",
+    "always": true,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

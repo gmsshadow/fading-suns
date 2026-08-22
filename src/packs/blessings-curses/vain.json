@@ -1,0 +1,35 @@
+{
+  "_key": "!items!2xobO97tpu5ajU5c",
+  "_id": "2xobO97tpu5ajU5c",
+  "name": "Vain",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": -1,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When being flattered",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_key": "!items!kebCegyQtSsDqrzb",
+  "_id": "kebCegyQtSsDqrzb",
+  "name": "Short",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "size",
+    "cost": 3,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": -1,
+    "baseRun": 8,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

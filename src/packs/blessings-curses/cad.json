@@ -1,0 +1,35 @@
+{
+  "_key": "!items!GMFxVHeUfUA77DL8",
+  "_id": "GMFxVHeUfUA77DL8",
+  "name": "Cad",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "reputation",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "Among those who know the character's reputation",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

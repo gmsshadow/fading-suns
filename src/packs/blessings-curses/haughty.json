@@ -1,0 +1,35 @@
+{
+  "_key": "!items!1Hp7agSys0kHB9qc",
+  "_id": "1Hp7agSys0kHB9qc",
+  "name": "Haughty",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "spirit.extrovert",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Around serfs",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

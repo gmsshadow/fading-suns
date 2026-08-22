@@ -1,0 +1,35 @@
+{
+  "_key": "!items!Rt1qErRKlRsmfX7l",
+  "_id": "Rt1qErRKlRsmfX7l",
+  "name": "Beast Foe",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "",
+        "targetType": "all"
+      }
+    ],
+    "restriction": "For non-combat interaction with animals",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

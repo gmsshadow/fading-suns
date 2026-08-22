@@ -29,6 +29,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { LEARNED_SKILLS } from "./learned-skills.mjs";
+import { BLESSINGS_AND_CURSES } from "./blessings-curses.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -79,9 +80,41 @@ function buildLearnedSkills() {
   });
 }
 
+/**
+ * Build the documents for the Blessings and Curses pack (p.115).
+ * @returns {object[]}
+ */
+function buildBlessings() {
+  return BLESSINGS_AND_CURSES.map((trait, index) => ({
+    _id: stableId(`Item.blessings-curses.${trait.p}.${trait.n}`),
+    name: trait.n,
+    type: "blessing",
+    img: trait.p === "curse" ? "icons/svg/downgrade.svg" : "icons/svg/regen.svg",
+    system: {
+      description: "",
+      polarity: trait.p,
+      category: trait.category,
+      cost: trait.c,
+      modifiers: trait.mods ?? [],
+      restriction: trait.r ?? "",
+      always: !!trait.always,
+      vitalityModifier: trait.vit ?? 0,
+      baseRun: trait.run ?? 0,
+      note: trait.note ?? ""
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
 /** Packs to build, keyed by the pack name declared in system.json. */
 const PACKS = {
-  "learned-skills": { type: "Item", documents: buildLearnedSkills }
+  "learned-skills": { type: "Item", documents: buildLearnedSkills },
+  "blessings-curses": { type: "Item", documents: buildBlessings }
 };
 
 /* -------------------------------------------- */

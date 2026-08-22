@@ -1,0 +1,29 @@
+{
+  "_key": "!items!00Pfw4iR5XITRNYZ",
+  "_id": "00Pfw4iR5XITRNYZ",
+  "name": "Incurable Disease",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 3,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": -1,
+    "baseRun": 0,
+    "note": "Reduces base Vitality by one."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

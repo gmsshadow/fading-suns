@@ -1,0 +1,35 @@
+{
+  "_key": "!items!dxxLTnTmkZkcc0R9",
+  "_id": "dxxLTnTmkZkcc0R9",
+  "name": "Callous",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "spirit.passion",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When asked for aid",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

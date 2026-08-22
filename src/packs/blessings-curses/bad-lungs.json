@@ -1,0 +1,35 @@
+{
+  "_key": "!items!GXJcofQ32dGibSjC",
+  "_id": "GXJcofQ32dGibSjC",
+  "name": "Bad Lungs",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": -1,
+        "target": "body.endurance",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "With athletic tasks",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

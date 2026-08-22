@@ -1,0 +1,35 @@
+{
+  "_key": "!items!LHK1zWYIxBTUZM5o",
+  "_id": "LHK1zWYIxBTUZM5o",
+  "name": "Bold",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "spirit.passion",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "While acting when others hesitate",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

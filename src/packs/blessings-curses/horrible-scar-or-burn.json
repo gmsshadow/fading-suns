@@ -1,0 +1,35 @@
+{
+  "_key": "!items!hwP2T2OtO7MHsDs3",
+  "_id": "hwP2T2OtO7MHsDs3",
+  "name": "Horrible Scar or Burn",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "When the scar is visible",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

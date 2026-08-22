@@ -1,0 +1,35 @@
+{
+  "_key": "!items!moAzxADxmVHwbwWG",
+  "_id": "moAzxADxmVHwbwWG",
+  "name": "Mammon",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "spirit.faith",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When money is involved",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

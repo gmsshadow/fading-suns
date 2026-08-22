@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.4.0** — ApplicationV2 rewrite, the Learned Skills compendium, and the lifepath grant engine.
+Version **0.5.0** — ApplicationV2 rewrite, two compendiums, and the lifepath grant engine.
 
 ---
 
@@ -64,6 +64,25 @@ Reading the resolution code against the Core Rules turned up several errors, all
 - **Effect dice** (p.65) were entirely missing.
 
 ### Compendiums
+
+Two compendiums ship with the system.
+
+**Blessings & Curses** — all 91 entries from p.115–116, across the six printed categories:
+Appearance (6), Behaviour (38), Injury (11), Knack (24), Reputation (8) and Size (4).
+
+They are stored as **data, not Active Effects**, and that is a deliberate rules decision. Blessings
+and Curses are situational: *"If the situation does not come into play, then the character does not
+receive that modifier"* (p.115). An always-on effect would be wrong for all but the Size and
+Appearance entries, and would need the gamemaster to remember to suppress it.
+
+Instead, the roll dialog lists whichever of the character's traits could bear on the roll being
+made — matched by characteristic, by skill, or flagged as applying to everything — each with its
+restriction text, and the player ticks what is true at the table. Traits marked *always applies*
+are pre-ticked. Whatever is ticked is folded into the Goal Number.
+
+Six entries carry no die modifier at all and change derived statistics instead: Giant and Tall add
+base Vitality, Dwarf, Short and Incurable Disease subtract it, and Limp, Missing Leg and Dwarf set
+base run. The Vitality contribution is applied automatically.
 
 **Learned Skills** ships as a compendium of 87 skill items covering the full list on p.99, including every sub-skill: five Lore specialties, five Read and seven Speak languages, thirteen Sciences, four Tech Redemptions, four Warfare specialties and four Social specialties.
 
@@ -238,7 +257,7 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: weapons and armour from Chapter Seven
+- Compendiums: weapons and armour from Chapter Seven; Benefices and Afflictions (p.119)
 - Character creation: lifepath stages as compendium items, with a guided wizard
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

@@ -76,4 +76,31 @@
     </div>
   </div>
 
+
+  <div class="items-section blessings">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.BlessingsCurses"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="blessing">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.blessing as |trait|}}
+        <li class="item draggable {{#if trait.system.isCurse}}is-curse{{/if}}" data-item-id="{{trait.id}}">
+          <img class="item-img" src="{{trait.img}}" alt="{{trait.name}}"/>
+          <span class="item-name">{{trait.name}}</span>
+          <span class="item-tag">{{trait.system.summary}}</span>
+          <span class="item-restriction">{{trait.system.restriction}}</span>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.BlessingsCurses"}}</li>
+      {{/each}}
+    </ol>
+    <p class="hint">{{localize "FADINGSUNS.Hint.BlessingLimit"}}</p>
+  </div>
+
 </section>

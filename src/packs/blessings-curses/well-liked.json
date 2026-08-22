@@ -1,0 +1,35 @@
+{
+  "_key": "!items!d0SEbnbfxlVJFpbX",
+  "_id": "d0SEbnbfxlVJFpbX",
+  "name": "Well-liked",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "reputation",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": 1,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "Among those who know the character's reputation",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

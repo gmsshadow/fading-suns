@@ -1,0 +1,35 @@
+{
+  "_key": "!items!Q92GAPaxIxsQttl8",
+  "_id": "Q92GAPaxIxsQttl8",
+  "name": "Monstrous",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "appearance",
+    "cost": 3,
+    "modifiers": [
+      {
+        "value": -3,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "Unless seeking pity",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

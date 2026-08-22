@@ -1,0 +1,35 @@
+{
+  "_key": "!items!ntCeowx0AhB0eOaL",
+  "_id": "ntCeowx0AhB0eOaL",
+  "name": "Suspicious",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When rivals are about",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

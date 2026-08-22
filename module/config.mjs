@@ -174,3 +174,27 @@ FADING_SUNS.wyrdSources = {
   psi: "FADINGSUNS.WyrdSource.Psi",
   theurgy: "FADINGSUNS.WyrdSource.Theurgy"
 };
+
+/* -------------------------------------------- */
+/*  Blessings and Curses (p.115)                */
+/* -------------------------------------------- */
+
+FADING_SUNS.blessingPolarities = {
+  blessing: "FADINGSUNS.Blessing.Blessing",
+  curse: "FADINGSUNS.Blessing.Curse"
+};
+
+FADING_SUNS.blessingCategories = {
+  appearance: "FADINGSUNS.Blessing.Appearance",
+  behavior: "FADINGSUNS.Blessing.Behaviour",
+  injury: "FADINGSUNS.Blessing.Injury",
+  knack: "FADINGSUNS.Blessing.Knack",
+  reputation: "FADINGSUNS.Blessing.Reputation",
+  size: "FADINGSUNS.Blessing.Size"
+};
+
+FADING_SUNS.modifierTargets = {
+  characteristic: "FADINGSUNS.Blessing.TargetCharacteristic",
+  skill: "FADINGSUNS.Blessing.TargetSkill",
+  all: "FADINGSUNS.Blessing.TargetAll"
+};

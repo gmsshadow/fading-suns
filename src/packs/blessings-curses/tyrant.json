@@ -1,0 +1,35 @@
+{
+  "_key": "!items!0x9cwDPn1ukmnPfV",
+  "_id": "0x9cwDPn1ukmnPfV",
+  "name": "Tyrant",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "reputation",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "Charm",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "Among peasants",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

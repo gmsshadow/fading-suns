@@ -1,0 +1,68 @@
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Blessing.Polarity"}}</span>
+    <select name="system.polarity">{{selectOptions config.blessingPolarities selected=system.polarity localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Blessing.Category"}}</span>
+    <select name="system.category">{{selectOptions config.blessingCategories selected=system.category localize=true}}</select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Blessing.Cost"}}</span>
+    <input type="number" name="system.cost" value="{{system.cost}}" min="0"/>
+  </label>
+
+  <label class="form-group checkbox">
+    <input type="checkbox" name="system.always" {{checked system.always}}/>
+    <span>{{localize "FADINGSUNS.Blessing.Always"}}</span>
+  </label>
+</div>
+
+<label class="form-group">
+  <span>{{localize "FADINGSUNS.Blessing.Restriction"}}</span>
+  <input type="text" name="system.restriction" value="{{system.restriction}}"
+         placeholder="{{localize 'FADINGSUNS.Placeholder.Restriction'}}"/>
+</label>
+<p class="hint">{{localize "FADINGSUNS.Hint.Restriction"}}</p>
+
+<fieldset class="modifier-block">
+  <legend>{{localize "FADINGSUNS.Blessing.Modifiers"}}</legend>
+  {{#each system.modifiers as |mod index|}}
+    <div class="form-grid modifier-row">
+      <label class="form-group">
+        <span>{{localize "FADINGSUNS.Blessing.Modifier"}}</span>
+        <input type="number" name="system.modifiers.{{index}}.value" value="{{mod.value}}"/>
+      </label>
+      <label class="form-group">
+        <span>{{localize "FADINGSUNS.Blessing.TargetType"}}</span>
+        <select name="system.modifiers.{{index}}.targetType">
+          {{selectOptions ../config.modifierTargets selected=mod.targetType localize=true}}
+        </select>
+      </label>
+      <label class="form-group">
+        <span>{{localize "FADINGSUNS.Blessing.Target"}}</span>
+        <input type="text" name="system.modifiers.{{index}}.target" value="{{mod.target}}"/>
+      </label>
+    </div>
+  {{else}}
+    <p class="hint">{{localize "FADINGSUNS.Empty.Modifiers"}}</p>
+  {{/each}}
+</fieldset>
+
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Blessing.VitalityModifier"}}</span>
+    <input type="number" name="system.vitalityModifier" value="{{system.vitalityModifier}}"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Blessing.BaseRun"}}</span>
+    <input type="number" name="system.baseRun" value="{{system.baseRun}}" min="0"/>
+  </label>
+</div>
+
+<label class="form-group">
+  <span>{{localize "FADINGSUNS.Blessing.Note"}}</span>
+  <input type="text" name="system.note" value="{{system.note}}"/>
+</label>

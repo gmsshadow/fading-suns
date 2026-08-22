@@ -1,0 +1,35 @@
+{
+  "_key": "!items!ByqKdbPWRRx2QP9r",
+  "_id": "ByqKdbPWRRx2QP9r",
+  "name": "Sensitive Touch",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 1,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "To discern touched objects",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

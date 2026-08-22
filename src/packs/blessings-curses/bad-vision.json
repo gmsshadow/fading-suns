@@ -1,0 +1,35 @@
+{
+  "_key": "!items!mPCbkiSWfhGolmcg",
+  "_id": "mPCbkiSWfhGolmcg",
+  "name": "Bad Vision",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "With sight only",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

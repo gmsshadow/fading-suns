@@ -647,3 +647,56 @@
   flex: 1;
   font-size: 0.78rem;
 }
+
+/* ---------- Blessings and Curses ---------- */
+
+.fading-suns .items-list .item.is-curse {
+  border-left: 3px solid var(--fs-failure);
+}
+
+.fading-suns .item-restriction {
+  color: var(--fs-muted);
+  flex: 1 1 40%;
+  font-size: 0.7rem;
+  font-style: italic;
+  text-align: right;
+}
+
+.fading-suns fieldset.traits {
+  max-height: 190px;
+  overflow-y: auto;
+}
+
+.fading-suns .trait {
+  align-items: center;
+  border-radius: 3px;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.15rem 0.25rem;
+}
+
+.fading-suns .trait:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.fading-suns .trait-name {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+}
+
+.fading-suns .trait-mod {
+  color: var(--fs-success);
+  font-weight: 700;
+}
+
+.fading-suns .trait.is-curse .trait-mod {
+  color: var(--fs-failure);
+}
+
+.fading-suns .trait-restriction {
+  color: var(--fs-muted);
+  flex: 1;
+  font-size: 0.7rem;
+  font-style: italic;
+  text-align: right;
+}

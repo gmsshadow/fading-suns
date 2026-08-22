@@ -49,7 +49,8 @@ export class FadingSunsItemSheet extends HandlebarsApplicationMixin(ItemSheetV2)
     equipment: "fadingSuns.detailsEquipment",
     skill: "fadingSuns.detailsSkill",
     psychicPower: "fadingSuns.detailsPsychicPower",
-    theurgicRite: "fadingSuns.detailsTheurgicRite"
+    theurgicRite: "fadingSuns.detailsTheurgicRite",
+    blessing: "fadingSuns.detailsBlessing"
   };
 
   /* -------------------------------------------- */

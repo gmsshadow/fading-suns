@@ -1,0 +1,40 @@
+{
+  "_key": "!items!3kAGGqfDDXYS2etJ",
+  "_id": "3kAGGqfDDXYS2etJ",
+  "name": "Missing Eye",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "injury",
+    "cost": 3,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "mind.perception",
+        "targetType": "characteristic"
+      },
+      {
+        "value": -1,
+        "target": "Shoot",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": "Limited field of vision and poor depth perception."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

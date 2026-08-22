@@ -1,0 +1,35 @@
+{
+  "_key": "!items!FLyaAdR1hagU4mvo",
+  "_id": "FLyaAdR1hagU4mvo",
+  "name": "Eloquent",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "spirit.extrovert",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When swaying others through speech",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -15,7 +15,8 @@ import { registerChatListeners } from "./helpers/chat.mjs";
 import { FadingSunsCharacter, FadingSunsNPC } from "./data/actor-types.mjs";
 import {
   FadingSunsWeapon, FadingSunsArmour, FadingSunsEquipment,
-  FadingSunsSkill, FadingSunsPsychicPower, FadingSunsTheurgicRite
+  FadingSunsSkill, FadingSunsPsychicPower, FadingSunsTheurgicRite,
+  FadingSunsBlessing
 } from "./data/item-types.mjs";
 import * as dice from "./dice/rolls.mjs";
 import * as rules from "./dice/victory-chart.mjs";
@@ -58,7 +59,8 @@ Hooks.once("init", () => {
     equipment: FadingSunsEquipment,
     skill: FadingSunsSkill,
     psychicPower: FadingSunsPsychicPower,
-    theurgicRite: FadingSunsTheurgicRite
+    theurgicRite: FadingSunsTheurgicRite,
+    blessing: FadingSunsBlessing
   };
 
   // Token resource bars. Vitality and Wyrd maxima are derived, so they must be
@@ -111,7 +113,7 @@ function registerSheets() {
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, FadingSunsItemSheet, {
-    types: ["weapon", "armour", "equipment", "skill", "psychicPower", "theurgicRite"],
+    types: ["weapon", "armour", "equipment", "skill", "psychicPower", "theurgicRite", "blessing"],
     makeDefault: true,
     label: "FADINGSUNS.SheetLabels.Item"
   });

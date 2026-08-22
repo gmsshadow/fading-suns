@@ -1,0 +1,35 @@
+{
+  "_key": "!items!BTWMDSyNHmFtXKZh",
+  "_id": "BTWMDSyNHmFtXKZh",
+  "name": "Unyielding",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "body.endurance",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When honour is at stake",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

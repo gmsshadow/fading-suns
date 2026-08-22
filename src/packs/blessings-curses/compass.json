@@ -1,0 +1,35 @@
+{
+  "_key": "!items!fkSE0NjIKRRlZJPB",
+  "_id": "fkSE0NjIKRRlZJPB",
+  "name": "Compass",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "mind.wits",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When working out direction or location",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

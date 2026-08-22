@@ -1,0 +1,35 @@
+{
+  "_key": "!items!6NVeaaZjxOV8xBy5",
+  "_id": "6NVeaaZjxOV8xBy5",
+  "name": "Disrespectful",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": -2,
+        "target": "spirit.extrovert",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "Around authority figures",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

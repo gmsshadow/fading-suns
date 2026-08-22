@@ -1,0 +1,29 @@
+{
+  "_key": "!items!3dOnNF5DGbXIOPIY",
+  "_id": "3dOnNF5DGbXIOPIY",
+  "name": "Tall",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "size",
+    "cost": 3,
+    "modifiers": [],
+    "restriction": "Always",
+    "always": true,
+    "vitalityModifier": 1,
+    "baseRun": 12,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 9000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

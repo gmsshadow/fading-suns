@@ -1,0 +1,35 @@
+{
+  "_key": "!items!SZLWGmfJGgW1Qr2i",
+  "_id": "SZLWGmfJGgW1Qr2i",
+  "name": "Vengeful",
+  "type": "blessing",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "",
+    "polarity": "curse",
+    "category": "behavior",
+    "cost": 3,
+    "modifiers": [
+      {
+        "value": -3,
+        "target": "spirit.calm",
+        "targetType": "characteristic"
+      }
+    ],
+    "restriction": "When honour is impinged; never forgets a slight",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

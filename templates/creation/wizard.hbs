@@ -134,6 +134,34 @@
       </p>
       <p class="hint">{{localize "FADINGSUNS.Hint.BeneficePoints"}}</p>
 
+      {{#each beneficeRestrictions as |restriction|}}
+        <p class="warning"><i class="fa-solid fa-triangle-exclamation"></i> {{restriction}}</p>
+      {{/each}}
+
+      {{#if suggestions.length}}
+        <section class="suggestions">
+          <h4>{{localize "FADINGSUNS.Creation.Suggested"}}</h4>
+          <p class="hint">{{localize "FADINGSUNS.Creation.SuggestedHint"}}</p>
+          <ol class="suggestion-list">
+            {{#each suggestions as |entry|}}
+              <li class="suggestion {{#if entry.taken}}is-taken{{/if}}">
+                <span class="suggestion-label">{{entry.label}}</span>
+                {{#if entry.note}}<span class="suggestion-note">{{entry.note}}</span>{{/if}}
+                <span class="suggestion-from">{{entry.from}}</span>
+                {{#if entry.taken}}
+                  <span class="suggestion-taken"><i class="fa-solid fa-check"></i></span>
+                {{else}}
+                  <button type="button" class="add-btn" data-action="addSuggested"
+                          data-uuid="{{entry.uuid}}" data-value="{{entry.value}}">
+                    <i class="fa-solid fa-plus"></i> {{entry.value}}
+                  </button>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ol>
+        </section>
+      {{/if}}
+
       <div class="picker-row">
         <select name="beneficePick">
           <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>

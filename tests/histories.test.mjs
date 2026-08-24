@@ -440,3 +440,67 @@ test("an open choice, once picked, resolves and no longer blocks", () => {
   const { pending } = resolveChoices(questing.grants, choices);
   assert.equal(pending.length, 0, "nothing is left pending once every choice is answered");
 });
+
+/* -------------------------------------------- */
+/*  Suggested Benefices (p.72–76)               */
+/* -------------------------------------------- */
+
+test("every suggested Benefice resolves to a real document", () => {
+  const ids = new Set(benefices.map(d => d._id));
+  for (const stage of stages) {
+    for (const entry of stage.system.suggestedBenefices ?? []) {
+      assert.ok(entry.label, `${stage.name} has a suggestion with no label`);
+      const id = entry.uuid.split(".").pop();
+      assert.ok(ids.has(id), `${stage.name} suggests a missing document: ${entry.label}`);
+    }
+  }
+});
+
+test("every noble Upbringing carries the faction's own suggestions (p.72)", () => {
+  // "Suggested Benefices: Nobility, Riches" is printed against the Nobles
+  // write-up rather than any one house, so it applies to all of them.
+  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+    const labels = stage.system.suggestedBenefices.map(e => e.label);
+    assert.ok(labels.includes("Nobility"), `${stage.name} is missing Nobility`);
+    assert.ok(labels.includes("Riches"), `${stage.name} is missing Riches`);
+  }
+});
+
+test("only the houses the book names carry extra suggestions (p.73)", () => {
+  const extras = {};
+  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+    const own = stage.system.suggestedBenefices
+      .filter(e => !["Nobility", "Riches"].includes(e.label))
+      .map(e => e.label);
+    if (own.length) extras[stage.system.group] = own;
+  }
+  assert.deepEqual(extras, {
+    "Li Halan": ["Church Ally (1-11 pts)"],
+    "al-Malik": ["Passage Contract (8 pts)"]
+  }, "Hawkwood, Decados and the Hazat have none printed");
+});
+
+test("suggestions merge across stages without duplicating", () => {
+  // Every noble Upbringing suggests Nobility, and so may a career; a wizard
+  // merging them should show one entry, not several.
+  const upbringing = byName("Upbringing: High-Court (al-Malik)").system;
+  const career = byName("Early Career: Questing").system;
+
+  const merged = new Map();
+  for (const stage of [upbringing, career]) {
+    for (const entry of stage.suggestedBenefices) {
+      const existing = merged.get(entry.uuid);
+      if (existing) existing.value = Math.max(existing.value, entry.value);
+      else merged.set(entry.uuid, { ...entry });
+    }
+  }
+
+  const labels = [...merged.values()].map(e => e.label).sort();
+  assert.deepEqual(labels, [
+    "Imperial Knight Charter (5 pts)",
+    "Nobility",
+    "Passage Contract (8 pts)",
+    "Riches",
+    "Well-Travelled (5 pts)"
+  ]);
+});

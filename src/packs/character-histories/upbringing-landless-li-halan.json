@@ -113,7 +113,28 @@
         "key": "Compendium.fading-suns.blessings-curses.Item.C3HdjGw0H3J72uWz",
         "label": "Guilty"
       }
-    ]
+    ],
+    "suggestedBenefices": [
+      {
+        "label": "Nobility",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "note": ""
+      },
+      {
+        "label": "Riches",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+        "value": 1,
+        "note": "Or any other form of Riches"
+      },
+      {
+        "label": "Church Ally (1-11 pts)",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.kLXfUgrKlouekXOo",
+        "value": 1,
+        "note": ""
+      }
+    ],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

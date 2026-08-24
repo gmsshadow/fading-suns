@@ -287,7 +287,22 @@ function buildCharacterHistories() {
       stageType: stage.stage,
       faction: stage.faction,
       group: stage.group ?? "",
-      grants: resolveReferences(stage.grants, stage.n)
+      grants: resolveReferences(stage.grants, stage.n),
+      // Suggestions name a Benefice; the uuid is resolved here so the wizard can
+      // offer it with one click, and a typo fails the build.
+      suggestedBenefices: (stage.suggested ?? []).map(entry => {
+        const polarity = BENEFICE_NAMES.get(entry.key);
+        if (!polarity) {
+          throw new Error(`Stage "${stage.n}" suggests unknown Benefice "${entry.key}"`);
+        }
+        return {
+          label: entry.label,
+          uuid: referenceUuid("benefices-afflictions", polarity, entry.key),
+          value: entry.value ?? 0,
+          note: entry.note ?? ""
+        };
+      }),
+      beneficeRestriction: stage.restriction ?? ""
     },
     effects: [],
     folder: null,

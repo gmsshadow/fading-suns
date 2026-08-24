@@ -109,7 +109,9 @@
         "label": "Slash",
         "value": 3
       }
-    ]
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

@@ -267,3 +267,17 @@ FADING_SUNS.combatActionCategories = {
   firearms: "FADINGSUNS.CombatAction.Firearms",
   graa: "FADINGSUNS.CombatAction.Graa"
 };
+
+/**
+ * "Suggested Benefices" printed for each faction as a whole (p.72–p.85).
+ * Stage-level suggestions, which vary by house or sect, live on the stage items.
+ */
+FADING_SUNS.factionBenefices = {
+  noble: [
+    { label: "Nobility", key: "Nobility" },
+    { label: "Riches", key: null }
+  ],
+  priest: [],
+  merchant: [],
+  alien: []
+};

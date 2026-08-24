@@ -61,7 +61,22 @@
         "key": "Compendium.fading-suns.blessings-curses.Item.mWNusO6uteBuq5Ka",
         "label": "Prideful"
       }
-    ]
+    ],
+    "suggestedBenefices": [
+      {
+        "label": "Nobility",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "note": ""
+      },
+      {
+        "label": "Riches",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+        "value": 1,
+        "note": "Or any other form of Riches"
+      }
+    ],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

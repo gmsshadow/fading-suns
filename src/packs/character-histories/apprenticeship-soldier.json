@@ -62,7 +62,9 @@
         "specialty": "Military Tactics",
         "value": 1
       }
-    ]
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

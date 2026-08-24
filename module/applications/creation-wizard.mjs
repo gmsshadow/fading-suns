@@ -67,6 +67,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       next: FadingSunsCreationWizard.#onNext,
       apply: FadingSunsCreationWizard.#onApply,
       addBenefice: FadingSunsCreationWizard.#onAddBenefice,
+      addSuggested: FadingSunsCreationWizard.#onAddSuggested,
       removeBenefice: FadingSunsCreationWizard.#onRemoveBenefice,
       buyExtra: FadingSunsCreationWizard.#onBuyExtra,
       removeExtra: FadingSunsCreationWizard.#onRemoveExtra
@@ -213,11 +214,61 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
           entries
         })),
       chosenBenefices: this.draft.benefices,
+      suggestions: this.#suggestedBenefices(),
+      beneficeRestrictions: this.chosenStages
+        .map(stage => stage.system.beneficeRestriction)
+        .filter(Boolean),
       beneficeBudget: budget,
       beneficeSpent: spent,
       beneficeRemaining: budget - spent,
       beneficeOver: spent > budget
     };
+  }
+
+  /**
+   * The Suggested Benefices from every chosen stage, merged.
+   *
+   * The rulebook offers these against the faction and house write-ups (p.72–76).
+   * Two stages may suggest the same entry — every noble Upbringing suggests
+   * Nobility — so duplicates collapse, keeping the highest suggested rank and
+   * recording which stages proposed it.
+   *
+   * @returns {Array<{label: string, uuid: string, value: number, note: string,
+   *                  from: string[], taken: boolean}>}
+   */
+  #suggestedBenefices() {
+    const merged = new Map();
+
+    for (const stage of this.chosenStages) {
+      for (const entry of stage.system.suggestedBenefices ?? []) {
+        const existing = merged.get(entry.uuid);
+        if (existing) {
+          existing.value = Math.max(existing.value, entry.value);
+          if (!existing.from.includes(stage.name)) existing.from.push(stage.name);
+          continue;
+        }
+        merged.set(entry.uuid, {
+          label: entry.label,
+          uuid: entry.uuid,
+          value: entry.value,
+          note: entry.note,
+          from: [stage.name]
+        });
+      }
+    }
+
+    // Mark what has already been taken, so the list reads as advice not a to-do.
+    for (const suggestion of merged.values()) {
+      suggestion.taken = this.draft.benefices.some(b => b.uuid === suggestion.uuid);
+    }
+
+    return [...merged.values()]
+      .map(entry => ({
+        ...entry,
+        // Stage names carry their type as a prefix, which is noise in a chip.
+        from: entry.from.map(name => name.replace(/^[^:]+:\s*/, "")).join(", ")
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
   }
 
   /* -------------------------------------------- */
@@ -724,6 +775,27 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     this.render();
   }
 
+  /**
+   * Take one of the book's suggested Benefices, at the points it suggests.
+   * @this {FadingSunsCreationWizard}
+   */
+  static async #onAddSuggested(event, target) {
+    const { uuid, value } = target.dataset;
+    if (!uuid) return;
+
+    const document = await fromUuid(uuid);
+    if (!document) return;
+    if (this.draft.benefices.some(b => b.uuid === uuid)) return;
+
+    this.draft.benefices.push({
+      uuid,
+      name: document.name,
+      polarity: document.system.polarity,
+      value: Number(value) || document.system.value
+    });
+    this.render();
+  }
+
   /** @this {FadingSunsCreationWizard} */
   static async #onRemoveBenefice(event, target) {
     this.draft.benefices.splice(Number(target.dataset.index), 1);
@@ -803,6 +875,14 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         game.i18n.format("FADINGSUNS.Creation.Freed", { points: review.freed })
       );
     }
+    // Mark the character as made, so the wizard is not run over the top of an
+    // existing character by accident. A gamemaster can still override.
+    await this.actor.setFlag("fading-suns", "creation", {
+      completed: true,
+      at: Date.now(),
+      by: game.user.id
+    });
+
     ui.notifications.info(game.i18n.localize("FADINGSUNS.Creation.Applied"));
 
     await this.close();

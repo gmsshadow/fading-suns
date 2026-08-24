@@ -397,7 +397,16 @@
       "PickOne": "— choose —",
       "ExtraPoints": "Extra points",
       "NoBenefices": "Nothing chosen yet.",
-      "NoExtras": "Nothing bought yet."
+      "NoExtras": "Nothing bought yet.",
+      "Locked": "Character creation has already been completed. Ask your gamemaster to run it again.",
+      "Reopen": "Creation already applied — reopen (gamemaster only)",
+      "ReopenTitle": "Run creation again?",
+      "ReopenWarning": "Creation has already been applied to <strong>{name}</strong>. Running it again sets characteristics afresh but <em>adds</em> a second set of stages, Blessings, Benefices and Combat Actions on top of the existing ones. Remove the old ones first unless that is what you want.",
+      "Suggested": "Suggested Benefices",
+      "SuggestedHint": "What the rulebook proposes for this background. Advice, not a requirement — take any, all or none.",
+      "RerunTooltip": "Creation already completed — click to run it again (gamemaster only)",
+      "RerunTitle": "Run creation again?",
+      "RerunWarning": "<strong>{name}</strong> has already been through character creation. Running it again will set characteristics to the new lifepath's values and add a second set of stages, Blessings and Benefices on top of the existing ones. This cannot be undone."
     },
     "CombatAction": {
       "Category": "Style",

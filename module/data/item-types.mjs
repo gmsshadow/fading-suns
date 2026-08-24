@@ -423,7 +423,26 @@ export class FadingSunsStage extends FadingSunsItemBase {
       // The house, sect, guild or grouping this stage belongs to, e.g. "Hawkwood",
       // "Military". Free text because minor houses are meant to be invented (p.72).
       group: new fields.StringField({ required: false, blank: true, initial: "" }),
-      grants: new fields.ArrayField(new fields.ObjectField())
+      grants: new fields.ArrayField(new fields.ObjectField()),
+      // "Suggested Benefices" from the faction and house write-ups (p.72–76).
+      // Advisory only: the rulebook offers them, it does not require them.
+      suggestedBenefices: new fields.ArrayField(new fields.SchemaField({
+        label: new fields.StringField({ required: true, blank: false }),
+        uuid: new fields.StringField({ required: false, blank: true, initial: "" }),
+        value: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 }),
+        note: new fields.StringField({ required: false, blank: true, initial: "" })
+      })),
+      // "Benefice Restriction: Riches (7 pts maximum)" and the like.
+      beneficeRestriction: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // "Suggested Benefices" as printed alongside each house, sect or guild.
+      // Advisory only: the wizard collates them at Step Five (p.72–p.85).
+      suggestedBenefices: new fields.ArrayField(new fields.SchemaField({
+        label: new fields.StringField({ required: true, blank: false }),
+        uuid: new fields.StringField({ required: false, blank: true, initial: "" }),
+        value: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
+      })),
+      // "Benefice Restriction: Riches (7 pts maximum)" and the like.
+      beneficeRestriction: new fields.StringField({ required: false, blank: true, initial: "" })
     });
   }
 

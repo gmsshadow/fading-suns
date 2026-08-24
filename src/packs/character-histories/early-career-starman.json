@@ -130,7 +130,9 @@
         "value": 3,
         "label": "Nobility"
       }
-    ]
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

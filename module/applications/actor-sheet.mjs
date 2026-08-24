@@ -67,6 +67,8 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       flags: actor.flags,
       config: CONFIG.FADING_SUNS,
       isCharacter: actor.type === "character",
+      creationComplete: !!actor.getFlag("fading-suns", "creationComplete"),
+      canOpenCreation: !actor.getFlag("fading-suns", "creationComplete") || game.user.isGM,
       isNPC: actor.type === "npc",
       editable: this.isEditable,
       owner: actor.isOwner,
@@ -310,9 +312,28 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
 
   /**
    * Open the character creation wizard (p.70).
+   *
+   * The wizard locks itself once it has been applied, because running it twice
+   * would add a second set of stages, Blessings and Benefices on top of the
+   * first. A gamemaster can still reopen it, but is warned first.
+   *
    * @this {FadingSunsActorSheet}
    */
   static async #onOpenCreation() {
+    const complete = this.actor.getFlag("fading-suns", "creationComplete");
+
+    if (complete) {
+      if (!game.user.isGM) {
+        ui.notifications.warn(game.i18n.localize("FADINGSUNS.Creation.Locked"));
+        return;
+      }
+      const confirmed = await foundry.applications.api.DialogV2.confirm({
+        window: { title: game.i18n.localize("FADINGSUNS.Creation.ReopenTitle") },
+        content: `<p>${game.i18n.format("FADINGSUNS.Creation.ReopenWarning", { name: this.actor.name })}</p>`
+      });
+      if (!confirmed) return;
+    }
+
     const { FadingSunsCreationWizard } = await import("./creation-wizard.mjs");
     return new FadingSunsCreationWizard(this.actor).render(true);
   }

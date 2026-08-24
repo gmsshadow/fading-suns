@@ -239,8 +239,19 @@ with a tooltip saying how many are outstanding. Ticking a third option in a "cho
 whichever was ticked earliest rather than refusing the click. Revisiting the step shows what was
 already chosen.
 
+**The wizard locks once a character has been made.** Running it again would set characteristics to
+the new lifepath's values and add a second set of stages, Blessings and Benefices on top of the
+existing ones, which is almost never wanted on a character already in play. Players see a padlock;
+a gamemaster sees an open padlock and gets a warning dialog before proceeding. Completion is
+recorded in `flags.fading-suns.creation`.
+
 **Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
-against a budget of ten points. **Step Six (Extra points)** spends the 40-point pool on
+against a budget of ten points. It also shows the
+**Suggested Benefices** the rulebook prints against each faction and house (p.72–76), merged across
+whichever stages were chosen, each addable at the suggested rank with one click. They are advice
+rather than requirement, so nothing is pre-selected and taken ones are ticked rather than hidden.
+Every noble carries *Nobility* and *Riches* from the faction write-up; Li Halan add a Church Ally
+and al-Malik a Passage Contract, and the book prints none at all for Hawkwood, Decados or the Hazat. **Step Six (Extra points)** spends the 40-point pool on
 characteristics (3 each), skills (1), Wyrd (2) and Blessings (their listed cost), with every purchase
 listed and removable. Both steps run in Custom Creation too.
 
@@ -367,6 +378,8 @@ fail silently at runtime rather than throwing:
   and the sheet registration — all agree with `system.json`
 - declared packs exist and contain LevelDB data, and nothing but compiled packs lives under `packs/`
 - no application assigns to a property ApplicationV2 exposes as a getter
+- no class declares the same member twice — legal for public members, where the later silently
+  wins, and a syntax error for private ones; either way a sign of a half-applied edit
 
 That last one is worth naming. ApplicationV2 exposes `state`, `id`, `title`, `element`, `window`
 and others as getters; assigning to one in a subclass constructor throws at construction with a

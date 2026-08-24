@@ -114,7 +114,9 @@
           }
         ]
       }
-    ]
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

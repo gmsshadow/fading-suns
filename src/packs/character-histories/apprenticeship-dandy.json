@@ -134,7 +134,9 @@
         "key": "Ride",
         "value": 1
       }
-    ]
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

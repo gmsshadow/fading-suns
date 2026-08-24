@@ -97,7 +97,47 @@ for (const file of templates) {
 }
 
 /* -------------------------------------------- */
-/*  3. Manifest and localisation parse          */
+/*  3. No duplicate class members               */
+/* -------------------------------------------- */
+
+/**
+ * A class body with two methods of the same name is legal for public members —
+ * the later silently wins — and a syntax error only for private ones. Either way
+ * it signals a half-applied edit, so both are flagged.
+ *
+ * Members are counted per class rather than per file, since sibling classes
+ * legitimately share names like `defineSchema`. Control-flow keywords look like
+ * calls at the same indent and are excluded.
+ */
+const NOT_MEMBERS = new Set([
+  "if", "for", "while", "switch", "catch", "return", "function", "do", "else", "with"
+]);
+
+for (const file of modules) {
+  const lines = readFileSync(file, "utf8").split("\n");
+  let seen = new Map();
+  let className = "";
+
+  for (const line of lines) {
+    const classMatch = /^\s*(?:export\s+)?class\s+(\w+)/.exec(line);
+    if (classMatch) {
+      seen = new Map();
+      className = classMatch[1];
+      continue;
+    }
+
+    const member = /^ {2}(?:static\s+)?(?:async\s+)?(?:get\s+|set\s+)?(#?[A-Za-z][\w]*)\s*\(/.exec(line);
+    if (!member) continue;
+
+    const name = member[1];
+    if (NOT_MEMBERS.has(name)) continue;
+    if (seen.has(name)) note("duplicate class member", `${className}#${name} in ${rel(file)}`);
+    seen.set(name, true);
+  }
+}
+
+/* -------------------------------------------- */
+/*  4. Manifest and localisation parse          */
 /* -------------------------------------------- */
 
 let system, lang;
@@ -150,7 +190,7 @@ for (const file of modules) {
 }
 
 /* -------------------------------------------- */
-/*  5. Applications do not shadow framework accessors  */
+/*  6. Applications do not shadow framework accessors  */
 /* -------------------------------------------- */
 
 /**
@@ -173,7 +213,7 @@ for (const file of walk(path.join(ROOT, "module", "applications"), [".mjs"])) {
 }
 
 /* -------------------------------------------- */
-/*  6. Item type registries agree               */
+/*  7. Item type registries agree               */
 /* -------------------------------------------- */
 
 if (system) {
@@ -205,7 +245,7 @@ if (system) {
     }
   }
 
-  /* ---- 7. Declared packs exist and are compiled ---- */
+  /* ---- 8. Declared packs exist and are compiled ---- */
   for (const pack of system.packs ?? []) {
     const dir = path.join(ROOT, pack.path);
     if (!existsSync(dir)) {

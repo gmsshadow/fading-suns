@@ -7,10 +7,13 @@
       <input class="charname" name="name" type="text" value="{{actor.name}}"
              placeholder="{{localize 'FADINGSUNS.Field.Name'}}"/>
       {{#if isCharacter}}
-        <button type="button" class="icon-btn creation-btn" data-action="openCreation"
-                data-tooltip="{{localize 'FADINGSUNS.Creation.Open'}}">
-          <i class="fa-solid fa-wand-sparkles"></i>
-        </button>
+        {{#if canOpenCreation}}
+          <button type="button" class="icon-btn creation-btn {{#if creationComplete}}is-locked{{/if}}"
+                  data-action="openCreation"
+                  data-tooltip="{{#if creationComplete}}{{localize 'FADINGSUNS.Creation.Reopen'}}{{else}}{{localize 'FADINGSUNS.Creation.Open'}}{{/if}}">
+            <i class="fa-solid {{#if creationComplete}}fa-lock{{else}}fa-wand-sparkles{{/if}}"></i>
+          </button>
+        {{/if}}
       {{/if}}
     </div>
 

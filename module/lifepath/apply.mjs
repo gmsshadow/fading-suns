@@ -189,6 +189,10 @@ export async function applyLifepathToActor(actor, state, { stages = [] } = {}) {
       `${actor.system.biography ?? ""}<h3>${heading}</h3><ul>${notes}</ul>`;
   }
 
+  // Record that creation has been run, so the wizard can lock itself (p.70).
+  update["flags.fading-suns.creationComplete"] = true;
+  update["flags.fading-suns.creationDate"] = Date.now();
+
   await actor.update(update);
   if (skillUpdates.length) await actor.updateEmbeddedDocuments("Item", skillUpdates);
   if (newItems.length) await actor.createEmbeddedDocuments("Item", newItems);

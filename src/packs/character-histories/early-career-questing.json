@@ -378,7 +378,22 @@
         "value": 3,
         "label": "Nobility"
       }
-    ]
+    ],
+    "suggestedBenefices": [
+      {
+        "label": "Imperial Knight Charter (5 pts)",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.Pdnhae6HLNTQK0ca",
+        "value": 5,
+        "note": ""
+      },
+      {
+        "label": "Well-Travelled (5 pts)",
+        "uuid": "Compendium.fading-suns.benefices-afflictions.Item.7Xg2JQ2FFeHFSMli",
+        "value": 5,
+        "note": ""
+      }
+    ],
+    "beneficeRestriction": ""
   },
   "effects": [],
   "folder": null,

@@ -64,6 +64,28 @@ const HOUSE_TRAITS = {
   "al-Malik": [bless("Gracious"), curse("Impetuous")]
 };
 
+/**
+ * "Suggested Benefices" as printed beside each house (p.72–73). Only Li Halan
+ * and al-Malik carry one; the other three houses are covered by the noble
+ * faction's general suggestion of Nobility and Riches.
+ *
+ * `key` names an entry in the Benefices compendium, resolved to a uuid at build
+ * time. A null key is a category rather than an entry, so it is shown as advice
+ * without a link.
+ */
+const NOBLE_BENEFICES = [
+  { label: "Nobility", key: "Nobility", value: 3 },
+  { label: "Riches", key: "Cash", value: 1, note: "Or any other form of Riches" }
+];
+
+const HOUSE_BENEFICES = {
+  Hawkwood: [],
+  Decados: [],
+  Hazat: [],
+  "Li Halan": [{ label: "Church Ally (1-11 pts)", key: "Ally", value: 1 }],
+  "al-Malik": [{ label: "Passage Contract (8 pts)", key: "Passage Contracts", value: 8 }]
+};
+
 const SETTINGS = {
   "High-Court": "Raised in a palace among servants and tutors, watched closely and held to high expectations — but present when foreign visitors call and famous things happen.",
   "Rural Estate": "Raised in a manor or castle, far from high-court but well above the lot of freemen. Tutors divide their time, leaving the child to find her own way.",
@@ -83,7 +105,8 @@ const upbringing = (house, setting, grants) => ({
   faction: "noble",
   group: house,
   d: SETTINGS[setting],
-  grants: [...grants, ...HOUSE_TRAITS[house]]
+  grants: [...grants, ...HOUSE_TRAITS[house]],
+  suggested: [...NOBLE_BENEFICES, ...HOUSE_BENEFICES[house]]
 });
 
 /** Shorthand for the choice ids, which must be unique across the whole pack. */
@@ -335,6 +358,10 @@ const EARLY_CAREER = [
   {
     n: "Questing", stage: "earlyCareer", faction: "noble", group: "Questing",
     d: "Knighted and sent out into the realm, to make a name or fail trying. Shaped by the road rather than by the house.",
+    suggested: [
+      { label: "Imperial Knight Charter (5 pts)", key: "Imperial Charter", value: 5 },
+      { label: "Well-Travelled (5 pts)", key: "Well-Travelled", value: 5 }
+    ],
     grants: [
       pickOne("career-questing-body-major", "Body characteristic (choose one) +2",
         opt("Strength", ch("body.strength", 2)),

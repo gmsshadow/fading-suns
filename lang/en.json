@@ -239,7 +239,8 @@
       "BeneficePoints": "Afflictions do not enlarge this budget — they grant Extra points instead (p.117).",
       "Stage": "Drag a stage from the Character Histories compendium onto a character to record it.",
       "ExtraPoints": "Extra points are the only way to buy Blessings, occult characteristics and powers. Curses and Afflictions grant more (p.88).",
-      "CombatAction": "Combat actions are rated by the level of skill needed to learn them, and cost one Extra point per level (p.102, p.88)."
+      "CombatAction": "Combat actions are rated by the level of skill needed to learn them, and cost one Extra point per level (p.102, p.88).",
+      "ExtraStages": "A character may take two Extra Stages, at 20 Extra points each — which is the whole allowance (p.84). Take fewer to keep points for Step Six."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -391,7 +392,8 @@
         "choices": "Choices",
         "review": "Review",
         "benefices": "Benefices",
-        "extras": "Extra Points"
+        "extras": "Extra Points",
+        "extraStages": "Extra Stages"
       },
       "Outstanding": "{count} choice(s) still to make",
       "PickOne": "— choose —",
@@ -408,7 +410,21 @@
       "RerunTitle": "Run creation again?",
       "RerunWarning": "<strong>{name}</strong> has already been through character creation. Running it again will set characteristics to the new lifepath's values and add a second set of stages, Blessings and Benefices on top of the existing ones. This cannot be undone.",
       "Levels": "How many levels to buy",
-      "PerLevel": "level"
+      "PerLevel": "level",
+      "StagesTaken": "stages taken:",
+      "Allowance": "These stages allow you",
+      "AllowanceHint": "Your Extra Stages also allow, on top of the points below:",
+      "CharacteristicPicks": "characteristic levels",
+      "FreePoints": "points for cybernetics",
+      "SpentOnStages": "Spent on Extra Stages",
+      "Blocked": {
+        "Pending": "Not yet available — the Psi and Theurgy compendiums are still to come.",
+        "Full": "No stages left. Drop one to take this instead.",
+        "Exclusive": "Loaded-for-Bear allows no other Extra Stages.",
+        "ExclusiveFirst": "Loaded-for-Bear may only be taken on its own.",
+        "Requires": "Requires {requires} first.",
+        "Faction": "Not open to this faction."
+      }
     },
     "CombatAction": {
       "Category": "Style",

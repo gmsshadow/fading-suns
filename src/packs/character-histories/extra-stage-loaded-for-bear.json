@@ -1,0 +1,40 @@
+{
+  "_key": "!items!FtJG8MMtZF5oO7VP",
+  "_id": "FtJG8MMtZF5oO7VP",
+  "name": "Extra Stage: Loaded-for-Bear",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>So much machinery that there is little room for anything else.</p>",
+    "stageType": "extra",
+    "faction": "",
+    "group": "Cybernetics",
+    "grants": [
+      {
+        "kind": "note",
+        "text": "Spend 40 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220."
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 40,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 40
+    },
+    "requires": "",
+    "exclusive": true,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

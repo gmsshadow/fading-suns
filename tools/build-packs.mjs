@@ -302,7 +302,18 @@ function buildCharacterHistories() {
           note: entry.note ?? ""
         };
       }),
-      beneficeRestriction: stage.restriction ?? ""
+      beneficeRestriction: stage.restriction ?? "",
+      extraCost: stage.cost ?? 0,
+      allowance: {
+        characteristics: stage.allowance?.characteristics ?? 0,
+        skills: stage.allowance?.skills ?? 0,
+        free: stage.allowance?.free ?? 0
+      },
+      // Prerequisites name another stage, and documents carry their stage type as
+      // a prefix, so the reference is resolved to the full document name here.
+      requires: stage.requires ? `${STAGE_LABELS[stage.stage]}: ${stage.requires}` : "",
+      exclusive: !!stage.exclusive,
+      pending: !!stage.pending
     },
     effects: [],
     folder: null,

@@ -126,6 +126,49 @@
       {{/if}}
     {{/if}}
 
+    {{#if (eq step "extraStages")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.extraStages"}}</h3>
+      <p class="budget {{#if (lt extraStageRemaining 0)}}is-over{{/if}}">
+        {{localize "FADINGSUNS.Creation.ExtraPoints"}}:
+        <strong>{{extraStageSpent}} / {{extraStageBudget}}</strong>
+        <span class="hint">{{localize "FADINGSUNS.Creation.StagesTaken"}}
+          {{chosenExtraStages.length}} / {{extraStageSlots}}</span>
+      </p>
+      <p class="hint">{{localize "FADINGSUNS.Hint.ExtraStages"}}</p>
+
+      {{#if allowanceTotals.skills}}
+        <p class="hint allowance">{{localize "FADINGSUNS.Creation.Allowance"}}:
+          <strong>{{allowanceTotals.characteristics}}</strong> {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
+          <strong>{{allowanceTotals.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}
+          {{#if allowanceTotals.free}}, <strong>{{allowanceTotals.free}}</strong> {{localize "FADINGSUNS.Creation.FreePoints"}}{{/if}}
+        </p>
+      {{/if}}
+
+      {{#each extraStageGroups as |group|}}
+        {{#if group.name}}<h4 class="stage-group-heading">{{group.name}}</h4>{{/if}}
+        <ol class="stage-list">
+          {{#each group.stages as |stage|}}
+            <li class="stage-option {{#if stage.taken}}is-selected{{/if}} {{#if stage.blocked}}is-blocked{{/if}}">
+              <button type="button" class="stage-pick" data-action="toggleExtraStage"
+                      data-uuid="{{stage.uuid}}" {{#if stage.blocked}}disabled{{/if}}>
+                <span class="stage-name">{{stage.label}}</span>
+                <span class="stage-cost">{{stage.cost}}</span>
+              </button>
+              <div class="stage-summary">{{{stage.description}}}</div>
+              {{#if stage.blocked}}
+                <p class="stage-blocked">{{stage.blockedReason}}</p>
+              {{else if stage.allowance.skills}}
+                <p class="stage-allowance">
+                  +{{stage.allowance.characteristics}} {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
+                  +{{stage.allowance.skills}} {{localize "FADINGSUNS.Tab.Skills"}}
+                </p>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ol>
+      {{/each}}
+    {{/if}}
+
     {{#if (eq step "benefices")}}
       <h3>{{localize "FADINGSUNS.Creation.Step.benefices"}}</h3>
       <p class="budget {{#if beneficeOver}}is-over{{/if}}">
@@ -204,6 +247,14 @@
           {{#if extraFromAfflictions}}+{{extraFromAfflictions}} {{localize "FADINGSUNS.Benefice.Affliction"}}{{/if}}
         </span>
       </p>
+      {{#if extraStageCost}}
+        <p class="hint">{{localize "FADINGSUNS.Creation.SpentOnStages"}}: <strong>{{extraStageCost}}</strong></p>
+      {{/if}}
+      {{#if allowance.skills}}
+        <p class="hint allowance">{{localize "FADINGSUNS.Creation.AllowanceHint"}}
+          <strong>{{allowance.characteristics}}</strong> {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
+          <strong>{{allowance.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}</p>
+      {{/if}}
       <p class="hint">{{localize "FADINGSUNS.Hint.ExtraPoints"}}</p>
 
       <div class="picker-row">

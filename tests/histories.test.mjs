@@ -25,11 +25,17 @@ function loadPack(name) {
   return readdirSync(dir).map(f => JSON.parse(readFileSync(path.join(dir, f), "utf8")));
 }
 
-const stages = loadPack("character-histories");
+const allStages = loadPack("character-histories");
+
+/** The three lifepath stages, which have published point budgets (p.88). */
+const stages = allStages.filter(s => s.system.stageType !== "extra");
+
+/** The Extra Stages, which are bought with Extra points instead (p.84). */
+const extraStages = allStages.filter(s => s.system.stageType === "extra");
 const blessings = loadPack("blessings-curses");
 const benefices = loadPack("benefices-afflictions");
 const combatActions = loadPack("combat-actions");
-const byName = name => stages.find(s => s.name === name);
+const byName = name => allStages.find(s => s.name === name);
 
 /** Characters begin with Body and Mind at 3, and the nine natural skills at 3. */
 function startingCharacter() {
@@ -54,6 +60,7 @@ function startingCharacter() {
 /* -------------------------------------------- */
 
 test("the pack holds the complete noble faction", () => {
+  assert.equal(allStages.length, 36, "26 lifepath stages plus 10 Extra Stages");
   assert.equal(stages.length, 26);
   const counts = stages.reduce((m, s) => {
     m[s.system.stageType] = (m[s.system.stageType] ?? 0) + 1;
@@ -101,12 +108,12 @@ test("every grant uses a known kind", () => {
       if (grant.kind === "choice") for (const o of grant.options ?? []) walk(o.grants ?? []);
     }
   };
-  for (const stage of stages) walk(stage.system.grants);
+  for (const stage of allStages) walk(stage.system.grants);
 });
 
 test("every choice has a unique id and enough options to satisfy its pick", () => {
   const seen = new Set();
-  for (const stage of stages) {
+  for (const stage of allStages) {
     for (const choice of stage.system.grants.filter(g => g.kind === "choice")) {
       assert.ok(!seen.has(choice.id), `duplicate choice id "${choice.id}"`);
       seen.add(choice.id);
@@ -128,7 +135,7 @@ test("every Blessing, Curse and Benefice reference resolves to a real document",
       if (grant.kind === "choice") for (const o of grant.options ?? []) walk(o.grants ?? []);
     }
   };
-  for (const stage of stages) walk(stage.system.grants);
+  for (const stage of allStages) walk(stage.system.grants);
 });
 
 test("characteristic targets are dot paths, not bare names", () => {
@@ -140,7 +147,7 @@ test("characteristic targets are dot paths, not bare names", () => {
       if (grant.kind === "choice") for (const o of grant.options ?? []) walk(o.grants ?? []);
     }
   };
-  for (const stage of stages) walk(stage.system.grants);
+  for (const stage of allStages) walk(stage.system.grants);
 });
 
 test("every Early Career confers noble rank (p.75)", () => {
@@ -285,7 +292,7 @@ test("every Combat Action a stage teaches costs what the compendium says", () =>
       if (grant.kind === "choice") for (const o of grant.options ?? []) walk(o.grants ?? []);
     }
   };
-  for (const stage of stages) walk(stage.system.grants);
+  for (const stage of allStages) walk(stage.system.grants);
 });
 
 /* -------------------------------------------- */
@@ -447,7 +454,7 @@ test("an open choice, once picked, resolves and no longer blocks", () => {
 
 test("every suggested Benefice resolves to a real document", () => {
   const ids = new Set(benefices.map(d => d._id));
-  for (const stage of stages) {
+  for (const stage of allStages) {
     for (const entry of stage.system.suggestedBenefices ?? []) {
       assert.ok(entry.label, `${stage.name} has a suggestion with no label`);
       const id = entry.uuid.split(".").pop();
@@ -503,4 +510,84 @@ test("suggestions merge across stages without duplicating", () => {
     "Riches",
     "Well-Travelled (5 pts)"
   ]);
+});
+
+
+/* -------------------------------------------- */
+/*  Extra Stages (p.84)                         */
+/* -------------------------------------------- */
+
+test("all ten Extra Stages are present", () => {
+  assert.equal(extraStages.length, 10);
+  const groups = extraStages.reduce((m, s) => {
+    m[s.system.group] = (m[s.system.group] ?? 0) + 1;
+    return m;
+  }, {});
+  assert.deepEqual(groups, {
+    "Tours of Duty": 2,
+    "Imperial Tours": 2,
+    Cybernetics: 2,
+    "Psychic Awakening": 2,
+    "Theurgic Calling": 2
+  });
+});
+
+test("two Extra Stages spend the whole Extra point allowance (p.85)", () => {
+  // "Extra points are spent during the extra stages: Tour of Duty (two stages,
+  //  20 pts per tour)" — two twenty-point stages come to the full forty.
+  const tour = extraStages.find(s => s.name === "Extra Stage: Tour of Duty");
+  const another = extraStages.find(s => s.name === "Extra Stage: Another Tour of Duty");
+  assert.equal(tour.system.extraCost + another.system.extraCost, 40);
+});
+
+test("Loaded-for-Bear costs the whole allowance and excludes everything else (p.84)", () => {
+  const loaded = extraStages.find(s => s.name === "Extra Stage: Loaded-for-Bear");
+  assert.equal(loaded.system.extraCost, 40);
+  assert.equal(loaded.system.exclusive, true);
+  assert.equal(loaded.system.allowance.free, 40);
+});
+
+test("prerequisites point at stages that exist", () => {
+  const names = new Set(extraStages.map(s => s.name));
+  for (const stage of extraStages) {
+    if (!stage.system.requires) continue;
+    assert.ok(names.has(stage.system.requires),
+      `${stage.name} requires "${stage.system.requires}", which is not in the pack`);
+  }
+});
+
+test("only the occult stages are marked pending", () => {
+  const pending = extraStages.filter(s => s.system.pending).map(s => s.name).sort();
+  assert.deepEqual(pending, [
+    "Extra Stage: Adept Theurge", "Extra Stage: Natal Psi",
+    "Extra Stage: Neophyte Theurge", "Extra Stage: Savant Psi"
+  ], "the four occult stages wait on the Psi and Theurgy compendiums");
+});
+
+test("Tours of Duty hand out an allowance rather than fixed skills (p.84)", () => {
+  const expected = {
+    "Tour of Duty": 14,
+    "Another Tour of Duty": 10,
+    "Questing Knight Tour of Duty": 10,
+    "Cohort Tour of Duty": 11
+  };
+  for (const [name, skills] of Object.entries(expected)) {
+    const stage = extraStages.find(s => s.name === `Extra Stage: ${name}`);
+    assert.equal(stage.system.allowance.skills, skills, name);
+    assert.equal(stage.system.allowance.characteristics, 2, name);
+  }
+});
+
+test("the Imperial tours grant the Benefice that goes with them (p.85)", () => {
+  const questing = extraStages.find(s => s.name === "Extra Stage: Questing Knight Tour of Duty");
+  const cohort = extraStages.find(s => s.name === "Extra Stage: Cohort Tour of Duty");
+  assert.equal(questing.system.grants.find(g => g.kind === "benefice").label, "Imperial Charter");
+  assert.equal(cohort.system.grants.find(g => g.kind === "benefice").label, "Cohort Badge");
+});
+
+test("each Tour offers its Worldly Benefits under a distinct choice id", () => {
+  const ids = extraStages
+    .flatMap(s => s.system.grants.filter(g => g.kind === "choice").map(g => g.id));
+  assert.equal(new Set(ids).size, ids.length, "choice ids must be unique across the pack");
+  assert.ok(ids.length >= 4, "each of the four tours offers a benefit choice");
 });

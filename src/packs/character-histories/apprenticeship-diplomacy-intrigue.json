@@ -116,7 +116,16 @@
       }
     ],
     "suggestedBenefices": [],
-    "beneficeRestriction": ""
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
   },
   "effects": [],
   "folder": null,

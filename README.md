@@ -248,6 +248,20 @@ recorded in `flags.fading-suns.creation`.
 Purchases in Step Six take a quantity, so four levels of a skill is one action rather than four
 clicks, and removing a purchase clears the whole line.
 
+**Extra Stages (p.84)** come between the lifepath and Step Five. A character takes two, at 20 Extra
+points each — which is the whole 40-point allowance, since the rulebook is explicit that *"Extra
+points are spent during the extra stages"* (p.85). Taking fewer leaves points for Step Six, which
+nets off whatever the stages consumed.
+
+All ten are listed. The four Tours of Duty and the two Cybernetics options work; the four occult
+options are greyed with a note, pending the Psi and Theurgy compendiums. The step enforces the
+rulebook's constraints: *Another Tour of Duty* requires a first, *Loaded-for-Bear* costs the full
+40 and allows nothing else, and dropping a stage also drops anything that required it.
+
+Tours hand out an allowance to distribute — 14 skill points for a first tour, 10 for a second, plus
+two characteristic levels — rather than fixed traits, so the allowance is shown and carried into
+Step Six.
+
 **Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
 against a budget of ten points. It also shows the
 **Suggested Benefices** the rulebook prints against each faction and house (p.72–76), merged across
@@ -401,8 +415,7 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: weapons and armour from Chapter Seven
-- Extra Stages (p.84): Tours of Duty, Psychic Awakening, Theurgic Calling and Cybernetics
+- Compendiums: weapons and armour from Chapter Seven; Psi powers and Theurgic rites, which unlock the four occult Extra Stages
 - Character histories for the remaining houses, sects and guilds
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

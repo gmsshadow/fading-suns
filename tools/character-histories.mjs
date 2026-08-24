@@ -407,5 +407,153 @@ const EARLY_CAREER = [
   }
 ];
 
-/** The noble Character Histories (p.72–p.85). */
-export const CHARACTER_HISTORIES = [...UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER];
+
+/* -------------------------------------------- */
+/*  Extra Stages (p.84–85)                      */
+/* -------------------------------------------- */
+
+/**
+ * "A character may take TWO of the following options. (Exception: Characters who
+ *  take the Loaded-for-Bear cybernetics can take only that option.)"
+ *
+ * Each stage costs 20 of the 40 Extra points, so taking two spends them all:
+ * "Extra points are spent during the extra stages: Tour of Duty (two stages,
+ *  20 pts per tour)..." (p.85)
+ *
+ * Rather than grant fixed traits, most Extra Stages hand the player an allowance
+ * to distribute — "Skills (choose new ones or add to existing skills) +14" — so
+ * they carry `allowance` rather than skill grants.
+ */
+
+/**
+ * Worldly Benefits offered by a full Tour of Duty (p.84).
+ *
+ * Three stages offer the same list, and choice ids must be unique across the
+ * pack, so the id is supplied by the stage that owns it.
+ *
+ * @param {string} owner
+ * @returns {object}
+ */
+const worldlyBenefits = owner => pickOne(`${owner}-benefit`, "Worldly Benefits (choose one)",
+  opt("Promotion and rewards — rise one rank, Well-Off Riches or 1,000 firebirds",
+    note("Rise in rank one level"), ben("Cash", 5)),
+  opt("High promotion — rise two ranks, Good Riches or 600 firebirds",
+    note("Rise in rank two levels"), ben("Cash", 3)),
+  opt("Rich rewards — Wealthy Riches or 2,000 firebirds",
+    ben("Assets", 7)),
+  opt("Friends — 100 firebirds and 6 points of connections",
+    ben("Cash", 1), note("Choose 6 points from Ally, Contact, Gossip Network, Retinue, Passage Contracts or Refuge")),
+  opt("Promotion and friends — rise one rank, 100 firebirds, 4 points of connections",
+    note("Rise in rank one level"), ben("Cash", 1),
+    note("Choose 4 points from Ally, Contact, Gossip Network, Retinue, Passage Contracts or Refuge")));
+
+/**
+ * The smaller list offered by a second Tour of Duty (p.84).
+ * @param {string} owner
+ * @returns {object}
+ */
+const moreWorldlyBenefits = owner => pickOne(`${owner}-benefit`, "More Worldly Benefits (choose one)",
+  opt("Promotion and rewards — rise one rank, and Riches or Cash one level higher",
+    note("Rise in rank one level"), note("Raise Riches or Cash by one level")),
+  opt("High promotion — rise two ranks",
+    note("Rise in rank two levels")),
+  opt("Rich rewards — Riches or Cash two levels higher",
+    note("Raise Riches or Cash by two levels")),
+  opt("Friends — 4 points of connections",
+    note("Choose 4 points from Ally, Contact, Gossip Network, Retinue, Passage Contracts or Refuge")));
+
+const EXTRA_STAGES = [
+  {
+    n: "Tour of Duty", stage: "extra", faction: "", group: "Tours of Duty",
+    d: "Another spell in the career already begun, or the start of a new one.",
+    cost: 20, allowance: { characteristics: 2, skills: 14 },
+    grants: [worldlyBenefits("extra-tour")]
+  },
+  {
+    n: "Another Tour of Duty", stage: "extra", faction: "", group: "Tours of Duty",
+    d: "A second tour, taken only by those who served a first.",
+    cost: 20, allowance: { characteristics: 2, skills: 10 },
+    requires: "Tour of Duty",
+    grants: [moreWorldlyBenefits("extra-another")]
+  },
+  {
+    n: "Questing Knight Tour of Duty", stage: "extra", faction: "noble", group: "Imperial Tours",
+    d: "Sworn to Emperor Alexius and serving in the Company of the Phoenix. Nobles who do so become Questing Knights.",
+    cost: 20, allowance: { characteristics: 2, skills: 10 },
+    grants: [ben("Imperial Charter", 4), worldlyBenefits("extra-questing")]
+  },
+  {
+    n: "Cohort Tour of Duty", stage: "extra", faction: "", group: "Imperial Tours",
+    d: "Sworn to Emperor Alexius and serving in the Company of the Phoenix. Priests and guildsmembers who do so become Cohorts.",
+    cost: 20, allowance: { characteristics: 2, skills: 11 },
+    grants: [ben("Cohort Badge", 3), worldlyBenefits("extra-cohort")]
+  },
+  {
+    n: "Tweaked", stage: "extra", faction: "", group: "Cybernetics",
+    d: "Machinery under the skin — a level of intimacy the Church abhors, though noble and guild membership keeps the Inquisition at bay.",
+    cost: 20, allowance: { characteristics: 0, skills: 0, free: 20 },
+    grants: [note("Spend 20 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220.")]
+  },
+  {
+    n: "Loaded-for-Bear", stage: "extra", faction: "", group: "Cybernetics",
+    d: "So much machinery that there is little room for anything else.",
+    cost: 40, exclusive: true, allowance: { characteristics: 0, skills: 0, free: 40 },
+    grants: [note("Spend 40 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220.")]
+  },
+
+  // The occult stages are listed so the step is complete, but cannot be taken
+  // until the Psi and Theurgy compendiums exist.
+  {
+    n: "Natal Psi", stage: "extra", faction: "", group: "Psychic Awakening",
+    d: "The Wyrd stirs. Characters of any faction except the Vorox may awaken as psychics.",
+    cost: 20, allowance: { characteristics: 0, skills: 1 }, pending: true,
+    grants: [
+      ch("occult.psi", 3),
+      note("Wyrd +2"),
+      note("Choose a primary path: Level 1, Level 2 and Level 3 powers"),
+      note("+1 to a skill related to a Psi power")
+    ]
+  },
+  {
+    n: "Savant Psi", stage: "extra", faction: "", group: "Psychic Awakening",
+    d: "Deeper training in the paths already opened.",
+    cost: 20, allowance: { characteristics: 0, skills: 0 }, pending: true,
+    requires: "Natal Psi",
+    grants: [
+      ch("occult.psi", 2),
+      note("Wyrd +1"),
+      note("Primary path: Level 4 and Level 5 powers"),
+      note("Choose a secondary path: Level 1 and Level 2 powers"),
+      note("Choose one Worldly Benefit from the regular Tour of Duty")
+    ]
+  },
+  {
+    n: "Neophyte Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
+    d: "The Pancreator answers. A calling to the rites of the Church.",
+    cost: 20, allowance: { characteristics: 0, skills: 1 }, pending: true,
+    grants: [
+      ch("occult.theurgy", 3),
+      note("Wyrd +2"),
+      note("Rites: Level 1, Level 2 and Level 3"),
+      note("+1 to a skill related to a rite")
+    ]
+  },
+  {
+    n: "Adept Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
+    d: "Deeper study of the rites already learned.",
+    cost: 20, allowance: { characteristics: 0, skills: 0 }, pending: true,
+    requires: "Neophyte Theurge",
+    grants: [
+      ch("occult.theurgy", 2),
+      note("Wyrd +1"),
+      note("Rites: Level 4 and Level 5"),
+      note("Two further rites at Level 1 and Level 2, or one at Level 3"),
+      note("Choose one Worldly Benefit from the regular Tour of Duty")
+    ]
+  }
+];
+
+/** The noble Character Histories, and the Extra Stages open to anyone (p.72–p.85). */
+export const CHARACTER_HISTORIES = [
+  ...UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER, ...EXTRA_STAGES
+];

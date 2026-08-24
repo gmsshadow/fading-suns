@@ -11,7 +11,7 @@ const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applicat
 const STAGE_ORDER = ["upbringing", "apprenticeship", "earlyCareer"];
 
 /** The wizard's steps, in order. */
-const STEPS = ["mode", "upbringing", "apprenticeship", "earlyCareer", "choices", "benefices", "extras", "review"];
+const STEPS = ["mode", "upbringing", "apprenticeship", "earlyCareer", "choices", "extraStages", "benefices", "extras", "review"];
 
 /**
  * The character creation wizard (p.70–p.89).
@@ -40,6 +40,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       stages: {},      // stageType -> Item
       choices: {},     // choice id -> option index, list of indices, or grant
       picked: {},      // choice id -> the pool value chosen, for redisplay
+      extraStages: [], // Extra Stages: Item documents, at most two
       benefices: [],   // Step Five: [{uuid, name, value, polarity, ranks}]
       extras: {        // Step Six purchases
         characteristics: {},
@@ -68,6 +69,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       apply: FadingSunsCreationWizard.#onApply,
       addBenefice: FadingSunsCreationWizard.#onAddBenefice,
       addSuggested: FadingSunsCreationWizard.#onAddSuggested,
+      toggleExtraStage: FadingSunsCreationWizard.#onToggleExtraStage,
       removeBenefice: FadingSunsCreationWizard.#onRemoveBenefice,
       buyExtra: FadingSunsCreationWizard.#onBuyExtra,
       removeExtra: FadingSunsCreationWizard.#onRemoveExtra
@@ -110,6 +112,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     }
 
     if (step === "choices") context.choices = await this.#allChoices();
+    if (step === "extraStages") Object.assign(context, await this.#extraStageContext());
     if (step === "benefices") Object.assign(context, await this.#beneficeContext());
     if (step === "extras") Object.assign(context, await this.#extraContext());
     if (step === "review") context.review = this.#review();
@@ -174,6 +177,99 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
               .trim()
           }))
       }));
+  }
+
+  /* -------------------------------------------- */
+  /*  Extra Stages (p.84)                         */
+  /* -------------------------------------------- */
+
+  /** Extra points every character receives, before Curses and Afflictions. */
+  get #baseExtraPoints() {
+    return CONFIG.FADING_SUNS.startingExtraPoints;
+  }
+
+  /** Extra points consumed by the Extra Stages taken. */
+  get extraStageCost() {
+    return this.draft.extraStages.reduce((n, stage) => n + stage.system.extraCost, 0);
+  }
+
+  /**
+   * The Extra Stages on offer, with the reason any of them cannot be taken.
+   *
+   * "A character may take TWO of the following options. (Exception: Characters
+   *  who take the Loaded-for-Bear cybernetics can take only that option.)" (p.84)
+   *
+   * @returns {Promise<object>}
+   */
+  async #extraStageContext() {
+    const pack = game.packs.get("fading-suns.character-histories");
+    const all = pack ? await pack.getDocuments() : [];
+
+    const taken = this.draft.extraStages;
+    const takenNames = new Set(taken.map(s => s.name));
+    const hasExclusive = taken.some(s => s.system.exclusive);
+    const slots = hasExclusive ? 1 : 2;
+
+    const groups = new Map();
+    for (const stage of all.filter(d => d.system.stageType === "extra")) {
+      const isTaken = takenNames.has(stage.name);
+
+      let blocked = "";
+      if (!isTaken) {
+        if (stage.system.pending) blocked = "Pending";
+        else if (hasExclusive) blocked = "Exclusive";
+        else if (taken.length >= slots) blocked = "Full";
+        else if (stage.system.exclusive && taken.length) blocked = "ExclusiveFirst";
+        else if (stage.system.requires && !takenNames.has(stage.system.requires)) blocked = "Requires";
+        else if (stage.system.faction && stage.system.faction !== this.draft.faction) blocked = "Faction";
+      }
+
+      const key = stage.system.group || "";
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push({
+        id: stage.id,
+        uuid: stage.uuid,
+        label: stage.name,
+        description: stage.system.description,
+        cost: stage.system.extraCost,
+        allowance: stage.system.allowance,
+        requires: stage.system.requires,
+        taken: isTaken,
+        blocked,
+        blockedReason: blocked
+          ? game.i18n.format(`FADINGSUNS.Creation.Blocked.${blocked}`, { requires: stage.system.requires })
+          : ""
+      });
+    }
+
+    const budget = this.#baseExtraPoints;
+    const spent = this.extraStageCost;
+
+    return {
+      extraStageGroups: [...groups.entries()]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([name, stages]) => ({ name, stages })),
+      chosenExtraStages: taken.map(s => ({
+        id: s.id,
+        label: s.name,
+        cost: s.system.extraCost,
+        allowance: s.system.allowance
+      })),
+      extraStageBudget: budget,
+      extraStageSpent: spent,
+      extraStageRemaining: budget - spent,
+      extraStageSlots: slots,
+      allowanceTotals: this.#allowanceTotals()
+    };
+  }
+
+  /** What the Extra Stages taken allow the player to distribute (p.84). */
+  #allowanceTotals() {
+    return this.draft.extraStages.reduce((total, stage) => ({
+      characteristics: total.characteristics + stage.system.allowance.characteristics,
+      skills: total.skills + stage.system.allowance.skills,
+      free: total.free + stage.system.allowance.free
+    }), { characteristics: 0, skills: 0, free: 0 });
   }
 
   /* -------------------------------------------- */
@@ -291,11 +387,13 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     }
     const afflictions = this.draft.benefices.filter(b => b.polarity === "affliction");
 
+    // Extra Stages are bought with these same points, so what reaches this step
+    // is whatever the stages left behind (p.85).
     const budget = extraPointBudget({
       curses,
       afflictions,
-      base: CONFIG.FADING_SUNS.startingExtraPoints
-    });
+      base: this.#baseExtraPoints
+    }) - this.extraStageCost;
     const spent = extraPointSpend(this.draft.extras);
 
     return {
@@ -305,6 +403,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       extraOver: spent > budget,
       extraFromCurses: curses.reduce((n, c) => n + Math.abs(c.cost ?? 0), 0),
       extraFromAfflictions: afflictions.reduce((n, a) => n + a.value, 0),
+      extraStageCost: this.extraStageCost,
+      allowance: this.#allowanceTotals(),
       extraCosts: EXTRA_COSTS,
       characteristicOptions: Object.entries(CONFIG.FADING_SUNS.rollableCharacteristics)
         .map(([path, label]) => ({ value: path, label: game.i18n.localize(label) })),
@@ -423,13 +523,14 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   #lifepathState() {
     const state = this.#baseline();
     applyStages(state, this.chosenStages.map(s => s.system), this.draft.choices);
+    applyStages(state, this.draft.extraStages.map(s => s.system), this.draft.choices);
     return state;
   }
 
   /** Every choice across the chosen stages that still needs a decision. */
   #pendingChoices() {
     const pending = [];
-    for (const stage of this.chosenStages) {
+    for (const stage of [...this.chosenStages, ...this.draft.extraStages]) {
       const result = resolveChoices(stage.system.grants, this.draft.choices);
       for (const choice of result.pending) pending.push({ stage: stage.name, choice });
     }
@@ -501,7 +602,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    */
   async #allChoices() {
     const rows = [];
-    for (const stage of this.chosenStages) {
+    for (const stage of [...this.chosenStages, ...this.draft.extraStages]) {
       for (const choice of stage.system.grants.filter(g => g.kind === "choice")) {
         const raw = this.draft.choices[choice.id];
         const selected = raw === undefined ? [] : (Array.isArray(raw) ? raw : [raw]);
@@ -669,7 +770,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {object|null}
    */
   #choiceById(id) {
-    for (const stage of this.chosenStages) {
+    for (const stage of [...this.chosenStages, ...this.draft.extraStages]) {
       const found = stage.system.grants.find(g => g.kind === "choice" && g.id === id);
       if (found) return found;
     }
@@ -776,6 +877,33 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /**
+   * Take or drop an Extra Stage (p.84).
+   *
+   * Dropping one also drops anything that required it, so a character cannot be
+   * left with a Savant Psi and no Natal Psi behind it.
+   *
+   * @this {FadingSunsCreationWizard}
+   */
+  static async #onToggleExtraStage(event, target) {
+    const { uuid } = target.dataset;
+    const index = this.draft.extraStages.findIndex(s => s.uuid === uuid);
+
+    if (index >= 0) {
+      const [dropped] = this.draft.extraStages.splice(index, 1);
+      this.draft.extraStages = this.draft.extraStages.filter(
+        s => s.system.requires !== dropped.name
+      );
+      this.render();
+      return;
+    }
+
+    const stage = await fromUuid(uuid);
+    if (!stage) return;
+    this.draft.extraStages.push(stage);
+    this.render();
+  }
+
+  /**
    * Take one of the book's suggested Benefices, at the points it suggests.
    * @this {FadingSunsCreationWizard}
    */
@@ -871,7 +999,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     });
     if (!confirmed) return;
 
-    await applyLifepathToActor(this.actor, review.state, { stages: this.chosenStages });
+    await applyLifepathToActor(this.actor, review.state, {
+      stages: [...this.chosenStages, ...this.draft.extraStages]
+    });
 
     if (review.freed) {
       ui.notifications.info(

@@ -1312,3 +1312,41 @@
   flex: 0 0 5ch;
   text-align: center;
 }
+
+/* ---------- Extra Stages ---------- */
+
+.fading-suns .stage-option.is-blocked {
+  opacity: 0.5;
+}
+
+.fading-suns .stage-pick:disabled {
+  cursor: not-allowed;
+}
+
+.fading-suns .stage-cost {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  color: var(--fs-gold);
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  padding: 0.05rem 0.35rem;
+}
+
+.fading-suns .stage-allowance,
+.fading-suns .stage-blocked {
+  font-size: 0.7rem;
+  margin: 0.15rem 0 0;
+}
+
+.fading-suns .stage-allowance {
+  color: var(--fs-gold);
+}
+
+.fading-suns .stage-blocked {
+  color: var(--fs-muted);
+  font-style: italic;
+}
+
+.fading-suns .hint.allowance {
+  color: var(--fs-gold);
+}

@@ -1,0 +1,53 @@
+{
+  "_key": "!items!hUjYxjlpmmEsOA1F",
+  "_id": "hUjYxjlpmmEsOA1F",
+  "name": "Extra Stage: Natal Psi",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The Wyrd stirs. Characters of any faction except the Vorox may awaken as psychics.</p>",
+    "stageType": "extra",
+    "faction": "",
+    "group": "Psychic Awakening",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "occult.psi",
+        "value": 3
+      },
+      {
+        "kind": "note",
+        "text": "Wyrd +2"
+      },
+      {
+        "kind": "note",
+        "text": "Choose a primary path: Level 1, Level 2 and Level 3 powers"
+      },
+      {
+        "kind": "note",
+        "text": "+1 to a skill related to a Psi power"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 20,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 1,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": true
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

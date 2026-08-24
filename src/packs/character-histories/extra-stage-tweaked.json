@@ -1,0 +1,40 @@
+{
+  "_key": "!items!xGbayL1yQmdZsshb",
+  "_id": "xGbayL1yQmdZsshb",
+  "name": "Extra Stage: Tweaked",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Machinery under the skin — a level of intimacy the Church abhors, though noble and guild membership keeps the Inquisition at bay.</p>",
+    "stageType": "extra",
+    "faction": "",
+    "group": "Cybernetics",
+    "grants": [
+      {
+        "kind": "note",
+        "text": "Spend 20 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220."
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 20,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 20
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

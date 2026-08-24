@@ -424,7 +424,9 @@
         "ExclusiveFirst": "Loaded-for-Bear may only be taken on its own.",
         "Requires": "Requires {requires} first.",
         "Faction": "Not open to this faction."
-      }
+      },
+      "SkillAllowance": "Tour of Duty skill allowance",
+      "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level."
     },
     "CombatAction": {
       "Category": "Style",

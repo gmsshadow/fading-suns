@@ -1350,3 +1350,13 @@
 .fading-suns .hint.allowance {
   color: var(--fs-gold);
 }
+
+.fading-suns .budget.allowance {
+  border-color: var(--fs-gold-dim);
+  color: var(--fs-gold);
+}
+
+.fading-suns .budget.allowance.is-spent {
+  border-color: var(--fs-line);
+  color: var(--fs-muted);
+}

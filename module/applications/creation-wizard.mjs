@@ -266,10 +266,26 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   /** What the Extra Stages taken allow the player to distribute (p.84). */
   #allowanceTotals() {
     return this.draft.extraStages.reduce((total, stage) => ({
-      characteristics: total.characteristics + stage.system.allowance.characteristics,
       skills: total.skills + stage.system.allowance.skills,
       free: total.free + stage.system.allowance.free
-    }), { characteristics: 0, skills: 0, free: 0 });
+    }), { skills: 0, free: 0 });
+  }
+
+  /**
+   * Skill levels bought in Step Six, and how they are paid for.
+   *
+   * A Tour of Duty's skill points and an Extra point both buy one skill level,
+   * so the allowance is simply spent first and the remainder falls to Extras
+   * (p.84, p.88). Nothing is hidden by doing so: the rates are identical.
+   *
+   * @returns {{bought: number, fromAllowance: number, fromExtras: number, allowance: number}}
+   */
+  #skillFunding() {
+    const allowance = this.#allowanceTotals().skills;
+    const bought = Object.values(this.draft.extras.skills)
+      .reduce((n, levels) => n + (levels ?? 0), 0);
+    const fromAllowance = Math.min(bought, allowance);
+    return { bought, fromAllowance, fromExtras: bought - fromAllowance, allowance };
   }
 
   /* -------------------------------------------- */
@@ -394,9 +410,12 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       afflictions,
       base: this.#baseExtraPoints
     }) - this.extraStageCost;
-    const spent = extraPointSpend(this.draft.extras);
+    // Skill levels covered by a Tour of Duty's allowance are not charged here.
+    const funding = this.#skillFunding();
+    const spent = extraPointSpend(this.draft.extras) - funding.fromAllowance;
 
     return {
+      funding,
       extraBudget: budget,
       extraSpent: spent,
       extraRemaining: budget - spent,
@@ -568,6 +587,17 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         .map(([key, label]) => ({ value: `spirit.${key}`, label: game.i18n.localize(label) }));
     }
 
+    if (choice.pool === "characteristic") {
+      // "Characteristic (choose another) +1" must differ from the first, so
+      // whatever the sibling choice took is removed from this one's list.
+      const excluded = choice.distinctFrom
+        ? (this.draft.choices[choice.distinctFrom] ?? []).map(g => g?.key).filter(Boolean)
+        : [];
+      return Object.entries(CONFIG.FADING_SUNS.rollableCharacteristics)
+        .filter(([path]) => !excluded.includes(path))
+        .map(([path, label]) => ({ value: path, label: game.i18n.localize(label) }));
+    }
+
     let labels = await this.#skillPool();
     if (choice.filter?.length) {
       labels = labels.filter(label => choice.filter.some(prefix => label.startsWith(prefix)));
@@ -585,7 +615,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {object}
    */
   #grantFromPool(choice, value) {
-    if (choice.pool === "spirit") {
+    if (choice.pool === "spirit" || choice.pool === "characteristic") {
       return { kind: "characteristic", key: value, value: choice.value ?? 1 };
     }
     const { name, specialty } = parseSkillLabel(value);

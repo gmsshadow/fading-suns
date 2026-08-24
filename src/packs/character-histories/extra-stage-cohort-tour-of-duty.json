@@ -11,6 +11,25 @@
     "group": "Imperial Tours",
     "grants": [
       {
+        "kind": "choice",
+        "id": "extra-cohort-char-1",
+        "label": "Characteristic (choose one) +1",
+        "pick": 1,
+        "pool": "characteristic",
+        "value": 1,
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-cohort-char-2",
+        "label": "Characteristic (choose another) +1",
+        "pick": 1,
+        "pool": "characteristic",
+        "value": 1,
+        "distinctFrom": "extra-cohort-char-1",
+        "options": []
+      },
+      {
         "kind": "benefice",
         "key": "Compendium.fading-suns.benefices-afflictions.Item.ssid0uJh002yHAAa",
         "value": 3,
@@ -104,7 +123,7 @@
     "beneficeRestriction": "",
     "extraCost": 20,
     "allowance": {
-      "characteristics": 2,
+      "characteristics": 0,
       "skills": 11,
       "free": 0
     },

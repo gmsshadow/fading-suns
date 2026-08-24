@@ -138,7 +138,6 @@
 
       {{#if allowanceTotals.skills}}
         <p class="hint allowance">{{localize "FADINGSUNS.Creation.Allowance"}}:
-          <strong>{{allowanceTotals.characteristics}}</strong> {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
           <strong>{{allowanceTotals.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}
           {{#if allowanceTotals.free}}, <strong>{{allowanceTotals.free}}</strong> {{localize "FADINGSUNS.Creation.FreePoints"}}{{/if}}
         </p>
@@ -158,10 +157,9 @@
               {{#if stage.blocked}}
                 <p class="stage-blocked">{{stage.blockedReason}}</p>
               {{else if stage.allowance.skills}}
-                <p class="stage-allowance">
-                  +{{stage.allowance.characteristics}} {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
-                  +{{stage.allowance.skills}} {{localize "FADINGSUNS.Tab.Skills"}}
-                </p>
+                <p class="stage-allowance">+{{stage.allowance.skills}} {{localize "FADINGSUNS.Tab.Skills"}}</p>
+              {{else if stage.allowance.free}}
+                <p class="stage-allowance">{{stage.allowance.free}} {{localize "FADINGSUNS.Creation.FreePoints"}}</p>
               {{/if}}
             </li>
           {{/each}}
@@ -250,10 +248,12 @@
       {{#if extraStageCost}}
         <p class="hint">{{localize "FADINGSUNS.Creation.SpentOnStages"}}: <strong>{{extraStageCost}}</strong></p>
       {{/if}}
-      {{#if allowance.skills}}
-        <p class="hint allowance">{{localize "FADINGSUNS.Creation.AllowanceHint"}}
-          <strong>{{allowance.characteristics}}</strong> {{localize "FADINGSUNS.Creation.CharacteristicPicks"}},
-          <strong>{{allowance.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}</p>
+      {{#if funding.allowance}}
+        <p class="budget allowance {{#if (gt funding.fromExtras 0)}}is-spent{{/if}}">
+          {{localize "FADINGSUNS.Creation.SkillAllowance"}}:
+          <strong>{{funding.fromAllowance}} / {{funding.allowance}}</strong>
+          <span class="hint">{{localize "FADINGSUNS.Creation.SkillAllowanceHint"}}</span>
+        </p>
       {{/if}}
       <p class="hint">{{localize "FADINGSUNS.Hint.ExtraPoints"}}</p>
 

@@ -502,3 +502,16 @@ test("Combat Actions bought with Extra points cost one per level (p.88, p.102)",
   applyExtraPurchases(state, { combatActions: [{ uuid: "Compendium.z.Item.parry", level: 1 }] });
   assert.equal(state.combatActions.length, 1, "the same action is not learned twice");
 });
+
+test("a Tour's skill allowance and Extra points buy skill levels at the same rate", () => {
+  // Which is why the wizard can spend the allowance first and let the remainder
+  // fall to Extra points without hiding anything from the player (p.84, p.88).
+  assert.equal(extraPointSpend({ skills: { Melee: 1 } }), 1);
+
+  const allowance = 14;
+  const bought = 20;
+  const fromAllowance = Math.min(bought, allowance);
+  assert.equal(fromAllowance, 14);
+  assert.equal(extraPointSpend({ skills: { Melee: bought } }) - fromAllowance, 6,
+    "six levels beyond the allowance cost six Extra points");
+});

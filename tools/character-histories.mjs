@@ -41,6 +41,25 @@ const pickOne = (id, label, ...options) => ({ kind: "choice", id, label, pick: 1
 const pickN = (id, label, pick, ...options) => ({ kind: "choice", id, label, pick, options });
 const open = (id, label, pool, value, filter) => ({ kind: "choice", id, label, pick: 1, pool, value, filter });
 
+/**
+ * A Tour of Duty's two free characteristic levels (p.84).
+ *
+ * "Characteristic (choose one) +1, Characteristic (choose another) +1" — two
+ * levels, in two different traits, at no cost in Extra points. That is a choice
+ * rather than a budget, so it is modelled as one: the second picker excludes
+ * whatever the first took.
+ *
+ * @param {string} owner
+ * @returns {object[]}
+ */
+const tourCharacteristics = owner => [
+  { ...open(`${owner}-char-1`, "Characteristic (choose one) +1", "characteristic", 1) },
+  {
+    ...open(`${owner}-char-2`, "Characteristic (choose another) +1", "characteristic", 1),
+    distinctFrom: `${owner}-char-1`
+  }
+];
+
 /** "Extrovert or Introvert +1" and friends, which recur across many stages. */
 const orSpirit = (id, a, b, value) => pickOne(
   id, `${a} or ${b} +${value}`,
@@ -466,38 +485,40 @@ const EXTRA_STAGES = [
   {
     n: "Tour of Duty", stage: "extra", faction: "", group: "Tours of Duty",
     d: "Another spell in the career already begun, or the start of a new one.",
-    cost: 20, allowance: { characteristics: 2, skills: 14 },
-    grants: [worldlyBenefits("extra-tour")]
+    cost: 20, allowance: { skills: 14 },
+    grants: [...tourCharacteristics("extra-tour"), worldlyBenefits("extra-tour")]
   },
   {
     n: "Another Tour of Duty", stage: "extra", faction: "", group: "Tours of Duty",
     d: "A second tour, taken only by those who served a first.",
-    cost: 20, allowance: { characteristics: 2, skills: 10 },
+    cost: 20, allowance: { skills: 10 },
     requires: "Tour of Duty",
-    grants: [moreWorldlyBenefits("extra-another")]
+    grants: [...tourCharacteristics("extra-another"), moreWorldlyBenefits("extra-another")]
   },
   {
     n: "Questing Knight Tour of Duty", stage: "extra", faction: "noble", group: "Imperial Tours",
     d: "Sworn to Emperor Alexius and serving in the Company of the Phoenix. Nobles who do so become Questing Knights.",
-    cost: 20, allowance: { characteristics: 2, skills: 10 },
-    grants: [ben("Imperial Charter", 4), worldlyBenefits("extra-questing")]
+    cost: 20, allowance: { skills: 10 },
+    grants: [...tourCharacteristics("extra-questing"), ben("Imperial Charter", 4),
+      worldlyBenefits("extra-questing")]
   },
   {
     n: "Cohort Tour of Duty", stage: "extra", faction: "", group: "Imperial Tours",
     d: "Sworn to Emperor Alexius and serving in the Company of the Phoenix. Priests and guildsmembers who do so become Cohorts.",
-    cost: 20, allowance: { characteristics: 2, skills: 11 },
-    grants: [ben("Cohort Badge", 3), worldlyBenefits("extra-cohort")]
+    cost: 20, allowance: { skills: 11 },
+    grants: [...tourCharacteristics("extra-cohort"), ben("Cohort Badge", 3),
+      worldlyBenefits("extra-cohort")]
   },
   {
     n: "Tweaked", stage: "extra", faction: "", group: "Cybernetics",
     d: "Machinery under the skin — a level of intimacy the Church abhors, though noble and guild membership keeps the Inquisition at bay.",
-    cost: 20, allowance: { characteristics: 0, skills: 0, free: 20 },
+    cost: 20, allowance: { free: 20 },
     grants: [note("Spend 20 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220.")]
   },
   {
     n: "Loaded-for-Bear", stage: "extra", faction: "", group: "Cybernetics",
     d: "So much machinery that there is little room for anything else.",
-    cost: 40, exclusive: true, allowance: { characteristics: 0, skills: 0, free: 40 },
+    cost: 40, exclusive: true, allowance: { free: 40 },
     grants: [note("Spend 40 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220.")]
   },
 
@@ -506,7 +527,7 @@ const EXTRA_STAGES = [
   {
     n: "Natal Psi", stage: "extra", faction: "", group: "Psychic Awakening",
     d: "The Wyrd stirs. Characters of any faction except the Vorox may awaken as psychics.",
-    cost: 20, allowance: { characteristics: 0, skills: 1 }, pending: true,
+    cost: 20, allowance: { skills: 1 }, pending: true,
     grants: [
       ch("occult.psi", 3),
       note("Wyrd +2"),
@@ -517,7 +538,7 @@ const EXTRA_STAGES = [
   {
     n: "Savant Psi", stage: "extra", faction: "", group: "Psychic Awakening",
     d: "Deeper training in the paths already opened.",
-    cost: 20, allowance: { characteristics: 0, skills: 0 }, pending: true,
+    cost: 20, allowance: {}, pending: true,
     requires: "Natal Psi",
     grants: [
       ch("occult.psi", 2),
@@ -530,7 +551,7 @@ const EXTRA_STAGES = [
   {
     n: "Neophyte Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
     d: "The Pancreator answers. A calling to the rites of the Church.",
-    cost: 20, allowance: { characteristics: 0, skills: 1 }, pending: true,
+    cost: 20, allowance: { skills: 1 }, pending: true,
     grants: [
       ch("occult.theurgy", 3),
       note("Wyrd +2"),
@@ -541,7 +562,7 @@ const EXTRA_STAGES = [
   {
     n: "Adept Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
     d: "Deeper study of the rites already learned.",
-    cost: 20, allowance: { characteristics: 0, skills: 0 }, pending: true,
+    cost: 20, allowance: {}, pending: true,
     requires: "Neophyte Theurge",
     grants: [
       ch("occult.theurgy", 2),

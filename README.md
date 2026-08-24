@@ -258,9 +258,20 @@ options are greyed with a note, pending the Psi and Theurgy compendiums. The ste
 rulebook's constraints: *Another Tour of Duty* requires a first, *Loaded-for-Bear* costs the full
 40 and allows nothing else, and dropping a stage also drops anything that required it.
 
-Tours hand out an allowance to distribute — 14 skill points for a first tour, 10 for a second, plus
-two characteristic levels — rather than fixed traits, so the allowance is shown and carried into
-Step Six.
+Tours hand out an allowance rather than fixed traits, and the two halves of it are handled
+differently because the rulebook treats them differently.
+
+The **skill points** — 14 for a first tour, 10 for a second, 11 for a Cohort — buy skill levels at
+one point per level, which is exactly what an Extra point buys. Same rate, same targets, so they
+share one control in Step Six: the allowance is spent first and the remainder falls to Extra points.
+Two counters show which is paying. Nothing is hidden by pooling them, because there is nothing to
+hide.
+
+The **two characteristic levels** are not a budget at all. *"Characteristic (choose one) +1,
+Characteristic (choose another) +1"* is two levels, free, in two **different** traits — where an
+Extra point costs three per level and carries no such restriction. Pooling those would quietly
+overcharge the player, so they are modelled as what they are: two choices, appearing on the Choices
+step alongside every other decision, with the second picker excluding whatever the first took.
 
 **Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
 against a budget of ten points. It also shows the

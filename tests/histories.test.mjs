@@ -564,7 +564,7 @@ test("only the occult stages are marked pending", () => {
   ], "the four occult stages wait on the Psi and Theurgy compendiums");
 });
 
-test("Tours of Duty hand out an allowance rather than fixed skills (p.84)", () => {
+test("Tours of Duty hand out a skill allowance rather than fixed skills (p.84)", () => {
   const expected = {
     "Tour of Duty": 14,
     "Another Tour of Duty": 10,
@@ -574,8 +574,37 @@ test("Tours of Duty hand out an allowance rather than fixed skills (p.84)", () =
   for (const [name, skills] of Object.entries(expected)) {
     const stage = extraStages.find(s => s.name === `Extra Stage: ${name}`);
     assert.equal(stage.system.allowance.skills, skills, name);
-    assert.equal(stage.system.allowance.characteristics, 2, name);
   }
+});
+
+test("a Tour's two characteristic levels are a choice, not a budget (p.84)", () => {
+  // "Characteristic (choose one) +1, Characteristic (choose another) +1" — two
+  // levels in two different traits, free. Extra points cost three per level and
+  // carry no such restriction, so the two must not be pooled together.
+  for (const name of ["Tour of Duty", "Another Tour of Duty",
+                      "Questing Knight Tour of Duty", "Cohort Tour of Duty"]) {
+    const stage = extraStages.find(s => s.name === `Extra Stage: ${name}`);
+    const picks = stage.system.grants.filter(g => g.kind === "choice" && g.pool === "characteristic");
+
+    assert.equal(picks.length, 2, `${name} should offer two characteristic picks`);
+    assert.ok(picks.every(p => p.value === 1), `${name} picks are worth one level each`);
+    assert.equal(stage.system.allowance.characteristics, 0,
+      `${name} should carry no characteristic budget, only the picks`);
+
+    const second = picks.find(p => p.distinctFrom);
+    assert.ok(second, `${name} should require the second pick to differ from the first`);
+    assert.equal(second.distinctFrom, picks.find(p => !p.distinctFrom).id);
+  }
+});
+
+test("the second characteristic pick excludes whatever the first took", () => {
+  const stage = extraStages.find(s => s.name === "Extra Stage: Tour of Duty").system;
+  const [first, second] = stage.grants.filter(g => g.kind === "choice" && g.pool === "characteristic");
+
+  // Mirrors the wizard's option filtering.
+  const chosen = { [first.id]: [{ kind: "characteristic", key: "body.strength", value: 1 }] };
+  const excluded = (chosen[second.distinctFrom] ?? []).map(g => g.key);
+  assert.deepEqual(excluded, ["body.strength"]);
 });
 
 test("the Imperial tours grant the Benefice that goes with them (p.85)", () => {

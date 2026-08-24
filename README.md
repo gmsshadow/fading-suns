@@ -212,6 +212,12 @@ or Knavery 2*, the Questing knight's *Body characteristic (choose two) +1 each* 
 single step, and the wizard will not advance until all are settled. The review step shows the
 finished character before anything is written.
 
+Choices are presented as radio buttons or, where a stage picks more than one, checkboxes with a
+running count. A choice turns green when settled and *Next* stays disabled until every one is,
+with a tooltip saying how many are outstanding. Ticking a third option in a "choose two" releases
+whichever was ticked earliest rather than refusing the click. Revisiting the step shows what was
+already chosen.
+
 **Custom Creation** is the sheet itself, so the wizard says so plainly, shows the 20 and 30 point
 budgets and the cap of 8, and gets out of the way.
 

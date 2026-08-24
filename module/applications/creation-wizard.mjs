@@ -93,7 +93,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.selected = this.draft.stages[step] ?? null;
     }
 
-    if (step === "choices") context.choices = this.#pendingChoices();
+    if (step === "choices") context.choices = this.#allChoices();
     if (step === "review") context.review = this.#review();
 
     return context;
@@ -177,6 +177,35 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /**
+   * Every choice across the chosen stages, each carrying whatever has been
+   * selected so far so that the step can be revisited and revised.
+   * @returns {Array<{stage: string, choice: object, selected: number[], pick: number, complete: boolean}>}
+   */
+  #allChoices() {
+    const rows = [];
+    for (const stage of this.chosenStages) {
+      for (const choice of stage.system.grants.filter(g => g.kind === "choice")) {
+        const raw = this.draft.choices[choice.id];
+        const selected = raw === undefined ? [] : (Array.isArray(raw) ? raw : [raw]);
+        const pick = choice.pick ?? 1;
+        rows.push({
+          stage: stage.name,
+          choice,
+          pick,
+          selected,
+          options: (choice.options ?? []).map((option, index) => ({
+            index,
+            label: option.label,
+            checked: selected.includes(index)
+          })),
+          complete: !choice.pool && selected.length === pick
+        });
+      }
+    }
+    return rows;
+  }
+
+  /**
    * Run the lifepath and summarise the result for the review step.
    * @returns {object}
    */
@@ -239,6 +268,74 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /* -------------------------------------------- */
+  /*  Rendering                                   */
+  /* -------------------------------------------- */
+
+  /** @inheritDoc */
+  _onRender(context, options) {
+    super._onRender(context, options);
+    for (const input of this.element.querySelectorAll("[data-choice-id]")) {
+      input.addEventListener("change", this.#onChoiceChange.bind(this));
+    }
+    this.#refreshChoiceState();
+  }
+
+  /**
+   * Record a selection as it is made.
+   *
+   * A multi-pick choice caps itself: ticking a third option in a "choose two"
+   * releases the option ticked earliest, rather than refusing the click.
+   * @param {Event} event
+   */
+  #onChoiceChange(event) {
+    const input = event.currentTarget;
+    const id = input.dataset.choiceId;
+    const pick = Number(input.dataset.pick) || 1;
+
+    if (input.type !== "checkbox") {
+      this.draft.choices[id] = Number(input.value);
+      this.#refreshChoiceState();
+      return;
+    }
+
+    const group = input.closest("[data-choice-group]");
+    const boxes = [...group.querySelectorAll("input[type=checkbox]")];
+    let checked = boxes.filter(b => b.checked);
+
+    if (checked.length > pick) {
+      const released = checked.find(b => b !== input);
+      if (released) released.checked = false;
+      checked = boxes.filter(b => b.checked);
+    }
+
+    this.draft.choices[id] = checked.map(b => Number(b.value));
+    this.#refreshChoiceState();
+  }
+
+  /** Update each choice's counter and enable Next once every choice is settled. */
+  #refreshChoiceState() {
+    if (this.draft.step !== "choices") return;
+
+    for (const group of this.element.querySelectorAll("[data-choice-group]")) {
+      const pick = Number(group.dataset.pick) || 1;
+      const chosen = group.querySelectorAll("input:checked").length;
+      group.classList.toggle("is-complete", chosen === pick);
+
+      const counter = group.querySelector(".choice-count");
+      if (counter) counter.textContent = `${chosen} / ${pick}`;
+    }
+
+    const outstanding = this.#pendingChoices().length;
+    const next = this.element.querySelector('[data-action="next"]');
+    if (next) {
+      next.disabled = outstanding > 0;
+      next.dataset.tooltip = outstanding
+        ? game.i18n.format("FADINGSUNS.Creation.Outstanding", { count: outstanding })
+        : "";
+    }
+  }
+
+  /* -------------------------------------------- */
   /*  Actions                                     */
   /* -------------------------------------------- */
 
@@ -274,37 +371,18 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** @this {FadingSunsCreationWizard} */
   static async #onBack() {
-    this.#captureChoices();
     this.draft.step = this.#adjacentStep(-1);
     this.render();
   }
 
   /** @this {FadingSunsCreationWizard} */
   static async #onNext() {
-    this.#captureChoices();
     if (!this.#canAdvance()) {
       ui.notifications.warn(game.i18n.localize("FADINGSUNS.Creation.Incomplete"));
       return;
     }
     this.draft.step = this.#adjacentStep(1);
     this.render();
-  }
-
-  /**
-   * Read whatever the choices step currently has selected into wizard state.
-   * Selections are held in the form rather than committed on every keystroke, so
-   * they are gathered when the step is left.
-   */
-  #captureChoices() {
-    for (const select of this.element?.querySelectorAll("[data-choice-id]") ?? []) {
-      const id = select.dataset.choiceId;
-      if (select.multiple) {
-        const values = [...select.selectedOptions].map(o => Number(o.value));
-        if (values.length) this.draft.choices[id] = values;
-      } else if (select.value !== "") {
-        this.draft.choices[id] = Number(select.value);
-      }
-    }
   }
 
   /** @this {FadingSunsCreationWizard} */

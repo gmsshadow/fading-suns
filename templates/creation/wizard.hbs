@@ -81,22 +81,33 @@
         <p class="hint">{{localize "FADINGSUNS.Creation.ChoicesHint"}}</p>
         <ol class="choice-list">
           {{#each choices as |entry|}}
-            <li class="choice">
+            <li class="choice {{#if entry.complete}}is-complete{{/if}}"
+                data-choice-group="{{entry.choice.id}}" data-pick="{{entry.pick}}">
               <span class="choice-stage">{{entry.stage}}</span>
-              <label class="choice-label">{{entry.choice.label}}</label>
+              <span class="choice-label">{{entry.choice.label}}</span>
+
               {{#if entry.choice.pool}}
                 <p class="hint open-choice">{{localize "FADINGSUNS.Creation.OpenChoice"}}</p>
               {{else}}
-                <select data-choice-id="{{entry.choice.id}}"
-                        {{#if (gt entry.choice.pick 1)}}multiple size="{{entry.choice.options.length}}"{{/if}}>
-                  {{#unless (gt entry.choice.pick 1)}}<option value="">&mdash;</option>{{/unless}}
-                  {{#each entry.choice.options as |option index|}}
-                    <option value="{{index}}">{{option.label}}</option>
-                  {{/each}}
-                </select>
-                {{#if (gt entry.choice.pick 1)}}
-                  <span class="choice-pick">{{localize "FADINGSUNS.Creation.PickN"}} {{entry.choice.pick}}</span>
+                {{#if (gt entry.pick 1)}}
+                  <span class="choice-count">0 / {{entry.pick}}</span>
                 {{/if}}
+                <div class="choice-options">
+                  {{#each entry.options as |option|}}
+                    <label class="choice-option">
+                      {{#if (gt entry.pick 1)}}
+                        <input type="checkbox" value="{{option.index}}"
+                               data-choice-id="{{entry.choice.id}}" data-pick="{{entry.pick}}"
+                               {{checked option.checked}}/>
+                      {{else}}
+                        <input type="radio" name="choice-{{entry.choice.id}}" value="{{option.index}}"
+                               data-choice-id="{{entry.choice.id}}" data-pick="1"
+                               {{checked option.checked}}/>
+                      {{/if}}
+                      <span>{{option.label}}</span>
+                    </label>
+                  {{/each}}
+                </div>
               {{/if}}
             </li>
           {{/each}}

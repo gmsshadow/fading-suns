@@ -245,6 +245,9 @@ existing ones, which is almost never wanted on a character already in play. Play
 a gamemaster sees an open padlock and gets a warning dialog before proceeding. Completion is
 recorded in `flags.fading-suns.creation`.
 
+Purchases in Step Six take a quantity, so four levels of a skill is one action rather than four
+clicks, and removing a purchase clears the whole line.
+
 **Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
 against a budget of ten points. It also shows the
 **Suggested Benefices** the rulebook prints against each faction and house (p.72–76), merged across
@@ -399,8 +402,8 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 ## Roadmap
 
 - Compendiums: weapons and armour from Chapter Seven
+- Extra Stages (p.84): Tours of Duty, Psychic Awakening, Theurgic Calling and Cybernetics
 - Character histories for the remaining houses, sects and guilds
-- Extra Stages and Tours of Duty (p.85), and spending Extra points in the wizard
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

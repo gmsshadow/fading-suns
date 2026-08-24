@@ -155,12 +155,30 @@
   text-transform: uppercase;
 }
 
+/* Wide enough for two digits plus the spinner, which browsers reserve space for
+   even when hidden. Firebirds runs to four figures and gets more. */
 .fading-suns .resource input {
   border: none;
   font-size: 1rem;
   font-weight: 600;
+  min-width: 0;
+  padding: 0 0.15rem;
   text-align: center;
-  width: 3ch;
+  width: 3.5ch;
+}
+
+.fading-suns .resource input::-webkit-outer-spin-button,
+.fading-suns .resource input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.fading-suns .resource input[type="number"] {
+  appearance: textfield;
+}
+
+.fading-suns .resource.firebirds input {
+  width: 6ch;
 }
 
 .fading-suns .resource-max {
@@ -1288,4 +1306,9 @@
 .fading-suns .creation-btn.is-complete {
   border-color: var(--fs-gold-dim);
   color: var(--fs-gold);
+}
+
+.fading-suns .picker-qty {
+  flex: 0 0 5ch;
+  text-align: center;
 }

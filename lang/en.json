@@ -406,7 +406,9 @@
       "SuggestedHint": "What the rulebook proposes for this background. Advice, not a requirement — take any, all or none.",
       "RerunTooltip": "Creation already completed — click to run it again (gamemaster only)",
       "RerunTitle": "Run creation again?",
-      "RerunWarning": "<strong>{name}</strong> has already been through character creation. Running it again will set characteristics to the new lifepath's values and add a second set of stages, Blessings and Benefices on top of the existing ones. This cannot be undone."
+      "RerunWarning": "<strong>{name}</strong> has already been through character creation. Running it again will set characteristics to the new lifepath's values and add a second set of stages, Blessings and Benefices on top of the existing ones. This cannot be undone.",
+      "Levels": "How many levels to buy",
+      "PerLevel": "level"
     },
     "CombatAction": {
       "Category": "Style",

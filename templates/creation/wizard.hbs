@@ -212,8 +212,10 @@
             <option value="{{option.value}}">{{option.label}}</option>
           {{/each}}
         </select>
+        <input type="number" class="picker-qty" name="extra-characteristic-qty" value="1" min="1" max="10"
+               data-tooltip="{{localize 'FADINGSUNS.Creation.Levels'}}"/>
         <button type="button" class="add-btn" data-action="buyExtra" data-kind="characteristic">
-          +1 ({{extraCosts.characteristic}})
+          <i class="fa-solid fa-plus"></i> {{extraCosts.characteristic}}/{{localize "FADINGSUNS.Creation.PerLevel"}}
         </button>
       </div>
 
@@ -223,8 +225,10 @@
             <option value="{{option.value}}">{{option.label}}</option>
           {{/each}}
         </select>
+        <input type="number" class="picker-qty" name="extra-skill-qty" value="1" min="1" max="10"
+               data-tooltip="{{localize 'FADINGSUNS.Creation.Levels'}}"/>
         <button type="button" class="add-btn" data-action="buyExtra" data-kind="skill">
-          +1 ({{extraCosts.skill}})
+          <i class="fa-solid fa-plus"></i> {{extraCosts.skill}}/{{localize "FADINGSUNS.Creation.PerLevel"}}
         </button>
       </div>
 
@@ -252,8 +256,10 @@
 
       <div class="picker-row">
         <span class="picker-label">{{localize "FADINGSUNS.Wyrd"}}</span>
+        <input type="number" class="picker-qty" name="extra-wyrd-qty" value="1" min="1" max="10"
+               data-tooltip="{{localize 'FADINGSUNS.Creation.Levels'}}"/>
         <button type="button" class="add-btn" data-action="buyExtra" data-kind="wyrd">
-          +1 ({{extraCosts.wyrd}})
+          <i class="fa-solid fa-plus"></i> {{extraCosts.wyrd}}/{{localize "FADINGSUNS.Creation.PerLevel"}}
         </button>
       </div>
 

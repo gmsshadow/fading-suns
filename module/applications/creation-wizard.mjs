@@ -810,14 +810,19 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const kind = target.dataset.kind;
     const extras = this.draft.extras;
 
+    // Levels are bought in one go rather than by clicking repeatedly.
+    const quantity = Math.max(1, Number(
+      this.element.querySelector(`[name=extra-${kind}-qty]`)?.value
+    ) || 1);
+
     if (kind === "wyrd") {
-      extras.wyrd += 1;
+      extras.wyrd += quantity;
     } else if (kind === "characteristic" || kind === "skill") {
       const field = this.element.querySelector(`[name=extra-${kind}]`);
       const key = field?.value;
       if (!key) return;
       const bucket = kind === "characteristic" ? extras.characteristics : extras.skills;
-      bucket[key] = (bucket[key] ?? 0) + 1;
+      bucket[key] = (bucket[key] ?? 0) + quantity;
     } else if (kind === "blessing") {
       const uuid = this.element.querySelector("[name=extra-blessing]")?.value;
       if (!uuid) return;
@@ -842,14 +847,12 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const { kind, key } = target.dataset;
     const extras = this.draft.extras;
 
-    if (kind === "wyrd") extras.wyrd = Math.max(0, extras.wyrd - 1);
-    else if (kind === "characteristic") {
-      extras.characteristics[key] = Math.max(0, (extras.characteristics[key] ?? 0) - 1);
-      if (!extras.characteristics[key]) delete extras.characteristics[key];
-    } else if (kind === "skill") {
-      extras.skills[key] = Math.max(0, (extras.skills[key] ?? 0) - 1);
-      if (!extras.skills[key]) delete extras.skills[key];
-    } else if (kind === "blessing") {
+    // A purchase line is removed whole. Buying fewer levels means removing the
+    // line and buying again, which is less fiddly than clicking one off at a time.
+    if (kind === "wyrd") extras.wyrd = 0;
+    else if (kind === "characteristic") delete extras.characteristics[key];
+    else if (kind === "skill") delete extras.skills[key];
+    else if (kind === "blessing") {
       extras.blessings = extras.blessings.filter(b => b.uuid !== key);
     } else if (kind === "combatAction") {
       extras.combatActions = extras.combatActions.filter(a => a.uuid !== key);

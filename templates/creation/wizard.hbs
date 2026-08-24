@@ -126,12 +126,122 @@
       {{/if}}
     {{/if}}
 
+    {{#if (eq step "benefices")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.benefices"}}</h3>
+      <p class="budget {{#if beneficeOver}}is-over{{/if}}">
+        {{localize "FADINGSUNS.Benefice.Points"}}:
+        <strong>{{beneficeSpent}} / {{beneficeBudget}}</strong>
+      </p>
+      <p class="hint">{{localize "FADINGSUNS.Hint.BeneficePoints"}}</p>
+
+      <div class="picker-row">
+        <select name="beneficePick">
+          <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
+          {{#each beneficeGroups as |group|}}
+            <optgroup label="{{group.label}}">
+              {{#each group.entries as |entry|}}
+                <option value="{{entry.uuid}}">{{entry.name}} ({{entry.value}})</option>
+              {{/each}}
+            </optgroup>
+          {{/each}}
+        </select>
+        <input type="number" name="beneficeRank" min="0" placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+        <button type="button" class="add-btn" data-action="addBenefice">
+          <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+        </button>
+      </div>
+
+      <ol class="chosen-list">
+        {{#each chosenBenefices as |entry index|}}
+          <li class="{{#if (eq entry.polarity "affliction")}}is-curse{{/if}}">
+            <span class="chosen-name">{{entry.name}}</span>
+            <span class="chosen-value">{{entry.value}}</span>
+            <button type="button" class="icon-btn danger" data-action="removeBenefice" data-index="{{index}}">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+        {{else}}
+          <li class="empty">{{localize "FADINGSUNS.Creation.NoBenefices"}}</li>
+        {{/each}}
+      </ol>
+    {{/if}}
+
+    {{#if (eq step "extras")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.extras"}}</h3>
+      <p class="budget {{#if extraOver}}is-over{{/if}}">
+        {{localize "FADINGSUNS.Creation.ExtraPoints"}}:
+        <strong>{{extraSpent}} / {{extraBudget}}</strong>
+        <span class="hint">
+          {{#if extraFromCurses}}+{{extraFromCurses}} {{localize "FADINGSUNS.Blessing.Curse"}}{{/if}}
+          {{#if extraFromAfflictions}}+{{extraFromAfflictions}} {{localize "FADINGSUNS.Benefice.Affliction"}}{{/if}}
+        </span>
+      </p>
+      <p class="hint">{{localize "FADINGSUNS.Hint.ExtraPoints"}}</p>
+
+      <div class="picker-row">
+        <select name="extra-characteristic">
+          {{#each characteristicOptions as |option|}}
+            <option value="{{option.value}}">{{option.label}}</option>
+          {{/each}}
+        </select>
+        <button type="button" class="add-btn" data-action="buyExtra" data-kind="characteristic">
+          +1 ({{extraCosts.characteristic}})
+        </button>
+      </div>
+
+      <div class="picker-row">
+        <select name="extra-skill">
+          {{#each skillOptions as |option|}}
+            <option value="{{option.value}}">{{option.label}}</option>
+          {{/each}}
+        </select>
+        <button type="button" class="add-btn" data-action="buyExtra" data-kind="skill">
+          +1 ({{extraCosts.skill}})
+        </button>
+      </div>
+
+      <div class="picker-row">
+        <select name="extra-blessing">
+          {{#each blessingOptions as |option|}}
+            <option value="{{option.value}}">{{option.label}}</option>
+          {{/each}}
+        </select>
+        <button type="button" class="add-btn" data-action="buyExtra" data-kind="blessing">
+          {{localize "FADINGSUNS.Control.Add"}}
+        </button>
+      </div>
+
+      <div class="picker-row">
+        <span class="picker-label">{{localize "FADINGSUNS.Wyrd"}}</span>
+        <button type="button" class="add-btn" data-action="buyExtra" data-kind="wyrd">
+          +1 ({{extraCosts.wyrd}})
+        </button>
+      </div>
+
+      <ol class="chosen-list">
+        {{#each purchases as |row|}}
+          <li>
+            <span class="chosen-name">{{row.label}}</span>
+            {{#if (gt row.levels 1)}}<span class="chosen-levels">&times;{{row.levels}}</span>{{/if}}
+            <span class="chosen-value">{{row.cost}}</span>
+            <button type="button" class="icon-btn danger" data-action="removeExtra"
+                    data-kind="{{row.kind}}" data-key="{{row.key}}">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </li>
+        {{else}}
+          <li class="empty">{{localize "FADINGSUNS.Creation.NoExtras"}}</li>
+        {{/each}}
+      </ol>
+    {{/if}}
+
     {{#if (eq step "review")}}
       <h3>{{localize "FADINGSUNS.Creation.Step.review"}}</h3>
 
       {{#if isCustom}}
         <p class="hint">{{localize "FADINGSUNS.Creation.CustomReview"}}</p>
-      {{else}}
+      {{/if}}
+      {{#unless isCustom}}
         {{#if review.overages.length}}
           <p class="warning"><i class="fa-solid fa-triangle-exclamation"></i>
             {{localize "FADINGSUNS.Creation.OverCap"}}
@@ -172,7 +282,7 @@
           <h4>{{localize "FADINGSUNS.Creation.Notes"}}</h4>
           <ul class="review-notes">{{#each review.notes as |n|}}<li>{{n}}</li>{{/each}}</ul>
         {{/if}}
-      {{/if}}
+      {{/unless}}
     {{/if}}
 
   </div>
@@ -185,11 +295,9 @@
     {{/if}}
     <span class="spacer"></span>
     {{#if (eq step "review")}}
-      {{#unless isCustom}}
-        <button type="button" class="add-btn primary" data-action="apply">
-          <i class="fa-solid fa-check"></i> {{localize "FADINGSUNS.Creation.Apply"}}
-        </button>
-      {{/unless}}
+      <button type="button" class="add-btn primary" data-action="apply">
+        <i class="fa-solid fa-check"></i> {{localize "FADINGSUNS.Creation.Apply"}}
+      </button>
     {{else}}
       <button type="button" class="add-btn primary" data-action="next">
         {{localize "FADINGSUNS.Creation.Next"}} <i class="fa-solid fa-arrow-right"></i>

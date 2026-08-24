@@ -128,30 +128,36 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
   }
 
   /**
-   * Running totals for the Benefices and Afflictions block (p.118).
+   * Running totals for the Benefices and Afflictions block (p.88, p.117).
    *
-   * Characters begin with five points of Benefices; Afflictions are negative
-   * Benefices and return points to be spent elsewhere.
+   * Afflictions do not enlarge the Benefice budget. They "give the character
+   * additional Extras to spend on more Benefices or any other trait" (p.117), so
+   * they are reported against the Extra point pool instead — which a point spent
+   * straight back on a Benefice matches arithmetically, but need not be.
    *
-   * @returns {{spent: number, granted: number, budget: number, remaining: number,
+   * @returns {{spent: number, budget: number, remaining: number, extras: number,
    *            firebirds: number, income: number}}
    */
   #prepareBeneficeTotals() {
     let spent = 0;
-    let granted = 0;
+    let extras = 0;
     let firebirds = 0;
     let income = 0;
 
     for (const item of this.actor.items) {
+      if (item.type === "blessing" && item.system.isCurse) {
+        extras += item.system.cost;
+        continue;
+      }
       if (item.type !== "benefice") continue;
-      if (item.system.isAffliction) granted += item.system.value;
+      if (item.system.isAffliction) extras += item.system.value;
       else spent += item.system.value;
       firebirds += item.system.startingFirebirds;
       income += item.system.yearlyIncome;
     }
 
-    const budget = CONFIG.FADING_SUNS.startingBeneficePoints + granted;
-    return { spent, granted, budget, remaining: budget - spent, firebirds, income };
+    const budget = CONFIG.FADING_SUNS.startingBeneficePoints;
+    return { spent, budget, remaining: budget - spent, extras, firebirds, income };
   }
 
   /**

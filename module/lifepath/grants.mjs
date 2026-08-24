@@ -373,3 +373,102 @@ export function checkBlessingLimits(blessings = [], curses = []) {
   }
   return { blessingModifiers, cursePoints, ok: !problems.length, problems };
 }
+
+/* -------------------------------------------- */
+/*  Step Five: Benefices (p.88, p.117)          */
+/* -------------------------------------------- */
+
+/**
+ * Points available for Benefices at creation.
+ *
+ * The rulebook gives two different figures. Step Five of the creation procedure
+ * says ten (p.88); the Benefices chapter says five (p.117). Ten is used here
+ * because Step Five is the procedure actually being followed, but the figure is
+ * exposed as a world setting so a table can rule either way.
+ */
+export const BENEFICE_POINTS = 10;
+
+/**
+ * Points of Benefices bought. Afflictions are excluded: they do not reduce this
+ * budget, they add to the Extra point pool instead (p.117).
+ * @param {Array<{value: number, polarity: string}>} entries
+ * @returns {number}
+ */
+export function beneficeSpend(entries = []) {
+  return entries
+    .filter(e => e.polarity !== "affliction")
+    .reduce((total, e) => total + (e.value ?? 0), 0);
+}
+
+/* -------------------------------------------- */
+/*  Step Six: Extra points (p.88)               */
+/* -------------------------------------------- */
+
+/** Extra points every character receives at creation (p.88). */
+export const EXTRA_POINTS = 40;
+
+/**
+ * The Extra point pool.
+ *
+ * "Curses and Afflictions provide additional Extra points." (p.88) An Affliction
+ * gives "additional Extras to spend on more Benefices or any other trait"
+ * (p.117) — so it feeds this pool rather than the Benefice budget, even though a
+ * point spent straight back on a Benefice comes to the same arithmetic.
+ *
+ * @param {object} options
+ * @param {Array<{cost: number}>} [options.curses]
+ * @param {Array<{value: number}>} [options.afflictions]
+ * @param {number} [options.base]
+ * @returns {number}
+ */
+export function extraPointBudget({ curses = [], afflictions = [], base = EXTRA_POINTS } = {}) {
+  const fromCurses = curses.reduce((n, c) => n + Math.abs(c.cost ?? 0), 0);
+  const fromAfflictions = afflictions.reduce((n, a) => n + Math.abs(a.value ?? 0), 0);
+  return base + fromCurses + fromAfflictions;
+}
+
+/**
+ * What a set of Extra point purchases costs.
+ *
+ * @param {object} purchases
+ * @param {Record<string, number>} [purchases.characteristics]  Path to levels bought.
+ * @param {Record<string, number>} [purchases.skills]           Label to levels bought.
+ * @param {number} [purchases.wyrd]                             Levels of Wyrd bought.
+ * @param {Array<{cost: number}>} [purchases.blessings]
+ * @param {Array<{value: number}>} [purchases.benefices]        Bought beyond the Step Five budget.
+ * @returns {number}
+ */
+export function extraPointSpend(purchases = {}) {
+  const levels = record => Object.values(record ?? {}).reduce((n, v) => n + (v ?? 0), 0);
+
+  return (
+    levels(purchases.characteristics) * EXTRA_COSTS.characteristic +
+    levels(purchases.skills) * EXTRA_COSTS.skill +
+    (purchases.wyrd ?? 0) * EXTRA_COSTS.wyrd +
+    (purchases.blessings ?? []).reduce((n, b) => n + Math.abs(b.cost ?? 0), 0) * EXTRA_COSTS.blessing +
+    (purchases.benefices ?? []).reduce((n, b) => n + (b.value ?? 0), 0) * EXTRA_COSTS.benefice
+  );
+}
+
+/**
+ * Apply Extra point purchases to a lifepath state.
+ * @param {LifepathState} state   Mutated in place and returned.
+ * @param {object} purchases
+ * @returns {LifepathState}
+ */
+export function applyExtraPurchases(state, purchases = {}) {
+  for (const [path, levels] of Object.entries(purchases.characteristics ?? {})) {
+    if (levels) state.characteristics[path] = (state.characteristics[path] ?? 0) + levels;
+  }
+  for (const [label, levels] of Object.entries(purchases.skills ?? {})) {
+    if (levels) state.skills[label] = (state.skills[label] ?? 0) + levels;
+  }
+  state.wyrdBonus = (state.wyrdBonus ?? 0) + (purchases.wyrd ?? 0);
+  for (const blessing of purchases.blessings ?? []) {
+    if (!state.blessings.includes(blessing.uuid)) state.blessings.push(blessing.uuid);
+  }
+  for (const benefice of purchases.benefices ?? []) {
+    state.benefices.push({ key: benefice.uuid, value: benefice.value });
+  }
+  return state;
+}

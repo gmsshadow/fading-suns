@@ -234,8 +234,9 @@
       "Restriction": "The situation that activates the modifier. If it does not come into play, the modifier does not apply (p.115).",
       "BlessingLimit": "No more than seven Blessing modifiers, nor more than seven points of Curses (p.115).",
       "Ranks": "Set the Points field to the rank bought. Gamemasters may price entries outside this table.",
-      "BeneficePoints": "Characters begin with 5 points of Benefices. Afflictions grant further points to spend (p.118).",
-      "Stage": "Drag a stage from the Character Histories compendium onto a character to record it."
+      "BeneficePoints": "Afflictions do not enlarge this budget — they grant Extra points instead (p.117).",
+      "Stage": "Drag a stage from the Character Histories compendium onto a character to record it.",
+      "ExtraPoints": "Extra points are the only way to buy Blessings, occult characteristics and powers. Curses and Afflictions grant more (p.88)."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -269,6 +270,14 @@
       "ApplyWoundPenalties": {
         "Name": "Apply Wound Penalties Automatically",
         "Hint": "Subtract the wound penalty from lost vital levels (p.125) from every Goal Roll."
+      },
+      "BeneficePoints": {
+        "Name": "Benefice Points at Creation",
+        "Hint": "The rulebook gives ten in the creation procedure (p.88) and five in the Benefices chapter (p.117). Ten is the default."
+      },
+      "ExtraPoints": {
+        "Name": "Extra Points at Creation",
+        "Hint": "Extra points received at Step Six (p.88). Curses and Afflictions add further points on top."
       }
     },
     "Blessing": {
@@ -316,7 +325,8 @@
       "Riches": "Riches",
       "Status": "Status",
       "Points": "Benefice points",
-      "Remaining": "remaining"
+      "Remaining": "remaining",
+      "Extras": "Extra points from Curses and Afflictions"
     },
     "Stage": {
       "Upbringing": "Upbringing",
@@ -347,7 +357,7 @@
       "Custom": "Custom Creation",
       "CustomHint": "Spend the points yourself on the character sheet, with no prebuilt stages.",
       "CustomBudget": "You have",
-      "CustomReview": "Custom Creation spends the same totals directly on the sheet. Close this wizard and edit the character; the Benefice counter on the Characteristics tab will track that part of the spend.",
+      "CustomReview": "Custom Creation spends the 20 characteristic and 30 skill points directly on the sheet. The Benefices and Extra points chosen here will still be applied.",
       "Cap": "No trait may begin above",
       "Faction": "Faction",
       "FactionHint": "Only stages for the chosen faction are offered. Changing it clears any stages already picked.",
@@ -375,10 +385,15 @@
         "apprenticeship": "Apprenticeship",
         "earlyCareer": "Early Career",
         "choices": "Choices",
-        "review": "Review"
+        "review": "Review",
+        "benefices": "Benefices",
+        "extras": "Extra Points"
       },
       "Outstanding": "{count} choice(s) still to make",
-      "PickOne": "— choose —"
+      "PickOne": "— choose —",
+      "ExtraPoints": "Extra points",
+      "NoBenefices": "Nothing chosen yet.",
+      "NoExtras": "Nothing bought yet."
     }
   }
 }

@@ -57,3 +57,13 @@ test("an empty lifepath writes nothing", () => {
   assert.deepEqual(buildActorUpdate(createState()), {});
   assert.deepEqual(diffSkills({}, []), { updates: [], missing: [] });
 });
+
+test("Wyrd bought with Extra points raises the stored bonus (p.88)", () => {
+  const state = createState();
+  state.wyrdBonus = 3;
+  assert.equal(buildActorUpdate(state)["system.wyrd.bonus"], 3);
+});
+
+test("no Wyrd bonus is written when none was bought", () => {
+  assert.ok(!("system.wyrd.bonus" in buildActorUpdate(createState())));
+});

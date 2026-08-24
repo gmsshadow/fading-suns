@@ -33,6 +33,9 @@ export function buildActorUpdate(state) {
     if (path.startsWith("spirit.")) update[`system.${path}.primary`] = primary;
   }
 
+  // Wyrd bought with Extra points raises the maximum above its derived base (p.88).
+  if (state.wyrdBonus) update["system.wyrd.bonus"] = state.wyrdBonus;
+
   return update;
 }
 

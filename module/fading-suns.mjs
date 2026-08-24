@@ -79,6 +79,8 @@ Hooks.once("init", () => {
   CONFIG.Combat.initiative = { formula: "@wits", decimals: 0 };
 
   registerSettings();
+  CONFIG.FADING_SUNS.startingBeneficePoints = game.settings.get(SYSTEM_ID, "beneficePoints");
+  CONFIG.FADING_SUNS.startingExtraPoints = game.settings.get(SYSTEM_ID, "extraPoints");
   registerHandlebarsHelpers();
   registerSheets();
   registerChatListeners();
@@ -135,6 +137,26 @@ function registerSettings() {
     config: true,
     type: Boolean,
     default: true
+  });
+
+  game.settings.register(SYSTEM_ID, "beneficePoints", {
+    name: "FADINGSUNS.Settings.BeneficePoints.Name",
+    hint: "FADINGSUNS.Settings.BeneficePoints.Hint",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 10,
+    onChange: value => { CONFIG.FADING_SUNS.startingBeneficePoints = value; }
+  });
+
+  game.settings.register(SYSTEM_ID, "extraPoints", {
+    name: "FADINGSUNS.Settings.ExtraPoints.Name",
+    hint: "FADINGSUNS.Settings.ExtraPoints.Hint",
+    scope: "world",
+    config: true,
+    type: Number,
+    default: 40,
+    onChange: value => { CONFIG.FADING_SUNS.startingExtraPoints = value; }
   });
 
   game.settings.register(SYSTEM_ID, "systemMigrationVersion", {

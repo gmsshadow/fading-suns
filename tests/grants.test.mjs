@@ -14,7 +14,8 @@ import assert from "node:assert/strict";
 import {
   resolveChoices, applyGrants, applyStages, createState,
   findOverages, clampToCap, opposedTrait, skillLabel,
-  extraPointCost, checkBlessingLimits,
+  extraPointCost, checkBlessingLimits, beneficeSpend, extraPointBudget,
+  extraPointSpend, applyExtraPurchases,
   STARTING_CAP, STAGE_BUDGET, CUSTOM_BUDGET
 } from "../module/lifepath/grants.mjs";
 
@@ -421,4 +422,74 @@ test("things the system does not yet model are recorded rather than dropped", ()
   ]);
   assert.equal(state.notes.length, 1);
   assert.match(state.notes[0], /Parry/);
+});
+
+/* -------------------------------------------- */
+/*  Step Five and Step Six (p.88)               */
+/* -------------------------------------------- */
+
+test("Afflictions do not reduce the Benefice budget (p.117)", () => {
+  // "Afflictions are negative Benefices; the character has some social problem
+  //  which gives him additional Extras to spend on more Benefices or any other
+  //  trait." They feed the Extra pool, not this one.
+  const chosen = [
+    { name: "Refuge", value: 6, polarity: "benefice" },
+    { name: "Contact", value: 2, polarity: "benefice" },
+    { name: "Vendetta", value: 2, polarity: "affliction" }
+  ];
+  assert.equal(beneficeSpend(chosen), 8);
+});
+
+test("Curses and Afflictions both add to the Extra point pool (p.88)", () => {
+  assert.equal(extraPointBudget(), 40);
+  assert.equal(extraPointBudget({ curses: [{ cost: 2 }, { cost: 3 }] }), 45);
+  assert.equal(extraPointBudget({ afflictions: [{ value: 2 }] }), 42);
+  assert.equal(
+    extraPointBudget({ curses: [{ cost: 2 }], afflictions: [{ value: 3 }] }),
+    45
+  );
+});
+
+test("Extra point purchases cost what the chart says (p.88)", () => {
+  assert.equal(extraPointSpend({ characteristics: { "body.strength": 2 } }), 6);
+  assert.equal(extraPointSpend({ skills: { Melee: 3 } }), 3);
+  assert.equal(extraPointSpend({ wyrd: 4 }), 8);
+  assert.equal(extraPointSpend({ blessings: [{ cost: 2 }, { cost: 1 }] }), 3);
+  assert.equal(extraPointSpend({ benefices: [{ value: 5 }] }), 5);
+  assert.equal(extraPointSpend({}), 0);
+});
+
+test("a full Step Six spend totals correctly", () => {
+  const purchases = {
+    characteristics: { "body.strength": 1, "mind.wits": 2 },  // 3 levels = 9
+    skills: { Melee: 2, Etiquette: 1 },                        // 3 levels = 3
+    wyrd: 3,                                                   // 6
+    blessings: [{ cost: 2 }],                                  // 2
+    benefices: [{ value: 4 }]                                  // 4
+  };
+  assert.equal(extraPointSpend(purchases), 24);
+});
+
+test("Extra purchases stack on top of the lifepath result", () => {
+  const state = createState({ characteristics: { "body.strength": 5 }, skills: { Melee: 4 } });
+  applyExtraPurchases(state, {
+    characteristics: { "body.strength": 2 },
+    skills: { Melee: 1, Academia: 2 },
+    wyrd: 1,
+    blessings: [{ uuid: "Compendium.x.Item.abc", cost: 2 }],
+    benefices: [{ uuid: "Compendium.y.Item.def", value: 3 }]
+  });
+  assert.equal(state.characteristics["body.strength"], 7);
+  assert.equal(state.skills.Melee, 5);
+  assert.equal(state.skills.Academia, 2, "a skill bought outright starts from nothing");
+  assert.equal(state.wyrdBonus, 1);
+  assert.equal(state.blessings.length, 1);
+  assert.equal(state.benefices.length, 1);
+});
+
+test("the starting cap applies to Extra purchases too (p.72)", () => {
+  const state = createState({ characteristics: { "body.dexterity": 7 } });
+  applyExtraPurchases(state, { characteristics: { "body.dexterity": 3 } });
+  assert.equal(state.characteristics["body.dexterity"], 10);
+  assert.equal(clampToCap(state), 2);
 });

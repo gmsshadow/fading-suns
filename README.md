@@ -228,6 +228,21 @@ with a tooltip saying how many are outstanding. Ticking a third option in a "cho
 whichever was ticked earliest rather than refusing the click. Revisiting the step shows what was
 already chosen.
 
+**Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
+against a budget of ten points. **Step Six (Extra points)** spends the 40-point pool on
+characteristics (3 each), skills (1), Wyrd (2) and Blessings (their listed cost), with every purchase
+listed and removable. Both steps run in Custom Creation too.
+
+Two rules corrected here, both of which the rulebook states more than once and not identically:
+
+- **Benefice points are ten, not five.** Step Five of the creation procedure says ten (p.88); the
+  Benefices chapter says five (p.117). Ten is the default since Step Five is the procedure being
+  followed, and the world setting *Benefice Points at Creation* overrides it.
+- **Afflictions do not enlarge the Benefice budget.** They "give the character additional Extras to
+  spend on more Benefices or any other trait" (p.117), so they feed the Extra pool, as Curses do.
+  A point spent straight back on a Benefice comes to the same arithmetic, but it need not be —
+  and the earlier implementation quietly assumed it would.
+
 **Custom Creation** is the sheet itself, so the wizard says so plainly, shows the 20 and 30 point
 budgets and the cap of 8, and gets out of the way.
 

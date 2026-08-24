@@ -217,8 +217,18 @@ FADING_SUNS.beneficeCategories = {
   status: "FADINGSUNS.Benefice.Status"
 };
 
-/** Points of Benefices every character begins with (p.118). */
-FADING_SUNS.startingBeneficePoints = 5;
+/**
+ * Points of Benefices every character begins with.
+ *
+ * The rulebook gives two figures: Step Five of the creation procedure says ten
+ * (p.88), while the Benefices chapter says five (p.117). Ten is the default
+ * because Step Five is the procedure being followed, but the world setting
+ * "beneficePoints" overrides it.
+ */
+FADING_SUNS.startingBeneficePoints = 10;
+
+/** Extra points every character receives at Step Six (p.88). */
+FADING_SUNS.startingExtraPoints = 40;
 
 /* -------------------------------------------- */
 /*  Character Histories (p.72)                  */

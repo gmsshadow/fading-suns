@@ -1,6 +1,7 @@
 import {
   applyStages, createState, resolveChoices, findOverages, clampToCap,
-  STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP
+  beneficeSpend, extraPointBudget, extraPointSpend, applyExtraPurchases,
+  STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP, EXTRA_COSTS
 } from "../lifepath/grants.mjs";
 import { applyLifepathToActor, parseSkillLabel } from "../lifepath/apply.mjs";
 
@@ -10,7 +11,7 @@ const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applicat
 const STAGE_ORDER = ["upbringing", "apprenticeship", "earlyCareer"];
 
 /** The wizard's steps, in order. */
-const STEPS = ["mode", "upbringing", "apprenticeship", "earlyCareer", "choices", "review"];
+const STEPS = ["mode", "upbringing", "apprenticeship", "earlyCareer", "choices", "benefices", "extras", "review"];
 
 /**
  * The character creation wizard (p.70–p.89).
@@ -38,7 +39,15 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       group: "",
       stages: {},      // stageType -> Item
       choices: {},     // choice id -> option index, list of indices, or grant
-      picked: {}       // choice id -> the pool value chosen, for redisplay
+      picked: {},      // choice id -> the pool value chosen, for redisplay
+      benefices: [],   // Step Five: [{uuid, name, value, polarity, ranks}]
+      extras: {        // Step Six purchases
+        characteristics: {},
+        skills: {},
+        wyrd: 0,
+        blessings: [],
+        benefices: []
+      }
     };
   }
 
@@ -55,7 +64,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       clearStage: FadingSunsCreationWizard.#onClearStage,
       back: FadingSunsCreationWizard.#onBack,
       next: FadingSunsCreationWizard.#onNext,
-      apply: FadingSunsCreationWizard.#onApply
+      apply: FadingSunsCreationWizard.#onApply,
+      addBenefice: FadingSunsCreationWizard.#onAddBenefice,
+      removeBenefice: FadingSunsCreationWizard.#onRemoveBenefice,
+      buyExtra: FadingSunsCreationWizard.#onBuyExtra,
+      removeExtra: FadingSunsCreationWizard.#onRemoveExtra
     }
   };
 
@@ -95,6 +108,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     }
 
     if (step === "choices") context.choices = await this.#allChoices();
+    if (step === "benefices") Object.assign(context, await this.#beneficeContext());
+    if (step === "extras") Object.assign(context, await this.#extraContext());
     if (step === "review") context.review = this.#review();
 
     return context;
@@ -107,7 +122,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   #stepList() {
     const current = STEPS.indexOf(this.draft.step);
     return STEPS
-      .filter(id => this.draft.mode !== "custom" || !STAGE_ORDER.includes(id) && id !== "choices")
+      .filter(id => this.draft.mode !== "custom" || (!STAGE_ORDER.includes(id) && id !== "choices"))
       .map(id => ({
         id,
         label: game.i18n.localize(`FADINGSUNS.Creation.Step.${id}`),
@@ -160,6 +175,137 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /* -------------------------------------------- */
+  /*  Step Five: Benefices (p.88)                 */
+  /* -------------------------------------------- */
+
+  /**
+   * Everything the Benefices step needs: the catalogue to choose from, what has
+   * been chosen, and the running budget.
+   * @returns {Promise<object>}
+   */
+  async #beneficeContext() {
+    const pack = game.packs.get("fading-suns.benefices-afflictions");
+    const catalogue = pack ? await pack.getDocuments() : [];
+
+    const groups = new Map();
+    for (const entry of catalogue.sort((a, b) => a.name.localeCompare(b.name))) {
+      const key = entry.system.category;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push({
+        uuid: entry.uuid,
+        name: entry.name,
+        polarity: entry.system.polarity,
+        value: entry.system.value,
+        ranks: entry.system.ranks
+      });
+    }
+
+    const budget = CONFIG.FADING_SUNS.startingBeneficePoints;
+    const spent = beneficeSpend(this.draft.benefices);
+
+    return {
+      beneficeGroups: [...groups.entries()]
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([key, entries]) => ({
+          key,
+          label: game.i18n.localize(CONFIG.FADING_SUNS.beneficeCategories[key] ?? key),
+          entries
+        })),
+      chosenBenefices: this.draft.benefices,
+      beneficeBudget: budget,
+      beneficeSpent: spent,
+      beneficeRemaining: budget - spent,
+      beneficeOver: spent > budget
+    };
+  }
+
+  /* -------------------------------------------- */
+  /*  Step Six: Extra points (p.88)               */
+  /* -------------------------------------------- */
+
+  /**
+   * The Extra point pool, what it has been spent on, and what is left.
+   * @returns {Promise<object>}
+   */
+  async #extraContext() {
+    const state = this.#lifepathState();
+
+    // Curses come from the chosen stages; Afflictions from Step Five. Both add
+    // to the pool (p.88, p.117).
+    const curses = [];
+    for (const uuid of state.curses) {
+      const document = await fromUuid(uuid);
+      if (document) curses.push({ cost: document.system.cost });
+    }
+    const afflictions = this.draft.benefices.filter(b => b.polarity === "affliction");
+
+    const budget = extraPointBudget({
+      curses,
+      afflictions,
+      base: CONFIG.FADING_SUNS.startingExtraPoints
+    });
+    const spent = extraPointSpend(this.draft.extras);
+
+    return {
+      extraBudget: budget,
+      extraSpent: spent,
+      extraRemaining: budget - spent,
+      extraOver: spent > budget,
+      extraFromCurses: curses.reduce((n, c) => n + Math.abs(c.cost ?? 0), 0),
+      extraFromAfflictions: afflictions.reduce((n, a) => n + a.value, 0),
+      extraCosts: EXTRA_COSTS,
+      characteristicOptions: Object.entries(CONFIG.FADING_SUNS.rollableCharacteristics)
+        .map(([path, label]) => ({ value: path, label: game.i18n.localize(label) })),
+      skillOptions: (await this.#skillPool()).map(label => ({ value: label, label })),
+      blessingOptions: await this.#blessingOptions(),
+      purchases: this.#purchaseRows()
+    };
+  }
+
+  /**
+   * Blessings that can be bought with Extra points (p.88). Curses are excluded:
+   * they are taken to gain points, not spent on.
+   * @returns {Promise<Array<{value: string, label: string}>>}
+   */
+  async #blessingOptions() {
+    const pack = game.packs.get("fading-suns.blessings-curses");
+    if (!pack) return [];
+    const documents = await pack.getDocuments();
+    return documents
+      .filter(d => d.system.polarity === "blessing")
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(d => ({ value: d.uuid, label: `${d.name} (${d.system.cost})` }));
+  }
+
+  /** The Extra point purchases so far, as display rows. */
+  #purchaseRows() {
+    const rows = [];
+    for (const [path, levels] of Object.entries(this.draft.extras.characteristics)) {
+      if (!levels) continue;
+      rows.push({
+        kind: "characteristic", key: path, levels,
+        label: game.i18n.localize(CONFIG.FADING_SUNS.rollableCharacteristics[path] ?? path),
+        cost: levels * EXTRA_COSTS.characteristic
+      });
+    }
+    for (const [label, levels] of Object.entries(this.draft.extras.skills)) {
+      if (!levels) continue;
+      rows.push({ kind: "skill", key: label, levels, label, cost: levels * EXTRA_COSTS.skill });
+    }
+    if (this.draft.extras.wyrd) {
+      rows.push({
+        kind: "wyrd", key: "wyrd", levels: this.draft.extras.wyrd,
+        label: game.i18n.localize("FADINGSUNS.Wyrd"),
+        cost: this.draft.extras.wyrd * EXTRA_COSTS.wyrd
+      });
+    }
+    for (const blessing of this.draft.extras.blessings) {
+      rows.push({ kind: "blessing", key: blessing.uuid, levels: 1, label: blessing.name, cost: blessing.cost });
+    }
+    return rows;
+  }
+
+  /* -------------------------------------------- */
   /*  Lifepath resolution                         */
   /* -------------------------------------------- */
 
@@ -194,6 +340,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     for (const name of Object.keys(CONFIG.FADING_SUNS.naturalSkills)) skills[name] = 3;
 
     return createState({ characteristics, primary, skills });
+  }
+
+  /**
+   * The lifepath applied to a fresh character, without Step Five or Six.
+   * @returns {import("../lifepath/grants.mjs").LifepathState}
+   */
+  #lifepathState() {
+    const state = this.#baseline();
+    applyStages(state, this.chosenStages.map(s => s.system), this.draft.choices);
+    return state;
   }
 
   /** Every choice across the chosen stages that still needs a decision. */
@@ -313,8 +469,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {object}
    */
   #review() {
-    const state = this.#baseline();
-    applyStages(state, this.chosenStages.map(s => s.system), this.draft.choices);
+    const state = this.#lifepathState();
+    applyExtraPurchases(state, this.draft.extras);
+    for (const benefice of this.draft.benefices) {
+      state.benefices.push({ key: benefice.uuid, value: benefice.value });
+    }
 
     const { overages } = findOverages(state);
     const freed = clampToCap(state);
@@ -351,7 +510,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const step = this.draft.step;
     if (STAGE_ORDER.includes(step)) return !!this.draft.stages[step];
     if (step === "choices") return this.#pendingChoices().length === 0;
-    return true;
+    return true;   // Under-spending Benefices or Extras is the player's business.
   }
 
   /**
@@ -516,6 +675,82 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       return;
     }
     this.draft.step = this.#adjacentStep(1);
+    this.render();
+  }
+
+  /**
+   * Add the Benefice currently selected, at the rank chosen beside it.
+   * @this {FadingSunsCreationWizard}
+   */
+  static async #onAddBenefice() {
+    const uuid = this.element.querySelector("[name=beneficePick]")?.value;
+    if (!uuid) return;
+
+    const document = await fromUuid(uuid);
+    if (!document) return;
+
+    const rankField = this.element.querySelector("[name=beneficeRank]");
+    const value = Number(rankField?.value) || document.system.value;
+
+    this.draft.benefices.push({
+      uuid,
+      name: document.name,
+      polarity: document.system.polarity,
+      value
+    });
+    this.render();
+  }
+
+  /** @this {FadingSunsCreationWizard} */
+  static async #onRemoveBenefice(event, target) {
+    this.draft.benefices.splice(Number(target.dataset.index), 1);
+    this.render();
+  }
+
+  /**
+   * Buy a level of something with Extra points (p.88).
+   * @this {FadingSunsCreationWizard}
+   */
+  static async #onBuyExtra(event, target) {
+    const kind = target.dataset.kind;
+    const extras = this.draft.extras;
+
+    if (kind === "wyrd") {
+      extras.wyrd += 1;
+    } else if (kind === "characteristic" || kind === "skill") {
+      const field = this.element.querySelector(`[name=extra-${kind}]`);
+      const key = field?.value;
+      if (!key) return;
+      const bucket = kind === "characteristic" ? extras.characteristics : extras.skills;
+      bucket[key] = (bucket[key] ?? 0) + 1;
+    } else if (kind === "blessing") {
+      const uuid = this.element.querySelector("[name=extra-blessing]")?.value;
+      if (!uuid) return;
+      const document = await fromUuid(uuid);
+      if (!document) return;
+      if (extras.blessings.some(b => b.uuid === uuid)) return;
+      extras.blessings.push({ uuid, name: document.name, cost: document.system.cost });
+    }
+
+    this.render();
+  }
+
+  /** @this {FadingSunsCreationWizard} */
+  static async #onRemoveExtra(event, target) {
+    const { kind, key } = target.dataset;
+    const extras = this.draft.extras;
+
+    if (kind === "wyrd") extras.wyrd = Math.max(0, extras.wyrd - 1);
+    else if (kind === "characteristic") {
+      extras.characteristics[key] = Math.max(0, (extras.characteristics[key] ?? 0) - 1);
+      if (!extras.characteristics[key]) delete extras.characteristics[key];
+    } else if (kind === "skill") {
+      extras.skills[key] = Math.max(0, (extras.skills[key] ?? 0) - 1);
+      if (!extras.skills[key]) delete extras.skills[key];
+    } else if (kind === "blessing") {
+      extras.blessings = extras.blessings.filter(b => b.uuid !== key);
+    }
+
     this.render();
   }
 

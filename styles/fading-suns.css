@@ -1136,3 +1136,81 @@
 .fading-suns .stage-group-heading:first-child {
   margin-top: 0;
 }
+
+/* ---------- Benefices and Extra points steps ---------- */
+
+.fading-suns .budget {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  font-size: 0.85rem;
+  margin: 0 0 0.4rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.fading-suns .budget.is-over {
+  border-color: var(--fs-failure);
+  color: var(--fs-failure);
+}
+
+.fading-suns .budget .hint {
+  display: inline;
+  margin-left: 0.4rem;
+}
+
+.fading-suns .picker-row {
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.fading-suns .picker-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+.fading-suns .picker-row input[type="number"] {
+  flex: 0 0 7ch;
+}
+
+.fading-suns .picker-label {
+  flex: 1;
+  font-size: 0.82rem;
+}
+
+.fading-suns .chosen-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.fading-suns .chosen-list li {
+  align-items: center;
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  padding: 0.2rem 0.45rem;
+}
+
+.fading-suns .chosen-list li.is-curse {
+  border-left: 3px solid var(--fs-failure);
+}
+
+.fading-suns .chosen-name {
+  flex: 1;
+  font-size: 0.82rem;
+}
+
+.fading-suns .chosen-levels {
+  color: var(--fs-muted);
+  font-size: 0.72rem;
+}
+
+.fading-suns .chosen-value {
+  color: var(--fs-gold);
+  font-weight: 700;
+}

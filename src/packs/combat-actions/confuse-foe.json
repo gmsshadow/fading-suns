@@ -1,0 +1,30 @@
+{
+  "_key": "!items!pH8mKQAbpu7oZgg6",
+  "_id": "pH8mKQAbpu7oZgg6",
+  "name": "Confuse Foe",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Reduces the opponent's block, dodge or parry by one per victory point, for the attacker's next action.</p>",
+    "category": "martialArts",
+    "level": 4,
+    "characteristic": "mind.wits",
+    "skill": "Knavery",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Reduces the opponent's block, dodge or parry by one per victory point, for the attacker's next action."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

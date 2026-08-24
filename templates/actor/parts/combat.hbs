@@ -88,4 +88,31 @@
     </ol>
   </div>
 
+
+  <div class="items-section">
+    <header class="items-header">
+      <h3>{{localize "FADINGSUNS.Section.CombatActions"}}</h3>
+      <button type="button" class="add-btn" data-action="itemCreate" data-type="combatAction">
+        <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+      </button>
+    </header>
+    <ol class="items-list">
+      {{#each items.combatAction as |move|}}
+        <li class="item draggable" data-item-id="{{move.id}}">
+          <img class="item-img" src="{{move.img}}" alt="{{move.name}}"/>
+          <span class="item-name">{{move.name}}</span>
+          <span class="item-tag">{{localize (lookup ../config.combatActionCategories move.system.category)}}</span>
+          <span class="item-tag">{{localize "FADINGSUNS.CombatAction.Level"}} {{move.system.level}}</span>
+          <span class="item-restriction">{{move.system.summary}}</span>
+          <button type="button" class="icon-btn" data-action="itemEdit"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Edit'}}"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button type="button" class="icon-btn danger" data-action="itemDelete"
+                  data-tooltip="{{localize 'FADINGSUNS.Control.Delete'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+      {{else}}
+        <li class="empty">{{localize "FADINGSUNS.Empty.CombatActions"}}</li>
+      {{/each}}
+    </ol>
+  </div>
+
 </section>

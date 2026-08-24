@@ -1,0 +1,30 @@
+{
+  "_key": "!items!cP2sC6Zzhc0qZ3ej",
+  "_id": "cP2sC6Zzhc0qZ3ej",
+  "name": "6-round Burst",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-1",
+    "goal": "-1",
+    "damage": "3",
+    "initiativeModifier": -1,
+    "goalModifier": -1,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

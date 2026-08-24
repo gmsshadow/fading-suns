@@ -1,0 +1,30 @@
+{
+  "_key": "!items!g21XZ8QEmC9TVvMA",
+  "_id": "g21XZ8QEmC9TVvMA",
+  "name": "Florentine",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>One attack and one parry without multiple action penalties.</p>",
+    "category": "fencing",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "One attack and one parry without multiple action penalties."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

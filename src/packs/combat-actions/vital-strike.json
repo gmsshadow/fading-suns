@@ -1,0 +1,30 @@
+{
+  "_key": "!items!0QWk5RdwalK1Xb0n",
+  "_id": "0QWk5RdwalK1Xb0n",
+  "name": "Vital Strike",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Roll Perception + Physick as a complementary skill and add its victory dice to the damage.</p>",
+    "category": "martialArts",
+    "level": 10,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-3",
+    "goal": "-2",
+    "damage": "3",
+    "initiativeModifier": -3,
+    "goalModifier": -2,
+    "effect": "Roll Perception + Physick as a complementary skill and add its victory dice to the damage."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

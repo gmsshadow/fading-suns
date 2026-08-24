@@ -1,0 +1,30 @@
+{
+  "_key": "!items!kd9x1SGiYGHcc4EM",
+  "_id": "kd9x1SGiYGHcc4EM",
+  "name": "Snapshot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>May be performed with a dodge for no penalty, though no other actions may be taken that turn.</p>",
+    "category": "firearms",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "1",
+    "goal": "-2",
+    "damage": "-",
+    "initiativeModifier": 1,
+    "goalModifier": -2,
+    "effect": "May be performed with a dodge for no penalty, though no other actions may be taken that turn."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!DgEGru7NIO6TUDuC",
+  "_id": "DgEGru7NIO6TUDuC",
+  "name": "Block & Strike",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Blocks the opponent's attack. On a success, roll a Martial Fist or Martial Kick attack with no multiple action penalty.</p>",
+    "category": "martialArts",
+    "level": 8,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "+2/0",
+    "damage": "-/3 or 4",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Blocks the opponent's attack. On a success, roll a Martial Fist or Martial Kick attack with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

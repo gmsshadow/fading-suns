@@ -1,0 +1,30 @@
+{
+  "_key": "!items!qqqO6qu2OUvWwdaV",
+  "_id": "qqqO6qu2OUvWwdaV",
+  "name": "Choke Hold",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>After three turns of grappling, roll Strength + Vigor against the target's Endurance + Vigor. On a success the target falls unconscious.</p>",
+    "category": "martialArts",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-3",
+    "goal": "-1",
+    "damage": "4",
+    "initiativeModifier": -3,
+    "goalModifier": -1,
+    "effect": "After three turns of grappling, roll Strength + Vigor against the target's Endurance + Vigor. On a success the target falls unconscious."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!aRmOPGRZtIWsYDBl",
+  "_id": "aRmOPGRZtIWsYDBl",
+  "name": "Flat of Blade",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>No victory dice are added.</p>",
+    "category": "fencing",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-3d",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "No victory dice are added."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

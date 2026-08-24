@@ -1,0 +1,30 @@
+{
+  "_key": "!items!qf3ydEN6olqwLinT",
+  "_id": "qf3ydEN6olqwLinT",
+  "name": "Athletic Strike",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Performs an athletic feat — swinging from a chandelier and the like — in the same action with no multiple action penalty.</p>",
+    "category": "fencing",
+    "level": 8,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-3",
+    "goal": "-2",
+    "damage": "-",
+    "initiativeModifier": -3,
+    "goalModifier": -2,
+    "effect": "Performs an athletic feat — swinging from a chandelier and the like — in the same action with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

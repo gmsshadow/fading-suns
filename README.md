@@ -65,7 +65,16 @@ Reading the resolution code against the Core Rules turned up several errors, all
 
 ### Compendiums
 
-Four compendiums ship with the system.
+Five compendiums ship with the system.
+
+**Combat Actions** — all 65 from the charts on p.292–295: 24 Martial Arts, 20 Fencing, 15 Firearms,
+3 Shield and the 3 Graa actions of the Vorox. Each carries its level, which is both the skill rating
+needed to learn it and its cost in Extra points, one per level (p.88, p.102). The six unrated
+firearms actions — Aim, Hipshot, the bursts — are level 0: anyone may attempt them.
+
+Initiative, goal and damage are stored as the charts print them, because several are not plain
+numbers (`0/-1`, `-1/m`, `3+`). A numeric modifier is derived alongside wherever the printed value
+is a plain integer, so a roll can use it without parsing display text.
 
 **Blessings & Curses** — all 91 entries from p.115–116, across the six printed categories:
 Appearance (6), Behaviour (38), Injury (11), Knack (24), Reputation (8) and Size (4).
@@ -96,13 +105,15 @@ Blessings, Curses and Benefices are referenced by name in the source and resolve
 uuids at build time, so a typo fails the build rather than producing a dangling link. The test
 suite plays whole lifepaths through the engine and checks each stage against its published budget.
 
-Three stages do not add up, and are pinned rather than padded:
+The Combat Actions charts resolved the two Duelist stages exactly. The Apprenticeship teaches Parry
+(1), Thrust (2) and Slash (3) — precisely the six points it was short. The Early Career's basic
+option adds Draw & Strike (4) for ten, and its Parry/Riposte option comes to ten as well. The third
+option, Draw & Strike with Disarm and Feint, comes to fourteen; the budget check now accepts a stage
+if *some* legal selection lands on budget, which treats that as the bonus for having taken the
+Apprenticeship rather than an error.
 
-| Stage | Short by | Why |
-|---|---|---|
-| Apprenticeship: Duelist | 6 skill points | Teaches Combat Actions, priced "1 per level" (p.87) — the levels are in Chapter Six, not yet transcribed |
-| Early Career: Duelist | 10 skill points | As above |
-| Early Career: Ambassador | 1 skill point | No unmodelled element; the printed list simply totals 14 against a budget of 15 |
+One stage still does not add up, and is pinned rather than padded: **Early Career: Ambassador** is
+one skill point short, with no unmodelled element to account for it. That looks like an erratum.
 
 **Benefices & Afflictions** — 52 entries from p.117–124, across Background, Community,
 Possessions, Artifacts & Relics, Riches and Status.

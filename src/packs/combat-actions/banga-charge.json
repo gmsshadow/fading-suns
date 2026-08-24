@@ -1,0 +1,30 @@
+{
+  "_key": "!items!PArGfMymtUV0qhYT",
+  "_id": "PArGfMymtUV0qhYT",
+  "name": "Banga (Charge)",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>On a success both attacker and target are knocked down. Add two damage dice per three metres charged.</p>",
+    "category": "graa",
+    "level": 3,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-3",
+    "goal": "-",
+    "damage": "3+",
+    "initiativeModifier": -3,
+    "goalModifier": 0,
+    "effect": "On a success both attacker and target are knocked down. Add two damage dice per three metres charged."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

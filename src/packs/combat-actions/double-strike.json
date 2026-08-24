@@ -1,0 +1,30 @@
+{
+  "_key": "!items!AwcfYgOVpQm7rqQw",
+  "_id": "AwcfYgOVpQm7rqQw",
+  "name": "Double Strike",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Attack with the primary and off-hand weapon in the same action, rolling both attacks separately.</p>",
+    "category": "fencing",
+    "level": 10,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-1",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -1,
+    "goalModifier": -1,
+    "effect": "Attack with the primary and off-hand weapon in the same action, rolling both attacks separately."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

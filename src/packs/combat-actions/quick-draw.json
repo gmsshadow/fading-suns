@@ -1,0 +1,30 @@
+{
+  "_key": "!items!oZ4f9aBo8HKMiFno",
+  "_id": "oZ4f9aBo8HKMiFno",
+  "name": "Quick Draw",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Draw the gun and fire in the same action.</p>",
+    "category": "firearms",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Draw the gun and fire in the same action."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

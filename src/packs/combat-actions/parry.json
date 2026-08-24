@@ -1,0 +1,30 @@
+{
+  "_key": "!items!0obbx8xST8r0Hqua",
+  "_id": "0obbx8xST8r0Hqua",
+  "name": "Parry",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Roll victory dice plus the weapon's damage dice as armour.</p>",
+    "category": "fencing",
+    "level": 1,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "2",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 2,
+    "effect": "Roll victory dice plus the weapon's damage dice as armour."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

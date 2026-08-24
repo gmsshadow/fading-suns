@@ -255,3 +255,15 @@ FADING_SUNS.stageBudgets = {
   apprenticeship: { characteristics: 5, skills: 10 },
   earlyCareer: { characteristics: 10, skills: 15 }
 };
+
+/* -------------------------------------------- */
+/*  Combat Actions (p.102, p.292)               */
+/* -------------------------------------------- */
+
+FADING_SUNS.combatActionCategories = {
+  martialArts: "FADINGSUNS.CombatAction.MartialArts",
+  fencing: "FADINGSUNS.CombatAction.Fencing",
+  shield: "FADINGSUNS.CombatAction.Shield",
+  firearms: "FADINGSUNS.CombatAction.Firearms",
+  graa: "FADINGSUNS.CombatAction.Graa"
+};

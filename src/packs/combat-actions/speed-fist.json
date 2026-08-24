@@ -1,0 +1,30 @@
+{
+  "_key": "!items!5zja6rdAcc54CNQW",
+  "_id": "5zja6rdAcc54CNQW",
+  "name": "Speed Fist",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Adds three successes against dodges and blocks.</p>",
+    "category": "martialArts",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "2",
+    "goal": "-",
+    "damage": "3",
+    "initiativeModifier": 2,
+    "goalModifier": 0,
+    "effect": "Adds three successes against dodges and blocks."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

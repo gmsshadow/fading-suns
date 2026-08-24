@@ -34,6 +34,7 @@ export function preloadTemplates() {
     "fadingSuns.detailsBlessing": `${ROOT}/item/parts/details-blessing.hbs`,
     "fadingSuns.detailsBenefice": `${ROOT}/item/parts/details-benefice.hbs`,
     "fadingSuns.detailsStage": `${ROOT}/item/parts/details-stage.hbs`,
+    "fadingSuns.detailsCombatAction": `${ROOT}/item/parts/details-combat-action.hbs`,
 
     // Character creation wizard
     "fadingSuns.creationWizard": `${ROOT}/creation/wizard.hbs`

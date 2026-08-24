@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Iwc1ogMlQ1bPCJ2M",
+  "_id": "Iwc1ogMlQ1bPCJ2M",
+  "name": "Spread",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Spreads up to five metres; anyone in the targeted area must dodge or be hit.</p>",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-2",
+    "goal": "-1/m",
+    "damage": "4",
+    "initiativeModifier": -2,
+    "goalModifier": 0,
+    "effect": "Spreads up to five metres; anyone in the targeted area must dodge or be hit."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

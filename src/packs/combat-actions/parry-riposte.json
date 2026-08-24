@@ -1,0 +1,30 @@
+{
+  "_key": "!items!EolmDKlKnkeM373d",
+  "_id": "EolmDKlKnkeM373d",
+  "name": "Parry/Riposte",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Parries the opponent's attack. On a success, roll an attack with no multiple action penalty.</p>",
+    "category": "fencing",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-2",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": -2,
+    "effect": "Parries the opponent's attack. On a success, roll an attack with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!J0webfmIYhf7M9Nf",
+  "_id": "J0webfmIYhf7M9Nf",
+  "name": "Shield Attack",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Ram the shield into the target, inflicting the shield's damage.</p>",
+    "category": "shield",
+    "level": 2,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-1",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": -1,
+    "goalModifier": 0,
+    "effect": "Ram the shield into the target, inflicting the shield's damage."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

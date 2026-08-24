@@ -493,3 +493,12 @@ test("the starting cap applies to Extra purchases too (p.72)", () => {
   assert.equal(state.characteristics["body.dexterity"], 10);
   assert.equal(clampToCap(state), 2);
 });
+
+test("Combat Actions bought with Extra points cost one per level (p.88, p.102)", () => {
+  assert.equal(extraPointSpend({ combatActions: [{ level: 1 }, { level: 3 }] }), 4);
+  const state = createState();
+  applyExtraPurchases(state, { combatActions: [{ uuid: "Compendium.z.Item.parry", level: 1 }] });
+  assert.equal(state.combatActions.length, 1);
+  applyExtraPurchases(state, { combatActions: [{ uuid: "Compendium.z.Item.parry", level: 1 }] });
+  assert.equal(state.combatActions.length, 1, "the same action is not learned twice");
+});

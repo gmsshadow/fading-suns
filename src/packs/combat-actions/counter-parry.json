@@ -1,0 +1,30 @@
+{
+  "_key": "!items!tMNuM1GAI2Szfh7C",
+  "_id": "tMNuM1GAI2Szfh7C",
+  "name": "Counter Parry",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Eliminates the opponent's +2 parry bonus.</p>",
+    "category": "fencing",
+    "level": 3,
+    "characteristic": "mind.wits",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Eliminates the opponent's +2 parry bonus."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

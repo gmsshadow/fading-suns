@@ -1,0 +1,39 @@
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.CombatAction.Category"}}</span>
+    <select name="system.category">{{selectOptions config.combatActionCategories selected=system.category localize=true}}</select>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.CombatAction.Level"}}</span>
+    <input type="number" name="system.level" value="{{system.level}}" min="0" max="10"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.Characteristic"}}</span>
+    <select name="system.characteristic">{{selectOptions config.rollableCharacteristics selected=system.characteristic localize=true}}</select>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Field.Skill"}}</span>
+    <input type="text" name="system.skill" value="{{system.skill}}"/>
+  </label>
+</div>
+
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.CombatAction.Initiative"}}</span>
+    <input type="text" name="system.initiative" value="{{system.initiative}}"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.CombatAction.Goal"}}</span>
+    <input type="text" name="system.goal" value="{{system.goal}}"/>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.CombatAction.Damage"}}</span>
+    <input type="text" name="system.damage" value="{{system.damage}}"/>
+  </label>
+</div>
+
+<label class="form-group">
+  <span>{{localize "FADINGSUNS.CombatAction.Effect"}}</span>
+  <input type="text" name="system.effect" value="{{system.effect}}"/>
+</label>
+<p class="hint">{{localize "FADINGSUNS.Hint.CombatAction"}}</p>

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!YEFx07rtzb06wIMD",
+  "_id": "YEFx07rtzb06wIMD",
+  "name": "Two Guns",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>One shot from each handgun, with no multiple action penalty.</p>",
+    "category": "firearms",
+    "level": 8,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "0/-1",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "One shot from each handgun, with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

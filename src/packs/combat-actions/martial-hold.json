@@ -1,0 +1,30 @@
+{
+  "_key": "!items!qLh7uqk0MsNWwZAJ",
+  "_id": "qLh7uqk0MsNWwZAJ",
+  "name": "Martial Hold",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>On a success, roll Dexterity + Fight plus victory points against the target's Strength + Vigor. If that succeeds the target is grappled, and the attacker may deliver grapple damage each turn.</p>",
+    "category": "martialArts",
+    "level": 3,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-1",
+    "goal": "-",
+    "damage": "3",
+    "initiativeModifier": -1,
+    "goalModifier": 0,
+    "effect": "On a success, roll Dexterity + Fight plus victory points against the target's Strength + Vigor. If that succeeds the target is grappled, and the attacker may deliver grapple damage each turn."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

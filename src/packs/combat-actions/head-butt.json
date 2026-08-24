@@ -1,0 +1,30 @@
+{
+  "_key": "!items!jfr6MKoedkYkLpb4",
+  "_id": "jfr6MKoedkYkLpb4",
+  "name": "Head Butt",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>The attacker takes any damage exceeding his Endurance.</p>",
+    "category": "martialArts",
+    "level": 3,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "1",
+    "damage": "4",
+    "initiativeModifier": -2,
+    "goalModifier": 1,
+    "effect": "The attacker takes any damage exceeding his Endurance."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

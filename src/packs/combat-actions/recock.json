@@ -1,0 +1,30 @@
+{
+  "_key": "!items!QCopYEvmkJLI2eNv",
+  "_id": "QCopYEvmkJLI2eNv",
+  "name": "Recock",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Recock a rifle or shotgun and fire in the same action.</p>",
+    "category": "firearms",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Recock a rifle or shotgun and fire in the same action."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

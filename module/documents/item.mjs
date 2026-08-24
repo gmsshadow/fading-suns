@@ -10,7 +10,8 @@ const DEFAULT_IMAGES = {
   theurgicRite: "icons/svg/holy-shield.svg",
   blessing: "icons/svg/regen.svg",
   benefice: "icons/svg/coins.svg",
-  stage: "icons/svg/book.svg"
+  stage: "icons/svg/book.svg",
+  combatAction: "icons/svg/sword.svg"
 };
 
 /**

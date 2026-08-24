@@ -13,7 +13,8 @@
       "theurgicRite": "Theurgic Rite",
       "blessing": "Blessing or Curse",
       "benefice": "Benefice or Affliction",
-      "stage": "Character History Stage"
+      "stage": "Character History Stage",
+      "combatAction": "Combat Action"
     }
   },
   "FADINGSUNS": {
@@ -159,7 +160,8 @@
       "TheurgicRites": "Theurgic Rites",
       "BlessingsCurses": "Blessings & Curses",
       "BeneficesAfflictions": "Benefices & Afflictions",
-      "History": "Character History"
+      "History": "Character History",
+      "CombatActions": "Combat Actions"
     },
     "Control": {
       "Add": "Add",
@@ -236,7 +238,8 @@
       "Ranks": "Set the Points field to the rank bought. Gamemasters may price entries outside this table.",
       "BeneficePoints": "Afflictions do not enlarge this budget — they grant Extra points instead (p.117).",
       "Stage": "Drag a stage from the Character Histories compendium onto a character to record it.",
-      "ExtraPoints": "Extra points are the only way to buy Blessings, occult characteristics and powers. Curses and Afflictions grant more (p.88)."
+      "ExtraPoints": "Extra points are the only way to buy Blessings, occult characteristics and powers. Curses and Afflictions grant more (p.88).",
+      "CombatAction": "Combat actions are rated by the level of skill needed to learn them, and cost one Extra point per level (p.102, p.88)."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -249,7 +252,8 @@
       "BlessingsCurses": "No blessings or curses.",
       "Modifiers": "No modifiers. Add them in the source data or edit the compendium entry.",
       "BeneficesAfflictions": "No benefices or afflictions.",
-      "History": "No character history stages."
+      "History": "No character history stages.",
+      "CombatActions": "No combat actions."
     },
     "Item": {
       "New": "New {type}",
@@ -394,6 +398,20 @@
       "ExtraPoints": "Extra points",
       "NoBenefices": "Nothing chosen yet.",
       "NoExtras": "Nothing bought yet."
+    },
+    "CombatAction": {
+      "Category": "Style",
+      "Level": "Level",
+      "Initiative": "Initiative modifier",
+      "Goal": "Goal modifier",
+      "Damage": "Damage",
+      "Effect": "Effect",
+      "MartialArts": "Martial Arts",
+      "Fencing": "Fencing",
+      "Shield": "Shield",
+      "Firearms": "Firearms",
+      "Graa": "Graa (Vorox)",
+      "Untrained": "No training needed"
     }
   }
 }

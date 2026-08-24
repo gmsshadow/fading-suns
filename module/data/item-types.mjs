@@ -445,3 +445,62 @@ export class FadingSunsStage extends FadingSunsItemBase {
     return !this.choices.length;
   }
 }
+
+/**
+ * A Combat Action (p.102, charted p.292–p.295).
+ *
+ * "Combat actions are not skills so much as trained maneuvers... They are rated
+ *  by the level of the relevant skill required to learn them." (p.102)
+ *
+ * The level is the point cost at creation, one Extra point per level (p.88).
+ * Actions with level 0 are those the charts leave unrated — anyone may attempt
+ * them without training.
+ *
+ * Initiative, goal and damage are stored as the charts print them, because
+ * several are not plain numbers ("0/-1", "-1/m", "3+"). Where the printed value
+ * is a plain integer a numeric modifier is derived alongside, so a roll can use
+ * it without parsing display text.
+ */
+export class FadingSunsCombatAction extends FadingSunsItemBase {
+
+  /** @inheritDoc */
+  static defineSchema() {
+    const schema = super.defineSchema();
+    delete schema.techLevel;
+    delete schema.cost;
+    return Object.assign(schema, {
+      category: new fields.StringField({
+        required: true, blank: false, initial: "fencing",
+        choices: () => CONFIG.FADING_SUNS.combatActionCategories
+      }),
+      level: new fields.NumberField({ required: true, integer: true, min: 0, max: 10, initial: 1 }),
+      characteristic: new fields.StringField({ required: false, blank: true, initial: "body.dexterity" }),
+      skill: new fields.StringField({ required: false, blank: true, initial: "Melee" }),
+      initiative: new fields.StringField({ required: false, blank: true, initial: "-" }),
+      goal: new fields.StringField({ required: false, blank: true, initial: "-" }),
+      damage: new fields.StringField({ required: false, blank: true, initial: "-" }),
+      initiativeModifier: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+      goalModifier: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+      effect: new fields.StringField({ required: false, blank: true, initial: "" })
+    });
+  }
+
+  /** Whether this action must be bought, or may be attempted by anyone. */
+  get requiresTraining() {
+    return this.level > 0;
+  }
+
+  /** Extra points this action costs, at one per level (p.88). */
+  get pointCost() {
+    return this.level;
+  }
+
+  /** A short summary such as "Dexterity + Melee, Goal -2". */
+  get summary() {
+    if (!this.skill) return this.effect ? "" : "-";
+    const characteristic = game.i18n.localize(
+      CONFIG.FADING_SUNS.rollableCharacteristics[this.characteristic] ?? this.characteristic
+    );
+    return `${characteristic} + ${this.skill}`;
+  }
+}

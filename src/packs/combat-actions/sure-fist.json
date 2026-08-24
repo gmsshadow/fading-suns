@@ -1,0 +1,30 @@
+{
+  "_key": "!items!SG44BTIrPNkGbxqu",
+  "_id": "SG44BTIrPNkGbxqu",
+  "name": "Sure Fist",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "martialArts",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "2",
+    "damage": "3",
+    "initiativeModifier": -2,
+    "goalModifier": 2,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

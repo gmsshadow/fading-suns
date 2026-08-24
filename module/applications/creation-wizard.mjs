@@ -46,7 +46,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         skills: {},
         wyrd: 0,
         blessings: [],
-        benefices: []
+        benefices: [],
+        combatActions: []
       }
     };
   }
@@ -258,6 +259,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         .map(([path, label]) => ({ value: path, label: game.i18n.localize(label) })),
       skillOptions: (await this.#skillPool()).map(label => ({ value: label, label })),
       blessingOptions: await this.#blessingOptions(),
+      combatActionOptions: await this.#combatActionOptions(),
       purchases: this.#purchaseRows()
     };
   }
@@ -275,6 +277,24 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       .filter(d => d.system.polarity === "blessing")
       .sort((a, b) => a.name.localeCompare(b.name))
       .map(d => ({ value: d.uuid, label: `${d.name} (${d.system.cost})` }));
+  }
+
+  /**
+   * Combat Actions that can be bought with Extra points, at one point per level
+   * (p.88). Unrated actions are excluded — anyone may attempt those.
+   * @returns {Promise<Array<{value: string, label: string}>>}
+   */
+  async #combatActionOptions() {
+    const pack = game.packs.get("fading-suns.combat-actions");
+    if (!pack) return [];
+    const documents = await pack.getDocuments();
+    return documents
+      .filter(d => d.system.level > 0)
+      .sort((a, b) => (a.system.level - b.system.level) || a.name.localeCompare(b.name))
+      .map(d => ({
+        value: d.uuid,
+        label: `${d.name} — ${game.i18n.localize(CONFIG.FADING_SUNS.combatActionCategories[d.system.category])} (${d.system.level})`
+      }));
   }
 
   /** The Extra point purchases so far, as display rows. */
@@ -301,6 +321,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     }
     for (const blessing of this.draft.extras.blessings) {
       rows.push({ kind: "blessing", key: blessing.uuid, levels: 1, label: blessing.name, cost: blessing.cost });
+    }
+    for (const action of this.draft.extras.combatActions) {
+      rows.push({ kind: "combatAction", key: action.uuid, levels: 1, label: action.name, cost: action.level });
     }
     return rows;
   }
@@ -730,6 +753,13 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       if (!document) return;
       if (extras.blessings.some(b => b.uuid === uuid)) return;
       extras.blessings.push({ uuid, name: document.name, cost: document.system.cost });
+    } else if (kind === "combatAction") {
+      const uuid = this.element.querySelector("[name=extra-combat-action]")?.value;
+      if (!uuid) return;
+      const document = await fromUuid(uuid);
+      if (!document) return;
+      if (extras.combatActions.some(a => a.uuid === uuid)) return;
+      extras.combatActions.push({ uuid, name: document.name, level: document.system.level });
     }
 
     this.render();
@@ -749,6 +779,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       if (!extras.skills[key]) delete extras.skills[key];
     } else if (kind === "blessing") {
       extras.blessings = extras.blessings.filter(b => b.uuid !== key);
+    } else if (kind === "combatAction") {
+      extras.combatActions = extras.combatActions.filter(a => a.uuid !== key);
     }
 
     this.render();

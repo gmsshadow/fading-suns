@@ -19,6 +19,7 @@
  *                    elsewhere if the character already speaks or reads it (p.72)
  *   blessing/curse   a reference to a Blessing or Curse item
  *   benefice         a reference to a Benefice item, at a given rank
+ *   combatAction     a reference to a Combat Action item; its level is its cost
  *   note             something not yet modelled, such as Fencing Actions
  *
  * Choices come in two forms. An enumerated choice lists its options —
@@ -30,7 +31,8 @@
 
 /** Every grant kind a stage may contain. */
 export const GRANT_KINDS = [
-  "characteristic", "skill", "language", "blessing", "curse", "benefice", "note", "choice"
+  "characteristic", "skill", "language", "blessing", "curse", "benefice",
+  "combatAction", "note", "choice"
 ];
 
 /**
@@ -131,6 +133,7 @@ export function createState({ characteristics = {}, skills = {}, primary = {} } 
     blessings: [],
     curses: [],
     benefices: [],
+    combatActions: [],
     notes: [],
     sparePoints: 0
   };
@@ -193,6 +196,14 @@ export function applyGrants(state, grants) {
       case "benefice":
         // "Benefice—Rank (Knight)" grants the entry at a specific rank.
         state.benefices.push({ key: grant.key, value: grant.value ?? 1 });
+        break;
+
+      case "combatAction":
+        // Combat actions cost one point per level and come out of the stage's
+        // skill budget, which is where the rulebook lists them (p.88, p.102).
+        if (!state.combatActions.some(a => a.key === grant.key)) {
+          state.combatActions.push({ key: grant.key, level: grant.value ?? 0 });
+        }
         break;
 
       case "note":
@@ -436,6 +447,7 @@ export function extraPointBudget({ curses = [], afflictions = [], base = EXTRA_P
  * @param {number} [purchases.wyrd]                             Levels of Wyrd bought.
  * @param {Array<{cost: number}>} [purchases.blessings]
  * @param {Array<{value: number}>} [purchases.benefices]        Bought beyond the Step Five budget.
+ * @param {Array<{level: number}>} [purchases.combatActions]    Costed at one point per level.
  * @returns {number}
  */
 export function extraPointSpend(purchases = {}) {
@@ -446,7 +458,8 @@ export function extraPointSpend(purchases = {}) {
     levels(purchases.skills) * EXTRA_COSTS.skill +
     (purchases.wyrd ?? 0) * EXTRA_COSTS.wyrd +
     (purchases.blessings ?? []).reduce((n, b) => n + Math.abs(b.cost ?? 0), 0) * EXTRA_COSTS.blessing +
-    (purchases.benefices ?? []).reduce((n, b) => n + (b.value ?? 0), 0) * EXTRA_COSTS.benefice
+    (purchases.benefices ?? []).reduce((n, b) => n + (b.value ?? 0), 0) * EXTRA_COSTS.benefice +
+    (purchases.combatActions ?? []).reduce((n, a) => n + (a.level ?? 0), 0) * EXTRA_COSTS.combatAction
   );
 }
 
@@ -469,6 +482,11 @@ export function applyExtraPurchases(state, purchases = {}) {
   }
   for (const benefice of purchases.benefices ?? []) {
     state.benefices.push({ key: benefice.uuid, value: benefice.value });
+  }
+  for (const action of purchases.combatActions ?? []) {
+    if (!state.combatActions.some(a => a.key === action.uuid)) {
+      state.combatActions.push({ key: action.uuid, level: action.level });
+    }
   }
   return state;
 }

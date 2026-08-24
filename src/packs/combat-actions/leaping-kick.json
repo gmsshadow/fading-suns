@@ -1,0 +1,30 @@
+{
+  "_key": "!items!rThn00QLJ9Ivs1xs",
+  "_id": "rThn00QLJ9Ivs1xs",
+  "name": "Leaping Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "martialArts",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "6",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

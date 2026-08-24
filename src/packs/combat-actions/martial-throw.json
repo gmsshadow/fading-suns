@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Hb0h2NFZyD2CfrtO",
+  "_id": "Hb0h2NFZyD2CfrtO",
+  "name": "Martial Throw",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>On a success, roll Dexterity + Fight plus victory points against the target's Strength + Vigor. If that succeeds the target is thrown one metre per success, up to the attacker's Strength, taking an extra damage die per three metres thrown.</p>",
+    "category": "martialArts",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-",
+    "damage": "3",
+    "initiativeModifier": -2,
+    "goalModifier": 0,
+    "effect": "On a success, roll Dexterity + Fight plus victory points against the target's Strength + Vigor. If that succeeds the target is thrown one metre per success, up to the attacker's Strength, taking an extra damage die per three metres thrown."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!mHleAWGxl5yRu4Ai",
+  "_id": "mHleAWGxl5yRu4Ai",
+  "name": "Iron Body",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Resolved by the defender's block. The attacking opponent takes one damage per victory point from the blocking roll.</p>",
+    "category": "martialArts",
+    "level": 7,
+    "characteristic": "",
+    "skill": "",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Resolved by the defender's block. The attacking opponent takes one damage per victory point from the blocking roll."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

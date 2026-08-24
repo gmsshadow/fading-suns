@@ -1,0 +1,30 @@
+{
+  "_key": "!items!GkuQ3wpwX1vPoL9t",
+  "_id": "GkuQ3wpwX1vPoL9t",
+  "name": "Slide Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Compare the attacker's successes plus three against the target's Dexterity + Vigor roll. If the target loses, he is knocked down.</p>",
+    "category": "martialArts",
+    "level": 8,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "5",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Compare the attacker's successes plus three against the target's Dexterity + Vigor roll. If the target loses, he is knocked down."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!PhlShntV7KfGMVcf",
+  "_id": "PhlShntV7KfGMVcf",
+  "name": "Instinct Shot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Fire at an unseen target.</p>",
+    "category": "firearms",
+    "level": 9,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "1",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": 1,
+    "goalModifier": -1,
+    "effect": "Fire at an unseen target."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

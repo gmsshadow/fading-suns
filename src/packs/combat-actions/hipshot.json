@@ -1,0 +1,30 @@
+{
+  "_key": "!items!h16QR8Uup3j0R1sh",
+  "_id": "h16QR8Uup3j0R1sh",
+  "name": "Hipshot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Only for the first shot of combat, with a handgun.</p>",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": 2,
+    "goalModifier": -1,
+    "effect": "Only for the first shot of combat, with a handgun."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

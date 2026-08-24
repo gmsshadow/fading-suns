@@ -1,0 +1,30 @@
+{
+  "_key": "!items!7YbPKL1NlFhhVZJL",
+  "_id": "7YbPKL1NlFhhVZJL",
+  "name": "Slash",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "fencing",
+    "level": 3,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-2",
+    "goal": "1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": 1,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

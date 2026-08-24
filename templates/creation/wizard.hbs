@@ -212,6 +212,17 @@
       </div>
 
       <div class="picker-row">
+        <select name="extra-combat-action">
+          {{#each combatActionOptions as |option|}}
+            <option value="{{option.value}}">{{option.label}}</option>
+          {{/each}}
+        </select>
+        <button type="button" class="add-btn" data-action="buyExtra" data-kind="combatAction">
+          {{localize "FADINGSUNS.Control.Add"}}
+        </button>
+      </div>
+
+      <div class="picker-row">
         <span class="picker-label">{{localize "FADINGSUNS.Wyrd"}}</span>
         <button type="button" class="add-btn" data-action="buyExtra" data-kind="wyrd">
           +1 ({{extraCosts.wyrd}})

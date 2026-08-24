@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Nnecgd9UCSh7chhm",
+  "_id": "Nnecgd9UCSh7chhm",
+  "name": "Stop Thrust",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Reduces the opponent's goal by two.</p>",
+    "category": "fencing",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "3",
+    "goal": "-2",
+    "damage": "-",
+    "initiativeModifier": 3,
+    "goalModifier": -2,
+    "effect": "Reduces the opponent's goal by two."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

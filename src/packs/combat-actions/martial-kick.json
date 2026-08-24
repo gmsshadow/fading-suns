@@ -1,0 +1,30 @@
+{
+  "_key": "!items!EbSZTJRZ0OH70wcR",
+  "_id": "EbSZTJRZ0OH70wcR",
+  "name": "Martial Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "martialArts",
+    "level": 2,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-1",
+    "goal": "-",
+    "damage": "4",
+    "initiativeModifier": -1,
+    "goalModifier": 0,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

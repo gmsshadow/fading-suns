@@ -1,0 +1,30 @@
+{
+  "_key": "!items!HSf84nsJTwUaNWs6",
+  "_id": "HSf84nsJTwUaNWs6",
+  "name": "Fancy Footwork",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>The opponent's goal is reduced by one per victory point.</p>",
+    "category": "fencing",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Vigor",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "The opponent's goal is reduced by one per victory point."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

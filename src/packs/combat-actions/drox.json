@@ -1,0 +1,30 @@
+{
+  "_key": "!items!b0hVTRv5IpCK7cH9",
+  "_id": "b0hVTRv5IpCK7cH9",
+  "name": "Drox",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Allows a second action, using another limb, with no multiple action penalty.</p>",
+    "category": "graa",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": 0,
+    "effect": "Allows a second action, using another limb, with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!EGRE0GgffOKCrjE6",
+  "_id": "EGRE0GgffOKCrjE6",
+  "name": "Thrust",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "fencing",
+    "level": 2,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "2",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 2,
+    "goalModifier": 0,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

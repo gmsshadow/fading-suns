@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Glq8emwTcn0eHLc9",
+  "_id": "Glq8emwTcn0eHLc9",
+  "name": "3-round Burst",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "1",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

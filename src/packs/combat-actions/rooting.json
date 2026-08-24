@@ -1,0 +1,30 @@
+{
+  "_key": "!items!iHYJn6E6uNKuHffo",
+  "_id": "iHYJn6E6uNKuHffo",
+  "name": "Rooting",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Grants +3 to resist being knocked over.</p>",
+    "category": "martialArts",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Grants +3 to resist being knocked over."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

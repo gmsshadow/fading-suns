@@ -1,0 +1,30 @@
+{
+  "_key": "!items!CPsX7OA9sLiHgtTb",
+  "_id": "CPsX7OA9sLiHgtTb",
+  "name": "Roll & Shoot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Roll up to three metres in any direction.</p>",
+    "category": "firearms",
+    "level": 8,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Roll up to three metres in any direction."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

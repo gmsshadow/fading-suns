@@ -28,6 +28,7 @@ function loadPack(name) {
 const stages = loadPack("character-histories");
 const blessings = loadPack("blessings-curses");
 const benefices = loadPack("benefices-afflictions");
+const combatActions = loadPack("combat-actions");
 const byName = name => stages.find(s => s.name === name);
 
 /** Characters begin with Body and Mind at 3, and the nine natural skills at 3. */
@@ -117,10 +118,10 @@ test("every choice has a unique id and enough options to satisfy its pick", () =
 });
 
 test("every Blessing, Curse and Benefice reference resolves to a real document", () => {
-  const ids = new Set([...blessings, ...benefices].map(d => d._id));
+  const ids = new Set([...blessings, ...benefices, ...combatActions].map(d => d._id));
   const walk = grants => {
     for (const grant of grants) {
-      if (["blessing", "curse", "benefice"].includes(grant.kind)) {
+      if (["blessing", "curse", "benefice", "combatAction"].includes(grant.kind)) {
         const id = grant.key.split(".").pop();
         assert.ok(ids.has(id), `dangling reference: ${grant.label} (${grant.key})`);
       }
@@ -156,105 +157,135 @@ test("every Early Career confers noble rank (p.75)", () => {
 /* -------------------------------------------- */
 
 /**
- * Stages whose printed skill list does not add up to the published budget, with
- * the size of the shortfall. These are pinned rather than padded, so that the
+ * Stages whose printed skill list does not add up to the published budget.
+ *
+ * Only one remains. The Ambassador's skill list has no unmodelled element at all
+ * and totals fourteen against a budget of fifteen, which appears to be an error
+ * in the published stage. It is pinned rather than padded so that the
  * discrepancy stays visible and any change to it is caught.
  *
- * The two Duelist stages teach Combat Actions. The Extra Point chart prices a
- * Combat Action at "1 per level" (p.87), but the levels of the individual
- * fencing actions live in Chapter Six (p.164), which is not yet transcribed.
- * Without them the shortfall cannot be attributed, and neither figure divides
- * cleanly by the number of actions taught — so no cost is invented here.
- *
- * The Ambassador shortfall is different: its skill list has no unmodelled
- * element at all, and simply totals fourteen against a budget of fifteen. That
- * appears to be an error in the published stage.
+ * The two Duelist stages used to sit here too. Transcribing the Combat Actions
+ * charts resolved them exactly: Parry (1) + Thrust (2) + Slash (3) is the six
+ * points the Apprenticeship was missing, and the Early Career's basic option
+ * adds Draw & Strike (4) for ten.
  */
 const KNOWN_SHORTFALLS = {
-  "Apprenticeship: Duelist": 6,
-  "Early Career: Duelist": 10,
   "Early Career: Ambassador": 1
 };
 
-test("each stage spends its published characteristic and skill budget (p.88)", () => {
+/**
+ * What a stage spends, as a range.
+ *
+ * A choice contributes somewhere between its cheapest and dearest option, so a
+ * stage is balanced if some legal selection lands on the budget. That matters
+ * for the Duelist Early Career, whose three fencing options are worth ten, ten
+ * and fourteen — the last being a bonus for having taken the Apprenticeship.
+ *
+ * @param {object[]} grants
+ * @returns {{characteristics: [number, number], skills: [number, number]}}
+ */
+function spendRange(grants) {
+  let cMin = 0, cMax = 0, sMin = 0, sMax = 0;
+
+  const flat = list => {
+    let c = 0, s = 0;
+    for (const g of list ?? []) {
+      if (g.kind === "characteristic") c += g.value;
+      else if (g.kind === "skill") s += g.value;
+      else if (g.kind === "language") s += g.points;
+      else if (g.kind === "combatAction") s += g.value;
+    }
+    return { c, s };
+  };
+
+  for (const grant of grants) {
+    if (grant.kind !== "choice") {
+      const { c, s } = flat([grant]);
+      cMin += c; cMax += c; sMin += s; sMax += s;
+      continue;
+    }
+
+    const pick = grant.pick ?? 1;
+
+    if (grant.pool) {
+      // An open choice declares its worth; "spirit" draws on characteristics.
+      const value = grant.value * pick;
+      if (grant.pool === "spirit") { cMin += value; cMax += value; }
+      else { sMin += value; sMax += value; }
+      continue;
+    }
+
+    const totals = (grant.options ?? []).map(o => flat(o.grants));
+    cMin += Math.min(...totals.map(t => t.c)) * pick;
+    cMax += Math.max(...totals.map(t => t.c)) * pick;
+    sMin += Math.min(...totals.map(t => t.s)) * pick;
+    sMax += Math.max(...totals.map(t => t.s)) * pick;
+  }
+
+  return { characteristics: [cMin, cMax], skills: [sMin, sMax] };
+}
+
+test("each stage can be spent to its published budget (p.88)", () => {
   for (const stage of stages) {
     if (stage.name in KNOWN_SHORTFALLS) continue;
     const budget = STAGE_BUDGET[stage.system.stageType];
+    const range = spendRange(stage.system.grants);
 
-    // Count the best case: every choice contributes its largest option.
-    let characteristics = 0;
-    let skills = 0;
-    const count = grants => {
-      for (const grant of grants) {
-        if (grant.kind === "characteristic") characteristics += grant.value;
-        else if (grant.kind === "skill") skills += grant.value;
-        else if (grant.kind === "language") skills += grant.points;
-        else if (grant.kind === "choice" && grant.pool) {
-          // An open choice declares the points it is worth, since there are no
-          // options to inspect. "spirit" draws on the characteristic budget.
-          if (grant.pool === "spirit") characteristics += grant.value * (grant.pick ?? 1);
-          else skills += grant.value * (grant.pick ?? 1);
-        }
-        else if (grant.kind === "choice") {
-          const totals = (grant.options ?? []).map(o => {
-            let c = 0, s = 0;
-            for (const g of o.grants ?? []) {
-              if (g.kind === "characteristic") c += g.value;
-              else if (g.kind === "skill") s += g.value;
-              else if (g.kind === "language") s += g.points;
-            }
-            return { c, s };
-          });
-          const best = totals.reduce((m, t) => ({ c: Math.max(m.c, t.c), s: Math.max(m.s, t.s) }), { c: 0, s: 0 });
-          characteristics += best.c * (grant.pick ?? 1);
-          skills += best.s * (grant.pick ?? 1);
-        }
-      }
-    };
-    count(stage.system.grants);
+    const [cMin, cMax] = range.characteristics;
+    const [sMin, sMax] = range.skills;
 
-    assert.equal(characteristics, budget.characteristics,
-      `${stage.name} spends ${characteristics} characteristic points, expected ${budget.characteristics}`);
-    assert.equal(skills, budget.skills,
-      `${stage.name} spends ${skills} skill points, expected ${budget.skills}`);
+    assert.ok(budget.characteristics >= cMin && budget.characteristics <= cMax,
+      `${stage.name} spends ${cMin}-${cMax} characteristic points, expected ${budget.characteristics}`);
+    assert.ok(budget.skills >= sMin && budget.skills <= sMax,
+      `${stage.name} spends ${sMin}-${sMax} skill points, expected ${budget.skills}`);
   }
 });
 
+test("the Combat Action charts resolve the Duelist stages exactly (p.294)", () => {
+  // Parry 1, Thrust 2, Slash 3, Draw & Strike 4 — from the Fencing Actions Chart.
+  const appr = spendRange(byName("Apprenticeship: Duelist").system.grants);
+  assert.deepEqual(appr.skills, [10, 10], "Parry + Thrust + Slash makes up the six that were missing");
+
+  const career = spendRange(byName("Early Career: Duelist").system.grants);
+  assert.equal(career.skills[0], 15, "the basic option lands exactly on the budget");
+  assert.equal(career.skills[1], 19,
+    "Draw & Strike with Disarm and Feint runs four over — a bonus for having taken the Apprenticeship");
+});
+
 test("known shortfalls are exactly the size recorded, and no larger", () => {
-  for (const name of Object.keys(KNOWN_SHORTFALLS)) {
+  for (const [name, shortfall] of Object.entries(KNOWN_SHORTFALLS)) {
     const stage = byName(name).system;
     const budget = STAGE_BUDGET[stage.stageType];
-
-    let skills = 0;
-    const count = grants => {
-      for (const grant of grants) {
-        if (grant.kind === "skill") skills += grant.value;
-        else if (grant.kind === "language") skills += grant.points;
-        else if (grant.kind === "choice" && grant.pool) skills += grant.value * (grant.pick ?? 1);
-        else if (grant.kind === "choice") {
-          const best = (grant.options ?? []).reduce((m, o) => {
-            const t = (o.grants ?? []).reduce((n, g) => n + (g.kind === "skill" ? g.value : 0), 0);
-            return Math.max(m, t);
-          }, 0);
-          skills += best * (grant.pick ?? 1);
-        }
-      }
-    };
-    count(stage.grants);
-
-    assert.equal(budget.skills - skills, KNOWN_SHORTFALLS[name],
+    const [, sMax] = spendRange(stage.grants).skills;
+    assert.equal(budget.skills - sMax, shortfall,
       `${name} shortfall changed; recheck the transcription against the book`);
   }
 });
 
-test("both Duelist stages record the Combat Actions they teach", () => {
+test("both Duelist stages teach real Combat Actions, not placeholders", () => {
   for (const name of ["Apprenticeship: Duelist", "Early Career: Duelist"]) {
     const stage = byName(name).system;
     const teaches = stage.grants.some(g =>
-      g.kind === "note" ||
-      (g.kind === "choice" && (g.options ?? []).some(o => (o.grants ?? []).some(x => x.kind === "note"))));
-    assert.ok(teaches, `${name} should record the Combat Actions it teaches`);
+      g.kind === "combatAction" ||
+      (g.kind === "choice" && (g.options ?? []).some(o => (o.grants ?? []).some(x => x.kind === "combatAction"))));
+    assert.ok(teaches, `${name} should grant Combat Action items`);
   }
+});
+
+test("every Combat Action a stage teaches costs what the compendium says", () => {
+  const actions = new Map(loadPack("combat-actions").map(d => [d._id, d.system.level]));
+  const walk = grants => {
+    for (const grant of grants) {
+      if (grant.kind === "combatAction") {
+        const id = grant.key.split(".").pop();
+        assert.ok(actions.has(id), `dangling combat action: ${grant.label}`);
+        assert.equal(grant.value, actions.get(id),
+          `${grant.label} is costed at ${grant.value} but is level ${actions.get(id)}`);
+      }
+      if (grant.kind === "choice") for (const o of grant.options ?? []) walk(o.grants ?? []);
+    }
+  };
+  for (const stage of stages) walk(stage.system.grants);
 });
 
 /* -------------------------------------------- */
@@ -341,15 +372,18 @@ test("open choices in Questing accept a supplied grant", () => {
   assert.equal(state.characteristics["spirit.passion"], 5);
 });
 
-test("a Duelist Apprenticeship records the Fencing Actions it teaches", () => {
+test("a Duelist Apprenticeship grants its three Fencing Actions (p.294)", () => {
   const duelist = byName("Apprenticeship: Duelist").system;
   const { grants } = resolveChoices(duelist.grants, {
     "appr-duelist-temper": 0,
     "appr-duelist-defence": 0
   });
   const state = applyGrants(createState(), grants);
-  assert.equal(state.notes.length, 1);
-  assert.match(state.notes[0], /Parry, Thrust, Slash/);
+
+  assert.equal(state.combatActions.length, 3, "Parry, Thrust and Slash");
+  assert.equal(state.combatActions.reduce((n, a) => n + a.level, 0), 6,
+    "levels 1, 2 and 3 — the six points the stage was previously short");
+  assert.equal(state.notes.length, 0, "nothing is left as an unmodelled note");
 });
 
 /* -------------------------------------------- */

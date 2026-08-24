@@ -1,0 +1,30 @@
+{
+  "_key": "!items!8wGPlCqwSN2TRBHB",
+  "_id": "8wGPlCqwSN2TRBHB",
+  "name": "Disengage",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Grants +3 to resist grapples.</p>",
+    "category": "martialArts",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Dodge",
+    "initiative": "-1",
+    "goal": "1",
+    "damage": "-",
+    "initiativeModifier": -1,
+    "goalModifier": 1,
+    "effect": "Grants +3 to resist grapples."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

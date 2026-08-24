@@ -1,0 +1,30 @@
+{
+  "_key": "!items!aa1VW1zs0hxuA4bt",
+  "_id": "aa1VW1zs0hxuA4bt",
+  "name": "Tornado Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "martialArts",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-1",
+    "goal": "-",
+    "damage": "5",
+    "initiativeModifier": -1,
+    "goalModifier": 0,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

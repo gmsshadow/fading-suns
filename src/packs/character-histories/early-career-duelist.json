@@ -121,17 +121,68 @@
             "label": "Basic — for those without the Duelist Apprenticeship",
             "grants": [
               {
-                "kind": "note",
-                "text": "Fencing Actions: Parry, Thrust, Slash, Draw & Strike"
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.0obbx8xST8r0Hqua",
+                "label": "Parry",
+                "value": 1
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.EGRE0GgffOKCrjE6",
+                "label": "Thrust",
+                "value": 2
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.7YbPKL1NlFhhVZJL",
+                "label": "Slash",
+                "value": 3
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.mlJSH4MUDMMjeipU",
+                "label": "Draw & Strike",
+                "value": 4
               }
             ]
           },
           {
-            "label": "Advanced — only with the Duelist Apprenticeship",
+            "label": "Advanced — Parry/Riposte (only with the Duelist Apprenticeship)",
             "grants": [
               {
-                "kind": "note",
-                "text": "Fencing Actions: Draw & Strike, and either Parry/Riposte or Disarm and Feint"
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.mlJSH4MUDMMjeipU",
+                "label": "Draw & Strike",
+                "value": 4
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.EolmDKlKnkeM373d",
+                "label": "Parry/Riposte",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "label": "Advanced — Disarm and Feint (only with the Duelist Apprenticeship)",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.mlJSH4MUDMMjeipU",
+                "label": "Draw & Strike",
+                "value": 4
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.gQQeyKpsM2ugZF27",
+                "label": "Disarm",
+                "value": 5
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.dnV6S8kgF7aVisNa",
+                "label": "Feint",
+                "value": 5
               }
             ]
           }

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!gQQeyKpsM2ugZF27",
+  "_id": "gQQeyKpsM2ugZF27",
+  "name": "Disarm",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>On a success, roll Dexterity + Melee plus victory points against the target's Strength + Melee. If that succeeds the target drops the blade, which may be thrown one metre per victory point. Can be learned separately for whips.</p>",
+    "category": "fencing",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "On a success, roll Dexterity + Melee plus victory points against the target's Strength + Melee. If that succeeds the target drops the blade, which may be thrown one metre per victory point. Can be learned separately for whips."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

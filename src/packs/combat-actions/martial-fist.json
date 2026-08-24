@@ -1,0 +1,30 @@
+{
+  "_key": "!items!pJYRmOgkGi32hQtk",
+  "_id": "pJYRmOgkGi32hQtk",
+  "name": "Martial Fist",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "category": "martialArts",
+    "level": 1,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "3",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

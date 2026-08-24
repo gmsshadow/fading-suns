@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Vp78dzvMBge3wpZQ",
+  "_id": "Vp78dzvMBge3wpZQ",
+  "name": "Drop & Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Initiative is reduced by two on the next action.</p>",
+    "category": "martialArts",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "2",
+    "damage": "4",
+    "initiativeModifier": 0,
+    "goalModifier": 2,
+    "effect": "Initiative is reduced by two on the next action."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

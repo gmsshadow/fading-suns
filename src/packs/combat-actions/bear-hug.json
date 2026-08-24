@@ -1,0 +1,30 @@
+{
+  "_key": "!items!n0CYCmyArS6f0W6q",
+  "_id": "n0CYCmyArS6f0W6q",
+  "name": "Bear Hug",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Damage may be rolled each turn until the target escapes.</p>",
+    "category": "martialArts",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "4",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Damage may be rolled each turn until the target escapes."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

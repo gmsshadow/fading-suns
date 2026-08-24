@@ -171,14 +171,17 @@ export async function applyLifepathToActor(actor, state, { stages = [] } = {}) {
     }
   }
 
-  // 4. The stages themselves, so the character's history stays on the sheet.
+  // 4. Combat Actions taught by the stages or bought with Extra points (p.102).
+  newItems.push(...await resolveItems((state.combatActions ?? []).map(a => a.key)));
+
+  // 5. The stages themselves, so the character's history stays on the sheet.
   for (const stage of stages) {
     const data = stage.toObject();
     delete data._id;
     newItems.push(data);
   }
 
-  // 5. Anything the system does not yet model, recorded where it will be read.
+  // 6. Anything the system does not yet model, recorded where it will be read.
   if (state.notes?.length) {
     const heading = game.i18n.localize("FADINGSUNS.Section.History");
     const notes = state.notes.map(n => `<li>${foundry.utils.escapeHTML(n)}</li>`).join("");

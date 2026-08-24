@@ -1,0 +1,30 @@
+{
+  "_key": "!items!TglFigeV8q6FjrMM",
+  "_id": "TglFigeV8q6FjrMM",
+  "name": "Trip Kick",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Rolled against the target's Dexterity + Vigor. On a success the target is knocked down.</p>",
+    "category": "martialArts",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "4",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Rolled against the target's Dexterity + Vigor. On a success the target is knocked down."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

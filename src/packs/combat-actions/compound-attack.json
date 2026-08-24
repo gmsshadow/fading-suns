@@ -1,0 +1,30 @@
+{
+  "_key": "!items!ldSWd6gqI14OiOnT",
+  "_id": "ldSWd6gqI14OiOnT",
+  "name": "Compound Attack",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Next turn's goal is at +2.</p>",
+    "category": "fencing",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": -1,
+    "effect": "Next turn's goal is at +2."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

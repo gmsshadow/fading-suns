@@ -1,0 +1,30 @@
+{
+  "_key": "!items!rabptqOgkNrv2QET",
+  "_id": "rabptqOgkNrv2QET",
+  "name": "Aim",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Adds +1 per turn, to a maximum of three, or more with a sight.</p>",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-3",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": -3,
+    "goalModifier": 0,
+    "effect": "Adds +1 per turn, to a maximum of three, or more with a sight."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

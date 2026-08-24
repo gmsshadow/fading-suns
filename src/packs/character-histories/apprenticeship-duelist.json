@@ -92,8 +92,22 @@
         "value": 1
       },
       {
-        "kind": "note",
-        "text": "Fencing Actions: Parry, Thrust, Slash"
+        "kind": "combatAction",
+        "key": "Compendium.fading-suns.combat-actions.Item.0obbx8xST8r0Hqua",
+        "label": "Parry",
+        "value": 1
+      },
+      {
+        "kind": "combatAction",
+        "key": "Compendium.fading-suns.combat-actions.Item.EGRE0GgffOKCrjE6",
+        "label": "Thrust",
+        "value": 2
+      },
+      {
+        "kind": "combatAction",
+        "key": "Compendium.fading-suns.combat-actions.Item.7YbPKL1NlFhhVZJL",
+        "label": "Slash",
+        "value": 3
       }
     ]
   },

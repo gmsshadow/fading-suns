@@ -1,0 +1,30 @@
+{
+  "_key": "!items!5CSLdkuTBFvdMycD",
+  "_id": "5CSLdkuTBFvdMycD",
+  "name": "Power Fist",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Wyrd may be spent to add damage, one point per die, to a maximum of three.</p>",
+    "category": "martialArts",
+    "level": 9,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "-1",
+    "damage": "5",
+    "initiativeModifier": 0,
+    "goalModifier": -1,
+    "effect": "Wyrd may be spent to add damage, one point per die, to a maximum of three."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

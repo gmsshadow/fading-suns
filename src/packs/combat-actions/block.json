@@ -1,0 +1,30 @@
+{
+  "_key": "!items!eR2EgJfsdCNA84ec",
+  "_id": "eR2EgJfsdCNA84ec",
+  "name": "Block",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Works as Dodge. On a success, add three successes to resist attacks.</p>",
+    "category": "martialArts",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Works as Dodge. On a success, add three successes to resist attacks."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

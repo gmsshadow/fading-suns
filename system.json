@@ -2,7 +2,7 @@
   "id": "fading-suns",
   "title": "Fading Suns 2nd Edition Revised",
   "description": "An unofficial game system for Fading Suns 2nd Edition Revised, built for Foundry VTT v13/v14 using ApplicationV2 sheets and TypeDataModel schemas.",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "compatibility": {
     "minimum": "13",
     "verified": "14"
@@ -57,6 +57,17 @@
       "name": "character-histories",
       "label": "Character Histories",
       "path": "packs/character-histories",
+      "type": "Item",
+      "system": "fading-suns",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "combat-actions",
+      "label": "Combat Actions",
+      "path": "packs/combat-actions",
       "type": "Item",
       "system": "fading-suns",
       "ownership": {
@@ -127,6 +138,11 @@
         ]
       },
       "stage": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "combatAction": {
         "htmlFields": [
           "description"
         ]

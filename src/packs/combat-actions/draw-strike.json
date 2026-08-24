@@ -1,0 +1,30 @@
+{
+  "_key": "!items!mlJSH4MUDMMjeipU",
+  "_id": "mlJSH4MUDMMjeipU",
+  "name": "Draw & Strike",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Draw the sword and strike in the same action.</p>",
+    "category": "fencing",
+    "level": 4,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-2",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": 0,
+    "effect": "Draw the sword and strike in the same action."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

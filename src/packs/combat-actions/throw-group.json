@@ -1,0 +1,30 @@
+{
+  "_key": "!items!seZx9Fgrz3IB4rNc",
+  "_id": "seZx9Fgrz3IB4rNc",
+  "name": "Throw Group",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Rolled against the target's attack roll. On a success the target is thrown one metre per success, up to the attacker's Strength, taking an extra damage die per three metres. One attacker may be thrown per point of Fight.</p>",
+    "category": "martialArts",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-2",
+    "goal": "-",
+    "damage": "3",
+    "initiativeModifier": -2,
+    "goalModifier": 0,
+    "effect": "Rolled against the target's attack roll. On a success the target is thrown one metre per success, up to the attacker's Strength, taking an extra damage die per three metres. One attacker may be thrown per point of Fight."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

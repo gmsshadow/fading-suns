@@ -1,0 +1,30 @@
+{
+  "_key": "!items!NFgLQc71zpLuvLuC",
+  "_id": "NFgLQc71zpLuvLuC",
+  "name": "Cloak",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Parries the opponent's attack with a cloak in the off-hand; armour equals victory points plus three, goal is 8 plus Strength. On a success the attacker may attempt a Disarm with no multiple action penalty. Can be learned separately for flails.</p>",
+    "category": "fencing",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "0/-1",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Parries the opponent's attack with a cloak in the off-hand; armour equals victory points plus three, goal is 8 plus Strength. On a success the attacker may attempt a Disarm with no multiple action penalty. Can be learned separately for flails."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!lM32KJIJ9eGqdygr",
+  "_id": "lM32KJIJ9eGqdygr",
+  "name": "Off-Hand Shot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>No penalties are suffered for an off-hand handgun.</p>",
+    "category": "firearms",
+    "level": 6,
+    "characteristic": "",
+    "skill": "",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "No penalties are suffered for an off-hand handgun."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!SPJcxWcG0zQbXdVm",
+  "_id": "SPJcxWcG0zQbXdVm",
+  "name": "Leap & Shoot",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Leap one metre in any direction.</p>",
+    "category": "firearms",
+    "level": 7,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-1",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -1,
+    "goalModifier": -1,
+    "effect": "Leap one metre in any direction."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

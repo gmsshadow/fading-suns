@@ -1,0 +1,30 @@
+{
+  "_key": "!items!JGVCf5alDkIFuuhh",
+  "_id": "JGVCf5alDkIFuuhh",
+  "name": "Quick Reload",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Reload a clip and fire with no multiple action penalty.</p>",
+    "category": "firearms",
+    "level": 5,
+    "characteristic": "",
+    "skill": "",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Reload a clip and fire with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!IhElq5gWsKHfffUC",
+  "_id": "IhElq5gWsKHfffUC",
+  "name": "Attack & Parry",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Parry with the shield and attack in the same turn without multiple action penalties.</p>",
+    "category": "shield",
+    "level": 3,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Parry with the shield and attack in the same turn without multiple action penalties."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

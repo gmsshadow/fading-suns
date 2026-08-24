@@ -1,0 +1,30 @@
+{
+  "_key": "!items!dnV6S8kgF7aVisNa",
+  "_id": "dnV6S8kgF7aVisNa",
+  "name": "Feint",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Adds three successes against dodges only.</p>",
+    "category": "fencing",
+    "level": 5,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-2",
+    "goal": "-1",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -1,
+    "effect": "Adds three successes against dodges only."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!IM8nBweByTuDJ85Q",
+  "_id": "IM8nBweByTuDJ85Q",
+  "name": "Off-hand",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>No penalties are suffered for off-hand weapons.</p>",
+    "category": "fencing",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "No penalties are suffered for off-hand weapons."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

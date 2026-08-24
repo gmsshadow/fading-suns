@@ -52,7 +52,8 @@ export class FadingSunsItemSheet extends HandlebarsApplicationMixin(ItemSheetV2)
     theurgicRite: "fadingSuns.detailsTheurgicRite",
     blessing: "fadingSuns.detailsBlessing",
     benefice: "fadingSuns.detailsBenefice",
-    stage: "fadingSuns.detailsStage"
+    stage: "fadingSuns.detailsStage",
+    combatAction: "fadingSuns.detailsCombatAction"
   };
 
   /* -------------------------------------------- */

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!hNyoKdi3MmonkKL9",
+  "_id": "hNyoKdi3MmonkKL9",
+  "name": "Empty Clip",
+  "type": "combatAction",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Adds three successes against dodges only.</p>",
+    "category": "firearms",
+    "level": 0,
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "initiative": "-1",
+    "goal": "-2",
+    "damage": "5",
+    "initiativeModifier": -1,
+    "goalModifier": -2,
+    "effect": "Adds three successes against dodges only."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

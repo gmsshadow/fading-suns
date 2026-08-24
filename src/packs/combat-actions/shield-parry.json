@@ -1,0 +1,30 @@
+{
+  "_key": "!items!7KG1dcAmYx1RfLWN",
+  "_id": "7KG1dcAmYx1RfLWN",
+  "name": "Shield Parry",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Roll victory dice plus the shield's defence dice as armour.</p>",
+    "category": "shield",
+    "level": 1,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Roll victory dice plus the shield's defence dice as armour."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

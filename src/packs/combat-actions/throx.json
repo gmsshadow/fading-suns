@@ -1,0 +1,30 @@
+{
+  "_key": "!items!SZqYptRNfQcEeWzE",
+  "_id": "SZqYptRNfQcEeWzE",
+  "name": "Throx",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Allows a third action, using another limb, with no multiple action penalty.</p>",
+    "category": "graa",
+    "level": 9,
+    "characteristic": "body.dexterity",
+    "skill": "Fight",
+    "initiative": "-3",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": -3,
+    "goalModifier": 0,
+    "effect": "Allows a third action, using another limb, with no multiple action penalty."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

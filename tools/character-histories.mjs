@@ -16,6 +16,7 @@
  *   sp(name, spec, n)   skill delta against a specialty
  *   lang(name, spec, p) a language costing p points, refundable if already known
  *   bless(name)  curse(name)  ben(name, rank)
+ *   action(name)        a Combat Action, costed at its level (p.102)
  *   note(text)          something not yet modelled, recorded for the player
  *   pickOne(id, label, ...options)   an enumerated choice
  *   pickN(id, label, n, ...options)  an enumerated choice picking several
@@ -33,6 +34,7 @@ const bless = key => ({ kind: "blessing", key });
 const curse = key => ({ kind: "curse", key });
 const ben = (key, value) => ({ kind: "benefice", key, value });
 const note = text => ({ kind: "note", text });
+const action = name => ({ kind: "combatAction", key: name });
 
 const opt = (label, ...grants) => ({ label, grants });
 const pickOne = (id, label, ...options) => ({ kind: "choice", id, label, pick: 1, options });
@@ -226,7 +228,7 @@ const APPRENTICESHIP = [
         opt("Dodge", sk("Dodge", 1)),
         opt("Vigor", sk("Vigor", 1))),
       sk("Melee", 2), sk("Remedy", 1),
-      note("Fencing Actions: Parry, Thrust, Slash")
+      action("Parry"), action("Thrust"), action("Slash")
     ]
   },
   {
@@ -302,9 +304,11 @@ const EARLY_CAREER = [
       sk("Dodge", 1), sk("Melee", 2), sk("Etiquette", 1), sk("Remedy", 1),
       pickOne("career-duelist-actions", "Fencing Actions",
         opt("Basic — for those without the Duelist Apprenticeship",
-          note("Fencing Actions: Parry, Thrust, Slash, Draw & Strike")),
-        opt("Advanced — only with the Duelist Apprenticeship",
-          note("Fencing Actions: Draw & Strike, and either Parry/Riposte or Disarm and Feint"))),
+          action("Parry"), action("Thrust"), action("Slash"), action("Draw & Strike")),
+        opt("Advanced — Parry/Riposte (only with the Duelist Apprenticeship)",
+          action("Draw & Strike"), action("Parry/Riposte")),
+        opt("Advanced — Disarm and Feint (only with the Duelist Apprenticeship)",
+          action("Draw & Strike"), action("Disarm"), action("Feint"))),
       ben("Nobility", 3)
     ]
   },

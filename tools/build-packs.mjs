@@ -32,6 +32,7 @@ import { LEARNED_SKILLS } from "./learned-skills.mjs";
 import { BLESSINGS_AND_CURSES } from "./blessings-curses.mjs";
 import { BENEFICES_AND_AFFLICTIONS } from "./benefices.mjs";
 import { CHARACTER_HISTORIES } from "./character-histories.mjs";
+import { COMBAT_ACTIONS } from "./combat-actions.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -149,6 +150,50 @@ function buildBenefices() {
 }
 
 /**
+ * Parse a printed modifier into a number, where it is a plain integer.
+ * Values such as "0/-1", "-1/m" and "-" have no single numeric meaning and
+ * resolve to zero; the printed string is kept alongside for display.
+ * @param {string} printed
+ * @returns {number}
+ */
+function numericModifier(printed) {
+  const value = Number(String(printed ?? "").replace(/^\+/, ""));
+  return Number.isFinite(value) ? value : 0;
+}
+
+/**
+ * Build the documents for the Combat Actions pack (p.292–p.295).
+ * @returns {object[]}
+ */
+function buildCombatActions() {
+  return COMBAT_ACTIONS.map((action, index) => ({
+    _id: stableId(`Item.combat-actions.${action.cat}.${action.n}`),
+    name: action.n,
+    type: "combatAction",
+    img: action.cat === "firearms" ? "icons/svg/target.svg" : "icons/svg/sword.svg",
+    system: {
+      description: action.e ? `<p>${action.e}</p>` : "",
+      category: action.cat,
+      level: action.lvl,
+      characteristic: action.ch ?? "",
+      skill: action.sk ?? "",
+      initiative: action.ini ?? "-",
+      goal: action.goal ?? "-",
+      damage: action.dmg ?? "-",
+      initiativeModifier: numericModifier(action.ini),
+      goalModifier: numericModifier(action.goal),
+      effect: action.e ?? ""
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
+/**
  * Resolve a Blessing, Curse or Benefice referenced by name into its compendium
  * uuid. Stage data names the trait; the id is derived the same way the target
  * pack derives it, so the two cannot drift apart.
@@ -165,6 +210,7 @@ function referenceUuid(pack, polarity, name) {
 /** Names available for reference, so a typo fails the build rather than the game. */
 const BLESSING_NAMES = new Map(BLESSINGS_AND_CURSES.map(b => [b.n, b.p]));
 const BENEFICE_NAMES = new Map(BENEFICES_AND_AFFLICTIONS.map(b => [b.n, b.p]));
+const COMBAT_ACTION_LEVELS = new Map(COMBAT_ACTIONS.map(a => [a.n, { cat: a.cat, lvl: a.lvl }]));
 
 /**
  * Walk a stage's grants, replacing trait names with compendium uuids.
@@ -191,6 +237,18 @@ function resolveReferences(grants, stageName) {
         throw new Error(`Stage "${stageName}" grants "${grant.key}" as a ${grant.kind}, but it is a ${polarity}`);
       }
       return { ...grant, key: referenceUuid("blessings-curses", polarity, grant.key), label: grant.key };
+    }
+
+    if (grant.kind === "combatAction") {
+      const action = COMBAT_ACTION_LEVELS.get(grant.key);
+      if (!action) throw new Error(`Stage "${stageName}" teaches unknown combat action "${grant.key}"`);
+      return {
+        ...grant,
+        key: referenceUuid("combat-actions", action.cat, grant.key),
+        label: grant.key,
+        // The level is the point cost, so it must match the compendium (p.88).
+        value: action.lvl
+      };
     }
 
     if (grant.kind === "benefice") {
@@ -245,6 +303,7 @@ const PACKS = {
   "learned-skills": { type: "Item", documents: buildLearnedSkills },
   "blessings-curses": { type: "Item", documents: buildBlessings },
   "benefices-afflictions": { type: "Item", documents: buildBenefices },
+  "combat-actions": { type: "Item", documents: buildCombatActions },
   "character-histories": { type: "Item", documents: buildCharacterHistories }
 };
 

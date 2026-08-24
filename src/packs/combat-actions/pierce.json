@@ -1,0 +1,30 @@
+{
+  "_key": "!items!EZtj2G1azacjPauO",
+  "_id": "EZtj2G1azacjPauO",
+  "name": "Pierce",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Ignores the target's physical armour, though not energy shields.</p>",
+    "category": "fencing",
+    "level": 9,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-2",
+    "goal": "-3",
+    "damage": "-",
+    "initiativeModifier": -2,
+    "goalModifier": -3,
+    "effect": "Ignores the target's physical armour, though not energy shields."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

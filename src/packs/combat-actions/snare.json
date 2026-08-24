@@ -1,0 +1,30 @@
+{
+  "_key": "!items!nc7i9s9u04gJDO4w",
+  "_id": "nc7i9s9u04gJDO4w",
+  "name": "Snare",
+  "type": "combatAction",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Whip users only.</p>",
+    "category": "fencing",
+    "level": 6,
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "initiative": "-",
+    "goal": "-",
+    "damage": "-",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "effect": "Whip users only."
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

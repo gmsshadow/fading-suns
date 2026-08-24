@@ -52,13 +52,45 @@ function startingCharacter() {
 /*  Pack integrity                              */
 /* -------------------------------------------- */
 
-test("the pack holds the Hawkwood slice", () => {
-  assert.equal(stages.length, 14);
+test("the pack holds the complete noble faction", () => {
+  assert.equal(stages.length, 26);
   const counts = stages.reduce((m, s) => {
     m[s.system.stageType] = (m[s.system.stageType] ?? 0) + 1;
     return m;
   }, {});
-  assert.deepEqual(counts, { upbringing: 3, apprenticeship: 6, earlyCareer: 5 });
+  assert.deepEqual(counts, { upbringing: 15, apprenticeship: 6, earlyCareer: 5 });
+});
+
+test("every royal house has all three Upbringings (p.73)", () => {
+  const houses = ["Hawkwood", "Decados", "Hazat", "Li Halan", "al-Malik"];
+  const settings = ["High-Court", "Rural Estate", "Landless"];
+  const upbringings = stages.filter(s => s.system.stageType === "upbringing");
+
+  for (const house of houses) {
+    for (const setting of settings) {
+      const found = upbringings.find(s => s.name === `Upbringing: ${setting} (${house})`);
+      assert.ok(found, `missing ${setting} for ${house}`);
+      assert.equal(found.system.group, house);
+    }
+  }
+});
+
+test("each house grants the same Blessing and Curse across its Upbringings (p.73)", () => {
+  const expected = {
+    Hawkwood: ["Unyielding", "Prideful"],
+    Decados: ["Suspicious", "Vain"],
+    Hazat: ["Disciplined", "Vengeful"],
+    "Li Halan": ["Pious", "Guilty"],
+    "al-Malik": ["Gracious", "Impetuous"]
+  };
+
+  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+    const traits = stage.system.grants
+      .filter(g => g.kind === "blessing" || g.kind === "curse")
+      .map(g => g.label);
+    assert.deepEqual(traits, expected[stage.system.group],
+      `${stage.name} grants the wrong traits`);
+  }
 });
 
 test("every grant uses a known kind", () => {

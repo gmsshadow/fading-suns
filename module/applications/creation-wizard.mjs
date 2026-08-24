@@ -90,7 +90,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.stageType = step;
       context.stageLabel = game.i18n.localize(CONFIG.FADING_SUNS.stageTypes[step]);
       context.budget = STAGE_BUDGET[step];
-      context.available = await this.#availableStages(step);
+      context.groups = await this.#availableStages(step);
       context.selected = this.draft.stages[step] ?? null;
     }
 
@@ -117,17 +117,46 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /**
-   * Stages of a given type that match the chosen faction, from the compendium.
+   * Stages of a given type matching the chosen faction, gathered under their
+   * grouping — house for Upbringings, pastime for Apprenticeships — because a
+   * flat list of fifteen is more than anyone wants to scan.
+   *
    * @param {string} stageType
-   * @returns {Promise<Item[]>}
+   * @returns {Promise<Array<{name: string, stages: Item[]}>>}
    */
   async #availableStages(stageType) {
     const pack = game.packs.get("fading-suns.character-histories");
     if (!pack) return [];
-    const documents = await pack.getDocuments();
-    return documents
-      .filter(d => d.system.stageType === stageType && d.system.faction === this.draft.faction)
-      .sort((a, b) => a.name.localeCompare(b.name));
+
+    const documents = (await pack.getDocuments())
+      .filter(d => d.system.stageType === stageType && d.system.faction === this.draft.faction);
+
+    const groups = new Map();
+    for (const stage of documents) {
+      const key = stage.system.group || "";
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(stage);
+    }
+
+    return [...groups.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, stages]) => ({
+        name,
+        stages: stages
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(stage => ({
+            id: stage.id,
+            uuid: stage.uuid,
+            description: stage.system.description,
+            // Documents are named "Upbringing: High-Court (Hawkwood)" so the
+            // compendium sidebar reads well. Under a house heading both the
+            // stage type and the house are redundant, so they come off.
+            label: stage.name
+              .replace(/^[^:]+:\s*/, "")
+              .replace(name ? ` (${name})` : "", "")
+              .trim()
+          }))
+      }));
   }
 
   /* -------------------------------------------- */

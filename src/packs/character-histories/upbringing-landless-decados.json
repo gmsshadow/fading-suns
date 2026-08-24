@@ -1,20 +1,15 @@
 {
-  "_key": "!items!IcocLLnJ3EPBwm2a",
-  "_id": "IcocLLnJ3EPBwm2a",
-  "name": "Upbringing: Landless (Hawkwood)",
+  "_key": "!items!PCFIbRSGC7T1xi0w",
+  "_id": "PCFIbRSGC7T1xi0w",
+  "name": "Upbringing: Landless (Decados)",
   "type": "stage",
   "img": "icons/svg/book.svg",
   "system": {
     "description": "<p>The family is landless and lives on the charity of other nobles. Many homes in one childhood, and the insults of higher-born children to answer.</p>",
     "stageType": "upbringing",
     "faction": "noble",
-    "group": "Hawkwood",
+    "group": "Decados",
     "grants": [
-      {
-        "kind": "characteristic",
-        "key": "body.strength",
-        "value": 1
-      },
       {
         "kind": "characteristic",
         "key": "body.dexterity",
@@ -22,50 +17,50 @@
       },
       {
         "kind": "characteristic",
-        "key": "mind.wits",
-        "value": 1
+        "key": "mind.perception",
+        "value": 2
       },
       {
         "kind": "characteristic",
-        "key": "spirit.extrovert",
+        "key": "spirit.ego",
         "value": 1,
         "primary": true
       },
       {
         "kind": "skill",
-        "key": "Impress",
-        "value": 1
-      },
-      {
-        "kind": "skill",
-        "key": "Vigor",
-        "value": 1
-      },
-      {
-        "kind": "skill",
         "key": "Melee",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Sneak",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Knavery",
         "value": 2
       },
       {
-        "kind": "skill",
-        "key": "Ride",
-        "value": 1
-      },
-      {
         "kind": "blessing",
-        "key": "Compendium.fading-suns.blessings-curses.Item.BTWMDSyNHmFtXKZh",
-        "label": "Unyielding"
+        "key": "Compendium.fading-suns.blessings-curses.Item.ntCeowx0AhB0eOaL",
+        "label": "Suspicious"
       },
       {
         "kind": "curse",
-        "key": "Compendium.fading-suns.blessings-curses.Item.mWNusO6uteBuq5Ka",
-        "label": "Prideful"
+        "key": "Compendium.fading-suns.blessings-curses.Item.2xobO97tpu5ajU5c",
+        "label": "Vain"
       }
     ]
   },
   "effects": [],
   "folder": null,
-  "sort": 1100000,
+  "sort": 1200000,
   "ownership": {
     "default": 0
   },

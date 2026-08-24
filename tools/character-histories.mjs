@@ -1,10 +1,10 @@
 /**
  * Source data for the Character Histories compendium (Core Rules p.72–p.85).
  *
- * This is the Hawkwood vertical slice: three Hawkwood Upbringings, the six noble
- * Apprenticeships and the five noble Early Careers. The Apprenticeship and Early
- * Career stages are shared across all five royal houses, so transcribing the
- * remaining houses means adding Upbringings only.
+ * The noble faction, complete: fifteen Upbringings (three settings for each of
+ * the five royal houses), the six noble Apprenticeships and the five noble Early
+ * Careers. Apprenticeships and Early Careers are shared across all five houses,
+ * so only the Upbringings vary by house.
  *
  * Blessings, Curses and Benefices are referenced by name and resolved to their
  * compendium uuids at build time, so the references cannot drift.
@@ -47,41 +47,132 @@ const orSpirit = (id, a, b, value) => pickOne(
 );
 
 /* -------------------------------------------- */
-/*  Upbringing — Hawkwood (p.73–74)             */
+/*  Upbringing — the five royal houses (p.73–74) */
 /* -------------------------------------------- */
 
+/**
+ * Each house's Blessing and Curse pair, which is the same across all three of
+ * its Upbringings (p.73).
+ */
+const HOUSE_TRAITS = {
+  Hawkwood: [bless("Unyielding"), curse("Prideful")],
+  Decados: [bless("Suspicious"), curse("Vain")],
+  Hazat: [bless("Disciplined"), curse("Vengeful")],
+  "Li Halan": [bless("Pious"), curse("Guilty")],
+  "al-Malik": [bless("Gracious"), curse("Impetuous")]
+};
+
+const SETTINGS = {
+  "High-Court": "Raised in a palace among servants and tutors, watched closely and held to high expectations — but present when foreign visitors call and famous things happen.",
+  "Rural Estate": "Raised in a manor or castle, far from high-court but well above the lot of freemen. Tutors divide their time, leaving the child to find her own way.",
+  "Landless": "The family is landless and lives on the charity of other nobles. Many homes in one childhood, and the insults of higher-born children to answer."
+};
+
+/**
+ * Build one house's Upbringing.
+ * @param {string} house
+ * @param {string} setting
+ * @param {object[]} grants   Characteristic and skill grants, without the house traits.
+ * @returns {object}
+ */
+const upbringing = (house, setting, grants) => ({
+  n: `${setting} (${house})`,
+  stage: "upbringing",
+  faction: "noble",
+  group: house,
+  d: SETTINGS[setting],
+  grants: [...grants, ...HOUSE_TRAITS[house]]
+});
+
+/** Shorthand for the choice ids, which must be unique across the whole pack. */
+const cid = (house, setting, what) =>
+  `${house}-${setting}-${what}`.toLowerCase().replace(/[^a-z0-9-]+/g, "");
+
 const UPBRINGING = [
-  {
-    n: "High-Court (Hawkwood)", stage: "upbringing", faction: "noble", group: "Hawkwood",
-    d: "Raised in a palace among servants and tutors, watched closely and held to high expectations — but present when foreign visitors call and famous things happen.",
-    grants: [
-      ch("body.strength", 1), ch("body.dexterity", 1), ch("mind.wits", 1),
-      pri("spirit.extrovert", 2),
-      sk("Melee", 1), sk("Etiquette", 1), sp("Lore", "Heraldry", 1),
-      lang("Read", "Urthish", 2),
-      bless("Unyielding"), curse("Prideful")
-    ]
-  },
-  {
-    n: "Rural Estate (Hawkwood)", stage: "upbringing", faction: "noble", group: "Hawkwood",
-    d: "Raised in a manor or castle, far from high-court but well above the lot of freemen. Tutors divide their time, leaving the child to find her own way.",
-    grants: [
-      ch("body.strength", 2), ch("body.dexterity", 1), ch("mind.wits", 1),
-      pri("spirit.extrovert", 1),
-      sk("Etiquette", 1), sp("Lore", "Fief", 1), lang("Read", "Urthish", 2), sk("Ride", 1),
-      bless("Unyielding"), curse("Prideful")
-    ]
-  },
-  {
-    n: "Landless (Hawkwood)", stage: "upbringing", faction: "noble", group: "Hawkwood",
-    d: "The family is landless and lives on the charity of other nobles. Many homes in one childhood, and the insults of higher-born children to answer.",
-    grants: [
-      ch("body.strength", 1), ch("body.dexterity", 2), ch("mind.wits", 1),
-      pri("spirit.extrovert", 1),
-      sk("Impress", 1), sk("Vigor", 1), sk("Melee", 2), sk("Ride", 1),
-      bless("Unyielding"), curse("Prideful")
-    ]
-  }
+
+  // ---- High-Court ----
+  upbringing("Hawkwood", "High-Court", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("mind.wits", 1),
+    pri("spirit.extrovert", 2),
+    sk("Melee", 1), sk("Etiquette", 1), sp("Lore", "Heraldry", 1), lang("Read", "Urthish", 2)
+  ]),
+  upbringing("Decados", "High-Court", [
+    ch("body.dexterity", 1), ch("mind.perception", 2), pri("spirit.ego", 2),
+    sk("Etiquette", 1), sp("Lore", "Rival House", 1), sk("Inquiry", 1), lang("Read", "Urthish", 2)
+  ]),
+  upbringing("Hazat", "High-Court", [
+    ch("body.endurance", 1), ch("mind.perception", 2), pri("spirit.passion", 2),
+    sk("Impress", 1), sk("Melee", 1), sk("Etiquette", 1), lang("Read", "Urthish", 2)
+  ]),
+  upbringing("Li Halan", "High-Court", [
+    ch("mind.wits", 1),
+    orSpirit(cid("lihalan", "hc", "social"), "Extrovert", "Introvert", 1),
+    orSpirit(cid("lihalan", "hc", "temper"), "Passion", "Calm", 1),
+    pri("spirit.faith", 2),
+    sk("Etiquette", 1), sk("Focus", 1), sp("Lore", "Theology", 1), lang("Read", "Latin", 2)
+  ]),
+  upbringing("al-Malik", "High-Court", [
+    ch("body.dexterity", 1), ch("mind.wits", 1),
+    orSpirit(cid("almalik", "hc", "social"), "Extrovert", "Introvert", 1),
+    pri("spirit.calm", 2),
+    sk("Etiquette", 1), lang("Speak", "Graceful Tongue", 2), lang("Read", "Urthish", 2)
+  ]),
+
+  // ---- Rural Estate ----
+  upbringing("Hawkwood", "Rural Estate", [
+    ch("body.strength", 2), ch("body.dexterity", 1), ch("mind.wits", 1),
+    pri("spirit.extrovert", 1),
+    sk("Etiquette", 1), sp("Lore", "Fief", 1), lang("Read", "Urthish", 2), sk("Ride", 1)
+  ]),
+  upbringing("Decados", "Rural Estate", [
+    ch("body.dexterity", 2), ch("mind.perception", 2), pri("spirit.ego", 1),
+    sk("Etiquette", 1), sp("Lore", "Rival House", 1), sk("Knavery", 1), lang("Read", "Urthish", 2)
+  ]),
+  upbringing("Hazat", "Rural Estate", [
+    ch("body.endurance", 2), ch("mind.perception", 2), pri("spirit.passion", 1),
+    sk("Impress", 1), sk("Melee", 1), sk("Etiquette", 1), lang("Read", "Urthish", 2)
+  ]),
+  upbringing("Li Halan", "Rural Estate", [
+    ch("mind.wits", 1),
+    orSpirit(cid("lihalan", "re", "social"), "Extrovert", "Introvert", 1),
+    orSpirit(cid("lihalan", "re", "temper"), "Passion", "Calm", 1),
+    pri("spirit.faith", 2),
+    sk("Etiquette", 1), sk("Focus", 1), sp("Lore", "Theology", 1), lang("Read", "Latin", 2)
+  ]),
+  upbringing("al-Malik", "Rural Estate", [
+    ch("body.dexterity", 2), ch("mind.wits", 1),
+    orSpirit(cid("almalik", "re", "social"), "Extrovert", "Introvert", 1),
+    pri("spirit.calm", 1),
+    sk("Melee", 1), sk("Inquiry", 1), sp("Lore", "Trading", 1), lang("Speak", "Graceful Tongue", 2)
+  ]),
+
+  // ---- Landless ----
+  upbringing("Hawkwood", "Landless", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("mind.wits", 1),
+    pri("spirit.extrovert", 1),
+    sk("Impress", 1), sk("Vigor", 1), sk("Melee", 2), sk("Ride", 1)
+  ]),
+  upbringing("Decados", "Landless", [
+    ch("body.dexterity", 2), ch("mind.perception", 2), pri("spirit.ego", 1),
+    sk("Melee", 1), sk("Observe", 1), sk("Sneak", 1), sk("Knavery", 2)
+  ]),
+  upbringing("Hazat", "Landless", [
+    ch("body.endurance", 2), ch("mind.perception", 2), pri("spirit.passion", 1),
+    sk("Impress", 1), sk("Melee", 1), sk("Shoot", 1), sk("Vigor", 1), sk("Remedy", 1)
+  ]),
+  upbringing("Li Halan", "Landless", [
+    ch("mind.wits", 1),
+    orSpirit(cid("lihalan", "ll", "social"), "Extrovert", "Introvert", 1),
+    orSpirit(cid("lihalan", "ll", "temper"), "Passion", "Calm", 1),
+    pri("spirit.faith", 2),
+    sk("Melee", 1), sk("Observe", 1), sk("Focus", 1), sp("Lore", "Theology", 1), sk("Remedy", 1)
+  ]),
+  upbringing("al-Malik", "Landless", [
+    ch("body.dexterity", 2), ch("mind.wits", 1),
+    orSpirit(cid("almalik", "ll", "social"), "Extrovert", "Introvert", 1),
+    pri("spirit.calm", 1),
+    sk("Etiquette", 1), lang("Speak", "Graceful Tongue", 2), lang("Read", "Urthish", 2)
+  ])
 ];
 
 /* -------------------------------------------- */
@@ -285,5 +376,5 @@ const EARLY_CAREER = [
   }
 ];
 
-/** The Hawkwood vertical slice of the Character Histories (p.72–p.85). */
+/** The noble Character Histories (p.72–p.85). */
 export const CHARACTER_HISTORIES = [...UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER];

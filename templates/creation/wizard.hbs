@@ -50,19 +50,21 @@
         <strong>{{budget.characteristics}}</strong> {{localize "FADINGSUNS.Group.Body"}} /
         <strong>{{budget.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}</p>
 
-      {{#if available.length}}
-        <ol class="stage-list">
-          {{#each available as |stage|}}
-            <li class="stage-option {{#if (eq stage.id ../selected.id)}}is-selected{{/if}}">
-              <button type="button" class="stage-pick" data-action="chooseStage"
-                      data-stage-type="{{../stageType}}" data-uuid="{{stage.uuid}}">
-                <span class="stage-name">{{stage.name}}</span>
-                {{#if stage.system.group}}<span class="stage-group">{{stage.system.group}}</span>{{/if}}
-              </button>
-              <div class="stage-summary">{{{stage.system.description}}}</div>
-            </li>
-          {{/each}}
-        </ol>
+      {{#if groups.length}}
+        {{#each groups as |group|}}
+          {{#if group.name}}<h4 class="stage-group-heading">{{group.name}}</h4>{{/if}}
+          <ol class="stage-list">
+            {{#each group.stages as |stage|}}
+              <li class="stage-option {{#if (eq stage.id ../../selected.id)}}is-selected{{/if}}">
+                <button type="button" class="stage-pick" data-action="chooseStage"
+                        data-stage-type="{{../../stageType}}" data-uuid="{{stage.uuid}}">
+                  <span class="stage-name">{{stage.label}}</span>
+                </button>
+                <div class="stage-summary">{{{stage.system.description}}}</div>
+              </li>
+            {{/each}}
+          </ol>
+        {{/each}}
       {{else}}
         <p class="empty">{{localize "FADINGSUNS.Creation.NoStages"}}</p>
       {{/if}}

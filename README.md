@@ -84,9 +84,13 @@ Six entries carry no die modifier at all and change derived statistics instead: 
 base Vitality, Dwarf, Short and Incurable Disease subtract it, and Limp, Missing Leg and Dwarf set
 base run. The Vitality contribution is applied automatically.
 
-**Character Histories** — the Hawkwood vertical slice: three Hawkwood Upbringings, the six noble
-Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early Careers are
-shared across all five royal houses, so the remaining houses need Upbringings only.
+**Character Histories** — the noble faction, complete: 26 stages covering fifteen Upbringings
+(High-Court, Rural Estate and Landless for each of Hawkwood, Decados, Hazat, Li Halan and al-Malik),
+the six noble Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early
+Careers are shared across all five houses, so only the Upbringings vary.
+
+The stage picker groups by house for Upbringings and by pastime for Apprenticeships, so the choice
+reads *Hawkwood → High-Court* rather than as a flat list of fifteen.
 
 Blessings, Curses and Benefices are referenced by name in the source and resolved to compendium
 uuids at build time, so a typo fails the build rather than producing a dangling link. The test

@@ -1,20 +1,15 @@
 {
-  "_key": "!items!fOFCSajfwLSwBQzZ",
-  "_id": "fOFCSajfwLSwBQzZ",
-  "name": "Upbringing: Rural Estate (Hawkwood)",
+  "_key": "!items!Hqz8QZDycRjlo2uP",
+  "_id": "Hqz8QZDycRjlo2uP",
+  "name": "Upbringing: High-Court (Decados)",
   "type": "stage",
   "img": "icons/svg/book.svg",
   "system": {
-    "description": "<p>Raised in a manor or castle, far from high-court but well above the lot of freemen. Tutors divide their time, leaving the child to find her own way.</p>",
+    "description": "<p>Raised in a palace among servants and tutors, watched closely and held to high expectations — but present when foreign visitors call and famous things happen.</p>",
     "stageType": "upbringing",
     "faction": "noble",
-    "group": "Hawkwood",
+    "group": "Decados",
     "grants": [
-      {
-        "kind": "characteristic",
-        "key": "body.strength",
-        "value": 2
-      },
       {
         "kind": "characteristic",
         "key": "body.dexterity",
@@ -22,13 +17,13 @@
       },
       {
         "kind": "characteristic",
-        "key": "mind.wits",
-        "value": 1
+        "key": "mind.perception",
+        "value": 2
       },
       {
         "kind": "characteristic",
-        "key": "spirit.extrovert",
-        "value": 1,
+        "key": "spirit.ego",
+        "value": 2,
         "primary": true
       },
       {
@@ -39,7 +34,12 @@
       {
         "kind": "skill",
         "key": "Lore",
-        "specialty": "Fief",
+        "specialty": "Rival House",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Inquiry",
         "value": 1
       },
       {
@@ -50,25 +50,20 @@
         "points": 2
       },
       {
-        "kind": "skill",
-        "key": "Ride",
-        "value": 1
-      },
-      {
         "kind": "blessing",
-        "key": "Compendium.fading-suns.blessings-curses.Item.BTWMDSyNHmFtXKZh",
-        "label": "Unyielding"
+        "key": "Compendium.fading-suns.blessings-curses.Item.ntCeowx0AhB0eOaL",
+        "label": "Suspicious"
       },
       {
         "kind": "curse",
-        "key": "Compendium.fading-suns.blessings-curses.Item.mWNusO6uteBuq5Ka",
-        "label": "Prideful"
+        "key": "Compendium.fading-suns.blessings-curses.Item.2xobO97tpu5ajU5c",
+        "label": "Vain"
       }
     ]
   },
   "effects": [],
   "folder": null,
-  "sort": 600000,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },

@@ -1,0 +1,125 @@
+{
+  "_key": "!items!K0Ioaw93LcOQBXGj",
+  "_id": "K0Ioaw93LcOQBXGj",
+  "name": "Upbringing: High-Court (Li Halan)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Raised in a palace among servants and tutors, watched closely and held to high expectations — but present when foreign visitors call and famous things happen.</p>",
+    "stageType": "upbringing",
+    "faction": "noble",
+    "group": "Li Halan",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "lihalan-hc-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "lihalan-hc-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 2,
+        "primary": true
+      },
+      {
+        "kind": "skill",
+        "key": "Etiquette",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Theology",
+        "value": 1
+      },
+      {
+        "kind": "language",
+        "key": "Read",
+        "specialty": "Latin",
+        "value": 1,
+        "points": 2
+      },
+      {
+        "kind": "blessing",
+        "key": "Compendium.fading-suns.blessings-curses.Item.zCV4Z4nCI9fUPLef",
+        "label": "Pious"
+      },
+      {
+        "kind": "curse",
+        "key": "Compendium.fading-suns.blessings-curses.Item.C3HdjGw0H3J72uWz",
+        "label": "Guilty"
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

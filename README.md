@@ -212,6 +212,12 @@ or Knavery 2*, the Questing knight's *Body characteristic (choose two) +1 each* 
 single step, and the wizard will not advance until all are settled. The review step shows the
 finished character before anything is written.
 
+Open choices — *"Any skill +2"*, *"Spirit characteristic (choose one) +2"* — offer a picker drawn
+from the compendiums, narrowed to the family the stage names: *Drive (choose craft)* lists the five
+Drive specialties, *Speak (choose dialect)* the seven languages, *Any skill* all ninety-six. A test
+asserts every open choice can be satisfied from content that exists, because an unanswerable choice
+blocks the wizard outright.
+
 Choices are presented as radio buttons or, where a stage picks more than one, checkboxes with a
 running count. A choice turns green when settled and *Next* stays disabled until every one is,
 with a tooltip saying how many are outstanding. Ticking a third option in a "choose two" releases

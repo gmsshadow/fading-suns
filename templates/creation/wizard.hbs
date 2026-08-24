@@ -82,12 +82,19 @@
         <ol class="choice-list">
           {{#each choices as |entry|}}
             <li class="choice {{#if entry.complete}}is-complete{{/if}}"
-                data-choice-group="{{entry.choice.id}}" data-pick="{{entry.pick}}">
+                data-choice-group="{{entry.choice.id}}" data-pick="{{entry.pick}}"
+                {{#if entry.isOpen}}data-pool="{{entry.choice.pool}}"{{/if}}>
               <span class="choice-stage">{{entry.stage}}</span>
               <span class="choice-label">{{entry.choice.label}}</span>
 
-              {{#if entry.choice.pool}}
-                <p class="hint open-choice">{{localize "FADINGSUNS.Creation.OpenChoice"}}</p>
+              {{#if entry.isOpen}}
+                <select class="pool-select" data-choice-id="{{entry.choice.id}}"
+                        data-pool="{{entry.choice.pool}}" data-pick="1">
+                  <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
+                  {{#each entry.poolOptions as |option|}}
+                    <option value="{{option.value}}" {{selected option.selected}}>{{option.label}}</option>
+                  {{/each}}
+                </select>
               {{else}}
                 {{#if (gt entry.pick 1)}}
                   <span class="choice-count">0 / {{entry.pick}}</span>

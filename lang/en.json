@@ -356,7 +356,7 @@
       "NoStages": "No stages for this faction are in the compendium yet.",
       "NoChoices": "Nothing to decide — every stage on this path applies as printed.",
       "ChoicesHint": "Each stage offers these choices. All must be settled before continuing — a choice turns green when it is.",
-      "OpenChoice": "This stage lets you pick freely. Add the skill or characteristic on the sheet after applying.",
+      "OpenChoice": "Pick from the list. Rename the specialty on the sheet afterwards if you want something more specific.",
       "Incomplete": "Finish this step before continuing.",
       "OverCap": "This path pushes traits above the starting cap. They have been reduced, freeing",
       "FreedPoints": "points to place wherever you like.",
@@ -377,7 +377,8 @@
         "choices": "Choices",
         "review": "Review"
       },
-      "Outstanding": "{count} choice(s) still to make"
+      "Outstanding": "{count} choice(s) still to make",
+      "PickOne": "— choose —"
     }
   }
 }

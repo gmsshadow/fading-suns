@@ -319,3 +319,58 @@ test("a Duelist Apprenticeship records the Fencing Actions it teaches", () => {
   assert.equal(state.notes.length, 1);
   assert.match(state.notes[0], /Parry, Thrust, Slash/);
 });
+
+/* -------------------------------------------- */
+/*  Open choices are resolvable                 */
+/* -------------------------------------------- */
+
+/**
+ * Every open choice must be answerable from content that actually exists,
+ * otherwise the wizard blocks: an unresolvable choice can never leave the
+ * pending list, and Next never enables.
+ */
+test("every open choice can be satisfied from the compendiums", () => {
+  const skills = loadPack("learned-skills").map(d => d.name);
+  const natural = ["Charm", "Dodge", "Fight", "Impress", "Melee", "Observe", "Shoot", "Sneak", "Vigor"];
+  const pool = [...new Set([...natural, ...skills])];
+
+  for (const stage of stages) {
+    for (const choice of stage.system.grants.filter(g => g.kind === "choice" && g.pool)) {
+      let options;
+      if (choice.pool === "spirit") {
+        options = ["extrovert", "introvert", "passion", "calm", "faith", "ego"];
+      } else {
+        options = pool.filter(label =>
+          !choice.filter?.length || choice.filter.some(prefix => label.startsWith(prefix)));
+        if (choice.pool === "language") options = options.filter(l => /^(Speak|Read)\b/.test(l));
+      }
+
+      assert.ok(options.length > 0,
+        `"${choice.label}" in ${stage.name} offers nothing — the wizard would block here`);
+      assert.ok(Number.isFinite(choice.value),
+        `"${choice.label}" in ${stage.name} declares no point value`);
+    }
+  }
+});
+
+test("an open choice, once picked, resolves and no longer blocks", () => {
+  const questing = byName("Early Career: Questing").system;
+  const open = questing.grants.filter(g => g.kind === "choice" && g.pool);
+
+  const choices = {};
+  for (const choice of questing.grants.filter(g => g.kind === "choice")) {
+    if (choice.pool === "spirit") {
+      choices[choice.id] = [{ kind: "characteristic", key: "spirit.passion", value: choice.value }];
+    } else if (choice.pool === "language") {
+      choices[choice.id] = [{ kind: "language", key: "Speak", specialty: "Latin", value: 1, points: choice.value }];
+    } else if (choice.pool) {
+      choices[choice.id] = [{ kind: "skill", key: "Drive", specialty: "Landcraft", value: choice.value }];
+    } else {
+      choices[choice.id] = Array.from({ length: choice.pick ?? 1 }, (_, i) => i);
+    }
+  }
+
+  assert.ok(open.length > 0, "Questing has open choices to exercise");
+  const { pending } = resolveChoices(questing.grants, choices);
+  assert.equal(pending.length, 0, "nothing is left pending once every choice is answered");
+});

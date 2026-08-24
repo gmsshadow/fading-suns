@@ -84,6 +84,9 @@
         "pick": 1,
         "pool": "skill",
         "value": 1,
+        "filter": [
+          "Arts"
+        ],
         "options": []
       },
       {

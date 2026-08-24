@@ -19,7 +19,8 @@
  *   note(text)          something not yet modelled, recorded for the player
  *   pickOne(id, label, ...options)   an enumerated choice
  *   pickN(id, label, n, ...options)  an enumerated choice picking several
- *   open(id, label, pool, n)         an open choice the player fills in, worth n points
+ *   open(id, label, pool, n, [f])    an open choice worth n points, optionally narrowed
+ *                       to skills whose name begins with one of the prefixes f
  *   opt(label, ...grants)            one option within a choice
  */
 
@@ -36,7 +37,7 @@ const note = text => ({ kind: "note", text });
 const opt = (label, ...grants) => ({ label, grants });
 const pickOne = (id, label, ...options) => ({ kind: "choice", id, label, pick: 1, options });
 const pickN = (id, label, pick, ...options) => ({ kind: "choice", id, label, pick, options });
-const open = (id, label, pool, value) => ({ kind: "choice", id, label, pick: 1, pool, value });
+const open = (id, label, pool, value, filter) => ({ kind: "choice", id, label, pick: 1, pool, value, filter });
 
 /** "Extrovert or Introvert +1" and friends, which recur across many stages. */
 const orSpirit = (id, a, b, value) => pickOne(
@@ -145,7 +146,7 @@ const APPRENTICESHIP = [
       orSpirit("appr-dandy-temper", "Passion", "Calm", 1),
       open("appr-dandy-any", "Any skill +2", "skill", 2),
       sk("Charm", 1), sk("Observe", 1), sk("Shoot", 1),
-      open("appr-dandy-art", "Arts (choose a favourite) 1", "skill", 1),
+      open("appr-dandy-art", "Arts (choose a favourite) 1", "skill", 1, ["Arts"]),
       pickOne("appr-dandy-drive", "Drive (Aircraft or Landcraft) 1",
         opt("Aircraft", sp("Drive", "Aircraft", 1)),
         opt("Landcraft", sp("Drive", "Landcraft", 1))),
@@ -159,7 +160,7 @@ const APPRENTICESHIP = [
       ch("mind.wits", 2), ch("spirit.introvert", 2),
       orSpirit("appr-study-temper", "Passion", "Calm", 1),
       sk("Academia", 1), sk("Focus", 3), sk("Inquiry", 1),
-      open("appr-study-subject", "Lore or Science (object of study) 3", "skill", 3),
+      open("appr-study-subject", "Lore or Science (object of study) 3", "skill", 3, ["Lore", "Science"]),
       pickOne("appr-study-read", "Read Urthish or Latin (2 pts)",
         opt("Urthish", lang("Read", "Urthish", 2)),
         opt("Latin", lang("Read", "Latin", 2)))
@@ -271,13 +272,13 @@ const EARLY_CAREER = [
         opt("Melee", sk("Melee", 1)),
         opt("Shoot", sk("Shoot", 1))),
       sk("Observe", 1), sk("Sneak", 1), sk("Vigor", 1),
-      open("career-questing-drive", "Drive (choose craft) 1", "skill", 1),
+      open("career-questing-drive", "Drive (choose craft) 1", "skill", 1, ["Drive"]),
       pickOne("career-questing-guile", "Inquiry or Knavery 1",
         opt("Inquiry", sk("Inquiry", 1)),
         opt("Knavery", sk("Knavery", 1))),
       sp("Lore", "People and Places Seen", 1),
       sk("Remedy", 1),
-      open("career-questing-speak", "Speak (choose dialect) 2 pts", "language", 2),
+      open("career-questing-speak", "Speak (choose dialect) 2 pts", "language", 2, ["Speak"]),
       sk("Streetwise", 1),
       ben("Nobility", 3)
     ]

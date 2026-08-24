@@ -1116,3 +1116,9 @@
 .fading-suns .name-row .charname {
   flex: 1;
 }
+
+.fading-suns .pool-select {
+  flex: 1 1 auto;
+  max-width: 26ch;
+  min-width: 14ch;
+}

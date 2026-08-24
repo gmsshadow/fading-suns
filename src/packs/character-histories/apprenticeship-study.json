@@ -70,6 +70,10 @@
         "pick": 1,
         "pool": "skill",
         "value": 3,
+        "filter": [
+          "Lore",
+          "Science"
+        ],
         "options": []
       },
       {

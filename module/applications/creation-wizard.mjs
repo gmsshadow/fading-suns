@@ -2,7 +2,7 @@ import {
   applyStages, createState, resolveChoices, findOverages, clampToCap,
   STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP
 } from "../lifepath/grants.mjs";
-import { applyLifepathToActor } from "../lifepath/apply.mjs";
+import { applyLifepathToActor, parseSkillLabel } from "../lifepath/apply.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 
@@ -37,7 +37,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       faction: "noble",
       group: "",
       stages: {},      // stageType -> Item
-      choices: {}      // choice id -> selection
+      choices: {},     // choice id -> option index, list of indices, or grant
+      picked: {}       // choice id -> the pool value chosen, for redisplay
     };
   }
 
@@ -93,7 +94,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.selected = this.draft.stages[step] ?? null;
     }
 
-    if (step === "choices") context.choices = this.#allChoices();
+    if (step === "choices") context.choices = await this.#allChoices();
     if (step === "review") context.review = this.#review();
 
     return context;
@@ -177,17 +178,90 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   }
 
   /**
+   * Every skill the system knows about, as display labels: the nine natural
+   * skills plus everything stocked in the Learned Skills compendium (p.97, p.99).
+   * @returns {Promise<string[]>}
+   */
+  async #skillPool() {
+    if (this.#skillCache) return this.#skillCache;
+
+    const labels = new Set(Object.keys(CONFIG.FADING_SUNS.naturalSkills));
+    const pack = game.packs.get("fading-suns.learned-skills");
+    if (pack) {
+      const index = await pack.getIndex();
+      for (const entry of index) labels.add(entry.name);
+    }
+    this.#skillCache = [...labels].sort((a, b) => a.localeCompare(b));
+    return this.#skillCache;
+  }
+
+  #skillCache = null;
+
+  /**
+   * The options an open choice offers, narrowed by its filter where it has one.
+   * @param {object} choice
+   * @returns {Promise<Array<{value: string, label: string}>>}
+   */
+  async #poolOptions(choice) {
+    if (choice.pool === "spirit") {
+      return Object.entries(CONFIG.FADING_SUNS.spirit)
+        .map(([key, label]) => ({ value: `spirit.${key}`, label: game.i18n.localize(label) }));
+    }
+
+    let labels = await this.#skillPool();
+    if (choice.filter?.length) {
+      labels = labels.filter(label => choice.filter.some(prefix => label.startsWith(prefix)));
+    }
+    if (choice.pool === "language") {
+      labels = labels.filter(label => /^(Speak|Read)\b/.test(label));
+    }
+    return labels.map(label => ({ value: label, label }));
+  }
+
+  /**
+   * Turn a picked pool option into the grant the engine will apply.
+   * @param {object} choice
+   * @param {string} value
+   * @returns {object}
+   */
+  #grantFromPool(choice, value) {
+    if (choice.pool === "spirit") {
+      return { kind: "characteristic", key: value, value: choice.value ?? 1 };
+    }
+    const { name, specialty } = parseSkillLabel(value);
+    if (choice.pool === "language") {
+      return { kind: "language", key: name, specialty, value: 1, points: choice.value ?? 2 };
+    }
+    return { kind: "skill", key: name, specialty, value: choice.value ?? 1 };
+  }
+
+  /**
    * Every choice across the chosen stages, each carrying whatever has been
    * selected so far so that the step can be revisited and revised.
    * @returns {Array<{stage: string, choice: object, selected: number[], pick: number, complete: boolean}>}
    */
-  #allChoices() {
+  async #allChoices() {
     const rows = [];
     for (const stage of this.chosenStages) {
       for (const choice of stage.system.grants.filter(g => g.kind === "choice")) {
         const raw = this.draft.choices[choice.id];
         const selected = raw === undefined ? [] : (Array.isArray(raw) ? raw : [raw]);
         const pick = choice.pick ?? 1;
+
+        if (choice.pool) {
+          const options = await this.#poolOptions(choice);
+          const picked = this.draft.picked?.[choice.id] ?? "";
+          rows.push({
+            stage: stage.name,
+            choice,
+            pick,
+            isOpen: true,
+            poolOptions: options.map(o => ({ ...o, selected: o.value === picked })),
+            complete: selected.length === pick
+          });
+          continue;
+        }
+
         rows.push({
           stage: stage.name,
           choice,
@@ -198,7 +272,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
             label: option.label,
             checked: selected.includes(index)
           })),
-          complete: !choice.pool && selected.length === pick
+          complete: selected.length === pick
         });
       }
     }
@@ -292,6 +366,21 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const id = input.dataset.choiceId;
     const pick = Number(input.dataset.pick) || 1;
 
+    // An open choice picks from a pool, and resolves to a grant rather than an
+    // option index.
+    if (input.dataset.pool) {
+      const choice = this.#choiceById(id);
+      if (!input.value) {
+        delete this.draft.choices[id];
+        delete this.draft.picked[id];
+      } else {
+        this.draft.picked[id] = input.value;
+        this.draft.choices[id] = [this.#grantFromPool(choice, input.value)];
+      }
+      this.#refreshChoiceState();
+      return;
+    }
+
     if (input.type !== "checkbox") {
       this.draft.choices[id] = Number(input.value);
       this.#refreshChoiceState();
@@ -312,13 +401,28 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     this.#refreshChoiceState();
   }
 
+  /**
+   * Find a choice by id across the chosen stages.
+   * @param {string} id
+   * @returns {object|null}
+   */
+  #choiceById(id) {
+    for (const stage of this.chosenStages) {
+      const found = stage.system.grants.find(g => g.kind === "choice" && g.id === id);
+      if (found) return found;
+    }
+    return null;
+  }
+
   /** Update each choice's counter and enable Next once every choice is settled. */
   #refreshChoiceState() {
     if (this.draft.step !== "choices") return;
 
     for (const group of this.element.querySelectorAll("[data-choice-group]")) {
       const pick = Number(group.dataset.pick) || 1;
-      const chosen = group.querySelectorAll("input:checked").length;
+      const chosen = group.dataset.pool
+        ? (group.querySelector("select")?.value ? 1 : 0)
+        : group.querySelectorAll("input:checked").length;
       group.classList.toggle("is-complete", chosen === pick);
 
       const counter = group.querySelector(".choice-count");
@@ -351,6 +455,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     // Stages are faction-specific, so changing faction invalidates the choices.
     this.draft.stages = {};
     this.draft.choices = {};
+    this.draft.picked = {};
     this.render();
   }
 

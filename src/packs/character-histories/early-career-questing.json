@@ -311,6 +311,9 @@
         "pick": 1,
         "pool": "skill",
         "value": 1,
+        "filter": [
+          "Drive"
+        ],
         "options": []
       },
       {
@@ -359,6 +362,9 @@
         "pick": 1,
         "pool": "language",
         "value": 2,
+        "filter": [
+          "Speak"
+        ],
         "options": []
       },
       {

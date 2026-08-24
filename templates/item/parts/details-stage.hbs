@@ -1,0 +1,47 @@
+<div class="form-grid">
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Stage.Type"}}</span>
+    <select name="system.stageType">{{selectOptions config.stageTypes selected=system.stageType localize=true}}</select>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Stage.Faction"}}</span>
+    <select name="system.faction">{{selectOptions config.factions selected=system.faction localize=true}}</select>
+  </label>
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Stage.Group"}}</span>
+    <input type="text" name="system.group" value="{{system.group}}"/>
+  </label>
+</div>
+
+{{#if system.budget}}
+  <p class="hint">{{localize "FADINGSUNS.Stage.Budget"}}:
+    <strong>{{system.budget.characteristics}}</strong> + <strong>{{system.budget.skills}}</strong>
+    ({{localize "FADINGSUNS.Group.Body"}} / {{localize "FADINGSUNS.Tab.Skills"}})</p>
+{{/if}}
+
+<fieldset class="grant-list">
+  <legend>{{localize "FADINGSUNS.Stage.Grants"}}</legend>
+  <ol class="grants">
+    {{#each system.grants as |grant|}}
+      <li class="grant grant-{{grant.kind}}">
+        {{#if (eq grant.kind "choice")}}
+          <i class="fa-solid fa-code-branch"></i>
+          <span class="grant-label">{{grant.label}}</span>
+          <ol class="grant-options">
+            {{#each grant.options as |option|}}<li>{{option.label}}</li>{{/each}}
+          </ol>
+        {{else if (eq grant.kind "note")}}
+          <i class="fa-solid fa-circle-info"></i><span class="grant-label">{{grant.text}}</span>
+        {{else}}
+          <span class="grant-kind">{{grant.kind}}</span>
+          <span class="grant-label">{{#if grant.label}}{{grant.label}}{{else}}{{grant.key}}{{/if}}
+            {{#if grant.specialty}}({{grant.specialty}}){{/if}}</span>
+          {{#if grant.value}}<span class="grant-value">{{fsSigned grant.value}}</span>{{/if}}
+          {{#if grant.primary}}<span class="grant-flag">{{localize "FADINGSUNS.Hint.Primary"}}</span>{{/if}}
+          {{#if grant.points}}<span class="grant-flag">{{grant.points}} pts</span>{{/if}}
+        {{/if}}
+      </li>
+    {{/each}}
+  </ol>
+</fieldset>
+<p class="hint">{{localize "FADINGSUNS.Hint.Stage"}}</p>

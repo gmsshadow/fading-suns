@@ -12,7 +12,8 @@
       "psychicPower": "Psychic Power",
       "theurgicRite": "Theurgic Rite",
       "blessing": "Blessing or Curse",
-      "benefice": "Benefice or Affliction"
+      "benefice": "Benefice or Affliction",
+      "stage": "Character History Stage"
     }
   },
   "FADINGSUNS": {
@@ -157,7 +158,8 @@
       "PsychicPowers": "Psychic Powers",
       "TheurgicRites": "Theurgic Rites",
       "BlessingsCurses": "Blessings & Curses",
-      "BeneficesAfflictions": "Benefices & Afflictions"
+      "BeneficesAfflictions": "Benefices & Afflictions",
+      "History": "Character History"
     },
     "Control": {
       "Add": "Add",
@@ -232,7 +234,8 @@
       "Restriction": "The situation that activates the modifier. If it does not come into play, the modifier does not apply (p.115).",
       "BlessingLimit": "No more than seven Blessing modifiers, nor more than seven points of Curses (p.115).",
       "Ranks": "Set the Points field to the rank bought. Gamemasters may price entries outside this table.",
-      "BeneficePoints": "Characters begin with 5 points of Benefices. Afflictions grant further points to spend (p.118)."
+      "BeneficePoints": "Characters begin with 5 points of Benefices. Afflictions grant further points to spend (p.118).",
+      "Stage": "Drag a stage from the Character Histories compendium onto a character to record it."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -244,7 +247,8 @@
       "TheurgicRites": "No theurgic rites.",
       "BlessingsCurses": "No blessings or curses.",
       "Modifiers": "No modifiers. Add them in the source data or edit the compendium entry.",
-      "BeneficesAfflictions": "No benefices or afflictions."
+      "BeneficesAfflictions": "No benefices or afflictions.",
+      "History": "No character history stages."
     },
     "Item": {
       "New": "New {type}",
@@ -313,6 +317,67 @@
       "Status": "Status",
       "Points": "Benefice points",
       "Remaining": "remaining"
+    },
+    "Stage": {
+      "Upbringing": "Upbringing",
+      "Apprenticeship": "Apprenticeship",
+      "EarlyCareer": "Early Career",
+      "TourOfDuty": "Tour of Duty",
+      "Extra": "Extra Stage",
+      "Type": "Stage",
+      "Faction": "Faction",
+      "Group": "Grouping",
+      "Grants": "Grants",
+      "Budget": "Worth",
+      "Choices": "Choices to make",
+      "Automatic": "No choices — applies as printed",
+      "Points": "{characteristics} characteristic points, {skills} skill points"
+    },
+    "Faction": {
+      "Noble": "Noble",
+      "Priest": "Priest",
+      "Merchant": "Merchant League",
+      "Alien": "Alien"
+    },
+    "Creation": {
+      "Title": "Character Creation",
+      "Open": "Open the character creation wizard",
+      "Guided": "Character Histories",
+      "GuidedHint": "Walk through Upbringing, Apprenticeship and Early Career, choosing a prebuilt stage at each.",
+      "Custom": "Custom Creation",
+      "CustomHint": "Spend the points yourself on the character sheet, with no prebuilt stages.",
+      "CustomBudget": "You have",
+      "CustomReview": "Custom Creation spends the same totals directly on the sheet. Close this wizard and edit the character; the Benefice counter on the Characteristics tab will track that part of the spend.",
+      "Cap": "No trait may begin above",
+      "Faction": "Faction",
+      "FactionHint": "Only stages for the chosen faction are offered. Changing it clears any stages already picked.",
+      "Chosen": "Chosen",
+      "Clear": "Clear this stage",
+      "NoStages": "No stages for this faction are in the compendium yet.",
+      "NoChoices": "Nothing to decide — every stage on this path applies as printed.",
+      "ChoicesHint": "Each stage offers these choices. All must be settled before continuing.",
+      "OpenChoice": "This stage lets you pick freely. Add the skill or characteristic on the sheet after applying.",
+      "PickN": "Pick",
+      "Incomplete": "Finish this step before continuing.",
+      "OverCap": "This path pushes traits above the starting cap. They have been reduced, freeing",
+      "FreedPoints": "points to place wherever you like.",
+      "SparePoints": "Points freed by a language you already knew",
+      "Notes": "Recorded on the character",
+      "Back": "Back",
+      "Next": "Next",
+      "Apply": "Apply to Character",
+      "ApplyTitle": "Apply this lifepath?",
+      "ApplyConfirm": "Write this lifepath onto <strong>{name}</strong>? Characteristics will be set, skills raised or created, and Blessings, Curses, Benefices and the stages themselves added.",
+      "Applied": "Lifepath applied.",
+      "Freed": "{points} point(s) were freed by the starting cap — place them on the sheet.",
+      "Step": {
+        "mode": "Method",
+        "upbringing": "Upbringing",
+        "apprenticeship": "Apprenticeship",
+        "earlyCareer": "Early Career",
+        "choices": "Choices",
+        "review": "Review"
+      }
     }
   }
 }

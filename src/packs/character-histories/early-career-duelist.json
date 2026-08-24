@@ -1,0 +1,158 @@
+{
+  "_key": "!items!6SrPV45Y1jl8vfc3",
+  "_id": "6SrPV45Y1jl8vfc3",
+  "name": "Early Career: Duelist",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Knighted, and known for the blade. Challenges arrive whether sought or not.</p>",
+    "stageType": "earlyCareer",
+    "faction": "noble",
+    "group": "Court",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "career-duelist-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "career-duelist-temper",
+        "label": "Passion or Calm +2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Melee",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Etiquette",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "career-duelist-actions",
+        "label": "Fencing Actions",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Basic — for those without the Duelist Apprenticeship",
+            "grants": [
+              {
+                "kind": "note",
+                "text": "Fencing Actions: Parry, Thrust, Slash, Draw & Strike"
+              }
+            ]
+          },
+          {
+            "label": "Advanced — only with the Duelist Apprenticeship",
+            "grants": [
+              {
+                "kind": "note",
+                "text": "Fencing Actions: Draw & Strike, and either Parry/Riposte or Disarm and Feint"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "label": "Nobility"
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

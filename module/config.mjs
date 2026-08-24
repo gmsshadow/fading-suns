@@ -219,3 +219,29 @@ FADING_SUNS.beneficeCategories = {
 
 /** Points of Benefices every character begins with (p.118). */
 FADING_SUNS.startingBeneficePoints = 5;
+
+/* -------------------------------------------- */
+/*  Character Histories (p.72)                  */
+/* -------------------------------------------- */
+
+FADING_SUNS.stageTypes = {
+  upbringing: "FADINGSUNS.Stage.Upbringing",
+  apprenticeship: "FADINGSUNS.Stage.Apprenticeship",
+  earlyCareer: "FADINGSUNS.Stage.EarlyCareer",
+  tourOfDuty: "FADINGSUNS.Stage.TourOfDuty",
+  extra: "FADINGSUNS.Stage.Extra"
+};
+
+FADING_SUNS.factions = {
+  noble: "FADINGSUNS.Faction.Noble",
+  priest: "FADINGSUNS.Faction.Priest",
+  merchant: "FADINGSUNS.Faction.Merchant",
+  alien: "FADINGSUNS.Faction.Alien"
+};
+
+/** Points each stage represents (p.88). Mirrors STAGE_BUDGET in the lifepath engine. */
+FADING_SUNS.stageBudgets = {
+  upbringing: { characteristics: 5, skills: 5 },
+  apprenticeship: { characteristics: 5, skills: 10 },
+  earlyCareer: { characteristics: 10, skills: 15 }
+};

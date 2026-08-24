@@ -1,0 +1,77 @@
+{
+  "_key": "!items!F7ykdMXxKtcC0fXU",
+  "_id": "F7ykdMXxKtcC0fXU",
+  "name": "Apprenticeship: Soldier",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Military training from a young age, in the field as much as the drill yard.</p>",
+    "stageType": "apprenticeship",
+    "faction": "noble",
+    "group": "Military",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Fight",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Vigor",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Social",
+        "specialty": "Leadership",
+        "value": 3
+      },
+      {
+        "kind": "skill",
+        "key": "Survival",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Warfare",
+        "specialty": "Military Tactics",
+        "value": 1
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

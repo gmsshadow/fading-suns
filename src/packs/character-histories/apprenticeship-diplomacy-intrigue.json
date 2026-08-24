@@ -1,0 +1,129 @@
+{
+  "_key": "!items!HzZaEtJemndCHVos",
+  "_id": "HzZaEtJemndCHVos",
+  "name": "Apprenticeship: Diplomacy/Intrigue",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Schooled in the arts of court: what to say, what to notice and what to leave unsaid.</p>",
+    "stageType": "apprenticeship",
+    "faction": "noble",
+    "group": "Diplomacy",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Charm",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Sneak",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Arts",
+        "specialty": "Rhetoric",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Etiquette",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "appr-diplomacy-guile",
+        "label": "Inquiry or Knavery 2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Inquiry",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Inquiry",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Knavery",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Knavery",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "appr-diplomacy-social",
+        "label": "Social (Debate or Oratory) 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Debate",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Social",
+                "specialty": "Debate",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Oratory",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Social",
+                "specialty": "Oratory",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

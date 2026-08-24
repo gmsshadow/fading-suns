@@ -2,7 +2,7 @@
 
 An unofficial game system implementation for **Fading Suns 2nd Edition Revised**, built for **Foundry VTT v13 and v14**.
 
-Version **0.6.0** — ApplicationV2 rewrite, three compendiums, and the lifepath grant engine.
+Version **0.8.0** — ApplicationV2 rewrite, four compendiums, and the character creation wizard.
 
 ---
 
@@ -65,7 +65,7 @@ Reading the resolution code against the Core Rules turned up several errors, all
 
 ### Compendiums
 
-Three compendiums ship with the system.
+Four compendiums ship with the system.
 
 **Blessings & Curses** — all 91 entries from p.115–116, across the six printed categories:
 Appearance (6), Behaviour (38), Injury (11), Knack (24), Reputation (8) and Size (4).
@@ -83,6 +83,22 @@ are pre-ticked. Whatever is ticked is folded into the Goal Number.
 Six entries carry no die modifier at all and change derived statistics instead: Giant and Tall add
 base Vitality, Dwarf, Short and Incurable Disease subtract it, and Limp, Missing Leg and Dwarf set
 base run. The Vitality contribution is applied automatically.
+
+**Character Histories** — the Hawkwood vertical slice: three Hawkwood Upbringings, the six noble
+Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early Careers are
+shared across all five royal houses, so the remaining houses need Upbringings only.
+
+Blessings, Curses and Benefices are referenced by name in the source and resolved to compendium
+uuids at build time, so a typo fails the build rather than producing a dangling link. The test
+suite plays whole lifepaths through the engine and checks each stage against its published budget.
+
+Three stages do not add up, and are pinned rather than padded:
+
+| Stage | Short by | Why |
+|---|---|---|
+| Apprenticeship: Duelist | 6 skill points | Teaches Combat Actions, priced "1 per level" (p.87) — the levels are in Chapter Six, not yet transcribed |
+| Early Career: Duelist | 10 skill points | As above |
+| Early Career: Ambassador | 1 skill point | No unmodelled element; the printed list simply totals 14 against a budget of 15 |
 
 **Benefices & Afflictions** — 52 entries from p.117–124, across Background, Community,
 Possessions, Artifacts & Relics, Riches and Status.
@@ -185,6 +201,35 @@ Tests are anchored to the book's own worked examples — Gorgool's Goal 9 rollin
 
 Throughout the source, rulebook page numbers are used as traceability anchors in comments.
 
+### Character creation
+
+The wand icon beside a character's name opens the creation wizard (p.70–p.89). It offers both
+methods the rulebook gives:
+
+**Character Histories** walks Upbringing, Apprenticeship and Early Career, offering only the stages
+matching the chosen faction. Every choice a stage carries — *Extrovert or Introvert +1*, *Inquiry
+or Knavery 2*, the Questing knight's *Body characteristic (choose two) +1 each* — is gathered on a
+single step, and the wizard will not advance until all are settled. The review step shows the
+finished character before anything is written.
+
+**Custom Creation** is the sheet itself, so the wizard says so plainly, shows the 20 and 30 point
+budgets and the cap of 8, and gets out of the way.
+
+Nothing touches the actor until *Apply* on the final step, so the wizard can be abandoned at any
+point without leaving a half-built character. Applying then:
+
+- sets characteristics to their finished values, with the correct Spirit trait marked primary
+- raises skills the character already has, and creates the rest — pulling them from the Learned
+  Skills compendium so the characteristic pairing and description come with them
+- adds the Blessings, Curses and Benefices the stages grant, at the ranks they grant them
+- adds the stage items themselves, so the character's history stays readable on the sheet
+- records anything not yet modelled, such as a Duelist's Fencing Actions, on the biography
+
+Two rules the review step surfaces rather than silently swallowing. Traits pushed above the
+starting cap of 8 are reduced and the freed points **reported back** for the player to place, per
+p.72. A language granted twice — Read Urthish appears in most noble Upbringings — refunds its two
+points instead of stacking, and the refund is shown.
+
 ### Lifepath grant engine
 
 `module/lifepath/grants.mjs` resolves Character History stages (p.70–p.89). It has no Foundry
@@ -278,7 +323,8 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 ## Roadmap
 
 - Compendiums: weapons and armour from Chapter Seven
-- Character creation: lifepath stages as compendium items, with a guided wizard
+- Character histories for the remaining houses, sects and guilds
+- Extra Stages and Tours of Duty (p.85), and spending Extra points in the wizard
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

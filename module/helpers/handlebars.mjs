@@ -32,7 +32,11 @@ export function preloadTemplates() {
     "fadingSuns.detailsPsychicPower": `${ROOT}/item/parts/details-psychic-power.hbs`,
     "fadingSuns.detailsTheurgicRite": `${ROOT}/item/parts/details-theurgic-rite.hbs`,
     "fadingSuns.detailsBlessing": `${ROOT}/item/parts/details-blessing.hbs`,
-    "fadingSuns.detailsBenefice": `${ROOT}/item/parts/details-benefice.hbs`
+    "fadingSuns.detailsBenefice": `${ROOT}/item/parts/details-benefice.hbs`,
+    "fadingSuns.detailsStage": `${ROOT}/item/parts/details-stage.hbs`,
+
+    // Character creation wizard
+    "fadingSuns.creationWizard": `${ROOT}/creation/wizard.hbs`
   });
 }
 

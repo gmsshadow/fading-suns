@@ -18,13 +18,20 @@
  *   language         a skill that costs a fixed number of points, refundable
  *                    elsewhere if the character already speaks or reads it (p.72)
  *   blessing/curse   a reference to a Blessing or Curse item
+ *   benefice         a reference to a Benefice item, at a given rank
+ *   note             something not yet modelled, such as Fencing Actions
  *
- * Some stages offer a choice — "Extrovert or Introvert +1" — which is modelled
- * as a grant of kind "choice" carrying a list of options.
+ * Choices come in two forms. An enumerated choice lists its options —
+ * "Extrovert or Introvert +1" — and the selection is an option index. An open
+ * choice names a pool instead — "Any skill +2", "Body characteristic (choose
+ * one) +2" — and the wizard supplies the grant itself. Either kind may pick more
+ * than one, as in "Body characteristic (choose two) +1 each".
  */
 
 /** Every grant kind a stage may contain. */
-export const GRANT_KINDS = ["characteristic", "skill", "language", "blessing", "curse", "choice"];
+export const GRANT_KINDS = [
+  "characteristic", "skill", "language", "blessing", "curse", "benefice", "note", "choice"
+];
 
 /**
  * The highest rating a beginning character may have in any characteristic or
@@ -54,16 +61,43 @@ export function resolveChoices(grants, choices = {}) {
       resolved.push(grant);
       continue;
     }
-    const selection = choices[grant.id];
-    const option = Number.isInteger(selection) ? grant.options?.[selection] : undefined;
-    if (!option) {
+
+    const pick = grant.pick ?? 1;
+    const selection = normaliseSelection(choices[grant.id]);
+
+    if (selection.length !== pick) {
       pending.push(grant);
       continue;
     }
-    for (const inner of option.grants ?? []) resolved.push(inner);
+
+    for (const chosen of selection) {
+      // An open choice — "Any skill +2", "Body characteristic (choose one) +2" —
+      // has no enumerated options, so the wizard supplies the grant directly.
+      if (grant.pool && typeof chosen === "object") {
+        resolved.push(chosen);
+        continue;
+      }
+      const option = grant.options?.[chosen];
+      if (!option) {
+        pending.push(grant);
+        break;
+      }
+      for (const inner of option.grants ?? []) resolved.push(inner);
+    }
   }
 
   return { grants: resolved, pending };
+}
+
+/**
+ * Selections arrive either as a single value or as a list, depending on whether
+ * the choice picks one option or several. Normalise to a list.
+ * @param {*} selection
+ * @returns {Array}
+ */
+function normaliseSelection(selection) {
+  if (selection === undefined || selection === null) return [];
+  return Array.isArray(selection) ? selection : [selection];
 }
 
 /* -------------------------------------------- */
@@ -96,6 +130,8 @@ export function createState({ characteristics = {}, skills = {}, primary = {} } 
     skills: { ...skills },
     blessings: [],
     curses: [],
+    benefices: [],
+    notes: [],
     sparePoints: 0
   };
 }
@@ -152,6 +188,17 @@ export function applyGrants(state, grants) {
 
       case "blessing":
         if (!state.blessings.includes(grant.key)) state.blessings.push(grant.key);
+        break;
+
+      case "benefice":
+        // "Benefice—Rank (Knight)" grants the entry at a specific rank.
+        state.benefices.push({ key: grant.key, value: grant.value ?? 1 });
+        break;
+
+      case "note":
+        // Something the stage confers that the system does not yet model, such
+        // as the Fencing Actions a Duelist learns. Recorded for the player.
+        state.notes.push(grant.text ?? "");
         break;
 
       case "curse":

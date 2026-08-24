@@ -1,0 +1,119 @@
+{
+  "_key": "!items!A4upf8LAs0ewVpPU",
+  "_id": "A4upf8LAs0ewVpPU",
+  "name": "Apprenticeship: Study",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Given over to books and contemplation, and to one subject above all others.</p>",
+    "stageType": "apprenticeship",
+    "faction": "noble",
+    "group": "Study",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.introvert",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "appr-study-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Academia",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 3
+      },
+      {
+        "kind": "skill",
+        "key": "Inquiry",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "appr-study-subject",
+        "label": "Lore or Science (object of study) 3",
+        "pick": 1,
+        "pool": "skill",
+        "value": 3,
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "appr-study-read",
+        "label": "Read Urthish or Latin (2 pts)",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Urthish",
+            "grants": [
+              {
+                "kind": "language",
+                "key": "Read",
+                "specialty": "Urthish",
+                "value": 1,
+                "points": 2
+              }
+            ]
+          },
+          {
+            "label": "Latin",
+            "grants": [
+              {
+                "kind": "language",
+                "key": "Read",
+                "specialty": "Latin",
+                "value": 1,
+                "points": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

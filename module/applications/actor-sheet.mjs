@@ -22,7 +22,8 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       itemUse: FadingSunsActorSheet.#onItemUse,
       itemToggle: FadingSunsActorSheet.#onItemToggle,
       rollDamage: FadingSunsActorSheet.#onRollDamage,
-      rollArmour: FadingSunsActorSheet.#onRollArmour
+      rollArmour: FadingSunsActorSheet.#onRollArmour,
+      openCreation: FadingSunsActorSheet.#onOpenCreation
     }
   };
 
@@ -296,6 +297,15 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     const item = this.#getItem(target);
     if (!item) return;
     return this.actor.rollArmour(item.id);
+  }
+
+  /**
+   * Open the character creation wizard (p.70).
+   * @this {FadingSunsActorSheet}
+   */
+  static async #onOpenCreation() {
+    const { FadingSunsCreationWizard } = await import("./creation-wizard.mjs");
+    return new FadingSunsCreationWizard(this.actor).render(true);
   }
 
   /**

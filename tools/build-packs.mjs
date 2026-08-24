@@ -31,6 +31,7 @@ import { fileURLToPath } from "node:url";
 import { LEARNED_SKILLS } from "./learned-skills.mjs";
 import { BLESSINGS_AND_CURSES } from "./blessings-curses.mjs";
 import { BENEFICES_AND_AFFLICTIONS } from "./benefices.mjs";
+import { CHARACTER_HISTORIES } from "./character-histories.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -147,11 +148,104 @@ function buildBenefices() {
   }));
 }
 
+/**
+ * Resolve a Blessing, Curse or Benefice referenced by name into its compendium
+ * uuid. Stage data names the trait; the id is derived the same way the target
+ * pack derives it, so the two cannot drift apart.
+ * @param {string} pack
+ * @param {string} polarity
+ * @param {string} name
+ * @returns {string}
+ */
+function referenceUuid(pack, polarity, name) {
+  const id = stableId(`Item.${pack}.${polarity}.${name}`);
+  return `Compendium.fading-suns.${pack}.Item.${id}`;
+}
+
+/** Names available for reference, so a typo fails the build rather than the game. */
+const BLESSING_NAMES = new Map(BLESSINGS_AND_CURSES.map(b => [b.n, b.p]));
+const BENEFICE_NAMES = new Map(BENEFICES_AND_AFFLICTIONS.map(b => [b.n, b.p]));
+
+/**
+ * Walk a stage's grants, replacing trait names with compendium uuids.
+ * @param {object[]} grants
+ * @param {string} stageName
+ * @returns {object[]}
+ */
+function resolveReferences(grants, stageName) {
+  return grants.map(grant => {
+    if (grant.kind === "choice") {
+      return {
+        ...grant,
+        options: (grant.options ?? []).map(o => ({
+          ...o,
+          grants: resolveReferences(o.grants ?? [], stageName)
+        }))
+      };
+    }
+
+    if (grant.kind === "blessing" || grant.kind === "curse") {
+      const polarity = BLESSING_NAMES.get(grant.key);
+      if (!polarity) throw new Error(`Stage "${stageName}" references unknown trait "${grant.key}"`);
+      if (polarity !== grant.kind) {
+        throw new Error(`Stage "${stageName}" grants "${grant.key}" as a ${grant.kind}, but it is a ${polarity}`);
+      }
+      return { ...grant, key: referenceUuid("blessings-curses", polarity, grant.key), label: grant.key };
+    }
+
+    if (grant.kind === "benefice") {
+      const polarity = BENEFICE_NAMES.get(grant.key);
+      if (!polarity) throw new Error(`Stage "${stageName}" references unknown benefice "${grant.key}"`);
+      return { ...grant, key: referenceUuid("benefices-afflictions", polarity, grant.key), label: grant.key };
+    }
+
+    return grant;
+  });
+}
+
+/**
+ * Build the documents for the Character Histories pack (p.72).
+ * @returns {object[]}
+ */
+function buildCharacterHistories() {
+  // Several stage names recur across stage types — "Soldier" is both an
+  // Apprenticeship and an Early Career — so the stage is part of the document
+  // name. It also groups the pack sensibly in an alphabetical sidebar.
+  const STAGE_LABELS = {
+    upbringing: "Upbringing",
+    apprenticeship: "Apprenticeship",
+    earlyCareer: "Early Career",
+    tourOfDuty: "Tour of Duty",
+    extra: "Extra Stage"
+  };
+
+  return CHARACTER_HISTORIES.map((stage, index) => ({
+    _id: stableId(`Item.character-histories.${stage.stage}.${stage.n}`),
+    name: `${STAGE_LABELS[stage.stage]}: ${stage.n}`,
+    type: "stage",
+    img: "icons/svg/book.svg",
+    system: {
+      description: `<p>${stage.d}</p>`,
+      stageType: stage.stage,
+      faction: stage.faction,
+      group: stage.group ?? "",
+      grants: resolveReferences(stage.grants, stage.n)
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
 /** Packs to build, keyed by the pack name declared in system.json. */
 const PACKS = {
   "learned-skills": { type: "Item", documents: buildLearnedSkills },
   "blessings-curses": { type: "Item", documents: buildBlessings },
-  "benefices-afflictions": { type: "Item", documents: buildBenefices }
+  "benefices-afflictions": { type: "Item", documents: buildBenefices },
+  "character-histories": { type: "Item", documents: buildCharacterHistories }
 };
 
 /* -------------------------------------------- */

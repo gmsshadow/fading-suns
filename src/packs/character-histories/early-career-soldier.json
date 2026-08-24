@@ -1,0 +1,146 @@
+{
+  "_key": "!items!oCDRk12zaexaMdeU",
+  "_id": "oCDRk12zaexaMdeU",
+  "name": "Early Career: Soldier",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Knighted and given soldiers to lead.</p>",
+    "stageType": "earlyCareer",
+    "faction": "noble",
+    "group": "Military Command",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "career-soldier-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Fight",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Impress",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Melee",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Vigor",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Social",
+        "specialty": "Leadership",
+        "value": 4
+      },
+      {
+        "kind": "skill",
+        "key": "Survival",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Warfare",
+        "specialty": "Military Tactics",
+        "value": 1
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "label": "Nobility"
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

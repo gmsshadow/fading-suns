@@ -10,13 +10,14 @@ import { FadingSunsActor } from "./documents/actor.mjs";
 import { FadingSunsItem } from "./documents/item.mjs";
 import { FadingSunsActorSheet } from "./applications/actor-sheet.mjs";
 import { FadingSunsItemSheet } from "./applications/item-sheet.mjs";
+import { FadingSunsCreationWizard } from "./applications/creation-wizard.mjs";
 import { preloadTemplates, registerHandlebarsHelpers } from "./helpers/handlebars.mjs";
 import { registerChatListeners } from "./helpers/chat.mjs";
 import { FadingSunsCharacter, FadingSunsNPC } from "./data/actor-types.mjs";
 import {
   FadingSunsWeapon, FadingSunsArmour, FadingSunsEquipment,
   FadingSunsSkill, FadingSunsPsychicPower, FadingSunsTheurgicRite,
-  FadingSunsBlessing, FadingSunsBenefice
+  FadingSunsBlessing, FadingSunsBenefice, FadingSunsStage
 } from "./data/item-types.mjs";
 import * as dice from "./dice/rolls.mjs";
 import * as rules from "./dice/victory-chart.mjs";
@@ -36,6 +37,7 @@ Hooks.once("init", () => {
   game.fadingsuns = {
     FadingSunsActor,
     FadingSunsItem,
+    FadingSunsCreationWizard,
     dice,
     rules,
     effects,
@@ -61,7 +63,8 @@ Hooks.once("init", () => {
     psychicPower: FadingSunsPsychicPower,
     theurgicRite: FadingSunsTheurgicRite,
     blessing: FadingSunsBlessing,
-    benefice: FadingSunsBenefice
+    benefice: FadingSunsBenefice,
+    stage: FadingSunsStage
   };
 
   // Token resource bars. Vitality and Wyrd maxima are derived, so they must be
@@ -114,7 +117,7 @@ function registerSheets() {
   });
 
   DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, FadingSunsItemSheet, {
-    types: ["weapon", "armour", "equipment", "skill", "psychicPower", "theurgicRite", "blessing", "benefice"],
+    types: ["weapon", "armour", "equipment", "skill", "psychicPower", "theurgicRite", "blessing", "benefice", "stage"],
     makeDefault: true,
     label: "FADINGSUNS.SheetLabels.Item"
   });

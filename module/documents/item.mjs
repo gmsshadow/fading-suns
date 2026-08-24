@@ -9,7 +9,8 @@ const DEFAULT_IMAGES = {
   psychicPower: "icons/svg/aura.svg",
   theurgicRite: "icons/svg/holy-shield.svg",
   blessing: "icons/svg/regen.svg",
-  benefice: "icons/svg/coins.svg"
+  benefice: "icons/svg/coins.svg",
+  stage: "icons/svg/book.svg"
 };
 
 /**

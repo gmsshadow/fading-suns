@@ -1,0 +1,180 @@
+<div class="wizard">
+
+  <nav class="wizard-rail">
+    {{#each steps as |s|}}
+      <span class="rail-step {{#if s.current}}is-current{{/if}} {{#if s.done}}is-done{{/if}}">
+        <i class="fa-solid {{#if s.done}}fa-circle-check{{else}}fa-circle{{/if}}"></i>{{s.label}}
+      </span>
+    {{/each}}
+  </nav>
+
+  <div class="wizard-body">
+
+    {{#if (eq step "mode")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.mode"}}</h3>
+      <div class="option-cards">
+        <button type="button" class="option-card {{#if (eq state.mode "guided")}}is-selected{{/if}}"
+                data-action="setMode" data-mode="guided">
+          <strong>{{localize "FADINGSUNS.Creation.Guided"}}</strong>
+          <span>{{localize "FADINGSUNS.Creation.GuidedHint"}}</span>
+        </button>
+        <button type="button" class="option-card {{#if (eq state.mode "custom")}}is-selected{{/if}}"
+                data-action="setMode" data-mode="custom">
+          <strong>{{localize "FADINGSUNS.Creation.Custom"}}</strong>
+          <span>{{localize "FADINGSUNS.Creation.CustomHint"}}</span>
+        </button>
+      </div>
+
+      {{#if isCustom}}
+        <p class="hint">{{localize "FADINGSUNS.Creation.CustomBudget"}}:
+          <strong>{{customBudget.characteristics}}</strong> {{localize "FADINGSUNS.Group.Body"}} /
+          <strong>{{customBudget.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}
+          &mdash; {{localize "FADINGSUNS.Creation.Cap"}} {{cap}}</p>
+      {{else}}
+        <h3>{{localize "FADINGSUNS.Creation.Faction"}}</h3>
+        <div class="option-cards">
+          {{#each config.factions as |label key|}}
+            <button type="button" class="option-card {{#if (eq key ../state.faction)}}is-selected{{/if}}"
+                    data-action="setFaction" data-faction="{{key}}">
+              <strong>{{localize label}}</strong>
+            </button>
+          {{/each}}
+        </div>
+        <p class="hint">{{localize "FADINGSUNS.Creation.FactionHint"}}</p>
+      {{/if}}
+    {{/if}}
+
+    {{#if stageType}}
+      <h3>{{stageLabel}}</h3>
+      <p class="hint">{{localize "FADINGSUNS.Stage.Budget"}}:
+        <strong>{{budget.characteristics}}</strong> {{localize "FADINGSUNS.Group.Body"}} /
+        <strong>{{budget.skills}}</strong> {{localize "FADINGSUNS.Tab.Skills"}}</p>
+
+      {{#if available.length}}
+        <ol class="stage-list">
+          {{#each available as |stage|}}
+            <li class="stage-option {{#if (eq stage.id ../selected.id)}}is-selected{{/if}}">
+              <button type="button" class="stage-pick" data-action="chooseStage"
+                      data-stage-type="{{../stageType}}" data-uuid="{{stage.uuid}}">
+                <span class="stage-name">{{stage.name}}</span>
+                {{#if stage.system.group}}<span class="stage-group">{{stage.system.group}}</span>{{/if}}
+              </button>
+              <div class="stage-summary">{{{stage.system.description}}}</div>
+            </li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <p class="empty">{{localize "FADINGSUNS.Creation.NoStages"}}</p>
+      {{/if}}
+
+      {{#if selected}}
+        <p class="chosen">{{localize "FADINGSUNS.Creation.Chosen"}}: <strong>{{selected.name}}</strong>
+          <button type="button" class="icon-btn" data-action="clearStage" data-stage-type="{{stageType}}"
+                  data-tooltip="{{localize 'FADINGSUNS.Creation.Clear'}}"><i class="fa-solid fa-xmark"></i></button>
+        </p>
+      {{/if}}
+    {{/if}}
+
+    {{#if (eq step "choices")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.choices"}}</h3>
+      {{#if choices.length}}
+        <p class="hint">{{localize "FADINGSUNS.Creation.ChoicesHint"}}</p>
+        <ol class="choice-list">
+          {{#each choices as |entry|}}
+            <li class="choice">
+              <span class="choice-stage">{{entry.stage}}</span>
+              <label class="choice-label">{{entry.choice.label}}</label>
+              {{#if entry.choice.pool}}
+                <p class="hint open-choice">{{localize "FADINGSUNS.Creation.OpenChoice"}}</p>
+              {{else}}
+                <select data-choice-id="{{entry.choice.id}}"
+                        {{#if (gt entry.choice.pick 1)}}multiple size="{{entry.choice.options.length}}"{{/if}}>
+                  {{#unless (gt entry.choice.pick 1)}}<option value="">&mdash;</option>{{/unless}}
+                  {{#each entry.choice.options as |option index|}}
+                    <option value="{{index}}">{{option.label}}</option>
+                  {{/each}}
+                </select>
+                {{#if (gt entry.choice.pick 1)}}
+                  <span class="choice-pick">{{localize "FADINGSUNS.Creation.PickN"}} {{entry.choice.pick}}</span>
+                {{/if}}
+              {{/if}}
+            </li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <p class="empty">{{localize "FADINGSUNS.Creation.NoChoices"}}</p>
+      {{/if}}
+    {{/if}}
+
+    {{#if (eq step "review")}}
+      <h3>{{localize "FADINGSUNS.Creation.Step.review"}}</h3>
+
+      {{#if isCustom}}
+        <p class="hint">{{localize "FADINGSUNS.Creation.CustomReview"}}</p>
+      {{else}}
+        {{#if review.overages.length}}
+          <p class="warning"><i class="fa-solid fa-triangle-exclamation"></i>
+            {{localize "FADINGSUNS.Creation.OverCap"}}
+            <strong>{{review.freed}}</strong> {{localize "FADINGSUNS.Creation.FreedPoints"}}</p>
+        {{/if}}
+        {{#if review.sparePoints}}
+          <p class="hint">{{localize "FADINGSUNS.Creation.SparePoints"}}: <strong>{{review.sparePoints}}</strong></p>
+        {{/if}}
+
+        <div class="review-columns">
+          <div>
+            <h4>{{localize "FADINGSUNS.Tab.Characteristics"}}</h4>
+            <ol class="review-list">
+              {{#each review.characteristics as |c|}}
+                <li class="{{#if c.overCap}}is-over{{/if}}">
+                  <span>{{c.label}}{{#if c.primary}} <i class="fa-solid fa-star"></i>{{/if}}</span>
+                  <strong>{{c.value}}</strong>
+                </li>
+              {{/each}}
+            </ol>
+          </div>
+          <div>
+            <h4>{{localize "FADINGSUNS.Tab.Skills"}}</h4>
+            <ol class="review-list">
+              {{#each review.skills as |s|}}
+                <li class="{{#if s.overCap}}is-over{{/if}}"><span>{{s.label}}</span><strong>{{s.value}}</strong></li>
+              {{/each}}
+            </ol>
+          </div>
+        </div>
+
+        <p class="hint">
+          {{localize "FADINGSUNS.Section.BlessingsCurses"}}: <strong>{{review.traitCount}}</strong> &mdash;
+          {{localize "FADINGSUNS.Section.BeneficesAfflictions"}}: <strong>{{review.beneficeCount}}</strong>
+        </p>
+
+        {{#if review.notes.length}}
+          <h4>{{localize "FADINGSUNS.Creation.Notes"}}</h4>
+          <ul class="review-notes">{{#each review.notes as |n|}}<li>{{n}}</li>{{/each}}</ul>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+
+  </div>
+
+  <footer class="wizard-footer">
+    {{#if canGoBack}}
+      <button type="button" class="add-btn" data-action="back">
+        <i class="fa-solid fa-arrow-left"></i> {{localize "FADINGSUNS.Creation.Back"}}
+      </button>
+    {{/if}}
+    <span class="spacer"></span>
+    {{#if (eq step "review")}}
+      {{#unless isCustom}}
+        <button type="button" class="add-btn primary" data-action="apply">
+          <i class="fa-solid fa-check"></i> {{localize "FADINGSUNS.Creation.Apply"}}
+        </button>
+      {{/unless}}
+    {{else}}
+      <button type="button" class="add-btn primary" data-action="next">
+        {{localize "FADINGSUNS.Creation.Next"}} <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    {{/if}}
+  </footer>
+
+</div>

@@ -753,3 +753,282 @@
   color: var(--fs-muted);
   font-size: 0.7rem;
 }
+
+/* ---------- Character History stages ---------- */
+
+.fading-suns .grant-list .grants {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fading-suns .grant {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.18rem 0.2rem;
+}
+
+.fading-suns .grant-kind {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  color: var(--fs-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  padding: 0.05rem 0.28rem;
+  text-transform: uppercase;
+}
+
+.fading-suns .grant-label {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.fading-suns .grant-value {
+  color: var(--fs-gold);
+  font-weight: 700;
+}
+
+.fading-suns .grant-flag {
+  color: var(--fs-muted);
+  font-size: 0.68rem;
+  font-style: italic;
+}
+
+.fading-suns .grant-choice {
+  border-left: 2px solid var(--fs-gold-dim);
+  padding-left: 0.35rem;
+}
+
+.fading-suns .grant-options {
+  color: var(--fs-muted);
+  flex: 1 1 100%;
+  font-size: 0.7rem;
+  list-style: none;
+  margin: 0.1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.fading-suns .grant-options li::before {
+  color: var(--fs-gold-dim);
+  content: "◆ ";
+}
+
+/* ---------- Character creation wizard ---------- */
+
+.fading-suns.creation-wizard .window-content {
+  background: linear-gradient(160deg, var(--fs-deep) 0%, var(--fs-void) 100%);
+  color: var(--fs-text);
+  padding: 0;
+}
+
+.fading-suns .wizard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fading-suns .wizard-rail {
+  border-bottom: 1px solid var(--fs-gold-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.fading-suns .rail-step {
+  align-items: center;
+  color: var(--fs-muted);
+  display: flex;
+  font-size: 0.72rem;
+  gap: 0.3rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.fading-suns .rail-step.is-done {
+  color: var(--fs-success);
+}
+
+.fading-suns .rail-step.is-current {
+  color: var(--fs-gold);
+  font-weight: 700;
+}
+
+.fading-suns .wizard-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.7rem;
+}
+
+.fading-suns .wizard-footer {
+  align-items: center;
+  border-top: 1px solid var(--fs-line);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.fading-suns .wizard-footer .spacer {
+  flex: 1;
+}
+
+.fading-suns .add-btn.primary {
+  background: var(--fs-gold-dim);
+  border-color: var(--fs-gold);
+  color: #fff;
+}
+
+.fading-suns .option-cards {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 0.6rem;
+}
+
+.fading-suns .option-card {
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  color: var(--fs-text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.fading-suns .option-card:hover {
+  border-color: var(--fs-gold-dim);
+}
+
+.fading-suns .option-card.is-selected {
+  border-color: var(--fs-gold);
+  box-shadow: inset 3px 0 0 var(--fs-gold);
+}
+
+.fading-suns .option-card span {
+  color: var(--fs-muted);
+  font-size: 0.72rem;
+}
+
+.fading-suns .stage-list,
+.fading-suns .choice-list,
+.fading-suns .review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fading-suns .stage-option {
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  margin-bottom: 0.3rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.fading-suns .stage-option.is-selected {
+  border-color: var(--fs-gold);
+  box-shadow: inset 3px 0 0 var(--fs-gold);
+}
+
+.fading-suns .stage-pick {
+  background: none;
+  border: none;
+  color: var(--fs-gold);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.88rem;
+  gap: 0.5rem;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.fading-suns .stage-group {
+  color: var(--fs-muted);
+  font-size: 0.7rem;
+}
+
+.fading-suns .stage-summary {
+  color: var(--fs-muted);
+  font-size: 0.75rem;
+}
+
+.fading-suns .stage-summary p {
+  margin: 0.2rem 0 0;
+}
+
+.fading-suns .choice {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem 0.2rem;
+}
+
+.fading-suns .choice-stage {
+  color: var(--fs-muted);
+  flex: 0 0 100%;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+}
+
+.fading-suns .choice-label {
+  flex: 1;
+  font-size: 0.82rem;
+}
+
+.fading-suns .choice select {
+  min-width: 12ch;
+}
+
+.fading-suns .choice-pick {
+  color: var(--fs-muted);
+  font-size: 0.68rem;
+}
+
+.fading-suns .review-columns {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.fading-suns .review-list li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  font-size: 0.78rem;
+  justify-content: space-between;
+  padding: 0.12rem 0.2rem;
+}
+
+.fading-suns .review-list li.is-over {
+  color: var(--fs-failure);
+}
+
+.fading-suns .warning {
+  background: rgba(193, 84, 63, 0.15);
+  border: 1px solid var(--fs-failure);
+  border-radius: 3px;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.5rem;
+}
+
+.fading-suns .creation-btn {
+  flex: 0 0 auto;
+}
+
+.fading-suns .name-row {
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.fading-suns .name-row .charname {
+  flex: 1;
+}

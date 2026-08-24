@@ -1,0 +1,186 @@
+{
+  "_key": "!items!ABTQfZAqlPj9rOU9",
+  "_id": "ABTQfZAqlPj9rOU9",
+  "name": "Early Career: Ambassador",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Knighted and sent to speak for the house, where a misplaced word costs more than a misplaced blade.</p>",
+    "stageType": "earlyCareer",
+    "faction": "noble",
+    "group": "Court",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "career-ambassador-faith",
+        "label": "Faith or Ego +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Faith",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.faith",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Ego",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.ego",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Charm",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Sneak",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Arts",
+        "specialty": "Rhetoric",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Etiquette",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "career-ambassador-guile",
+        "label": "Inquiry or Knavery 2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Inquiry",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Inquiry",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Knavery",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Knavery",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Court Rivals",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "career-ambassador-social",
+        "label": "Social (Debate or Oratory) 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Debate",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Social",
+                "specialty": "Debate",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Oratory",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Social",
+                "specialty": "Oratory",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "language",
+        "key": "Read",
+        "specialty": "Urthish",
+        "value": 1,
+        "points": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Ride",
+        "value": 1
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "label": "Nobility"
+      }
+    ]
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

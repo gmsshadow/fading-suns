@@ -394,3 +394,54 @@ export class FadingSunsBenefice extends FadingSunsItemBase {
     return rank?.label ? `${this.value} — ${rank.label}` : `${this.value}`;
   }
 }
+
+/**
+ * A Character History stage (p.72–p.89).
+ *
+ * Upbringing, Apprenticeship, Early Career and the extra stages are all the same
+ * shape: a bundle of grants that the lifepath engine applies in order. The grants
+ * are stored as loosely-typed objects because they are a small tagged union, and
+ * `module/lifepath/grants.mjs` validates them — a malformed grant throws there
+ * rather than being quietly dropped here.
+ */
+export class FadingSunsStage extends FadingSunsItemBase {
+
+  /** @inheritDoc */
+  static defineSchema() {
+    const schema = super.defineSchema();
+    delete schema.techLevel;
+    delete schema.cost;
+    return Object.assign(schema, {
+      stageType: new fields.StringField({
+        required: true, blank: false, initial: "upbringing",
+        choices: () => CONFIG.FADING_SUNS.stageTypes
+      }),
+      faction: new fields.StringField({
+        required: true, blank: true, initial: "noble",
+        choices: () => CONFIG.FADING_SUNS.factions
+      }),
+      // The house, sect, guild or grouping this stage belongs to, e.g. "Hawkwood",
+      // "Military". Free text because minor houses are meant to be invented (p.72).
+      group: new fields.StringField({ required: false, blank: true, initial: "" }),
+      grants: new fields.ArrayField(new fields.ObjectField())
+    });
+  }
+
+  /**
+   * The points this stage is worth, from the published budgets (p.88).
+   * @returns {{characteristics: number, skills: number}|null}
+   */
+  get budget() {
+    return CONFIG.FADING_SUNS.stageBudgets[this.stageType] ?? null;
+  }
+
+  /** Choices in this stage that the player must decide. */
+  get choices() {
+    return this.grants.filter(g => g.kind === "choice");
+  }
+
+  /** Whether the stage can be applied without asking the player anything. */
+  get isAutomatic() {
+    return !this.choices.length;
+  }
+}

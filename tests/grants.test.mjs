@@ -336,3 +336,89 @@ test("curse costs are counted as magnitudes, however they are signed", () => {
   // The rulebook writes Curse costs as "+2 pts" because they grant points.
   assert.equal(checkBlessingLimits([], [{ cost: -2 }, { cost: 2 }]).cursePoints, 4);
 });
+
+/* -------------------------------------------- */
+/*  Multi-pick and open choices                 */
+/* -------------------------------------------- */
+
+/**
+ * "Questing: Characteristics—Body characteristic (choose one) +2, Body
+ *  characteristic (choose two) +1 each …" (p.75)
+ *
+ * A filtered pool small enough to enumerate, picking more than one.
+ */
+const QUESTING_BODY = {
+  kind: "choice", id: "questing-body-minor", pick: 2,
+  label: "Body characteristic (choose two) +1 each",
+  options: [
+    { label: "Strength", grants: [{ kind: "characteristic", key: "body.strength", value: 1 }] },
+    { label: "Dexterity", grants: [{ kind: "characteristic", key: "body.dexterity", value: 1 }] },
+    { label: "Endurance", grants: [{ kind: "characteristic", key: "body.endurance", value: 1 }] }
+  ]
+};
+
+/** "Dandy: Skills—Any skill +2 …" (p.74) — too broad to enumerate. */
+const DANDY_ANY_SKILL = {
+  kind: "choice", id: "dandy-any", pick: 1, pool: "skill",
+  label: "Any skill +2"
+};
+
+test("a choice may pick more than one option (p.75)", () => {
+  const { grants, pending } = resolveChoices([QUESTING_BODY], {
+    "questing-body-minor": [0, 2]   // Strength and Endurance
+  });
+  assert.equal(pending.length, 0);
+  const state = applyGrants(createState({ characteristics: { "body.strength": 3, "body.dexterity": 3, "body.endurance": 3 } }), grants);
+  assert.equal(state.characteristics["body.strength"], 4);
+  assert.equal(state.characteristics["body.endurance"], 4);
+  assert.equal(state.characteristics["body.dexterity"], 3, "the unpicked trait is untouched");
+});
+
+test("a multi-pick choice with too few selections stays pending", () => {
+  const { pending } = resolveChoices([QUESTING_BODY], { "questing-body-minor": [0] });
+  assert.equal(pending.length, 1, "one of two selections is not enough");
+});
+
+test("an open choice takes the grant from the selection itself (p.74)", () => {
+  const { grants, pending } = resolveChoices([DANDY_ANY_SKILL], {
+    "dandy-any": [{ kind: "skill", key: "Gambling", value: 2 }]
+  });
+  assert.equal(pending.length, 0);
+  const state = applyGrants(createState(), grants);
+  assert.equal(state.skills.Gambling, 2);
+});
+
+test("an unmade open choice stays pending", () => {
+  const { pending } = resolveChoices([DANDY_ANY_SKILL], {});
+  assert.equal(pending.length, 1);
+});
+
+test("a single selection may be given without wrapping it in a list", () => {
+  const { grants } = resolveChoices([{
+    kind: "choice", id: "solo", pick: 1,
+    options: [{ label: "A", grants: [{ kind: "skill", key: "Charm", value: 1 }] }]
+  }], { solo: 0 });
+  assert.equal(grants.length, 1);
+});
+
+/* -------------------------------------------- */
+/*  Benefices and notes                         */
+/* -------------------------------------------- */
+
+test("an Early Career grants its Benefice at the stated rank (p.75)", () => {
+  // "Benefice—Rank (Knight)" is the Nobility Benefice at three points.
+  const state = applyGrants(createState(), [
+    { kind: "benefice", key: "Compendium.fading-suns.benefices-afflictions.Item.nobility00000000", value: 3 }
+  ]);
+  assert.equal(state.benefices.length, 1);
+  assert.equal(state.benefices[0].value, 3);
+});
+
+test("things the system does not yet model are recorded rather than dropped", () => {
+  // "Fencing Actions (Parry, Thrust, Slash)" from the Duelist Apprenticeship (p.74).
+  const state = applyGrants(createState(), [
+    { kind: "note", text: "Fencing Actions: Parry, Thrust, Slash" }
+  ]);
+  assert.equal(state.notes.length, 1);
+  assert.match(state.notes[0], /Parry/);
+});

@@ -3,8 +3,16 @@
        alt="{{actor.name}}" data-tooltip="{{actor.name}}"/>
 
   <div class="header-fields">
-    <input class="charname" name="name" type="text" value="{{actor.name}}"
-           placeholder="{{localize 'FADINGSUNS.Field.Name'}}"/>
+    <div class="name-row">
+      <input class="charname" name="name" type="text" value="{{actor.name}}"
+             placeholder="{{localize 'FADINGSUNS.Field.Name'}}"/>
+      {{#if isCharacter}}
+        <button type="button" class="icon-btn creation-btn" data-action="openCreation"
+                data-tooltip="{{localize 'FADINGSUNS.Creation.Open'}}">
+          <i class="fa-solid fa-wand-sparkles"></i>
+        </button>
+      {{/if}}
+    </div>
 
     {{#if isCharacter}}
       <div class="detail-row">

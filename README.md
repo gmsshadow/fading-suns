@@ -328,6 +328,8 @@ or Foundry will keep checking the branch.
 fail silently at runtime rather than throwing:
 
 - every Handlebars template compiles
+- every helper a template calls actually exists — Handlebars compiles an unknown helper happily and
+  only throws when that sheet is rendered, so a typo otherwise surfaces as a runtime crash
 - every `FADINGSUNS.*` and `TYPES.*` key referenced in code or templates exists in `lang/en.json`,
   and every declared item type has a label
 - every template path referenced from code resolves, and no template is orphaned

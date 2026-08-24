@@ -54,7 +54,50 @@ for (const file of templates) {
 }
 
 /* -------------------------------------------- */
-/*  2. Manifest and localisation parse          */
+/*  2. Templates only call helpers that exist   */
+/* -------------------------------------------- */
+
+/**
+ * Handlebars compiles an unknown helper happily and only throws when the
+ * template is rendered, so a typo here surfaces as a runtime crash in whichever
+ * sheet or dialog happens to use it. Checking the call sites against the known
+ * set catches it at build time instead.
+ *
+ * Foundry registers these; the list is from foundry.applications.handlebars.
+ */
+const CORE_HELPERS = new Set([
+  "checked", "disabled", "colorPicker", "concat", "editor", "filePicker",
+  "formInput", "formField", "numberFormat", "numberInput", "localize",
+  "prosemirror", "radioBoxes", "rangePicker", "select", "selectOptions",
+  "timeSince", "object", "ifThen",
+  "eq", "ne", "lt", "gt", "lte", "gte", "not", "and", "or"
+]);
+
+/** Handlebars' own built-ins. */
+const BUILTIN_HELPERS = new Set([
+  "if", "unless", "each", "with", "lookup", "log", "blockHelperMissing",
+  "helperMissing", "else"
+]);
+
+// Helpers the system registers itself.
+const systemHelpers = new Set(
+  [...readFileSync(path.join(ROOT, "module/helpers/handlebars.mjs"), "utf8")
+    .matchAll(/Handlebars\.registerHelper\(\s*["'`]([^"'`]+)["'`]/g)].map(m => m[1])
+);
+
+const known = new Set([...CORE_HELPERS, ...BUILTIN_HELPERS, ...systemHelpers]);
+
+for (const file of templates) {
+  const src = readFileSync(file, "utf8");
+  // A helper call is a name followed by at least one argument.
+  for (const match of src.matchAll(/\{\{[#/]?\s*([a-zA-Z][\w-]*)\s+[^}]/g)) {
+    const name = match[1];
+    if (!known.has(name)) note("unknown helper", `"${name}" in ${rel(file)}`);
+  }
+}
+
+/* -------------------------------------------- */
+/*  3. Manifest and localisation parse          */
 /* -------------------------------------------- */
 
 let system, lang;

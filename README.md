@@ -310,6 +310,25 @@ URL, asserts the archive really contains compiled packs, and publishes `fading-s
 the `manifest` URL in `system.json` to `releases/latest/download/system.json` at the same time,
 or Foundry will keep checking the branch.
 
+### Validation
+
+`npm run validate` runs on every push and pull request. It catches the classes of mistake that
+fail silently at runtime rather than throwing:
+
+- every Handlebars template compiles
+- every `FADINGSUNS.*` and `TYPES.*` key referenced in code or templates exists in `lang/en.json`,
+  and every declared item type has a label
+- every template path referenced from code resolves, and no template is orphaned
+- the four item-type registries — `CONFIG.Item.dataModels`, `DETAIL_PARTIALS`, `DEFAULT_IMAGES`
+  and the sheet registration — all agree with `system.json`
+- declared packs exist and contain LevelDB data, and nothing but compiled packs lives under `packs/`
+- no application assigns to a property ApplicationV2 exposes as a getter
+
+That last one is worth naming. ApplicationV2 exposes `state`, `id`, `title`, `element`, `window`
+and others as getters; assigning to one in a subclass constructor throws at construction with a
+message that names neither the class nor the file. The check flags any such assignment under
+`module/applications/`.
+
 ### Public API
 
 ```js

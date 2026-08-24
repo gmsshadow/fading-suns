@@ -13,12 +13,12 @@
     {{#if (eq step "mode")}}
       <h3>{{localize "FADINGSUNS.Creation.Step.mode"}}</h3>
       <div class="option-cards">
-        <button type="button" class="option-card {{#if (eq state.mode "guided")}}is-selected{{/if}}"
+        <button type="button" class="option-card {{#if (eq draft.mode "guided")}}is-selected{{/if}}"
                 data-action="setMode" data-mode="guided">
           <strong>{{localize "FADINGSUNS.Creation.Guided"}}</strong>
           <span>{{localize "FADINGSUNS.Creation.GuidedHint"}}</span>
         </button>
-        <button type="button" class="option-card {{#if (eq state.mode "custom")}}is-selected{{/if}}"
+        <button type="button" class="option-card {{#if (eq draft.mode "custom")}}is-selected{{/if}}"
                 data-action="setMode" data-mode="custom">
           <strong>{{localize "FADINGSUNS.Creation.Custom"}}</strong>
           <span>{{localize "FADINGSUNS.Creation.CustomHint"}}</span>
@@ -34,7 +34,7 @@
         <h3>{{localize "FADINGSUNS.Creation.Faction"}}</h3>
         <div class="option-cards">
           {{#each config.factions as |label key|}}
-            <button type="button" class="option-card {{#if (eq key ../state.faction)}}is-selected{{/if}}"
+            <button type="button" class="option-card {{#if (eq key ../draft.faction)}}is-selected{{/if}}"
                     data-action="setFaction" data-faction="{{key}}">
               <strong>{{localize label}}</strong>
             </button>

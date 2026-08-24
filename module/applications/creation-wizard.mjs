@@ -28,7 +28,10 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   constructor(actor, options = {}) {
     super(options);
     this.actor = actor;
-    this.state = {
+
+    // Named `draft` rather than `state`: ApplicationV2 exposes `state` as a
+    // getter for its own render state, and a subclass cannot shadow it.
+    this.draft = {
       mode: "guided",
       step: "mode",
       faction: "noble",
@@ -67,15 +70,15 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   /** @inheritDoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-    const step = this.state.step;
+    const step = this.draft.step;
 
     Object.assign(context, {
       actor: this.actor,
       config: CONFIG.FADING_SUNS,
-      state: this.state,
+      draft: this.draft,
       step,
       steps: this.#stepList(),
-      isCustom: this.state.mode === "custom",
+      isCustom: this.draft.mode === "custom",
       customBudget: CUSTOM_BUDGET,
       cap: STARTING_CAP,
       canGoBack: STEPS.indexOf(step) > 0,
@@ -87,7 +90,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.stageLabel = game.i18n.localize(CONFIG.FADING_SUNS.stageTypes[step]);
       context.budget = STAGE_BUDGET[step];
       context.available = await this.#availableStages(step);
-      context.selected = this.state.stages[step] ?? null;
+      context.selected = this.draft.stages[step] ?? null;
     }
 
     if (step === "choices") context.choices = this.#pendingChoices();
@@ -101,14 +104,14 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {Array<{id: string, label: string, done: boolean, current: boolean}>}
    */
   #stepList() {
-    const current = STEPS.indexOf(this.state.step);
+    const current = STEPS.indexOf(this.draft.step);
     return STEPS
-      .filter(id => this.state.mode !== "custom" || !STAGE_ORDER.includes(id) && id !== "choices")
+      .filter(id => this.draft.mode !== "custom" || !STAGE_ORDER.includes(id) && id !== "choices")
       .map(id => ({
         id,
         label: game.i18n.localize(`FADINGSUNS.Creation.Step.${id}`),
         done: STEPS.indexOf(id) < current,
-        current: id === this.state.step
+        current: id === this.draft.step
       }));
   }
 
@@ -122,7 +125,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     if (!pack) return [];
     const documents = await pack.getDocuments();
     return documents
-      .filter(d => d.system.stageType === stageType && d.system.faction === this.state.faction)
+      .filter(d => d.system.stageType === stageType && d.system.faction === this.draft.faction)
       .sort((a, b) => a.name.localeCompare(b.name));
   }
 
@@ -132,7 +135,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** The chosen stages, in lifepath order. */
   get chosenStages() {
-    return STAGE_ORDER.map(type => this.state.stages[type]).filter(Boolean);
+    return STAGE_ORDER.map(type => this.draft.stages[type]).filter(Boolean);
   }
 
   /**
@@ -167,7 +170,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   #pendingChoices() {
     const pending = [];
     for (const stage of this.chosenStages) {
-      const result = resolveChoices(stage.system.grants, this.state.choices);
+      const result = resolveChoices(stage.system.grants, this.draft.choices);
       for (const choice of result.pending) pending.push({ stage: stage.name, choice });
     }
     return pending;
@@ -179,7 +182,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    */
   #review() {
     const state = this.#baseline();
-    applyStages(state, this.chosenStages.map(s => s.system), this.state.choices);
+    applyStages(state, this.chosenStages.map(s => s.system), this.draft.choices);
 
     const { overages } = findOverages(state);
     const freed = clampToCap(state);
@@ -213,8 +216,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** Whether the current step is complete enough to move on. */
   #canAdvance() {
-    const step = this.state.step;
-    if (STAGE_ORDER.includes(step)) return !!this.state.stages[step];
+    const step = this.draft.step;
+    if (STAGE_ORDER.includes(step)) return !!this.draft.stages[step];
     if (step === "choices") return this.#pendingChoices().length === 0;
     return true;
   }
@@ -227,9 +230,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    */
   #adjacentStep(direction) {
     const skipped = [...STAGE_ORDER, "choices"];
-    let index = STEPS.indexOf(this.state.step) + direction;
+    let index = STEPS.indexOf(this.draft.step) + direction;
     while (index > 0 && index < STEPS.length - 1) {
-      if (this.state.mode === "custom" && skipped.includes(STEPS[index])) index += direction;
+      if (this.draft.mode === "custom" && skipped.includes(STEPS[index])) index += direction;
       else break;
     }
     return STEPS[Math.max(0, Math.min(STEPS.length - 1, index))];
@@ -241,16 +244,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** @this {FadingSunsCreationWizard} */
   static async #onSetMode(event, target) {
-    this.state.mode = target.dataset.mode;
+    this.draft.mode = target.dataset.mode;
     this.render();
   }
 
   /** @this {FadingSunsCreationWizard} */
   static async #onSetFaction(event, target) {
-    this.state.faction = target.dataset.faction;
+    this.draft.faction = target.dataset.faction;
     // Stages are faction-specific, so changing faction invalidates the choices.
-    this.state.stages = {};
-    this.state.choices = {};
+    this.draft.stages = {};
+    this.draft.choices = {};
     this.render();
   }
 
@@ -259,20 +262,20 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const { stageType, uuid } = target.dataset;
     const stage = await fromUuid(uuid);
     if (!stage) return;
-    this.state.stages[stageType] = stage;
+    this.draft.stages[stageType] = stage;
     this.render();
   }
 
   /** @this {FadingSunsCreationWizard} */
   static async #onClearStage(event, target) {
-    delete this.state.stages[target.dataset.stageType];
+    delete this.draft.stages[target.dataset.stageType];
     this.render();
   }
 
   /** @this {FadingSunsCreationWizard} */
   static async #onBack() {
     this.#captureChoices();
-    this.state.step = this.#adjacentStep(-1);
+    this.draft.step = this.#adjacentStep(-1);
     this.render();
   }
 
@@ -283,7 +286,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       ui.notifications.warn(game.i18n.localize("FADINGSUNS.Creation.Incomplete"));
       return;
     }
-    this.state.step = this.#adjacentStep(1);
+    this.draft.step = this.#adjacentStep(1);
     this.render();
   }
 
@@ -297,9 +300,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       const id = select.dataset.choiceId;
       if (select.multiple) {
         const values = [...select.selectedOptions].map(o => Number(o.value));
-        if (values.length) this.state.choices[id] = values;
+        if (values.length) this.draft.choices[id] = values;
       } else if (select.value !== "") {
-        this.state.choices[id] = Number(select.value);
+        this.draft.choices[id] = Number(select.value);
       }
     }
   }

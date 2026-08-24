@@ -107,7 +107,30 @@ for (const file of modules) {
 }
 
 /* -------------------------------------------- */
-/*  5. Item type registries agree               */
+/*  5. Applications do not shadow framework accessors  */
+/* -------------------------------------------- */
+
+/**
+ * ApplicationV2 exposes a number of properties as getters. Assigning to one in a
+ * subclass constructor throws at construction time with a message that does not
+ * name the class, so it is worth catching here instead.
+ */
+const RESERVED_ACCESSORS = [
+  "state", "id", "title", "element", "window", "rendered", "position",
+  "form", "parts", "tabGroups", "classList", "hasFrame", "minimized"
+];
+
+for (const file of walk(path.join(ROOT, "module", "applications"), [".mjs"])) {
+  const src = readFileSync(file, "utf8");
+  for (const name of RESERVED_ACCESSORS) {
+    if (new RegExp(`\\bthis\\.${name}\\s*=[^=]`).test(src)) {
+      note("shadows framework accessor", `this.${name} assigned in ${rel(file)}`);
+    }
+  }
+}
+
+/* -------------------------------------------- */
+/*  6. Item type registries agree               */
 /* -------------------------------------------- */
 
 if (system) {
@@ -139,7 +162,7 @@ if (system) {
     }
   }
 
-  /* ---- 6. Declared packs exist and are compiled ---- */
+  /* ---- 7. Declared packs exist and are compiled ---- */
   for (const pack of system.packs ?? []) {
     const dir = path.join(ROOT, pack.path);
     if (!existsSync(dir)) {

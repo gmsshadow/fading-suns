@@ -64,7 +64,7 @@
       {
         "kind": "choice",
         "id": "al-obun-occult",
-        "label": "Psi or Theurgy 1",
+        "label": "Psi or Theurgy 1 (racial)",
         "pick": 1,
         "options": [
           {
@@ -87,7 +87,8 @@
               }
             ]
           }
-        ]
+        ],
+        "racial": true
       },
       {
         "kind": "skill",

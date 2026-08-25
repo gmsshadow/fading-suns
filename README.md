@@ -468,6 +468,38 @@ The occult tab pairs each trait with its shadow and warns when the shadow has ca
 Theurgy will come into conflict when a character tries to raise one trait past the level of his Urge
 or Hubris"* (p.135). The sheet says so rather than leaving the player to notice.
 
+### Do the histories add up?
+
+Character Histories are meant to spend the same totals as Custom Creation — 20 characteristic and 30
+skill points across the three stages (p.87, p.88). Auditing all 89 stages and every valid lifepath:
+
+**Characteristics: exact, everywhere.** All 89 stages spend precisely their published characteristic
+budget, in every faction and race. A test asserts it, so drift there is a transcription error rather
+than an erratum.
+
+**Skills: 78 of 89 stages are exact; eleven are printed off budget.**
+
+| Stage | Skills |
+|---|---|
+| Upbringing: Warrior (Vorox) | +10 |
+| Upbringing: Brother Battle Warrior Monk | +5 |
+| Upbringing: Chieftain (Vorox) | +4 |
+| Early Career: Duelist | +4 |
+| Upbringing: Ur-Ukar | +1 |
+| Early Career: Brother Battle Warrior Monk | +1 |
+| Early Career: Scientist | +1 |
+| Early Career: Ambassador | -1 |
+| Early Career: Starship Duty | -1 |
+| Apprenticeship: Cathedral (Temple Avesti) | -2 |
+| Apprenticeship: Vhem-saahen Champion | -5 |
+
+The alien overages are explicable — those races pay Extra points for the privilege, so their
+histories are written to different totals. The Brother Battle and Duelist overages read as intent,
+both being exceptional training the book gates behind prerequisites. The five small deficits look
+like errata.
+
+Every deviation is pinned at its exact size, so a change to any of them fails the suite.
+
 ### Lifepath grant engine
 
 `module/lifepath/grants.mjs` resolves Character History stages (p.70–p.89). It has no Foundry

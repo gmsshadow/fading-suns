@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 import {
   resolveChoices, applyGrants, applyStages, createState,
-  findOverages, GRANT_KINDS, STAGE_BUDGET
+  findOverages, GRANT_KINDS, STAGE_BUDGET, CUSTOM_BUDGET
 } from "../module/lifepath/grants.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -274,7 +274,7 @@ const COMPOSITE = new Set(["environment", "class"]);
  * is still caught.
  */
 const ALIEN_SPEND = {
-  "Upbringing: Ur-Obun": { characteristics: 6, skills: 5 },
+  
   "Upbringing: Ur-Ukar": { characteristics: 5, skills: 6 },
   "Upbringing: Chieftain (Vorox)": { characteristics: 5, skills: 9 },
   "Upbringing: Warrior (Vorox)": { characteristics: 5, skills: 15 },
@@ -319,6 +319,8 @@ function spendRange(grants) {
   };
 
   for (const grant of grants) {
+    // Racial traits are bought with Extra points, not the stage's budget (p.88).
+    if (grant.racial) continue;
     if (grant.kind !== "choice") {
       const { c, s } = flat([grant]);
       cMin += c; cMax += c; sMin += s; sMax += s;
@@ -943,4 +945,60 @@ test("both Vorox Early Careers teach Graa (p.83)", () => {
       .filter(g => g.kind === "combatAction").map(g => g.label);
     assert.deepEqual(actions, ["Banga (Charge)", "Drox"]);
   }
+});
+
+/* -------------------------------------------- */
+/*  Budgets across a whole lifepath (p.87)      */
+/* -------------------------------------------- */
+
+test("every stage spends exactly its published characteristic budget", () => {
+  // Skills vary — eleven stages are printed off their budget — but the
+  // characteristic side is exact across all 89 stages, in every faction and
+  // race. Any drift here is a transcription error rather than an erratum.
+  const composite = { environment: 4, class: 1 };
+
+  for (const stage of stages) {
+    const budget = composite[stage.system.slot] ?? STAGE_BUDGET[stage.system.stageType].characteristics;
+    const [min, max] = spendRange(stage.system.grants).characteristics;
+    assert.ok(min <= budget && budget <= max,
+      `${stage.name} spends ${min}-${max} characteristic points, expected ${budget}`);
+  }
+});
+
+test("a complete human lifepath comes to the Custom Creation totals (p.87)", () => {
+  // Twenty characteristic and thirty skill points, however they are spent.
+  const path = [
+    byName("Upbringing: High-Court (Hawkwood)"),
+    byName("Apprenticeship: Soldier"),
+    byName("Early Career: Soldier")
+  ];
+
+  const grants = path.flatMap(s => s.system.grants);
+  const range = spendRange(grants);
+  assert.deepEqual(range.characteristics, [CUSTOM_BUDGET.characteristics, CUSTOM_BUDGET.characteristics]);
+  assert.deepEqual(range.skills, [CUSTOM_BUDGET.skills, CUSTOM_BUDGET.skills]);
+});
+
+test("a composite priest lifepath comes to the same totals", () => {
+  const path = [
+    byName("Upbringing: City"),
+    byName("Upbringing: Wealthy"),
+    byName("Apprenticeship: Cathedral (Orthodoxy)"),
+    byName("Early Career: Preacher/Pastor")
+  ];
+
+  const range = spendRange(path.flatMap(s => s.system.grants));
+  assert.deepEqual(range.characteristics, [20, 20]);
+  assert.deepEqual(range.skills, [30, 30]);
+});
+
+test("the Ur-Obun racial trait is not charged to the Upbringing (p.88)", () => {
+  // "Psi (base 1; 3 pts) or Theurgy (base 1; 3 pts)" is part of the racial
+  // package, bought with Extra points, so the Upbringing's own five stand.
+  const obun = byName("Upbringing: Ur-Obun").system;
+  const racial = obun.grants.filter(g => g.racial);
+  assert.equal(racial.length, 1, "the occult choice is the only racial grant");
+  assert.equal(racial[0].pool, undefined);
+  assert.equal(spendRange(obun.grants).characteristics[1], 5,
+    "without it the Upbringing spends exactly five");
 });

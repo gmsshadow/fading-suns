@@ -1046,9 +1046,14 @@ const ALIEN_HISTORY = [
     ch("body.dexterity", 1), ch("mind.wits", 1),
     orSpirit("al-obun-social", "Extrovert", "Introvert", 1),
     ch("spirit.calm", 1), ch("spirit.faith", 1),
-    pickOne("al-obun-occult", "Psi or Theurgy 1",
-      opt("Psi", ch("occult.psi", 1)),
-      opt("Theurgy", ch("occult.theurgy", 1))),
+    {
+      ...pickOne("al-obun-occult", "Psi or Theurgy 1 (racial)",
+        opt("Psi", ch("occult.psi", 1)),
+        opt("Theurgy", ch("occult.theurgy", 1))),
+      // Bought with Extra points as part of being Ur-Obun (p.88), so it is not
+      // charged against the Upbringing's five characteristic points.
+      racial: true
+    },
     sk("Empathy", 1), sk("Etiquette", 1),
     pickOne("al-obun-focus", "Focus or Stoic Mind 1",
       opt("Focus", sk("Focus", 1)),

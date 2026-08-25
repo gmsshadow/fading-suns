@@ -380,6 +380,15 @@ Two rules corrected here, both of which the rulebook states more than once and n
   of Benefices were spent on rank at the end of the Early Career stage and the rest were spent on
   Worldly Benefits during the Extra Stages."* Ten is the default, and the world setting *Benefice
   Points at Creation* overrides it.
+- **Ranked Benefices pool into one entry.** The rank tables give a *cumulative* cost rather than an
+  increment — Ordained 5 is a Deacon and costs five points, not three plus five (p.123) — so a
+  career's Ordained 3 and two more points bought at Step Five arrive as a single Deacon rather than
+  two Novices. This applies whether the points come from the wizard or from dragging an entry onto
+  the sheet.
+
+  28 of the 57 entries are marked as singular: all Status ranks, all forms of Riches, the racial
+  traits and the background facts that describe a character rather than name a thing. The other 29
+  stay separate, because two Allies are two different people and *Ally 8* would be nonsense.
 - **The rank a career confers comes out of those ten**, not on top of them, and so does whatever a
   Tour of Duty's Worldly Benefit hands over. The Benefices step lists them under *Already granted by
   your history* and counts them against the budget, so a knight arrives with Nobility 3 and seven

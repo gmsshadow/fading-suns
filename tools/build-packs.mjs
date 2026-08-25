@@ -140,7 +140,8 @@ function buildBenefices() {
       firebirds: entry.fb ?? 0,
       income: entry.inc ?? 0,
       requires: entry.req ?? "",
-      excludes: entry.excl ?? ""
+      excludes: entry.excl ?? "",
+      unique: !!entry.one
     },
     effects: [],
     folder: null,

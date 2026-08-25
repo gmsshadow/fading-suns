@@ -13,7 +13,8 @@
     "firebirds": 100,
     "income": 0,
     "requires": "Ordained or Commissioned at 3 points or better",
-    "excludes": ""
+    "excludes": "",
+    "unique": true
   },
   "effects": [],
   "folder": null,

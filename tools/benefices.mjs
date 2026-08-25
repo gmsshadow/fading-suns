@@ -30,6 +30,7 @@
  *   inc    yearly income in firebirds, for Assets
  *   req    prerequisite, in the character's own terms
  *   excl   entry this one cannot be combined with
+ *   one    only one instance is possible, so points pool into a single rank
  *   d      short summary, in original words
  */
 
@@ -39,12 +40,12 @@
 
 const BACKGROUND = [
   {
-    n: "Alien Upbringing", p: "benefice", c: 2,
+    one: true, n: "Alien Upbringing", p: "benefice", c: 2,
     d: "Raised by another race. Begins with that species' Speak skill in place of their own, and is distrusted by nearly everyone.",
     excl: "Orphan"
   },
   {
-    n: "Heir", p: "benefice", c: 3,
+    one: true, n: "Heir", p: "benefice", c: 3,
     d: "Next in line for a position of importance, though when it falls due is anyone's guess. A noble heir still needs the Nobility Benefice."
   },
   {
@@ -59,7 +60,7 @@ const BACKGROUND = [
     ]
   },
   {
-    n: "Well-Travelled", p: "benefice", c: 3,
+    one: true, n: "Well-Travelled", p: "benefice", c: 3,
     d: "Counts as Folk Lore 1 for every major planet within the travel radius.",
     ranks: [
       { value: 3, label: "A Royal House's fiefs" },
@@ -76,7 +77,7 @@ const BACKGROUND = [
     ]
   },
   {
-    n: "Cloistered", p: "affliction", c: 1,
+    one: true, n: "Cloistered", p: "affliction", c: 1,
     d: "Raised apart from other people and never quite over it. Awkward with others, and others find them odd."
   },
   {
@@ -89,11 +90,11 @@ const BACKGROUND = [
     ]
   },
   {
-    n: "Infamous Family", p: "affliction", c: 1,
+    one: true, n: "Infamous Family", p: "affliction", c: 1,
     d: "The family has a reputation, and it is not a good one. Can be taken alongside Nobility."
   },
   {
-    n: "Lost Worlder", p: "affliction", c: 1,
+    one: true, n: "Lost Worlder", p: "affliction", c: 1,
     d: "From a world only recently rediscovered. Fitting in is a struggle and most people are wary."
   },
   {
@@ -115,7 +116,7 @@ const BACKGROUND = [
     ]
   },
   {
-    n: "Orphan", p: "affliction", c: 1,
+    one: true, n: "Orphan", p: "affliction", c: 1,
     d: "Lost their family young and nothing replaced it. Cannot be taken with Nobility or Alien Upbringing.",
     excl: "Nobility"
   },
@@ -254,7 +255,7 @@ const ARTIFACTS = [
 
 const RICHES = [
   {
-    n: "Cash", p: "benefice", c: 1, cat: "riches",
+    one: true, n: "Cash", p: "benefice", c: 1, cat: "riches",
     d: "Ready money, freely accessible and spendable on starting equipment. Unlike Assets, once it is gone it is gone.",
     ranks: [
       { value: 1, label: "100 firebirds", fb: 100 },
@@ -267,7 +268,7 @@ const RICHES = [
     ]
   },
   {
-    n: "Assets", p: "benefice", c: 3, cat: "riches",
+    one: true, n: "Assets", p: "benefice", c: 3, cat: "riches",
     d: "Land, a business or loans producing regular income. The character controls it rather than owning it, and begins play with a tenth of the yearly figure in hand.",
     ranks: [
       { value: 3, label: "Good — 3,000 a year", fb: 300, inc: 3000 },
@@ -278,7 +279,7 @@ const RICHES = [
     ]
   },
   {
-    n: "Fief", p: "benefice", c: 3, cat: "riches",
+    one: true, n: "Fief", p: "benefice", c: 3, cat: "riches",
     d: "A form of Assets: land and the serfs who work it. Resources matter more than size — a single gold mine may be worth a province of farmland.",
     ranks: [
       { value: 3, label: "Shire or village (baronet), tenant farms" },
@@ -289,7 +290,7 @@ const RICHES = [
     ]
   },
   {
-    n: "Business", p: "benefice", c: 3, cat: "riches",
+    one: true, n: "Business", p: "benefice", c: 3, cat: "riches",
     d: "A form of Assets: an enterprise producing wealth, run by the character or by a trusted partner.",
     ranks: [
       { value: 3, label: "A hospital for those who can pay" },
@@ -300,7 +301,7 @@ const RICHES = [
     ]
   },
   {
-    n: "Tariffs/Loans", p: "benefice", c: 3, cat: "riches",
+    one: true, n: "Tariffs/Loans", p: "benefice", c: 3, cat: "riches",
     d: "A form of Assets, and the most volatile: taxation on trade, or money lent at a fee. Debtors default and merchants refuse to pay.",
     ranks: [
       { value: 3, label: "An agora, taxing the stallholders" },
@@ -311,7 +312,7 @@ const RICHES = [
     ]
   },
   {
-    n: "Debt", p: "affliction", c: 2, cat: "riches",
+    one: true, n: "Debt", p: "affliction", c: 2, cat: "riches",
     d: "Money owed, and someone impatient to have it back.",
     ranks: [
       { value: 2, label: "Modest debt" },
@@ -332,19 +333,19 @@ const RICHES = [
  */
 const RACIAL = [
   {
-    n: "Bite", p: "benefice", c: 3, race: "vorox",
+    one: true, n: "Bite", p: "benefice", c: 3, race: "vorox",
     d: "A Vorox's jaws. Rolled on Dexterity + Fight at -1 initiative, for three dice of damage."
   },
   {
-    n: "Extra Limbs", p: "benefice", c: 4, race: "vorox",
+    one: true, n: "Extra Limbs", p: "benefice", c: 4, race: "vorox",
     d: "Six limbs in total, usable as arms or legs."
   },
   {
-    n: "Poison Claw", p: "benefice", c: 6, race: "vorox",
+    one: true, n: "Poison Claw", p: "benefice", c: 6, race: "vorox",
     d: "The mark of a royal Vorox. Rolled on Dexterity + Fight for three dice of damage. The poison is a slow paralytic: a target that takes damage suffers a cumulative -1 per turn on all physical actions, and once the turns equal its Vitality rating it can take no physical action for the rest of the span."
   },
   {
-    n: "Ostracized", p: "affliction", c: 1,
+    one: true, n: "Ostracized", p: "affliction", c: 1,
     d: "Shunned by Known Worlds society. Most aliens carry this simply for being alien.",
     ranks: [
       { value: 1, label: "Mild — treated with suspicion" },
@@ -353,7 +354,7 @@ const RACIAL = [
     ]
   },
   {
-    n: "No Occult", p: "affliction", c: 3, race: "vorox",
+    one: true, n: "No Occult", p: "affliction", c: 3, race: "vorox",
     d: "Cannot awaken Psi or Theurgy, ever. The Vorox mind has no door for it."
   }
 ];
@@ -364,7 +365,7 @@ const RACIAL = [
 
 const STATUS = [
   {
-    n: "Nobility", p: "benefice", c: 3,
+    one: true, n: "Nobility", p: "benefice", c: 3,
     d: "Membership of a noble house. A minor house title carries less power than the same title in a royal house.",
     ranks: [
       { value: 3, label: "Knight" },
@@ -376,7 +377,7 @@ const STATUS = [
     ]
   },
   {
-    n: "Ordained", p: "benefice", c: 3,
+    one: true, n: "Ordained", p: "benefice", c: 3,
     d: "An ordained minister of the Church.",
     ranks: [
       { value: 3, label: "Novice" },
@@ -388,7 +389,7 @@ const STATUS = [
     ]
   },
   {
-    n: "Commissioned", p: "benefice", c: 3,
+    one: true, n: "Commissioned", p: "benefice", c: 3,
     d: "Rank within a Merchant League guild.",
     ranks: [
       { value: 3, label: "Associate" },
@@ -400,29 +401,29 @@ const STATUS = [
     ]
   },
   {
-    n: "Cohort Badge", p: "benefice", c: 3,
+    one: true, n: "Cohort Badge", p: "benefice", c: 3,
     d: "An Imperial Cohort — aide to a Questing Knight. Carries 100 firebirds a year, free Imperial Navy transport, freedom from feudal tolls and free counsel at law. Also a 3 point Oath of Fealty.",
     req: "Ordained or Commissioned at 3 points or better", fb: 100
   },
   {
-    n: "Imperial Charter", p: "benefice", c: 4,
+    one: true, n: "Imperial Charter", p: "benefice", c: 4,
     d: "Granted to Questing Knights. Carries 300 firebirds a year, free Imperial Navy transport, the right to inspect public Church and League records, freedom from feudal tolls and immunity from outside prosecution. Also a 3 point Oath of Fealty.",
     req: "Nobility at 3 points or better", fb: 300
   },
   {
-    n: "Coven", p: "benefice", c: 2,
+    one: true, n: "Coven", p: "benefice", c: 2,
     d: "Membership of a psychic coven. Non-psychics may join by pledging service. Membership is illegal in the eyes of the Church."
   },
   {
-    n: "Householder", p: "benefice", c: 1,
+    one: true, n: "Householder", p: "benefice", c: 1,
     d: "Employed by a noble house, guild or sect without holding rank in it. A guardsman, groundskeeper or cook, with the small courtesies that brings."
   },
   {
-    n: "Bastard", p: "affliction", c: 1,
+    one: true, n: "Bastard", p: "affliction", c: 1,
     d: "The bastard child of a noble. May still buy a title, but will inherit nothing."
   },
   {
-    n: "Black Sheep", p: "affliction", c: 1,
+    one: true, n: "Black Sheep", p: "affliction", c: 1,
     d: "Ostracised by their own family. Requires the Nobility Benefice.",
     req: "Nobility",
     ranks: [
@@ -432,7 +433,7 @@ const STATUS = [
     ]
   },
   {
-    n: "Outlander", p: "affliction", c: 1,
+    one: true, n: "Outlander", p: "affliction", c: 1,
     d: "An outsider to Known Worlds society, looked at askance by every class. May begin with no more than three points in Etiquette."
   }
 ];

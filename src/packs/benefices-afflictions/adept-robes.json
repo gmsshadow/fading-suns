@@ -13,7 +13,8 @@
     "firebirds": 0,
     "income": 0,
     "requires": "Brother Battle",
-    "excludes": ""
+    "excludes": "",
+    "unique": false
   },
   "effects": [],
   "folder": null,

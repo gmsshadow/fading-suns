@@ -415,7 +415,12 @@ export class FadingSunsBenefice extends FadingSunsItemBase {
       firebirds: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
       income: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
       requires: new fields.StringField({ required: false, blank: true, initial: "" }),
-      excludes: new fields.StringField({ required: false, blank: true, initial: "" })
+      excludes: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // A character may hold only one of these, so points pool into a single
+      // rank rather than appearing twice: a career's Ordained 3 plus two points
+      // bought at Step Five is Ordained 5, a Deacon. The rank tables give a
+      // cumulative cost, not an increment, which is what makes pooling correct.
+      unique: new fields.BooleanField({ initial: false })
     });
   }
 

@@ -15,6 +15,11 @@
   </label>
 </div>
 
+<label class="form-group checkbox">
+  <input type="checkbox" name="system.unique" {{checked system.unique}}/>
+  <span>{{localize "FADINGSUNS.Benefice.Unique"}}</span>
+</label>
+
 {{#if system.ranks.length}}
   <fieldset class="rank-table">
     <legend>{{localize "FADINGSUNS.Benefice.Ranks"}}</legend>

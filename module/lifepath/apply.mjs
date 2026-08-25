@@ -73,6 +73,45 @@ export function diffSkills(skills, existing) {
   return { updates, missing };
 }
 
+/**
+ * Pool Benefices a character may only hold one of.
+ *
+ * The rank tables give a **cumulative** cost rather than an increment: Ordained
+ * 5 is a Deacon and costs five points, not three plus five (p.123). So a career
+ * that confers Ordained 3 and two more points spent at Step Five come to
+ * Ordained 5, a Deacon — one entry, not two.
+ *
+ * Entries that name a thing rather than describe the character are left alone:
+ * two Allies are two different people, and pooling them into "Ally 8" would be
+ * nonsense.
+ *
+ * @param {Array<{uuid: string, value: number, unique: boolean}>} entries
+ * @returns {Array<{uuid: string, value: number, unique: boolean, pooledFrom?: number[]}>}
+ */
+export function poolBenefices(entries = []) {
+  const pooled = new Map();
+  const separate = [];
+
+  for (const entry of entries) {
+    if (!entry.unique) { separate.push(entry); continue; }
+
+    const existing = pooled.get(entry.uuid);
+    if (!existing) {
+      pooled.set(entry.uuid, { ...entry, value: entry.value ?? 0, pooledFrom: [entry.value ?? 0] });
+      continue;
+    }
+    existing.value += entry.value ?? 0;
+    existing.pooledFrom.push(entry.value ?? 0);
+  }
+
+  // Entries that only appeared once did not really pool.
+  for (const entry of pooled.values()) {
+    if (entry.pooledFrom.length < 2) delete entry.pooledFrom;
+  }
+
+  return [...pooled.values(), ...separate];
+}
+
 /* -------------------------------------------- */
 /*  Foundry-facing                              */
 /* -------------------------------------------- */
@@ -163,12 +202,26 @@ export async function applyLifepathToActor(actor, state, { stages = [] } = {}) {
 
   // 3. Blessings, Curses and Benefices.
   newItems.push(...await resolveItems([...state.blessings, ...state.curses]));
+
+  // Ranked Benefices pool before they are created, so a career's Ordained 3 and
+  // two points bought later arrive as one Deacon rather than two Novices.
+  const beneficeDocs = [];
   for (const benefice of state.benefices ?? []) {
-    const [data] = await resolveItems([benefice.key]);
-    if (data) {
-      data.system.value = benefice.value;
-      newItems.push(data);
-    }
+    const document = await fromUuid(benefice.key);
+    if (!document) continue;
+    beneficeDocs.push({
+      uuid: benefice.key,
+      value: benefice.value,
+      unique: document.system.unique,
+      document
+    });
+  }
+
+  for (const entry of poolBenefices(beneficeDocs)) {
+    const data = entry.document.toObject();
+    delete data._id;
+    data.system.value = entry.value;
+    newItems.push(data);
   }
 
   // 4. Combat Actions taught by the stages or bought with Extra points (p.102),

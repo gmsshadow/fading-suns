@@ -346,7 +346,9 @@
       "Points": "Benefice points",
       "Remaining": "remaining",
       "Extras": "Extra points from Curses and Afflictions",
-      "Racial": "Racial"
+      "Racial": "Racial",
+      "Pooled": "{name} raised to {value} — {rank}",
+      "Unique": "Only one — points pool into a single rank"
     },
     "Stage": {
       "Upbringing": "Upbringing",

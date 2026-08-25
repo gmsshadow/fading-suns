@@ -8,7 +8,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildActorUpdate, parseSkillLabel, diffSkills } from "../module/lifepath/apply.mjs";
+import {
+  buildActorUpdate, parseSkillLabel, diffSkills, poolBenefices
+} from "../module/lifepath/apply.mjs";
 import { createState, applyGrants } from "../module/lifepath/grants.mjs";
 
 test("characteristics are written as absolute values, not deltas", () => {
@@ -92,4 +94,66 @@ test("a specialty the compendium does not stock still creates cleanly", () => {
   );
   assert.deepEqual(missing, ["Lore (Theology)"], "it is created rather than refused");
   assert.deepEqual(updates, [{ _id: "aaa", "system.value": 4 }]);
+});
+
+/* -------------------------------------------- */
+/*  Pooling ranked Benefices (p.123)            */
+/* -------------------------------------------- */
+
+const ORDAINED = "Compendium.fading-suns.benefices-afflictions.Item.ordained";
+const ALLY = "Compendium.fading-suns.benefices-afflictions.Item.ally";
+
+test("a career's rank and points bought later pool into one entry (p.123)", () => {
+  // The rank tables give a cumulative cost, not an increment: Ordained 5 is a
+  // Deacon and costs five points, so 3 from the career plus 2 bought is 5.
+  const pooled = poolBenefices([
+    { uuid: ORDAINED, value: 3, unique: true },
+    { uuid: ORDAINED, value: 2, unique: true }
+  ]);
+
+  assert.equal(pooled.length, 1, "one Ordained, not two");
+  assert.equal(pooled[0].value, 5, "Deacon");
+  assert.deepEqual(pooled[0].pooledFrom, [3, 2], "and it records where the points came from");
+});
+
+test("entries that name a thing stay separate", () => {
+  // Two Allies are two different people; "Ally 8" would be nonsense.
+  const pooled = poolBenefices([
+    { uuid: ALLY, value: 3, unique: false },
+    { uuid: ALLY, value: 5, unique: false }
+  ]);
+  assert.equal(pooled.length, 2);
+  assert.deepEqual(pooled.map(p => p.value).sort(), [3, 5]);
+});
+
+test("a single instance is not marked as pooled", () => {
+  const [only] = poolBenefices([{ uuid: ORDAINED, value: 3, unique: true }]);
+  assert.equal(only.value, 3);
+  assert.ok(!("pooledFrom" in only), "nothing was pooled, so nothing is recorded");
+});
+
+test("pooling handles three or more sources", () => {
+  const [pooled] = poolBenefices([
+    { uuid: ORDAINED, value: 3, unique: true },
+    { uuid: ORDAINED, value: 2, unique: true },
+    { uuid: ORDAINED, value: 2, unique: true }
+  ]);
+  assert.equal(pooled.value, 7, "Fellow");
+  assert.deepEqual(pooled.pooledFrom, [3, 2, 2]);
+});
+
+test("unique and repeatable entries coexist without interfering", () => {
+  const pooled = poolBenefices([
+    { uuid: ORDAINED, value: 3, unique: true },
+    { uuid: ALLY, value: 3, unique: false },
+    { uuid: ORDAINED, value: 4, unique: true },
+    { uuid: ALLY, value: 5, unique: false }
+  ]);
+  assert.equal(pooled.length, 3, "one Ordained and two Allies");
+  assert.equal(pooled.find(p => p.uuid === ORDAINED).value, 7);
+});
+
+test("an empty list pools to nothing", () => {
+  assert.deepEqual(poolBenefices([]), []);
+  assert.deepEqual(poolBenefices(), []);
 });

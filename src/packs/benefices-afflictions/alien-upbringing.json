@@ -13,7 +13,8 @@
     "firebirds": 0,
     "income": 0,
     "requires": "",
-    "excludes": "Orphan"
+    "excludes": "Orphan",
+    "unique": true
   },
   "effects": [],
   "folder": null,

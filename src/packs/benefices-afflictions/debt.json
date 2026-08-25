@@ -38,7 +38,8 @@
     "firebirds": 0,
     "income": 0,
     "requires": "",
-    "excludes": ""
+    "excludes": "",
+    "unique": true
   },
   "effects": [],
   "folder": null,

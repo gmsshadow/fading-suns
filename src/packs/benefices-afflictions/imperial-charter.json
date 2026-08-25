@@ -13,7 +13,8 @@
     "firebirds": 300,
     "income": 0,
     "requires": "Nobility at 3 points or better",
-    "excludes": ""
+    "excludes": "",
+    "unique": true
   },
   "effects": [],
   "folder": null,

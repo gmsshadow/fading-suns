@@ -4,6 +4,7 @@ import {
   STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP, EXTRA_COSTS
 } from "../lifepath/grants.mjs";
 import { applyLifepathToActor, parseSkillLabel } from "../lifepath/apply.mjs";
+import { characteristicBase, canAwakenOccult, tourAllowance, racialCost } from "../dice/races.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 
@@ -229,6 +230,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       let blocked = "";
       if (!isTaken) {
         if (stage.system.pending) blocked = "Pending";
+        else if (stage.system.group?.match(/Psychic|Theurgic/)
+                 && !canAwakenOccult(this.actor.system.details.race)) blocked = "NoOccult";
         else if (hasExclusive) blocked = "Exclusive";
         else if (taken.length >= slots) blocked = "Full";
         else if (stage.system.exclusive && taken.length) blocked = "ExclusiveFirst";
@@ -277,10 +280,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** What the Extra Stages taken allow the player to distribute (p.84). */
   #allowanceTotals() {
-    return this.draft.extraStages.reduce((total, stage) => ({
-      skills: total.skills + stage.system.allowance.skills,
-      free: total.free + stage.system.allowance.free
-    }), { skills: 0, free: 0 });
+    const race = this.actor.system.details.race ?? "human";
+
+    return this.draft.extraStages.reduce((total, stage) => {
+      // "Their first Tour gives them only 12 pts for skills" — the Ur-Obun (p.83).
+      const name = stage.name.replace(/^[^:]+:\s*/, "");
+      return {
+        skills: total.skills + tourAllowance(race, name, stage.system.allowance.skills),
+        free: total.free + stage.system.allowance.free
+      };
+    }, { skills: 0, free: 0 });
   }
 
   /**
@@ -417,11 +426,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
     // Extra Stages are bought with these same points, so what reaches this step
     // is whatever the stages left behind (p.85).
+    // "A player must spend some of her Extra points on special powers and
+    //  abilities unique to the character's race" (p.88).
+    const race = this.actor.system.details.race ?? "human";
+    const racial = racialCost(race);
+
     const budget = extraPointBudget({
       curses,
       afflictions,
       base: this.#baseExtraPoints
-    }) - this.extraStageCost;
+    }) - this.extraStageCost - racial;
     // Skill levels covered by a Tour of Duty's allowance are not charged here.
     const funding = this.#skillFunding();
     const spent = extraPointSpend(this.draft.extras) - funding.fromAllowance;
@@ -435,6 +449,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       extraFromCurses: curses.reduce((n, c) => n + Math.abs(c.cost ?? 0), 0),
       extraFromAfflictions: afflictions.reduce((n, a) => n + a.value, 0),
       extraStageCost: this.extraStageCost,
+      racialCost: racial,
+      raceLabel: game.i18n.localize(CONFIG.FADING_SUNS.races[race] ?? race),
       allowance: this.#allowanceTotals(),
       extraCosts: EXTRA_COSTS,
       characteristicOptions: Object.entries(CONFIG.FADING_SUNS.rollableCharacteristics)
@@ -557,11 +573,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {import("../lifepath/grants.mjs").LifepathState}
    */
   #baseline() {
+    const race = this.actor.system.details.race ?? "human";
     const characteristics = {};
     const primary = {};
+
+    // Races move where a character starts: an Ur-Ukar begins with Dexterity 4
+    // and Tech 4, a Vorox with Wits 2 and Tech 1 (p.88).
     for (const group of ["body", "mind"]) {
       for (const key of Object.keys(CONFIG.FADING_SUNS[group])) {
-        characteristics[`${group}.${key}`] = 3;
+        const path = `${group}.${key}`;
+        characteristics[path] = characteristicBase(race, path);
       }
     }
     for (const pair of CONFIG.FADING_SUNS.spiritPairs) {
@@ -570,7 +591,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       primary[`spirit.${pair.primary}`] = true;
       primary[`spirit.${pair.opposed}`] = false;
     }
-    for (const key of Object.keys(CONFIG.FADING_SUNS.occult)) characteristics[`occult.${key}`] = 0;
+    for (const key of Object.keys(CONFIG.FADING_SUNS.occult)) {
+      characteristics[`occult.${key}`] = characteristicBase(race, `occult.${key}`);
+    }
 
     const skills = {};
     for (const name of Object.keys(CONFIG.FADING_SUNS.naturalSkills)) skills[name] = 3;

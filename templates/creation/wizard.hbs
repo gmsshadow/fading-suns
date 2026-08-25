@@ -253,6 +253,9 @@
       {{#if extraStageCost}}
         <p class="hint">{{localize "FADINGSUNS.Creation.SpentOnStages"}}: <strong>{{extraStageCost}}</strong></p>
       {{/if}}
+      {{#if racialCost}}
+        <p class="hint">{{localize "FADINGSUNS.Creation.RacialCost"}} ({{raceLabel}}): <strong>{{racialCost}}</strong></p>
+      {{/if}}
       {{#if funding.allowance}}
         <p class="budget allowance {{#if (gt funding.fromExtras 0)}}is-spent{{/if}}">
           {{localize "FADINGSUNS.Creation.SkillAllowance"}}:

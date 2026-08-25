@@ -399,6 +399,28 @@ remainder getting past. Activations decrement the fusion cell.
 **Combat actions are rollable.** They are "not rolled, but resolved using Fight, Melee or Shoot
 skills" (p.102), so using one makes an ordinary Goal Roll with the action's pairing and modifier.
 
+### The alien races
+
+Races are not a bundle of bonuses. They move the **base** a character starts from and the **ceiling**
+they may reach (p.88):
+
+| | Str | Dex | End | Wits | Tech | Psi | Urge | Cost | Occult |
+|---|---|---|---|---|---|---|---|---|---|
+| Human | 3/10 | 3 | 3/10 | 3 | 3 | 0 | 0 | — | yes |
+| Ur-Obun | 3/**9** | **4** | 3/**9** | 3 | 3 | 0 | 0 | 2 | yes |
+| Ur-Ukar | 3/**9** | **4** | 3/**9** | 3 | **4** | **1** | **1** | — | yes |
+| Vorox | **4/12** | 3 | **4/12** | **2** | **1** | 0 | 0 | 10 | **no** |
+
+Maxima are derived rather than stored, so changing a character's race corrects the limits rather
+than leaving stale ones behind, and any characteristic already above the new ceiling is flagged on
+the sheet.
+
+Four racial rules beyond the numbers: a Vorox always has **Passion primary** and **cannot awaken Psi
+or Theurgy**, so the occult Extra Stages are blocked for them with a reason; each alien race speaks
+its own tongue for free; **Ur-Obun get a shorter Tour of Duty** — 12 skill points rather than 14, or
+9 as a Cohort; and playing an alien costs Extra points before anything else is bought, which the
+Extra points step now nets off.
+
 ### Urge and Hubris
 
 Psi is shadowed by Urge and Theurgy by Hubris (p.144, p.162). Both charts are implemented — 12 and
@@ -528,6 +550,7 @@ message that names neither the class nor the file. The check flags any such assi
 game.fadingsuns.rules      // victory charts, resolveGoalRoll, vitalityPenalty
 game.fadingsuns.combat     // range bands, initiative, energy shields
 game.fadingsuns.occult     // Urge and Hubris taboos, deeds and contests
+game.fadingsuns.races      // racial bases, maxima, costs and restrictions
 game.fadingsuns.effects    // countEffectSuccesses, damagePool, applyArmour
 game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 ```
@@ -536,7 +559,8 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Character histories for the alien races (p.83), which need racial rules first
+- Character histories for the three alien races (p.83), now that the racial rules exist
+- Vorox racial Benefices: Bite, Extra Limbs and the royal Poison Claw (p.83)
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

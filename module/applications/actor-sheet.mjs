@@ -107,7 +107,9 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
         key,
         path: `${group}.${key}`,
         label: game.i18n.localize(label),
-        value: this.actor.system[group][key].value
+        value: this.actor.system[group][key].value,
+        max: this.actor.system[group][key].max,
+        overCap: this.actor.system[group][key].overCap
       }));
     }
     return out;
@@ -123,6 +125,8 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       path: `spirit.${key}`,
       label: game.i18n.localize(CONFIG.FADING_SUNS.spirit[key]),
       value: this.actor.system.spirit[key].value,
+      max: this.actor.system.spirit[key].max,
+      overCap: this.actor.system.spirit[key].overCap,
       isPrimary: this.actor.system.spirit[key].primary
     });
     return CONFIG.FADING_SUNS.spiritPairs.map(pair => ({

@@ -436,11 +436,13 @@
         "Exclusive": "Loaded-for-Bear allows no other Extra Stages.",
         "ExclusiveFirst": "Loaded-for-Bear may only be taken on its own.",
         "Requires": "Requires {requires} first.",
-        "Faction": "Not open to this faction."
+        "Faction": "Not open to this faction.",
+        "NoOccult": "This race cannot awaken Psi or Theurgy (p.83)."
       },
       "SkillAllowance": "Tour of Duty skill allowance",
       "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level.",
-      "Composite": "Priests and guildsmembers build their Upbringing from an Environment and a Class — pick one of each. Brother Battle fills both on its own."
+      "Composite": "Priests and guildsmembers build their Upbringing from an Environment and a Class — pick one of each. Brother Battle fills both on its own.",
+      "RacialCost": "Spent on your race"
     },
     "CombatAction": {
       "Category": "Style",
@@ -515,6 +517,17 @@
     "Slot": {
       "Environment": "Environment",
       "Class": "Class"
+    },
+    "Race": {
+      "Human": "Human",
+      "UrObun": "Ur-Obun",
+      "UrUkar": "Ur-Ukar",
+      "Vorox": "Vorox",
+      "Label": "Race",
+      "Cost": "Extra points to play",
+      "Maximum": "Maximum",
+      "NoOccult": "This race cannot awaken Psi or Theurgy.",
+      "OverCap": "Above this race's maximum"
     }
   }
 }

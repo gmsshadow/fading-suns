@@ -1,4 +1,5 @@
 import { vitalityPenalty } from "../dice/victory-chart.mjs";
+import { characteristicMax, getRace, HUMAN_MAX } from "../dice/races.mjs";
 
 const fields = foundry.data.fields;
 
@@ -110,6 +111,8 @@ export class FadingSunsActorBase extends foundry.abstract.TypeDataModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    this.#applyRace();
+
     // Some Blessings and Curses change base Vitality outright — Giant +2,
     // Dwarf -2, Incurable Disease -1 (p.116).
     this.vitality.traitModifier = this.#traitVitality();
@@ -132,6 +135,41 @@ export class FadingSunsActorBase extends foundry.abstract.TypeDataModel {
   }
 
   /* -------------------------------------------- */
+
+  /**
+   * Apply whatever the character's race changes (p.83, p.88).
+   *
+   * Races move the ceiling a characteristic may reach — a Vorox to 12, an Ur
+   * race down to 9 — and some fix a Spirit trait as primary. The ceiling is
+   * derived rather than stored so that changing race corrects an existing
+   * character instead of leaving stale limits behind.
+   */
+  #applyRace() {
+    const key = this.details?.race ?? "human";
+    const race = getRace(key);
+
+    for (const group of ["body", "mind", "spirit", "occult"]) {
+      for (const [name, trait] of Object.entries(this[group] ?? {})) {
+        const path = `${group}.${name}`;
+        trait.max = characteristicMax(key, path);
+        trait.overCap = trait.value > trait.max;
+      }
+    }
+
+    // "Passion (always primary)" — the Vorox (p.83).
+    if (race.forcedPrimary) {
+      const [, name] = race.forcedPrimary.split(".");
+      const opposed = { extrovert: "introvert", introvert: "extrovert",
+                        passion: "calm", calm: "passion",
+                        faith: "ego", ego: "faith" }[name];
+      if (this.spirit?.[name]) {
+        this.spirit[name].primary = true;
+        if (opposed && this.spirit[opposed]) this.spirit[opposed].primary = false;
+      }
+    }
+
+    this.race = { key, label: race.label, noOccult: !!race.noOccult };
+  }
 
   /**
    * Total Vitality modifier from owned Blessings and Curses (p.116).

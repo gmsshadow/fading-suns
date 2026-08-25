@@ -3,6 +3,10 @@
   <p class="hint">{{localize "FADINGSUNS.Hint.WyrdSource"}}
     <strong>{{localize (lookup config.wyrdSources system.wyrd.source)}}</strong></p>
 
+  {{#if system.race.noOccult}}
+    <p class="warning"><i class="fa-solid fa-ban"></i> {{localize "FADINGSUNS.Race.NoOccult"}}</p>
+  {{/if}}
+
   <div class="shadow-pairs">
     {{#each occult as |pair|}}
       <div class="shadow-pair {{#unless pair.active}}is-dormant{{/unless}} {{#if pair.blocked}}is-blocked{{/if}}">

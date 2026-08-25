@@ -8,10 +8,22 @@ const fields = foundry.data.fields;
 export class FadingSunsCharacter extends FadingSunsActorBase {
 
   /** @inheritDoc */
+  static migrateData(source) {
+    // Race was free text before the racial rules existed.
+    const known = { Human: "human", "Ur-Obun": "urObun", "Ur-Ukar": "urUkar", Vorox: "vorox" };
+    if (source?.details?.race in known) source.details.race = known[source.details.race];
+    else if (source?.details && !source.details.race) source.details.race = "human";
+    return super.migrateData(source);
+  }
+
+  /** @inheritDoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       details: new fields.SchemaField({
-        race: new fields.StringField({ required: true, blank: true, initial: "Human" }),
+        race: new fields.StringField({
+          required: true, blank: false, initial: "human",
+          choices: () => CONFIG.FADING_SUNS.races
+        }),
         faction: new fields.StringField({ required: true, blank: true, initial: "" }),
         house: new fields.StringField({ required: true, blank: true, initial: "" }),
         rank: new fields.StringField({ required: true, blank: true, initial: "" }),
@@ -38,7 +50,10 @@ export class FadingSunsNPC extends FadingSunsActorBase {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       details: new fields.SchemaField({
-        race: new fields.StringField({ required: true, blank: true, initial: "" }),
+        race: new fields.StringField({
+          required: true, blank: false, initial: "human",
+          choices: () => CONFIG.FADING_SUNS.races
+        }),
         type: new fields.StringField({ required: true, blank: true, initial: "" }),
         faction: new fields.StringField({ required: true, blank: true, initial: "" })
       }),

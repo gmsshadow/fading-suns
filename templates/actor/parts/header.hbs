@@ -19,6 +19,8 @@
 
     {{#if isCharacter}}
       <div class="detail-row">
+        <label>{{localize "FADINGSUNS.Race.Label"}}
+          <select name="system.details.race">{{selectOptions config.races selected=system.details.race localize=true}}</select></label>
         <label>{{localize "FADINGSUNS.Field.Faction"}}
           <input type="text" name="system.details.faction" value="{{system.details.faction}}"/></label>
         <label>{{localize "FADINGSUNS.Field.Rank"}}

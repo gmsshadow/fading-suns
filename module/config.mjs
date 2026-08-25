@@ -337,3 +337,14 @@ FADING_SUNS.stageSlots = {
   environment: "FADINGSUNS.Slot.Environment",
   class: "FADINGSUNS.Slot.Class"
 };
+
+/* -------------------------------------------- */
+/*  Races (p.83, p.88)                          */
+/* -------------------------------------------- */
+
+FADING_SUNS.races = {
+  human: "FADINGSUNS.Race.Human",
+  urObun: "FADINGSUNS.Race.UrObun",
+  urUkar: "FADINGSUNS.Race.UrUkar",
+  vorox: "FADINGSUNS.Race.Vorox"
+};

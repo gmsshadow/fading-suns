@@ -1,5 +1,6 @@
 import { goalRoll, damageRoll, armourRoll } from "../dice/rolls.mjs";
 import { applyArmour } from "../dice/effect-dice.mjs";
+import { attackModifiers, rangeBand, energyShieldAbsorb } from "../dice/combat.mjs";
 import { promptGoalRoll } from "../applications/roll-dialog.mjs";
 
 /**
@@ -74,7 +75,9 @@ export class FadingSunsActor extends Actor {
    * @param {boolean} [options.skipDialog=false]
    * @returns {Promise<object|null>}
    */
-  async rollGoal({ characteristic, skillId, item, modifier = 0, skipDialog = false } = {}) {
+  async rollGoal(options = {}) {
+    const { characteristic, skillId, item, skipDialog = false } = options;
+    let { modifier = 0 } = options;
     const skill = skillId ? this.items.get(skillId) : null;
     const charPath = characteristic || skill?.system.characteristic || "mind.wits";
 
@@ -94,7 +97,9 @@ export class FadingSunsActor extends Actor {
         skillLabel: skill?.system.label ?? "",
         woundPenalty,
         wyrdAvailable: this.system.wyrd.value,
-        traits: this.applicableTraits({ characteristic: charPath, skill: skill?.name })
+        traits: this.applicableTraits({ characteristic: charPath, skill: skill?.name }),
+        modifierParts: options.modifierParts ?? [],
+        distance: options.distance ?? null
       });
       if (!config) return null;
       modifier += config.modifier;
@@ -161,12 +166,59 @@ export class FadingSunsActor extends Actor {
     const defaults = CONFIG.FADING_SUNS.weaponDefaults[weapon.system.weaponType] ?? {};
     const skill = this.getSkill(weapon.system.skill || defaults.skill);
 
+    // Everything the weapon and the situation contribute, itemised (p.296).
+    const distance = options.distance ?? this.distanceToTarget();
+    const { total, parts } = attackModifiers({
+      weaponModifier: weapon.system.goalModifier,
+      actionModifier: options.actionModifier ?? 0,
+      distance,
+      short: weapon.system.range.short,
+      long: weapon.system.range.long,
+      required: weapon.system.strength,
+      strength: this.system.body.strength.value,
+      actions: options.actions ?? this.declaredActions
+    });
+
     return this.rollGoal({
       characteristic: weapon.system.characteristic || defaults.characteristic,
       skillId: skill?.id,
       item: weapon,
+      modifier: (options.modifier ?? 0) + total,
+      modifierParts: parts,
+      distance,
       ...options
     });
+  }
+
+  /**
+   * Distance in metres from this actor's token to the user's current target.
+   *
+   * Returns null when either token is missing, which leaves range out of the
+   * attack entirely rather than guessing at it — the right answer for a table
+   * playing in theatre of the mind.
+   *
+   * @returns {number|null}
+   */
+  distanceToTarget() {
+    const origin = this.getActiveTokens(true)[0];
+    const target = game.user?.targets?.first();
+    if (!origin || !target || origin === target) return null;
+
+    const measure = canvas?.grid?.measurePath?.([origin.center, target.center]);
+    const distance = measure?.distance ?? null;
+    return Number.isFinite(distance) ? Math.round(distance) : null;
+  }
+
+  /** Actions declared for this turn in the combat tracker, defaulting to one. */
+  get declaredActions() {
+    const combatant = game.combat?.getCombatantByActor?.(this.id);
+    return combatant?.declaration?.actions ?? 1;
+  }
+
+  /** The band a given distance falls into for a weapon (p.296). */
+  rangeBandFor(weapon, distance) {
+    if (distance === null || !weapon?.system.range.long) return null;
+    return rangeBand(distance, weapon.system.range.short, weapon.system.range.long);
   }
 
   /**
@@ -196,15 +248,64 @@ export class FadingSunsActor extends Actor {
   /* -------------------------------------------- */
 
   /**
-   * Apply wound points, subtracting armour first (p.65).
+   * Apply wound points, letting armour and any energy shield stop what they can.
+   *
+   * The order matters. An energy shield either activates and caps the blow, or
+   * lets it through untouched (p.296); whatever gets past is then reduced by
+   * rolled armour points (p.65).
+   *
    * @param {number} woundPoints
-   * @param {number} [armourPoints=0]
-   * @returns {Promise<Actor>}
+   * @param {object} [options]
+   * @param {boolean} [options.useArmour=true]  Roll worn armour automatically.
+   * @param {number} [options.armourPoints]     Supply a rolled figure instead.
+   * @returns {Promise<{taken: number, blocked: number, shield: object|null}>}
    */
-  async applyDamage(woundPoints, armourPoints = 0) {
-    const taken = applyArmour(woundPoints, armourPoints);
+  async applyDamage(woundPoints, options = {}) {
+    // Callers used to pass a bare number; keep that working.
+    if (typeof options === "number") options = { armourPoints: options };
+    const { useArmour = true } = options;
+
+    let incoming = Math.max(0, Math.round(woundPoints ?? 0));
+    let shieldResult = null;
+
+    const shield = this.equippedEnergyShield;
+    if (shield) {
+      const { min, max, hits } = shield.system.energyShield;
+      shieldResult = energyShieldAbsorb(incoming, { min, max, hits: hits.value });
+      incoming = shieldResult.through;
+      if (shieldResult.hitsUsed) {
+        await shield.update({
+          "system.energyShield.hits.value": Math.max(0, hits.value - shieldResult.hitsUsed)
+        });
+      }
+    }
+
+    let armourPoints = options.armourPoints ?? 0;
+    if (options.armourPoints === undefined && useArmour && incoming > 0) {
+      const worn = this.equippedArmour;
+      if (worn) {
+        const roll = await this.rollArmour(worn.id);
+        armourPoints = roll?.points ?? 0;
+      }
+    }
+
+    const taken = applyArmour(incoming, armourPoints);
     const value = Math.max(0, this.system.vitality.value - taken);
-    return this.update({ "system.vitality.value": value });
+    await this.update({ "system.vitality.value": value });
+
+    return { taken, blocked: (woundPoints ?? 0) - taken, shield: shieldResult };
+  }
+
+  /** The armour the character is wearing, if any. */
+  get equippedArmour() {
+    return this.items.find(i =>
+      i.type === "armour" && i.system.equipped && i.system.armourType === "armour") ?? null;
+  }
+
+  /** The energy shield the character is wearing, if any. */
+  get equippedEnergyShield() {
+    return this.items.find(i =>
+      i.type === "armour" && i.system.equipped && i.system.armourType === "energyShield") ?? null;
   }
 
   /**

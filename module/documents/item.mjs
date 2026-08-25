@@ -59,6 +59,9 @@ export class FadingSunsItem extends Item {
       case "theurgicRite":
         return this.#useOccultPower(options);
 
+      case "combatAction":
+        return this.#useCombatAction(options);
+
       case "skill":
         return this.actor.rollGoal({
           skillId: this.id,
@@ -97,6 +100,29 @@ export class FadingSunsItem extends Item {
       if (spent === null) ui.notifications.warn(game.i18n.localize("FADINGSUNS.Warning.NoWyrd"));
     }
     return outcome;
+  }
+
+  /**
+   * Perform a combat action (p.102).
+   *
+   * "Combat actions themselves are not rolled, but are instead resolved using
+   *  Fight, Melee or Shoot skills", so the action supplies the pairing and its
+   *  goal modifier, and the roll is an ordinary Goal Roll.
+   *
+   * @param {object} options
+   * @returns {Promise<object|null>}
+   */
+  async #useCombatAction(options = {}) {
+    if (!this.system.skill) return this.toChat();
+
+    const skill = this.actor.getSkill(this.system.skill);
+    return this.actor.rollGoal({
+      characteristic: this.system.characteristic,
+      skillId: skill?.id,
+      item: this,
+      modifier: (options.modifier ?? 0) + this.system.goalModifier,
+      ...options
+    });
   }
 
   /**

@@ -464,6 +464,29 @@
       "Armour": "Armour",
       "Shield": "Shield",
       "EnergyShield": "Energy Shield"
+    },
+    "Combat": {
+      "Declare": "Declare Action",
+      "DeclareHint": "Initiative is the rating of the skill you are using this turn, not a roll (p.164).",
+      "Skill": "Skill being used",
+      "Actions": "Actions this turn",
+      "Modifier": "Weapon or combat action modifier",
+      "ModifierHint": "A two-handed sword adds one; a Martial Hold subtracts one.",
+      "TieBreak": "Ties are broken on Wits:",
+      "Declared": "Declared: {skill} — click to change",
+      "NoSkills": "This character has no skills to act with.",
+      "DamageApplied": "{name} takes {taken} wound point(s); armour stopped {blocked}.",
+      "DamageAppliedShield": "{name}'s energy shield activated. {taken} wound point(s) got through; {blocked} stopped."
+    },
+    "Modifier": {
+      "Weapon": "Weapon",
+      "Action": "Combat action",
+      "LongRange": "Long range",
+      "ExtremeRange": "Extreme range",
+      "UnderStrength": "Too heavy for you",
+      "MultipleActions": "Multiple actions",
+      "Situational": "Situational",
+      "Distance": "Measured distance"
     }
   }
 }

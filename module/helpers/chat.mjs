@@ -50,7 +50,18 @@ async function onCardAction(event, message) {
         ui.notifications.warn(game.i18n.localize("FADINGSUNS.Warning.NoTargets"));
         return;
       }
-      for (const token of targets) await token.actor.applyDamage(points);
+      // Armour and any energy shield are rolled by the target, not the attacker.
+      for (const token of targets) {
+        const result = await token.actor.applyDamage(points);
+        const message = result.shield?.activated
+          ? "FADINGSUNS.Combat.DamageAppliedShield"
+          : "FADINGSUNS.Combat.DamageApplied";
+        ui.notifications.info(game.i18n.format(message, {
+          name: token.actor.name,
+          taken: result.taken,
+          blocked: result.blocked
+        }));
+      }
       break;
     }
   }

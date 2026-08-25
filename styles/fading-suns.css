@@ -1360,3 +1360,37 @@
   border-color: var(--fs-line);
   color: var(--fs-muted);
 }
+
+/* ---------- Combat: itemised modifiers ---------- */
+
+.fading-suns .modifier-parts {
+  border: 1px solid var(--fs-line);
+  border-radius: 3px;
+  list-style: none;
+  margin: 0 0 0.4rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.fading-suns .modifier-parts li {
+  display: flex;
+  font-size: 0.76rem;
+  justify-content: space-between;
+  padding: 0.08rem 0;
+}
+
+.fading-suns .modifier-parts li.total {
+  border-top: 1px solid var(--fs-line);
+  color: var(--fs-gold);
+  margin-top: 0.15rem;
+  padding-top: 0.15rem;
+}
+
+.fading-suns .declare-initiative .form-group {
+  margin-bottom: 0.35rem;
+}
+
+/* The tracker's initiative control doubles as the declaration control. */
+.fading-suns .combatant-control.is-declared,
+#combat .combatant-control.is-declared {
+  color: var(--fs-gold, #c9a227);
+}

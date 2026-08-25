@@ -37,7 +37,8 @@ export function preloadTemplates() {
     "fadingSuns.detailsCombatAction": `${ROOT}/item/parts/details-combat-action.hbs`,
 
     // Character creation wizard
-    "fadingSuns.creationWizard": `${ROOT}/creation/wizard.hbs`
+    "fadingSuns.creationWizard": `${ROOT}/creation/wizard.hbs`,
+    "fadingSuns.declareInitiative": `${ROOT}/dialog/declare-initiative.hbs`
   });
 }
 

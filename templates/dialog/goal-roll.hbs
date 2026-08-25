@@ -10,6 +10,16 @@
     <span class="base-goal">= {{localize "FADINGSUNS.Roll.Goal"}} <strong>{{baseGoal}}</strong></span>
   </div>
 
+  {{#if modifierParts.length}}
+    <ul class="modifier-parts">
+      {{#each modifierParts as |part|}}
+        <li><span>{{part.label}}</span><strong>{{fsSigned part.value}}</strong></li>
+      {{/each}}
+      <li class="total"><span>{{localize "FADINGSUNS.Roll.Modifier"}}</span><strong>{{fsSigned modifierTotal}}</strong></li>
+    </ul>
+    {{#if distance}}<p class="hint">{{localize "FADINGSUNS.Modifier.Distance"}}: {{distance}}m</p>{{/if}}
+  {{/if}}
+
   <label class="form-group">
     <span>{{localize "FADINGSUNS.Roll.Difficulty"}}</span>
     <select name="difficulty">{{selectOptions difficulties selected="0" localize=true}}</select>

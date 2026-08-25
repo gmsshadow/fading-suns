@@ -27,7 +27,9 @@ export async function promptGoalRoll({
   skillLabel = "",
   woundPenalty = 0,
   wyrdAvailable = 0,
-  traits = []
+  traits = [],
+  modifierParts = [],
+  distance = null
 } = {}) {
 
   const content = await renderTemplate(
@@ -40,6 +42,14 @@ export async function promptGoalRoll({
       woundPenalty,
       wyrdAvailable,
       traits,
+      distance,
+      // Weapon, range, Strength and multiple-action modifiers, itemised so the
+      // player can see where the number came from before committing to it.
+      modifierParts: modifierParts.map(part => ({
+        label: game.i18n.localize(`FADINGSUNS.Modifier.${part.label}`),
+        value: part.value
+      })),
+      modifierTotal: modifierParts.reduce((n, p) => n + p.value, 0),
       baseGoal: characteristicValue + skillValue + woundPenalty,
       difficulties: CONFIG.FADING_SUNS.difficulties
     }

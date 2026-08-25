@@ -1,0 +1,34 @@
+<div class="fading-suns declare-initiative">
+  <p class="hint">{{localize "FADINGSUNS.Combat.DeclareHint"}}</p>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Combat.Skill"}}</span>
+    <select name="skillId">
+      {{#each skills as |skill|}}
+        <option value="{{skill.id}}" {{#if skill.selected}}selected{{/if}}>{{skill.label}} ({{skill.value}})</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Combat.Actions"}}</span>
+    <select name="actions">
+      {{#each actions as |option|}}
+        <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>
+          {{option.value}}{{#if option.penalty}} ({{option.penalty}}){{/if}}
+        </option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label class="form-group">
+    <span>{{localize "FADINGSUNS.Combat.Modifier"}}</span>
+    <input type="number" name="modifier" value="0"/>
+  </label>
+  <p class="hint">{{localize "FADINGSUNS.Combat.ModifierHint"}}</p>
+
+  {{#if woundPenalty}}
+    <p class="hint wounds">{{localize "FADINGSUNS.Hint.WoundPenalty"}} {{fsSigned woundPenalty}}</p>
+  {{/if}}
+  <p class="hint">{{localize "FADINGSUNS.Combat.TieBreak"}} {{wits}}</p>
+</div>

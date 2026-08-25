@@ -323,6 +323,38 @@ starting cap of 8 are reduced and the freed points **reported back** for the pla
 p.72. A language granted twice — Read Urthish appears in most noble Upbringings — refunds its two
 points instead of stacking, and the refund is shown.
 
+### Combat
+
+**Initiative is declared, not rolled.** *"Each character's rating is equal to the skill he is using,
+and the character with the highest rating acts first"* (p.164) — so the tracker's initiative control
+opens a declaration instead: which skill you are acting on, how many actions you are attempting, and
+any weapon or combat action modifier. Wits is folded in as a hundredth so ties break the way the
+book says while the whole number still reads as the skill rating. Declarations clear at the turn of
+each round, since what you did last round says nothing about this one.
+
+**Attack rolls assemble their own modifiers**, itemised in the dialog so the number can be checked
+before committing to it:
+
+| Source | Example |
+|---|---|
+| The weapon's own goal modifier | Laser pistol +1, Rocketeer -2 |
+| Range band | Long -2, Extreme -4 (p.296) |
+| Strength requirement | -2 if the weapon is too heavy for you (p.296) |
+| Multiple actions | -4 for two, -6 for three (p.64) |
+| Combat action | Whatever the chart gives |
+
+Range is measured token to token against the current target, and simply left out when either token
+is missing — the right answer for a table playing in theatre of the mind rather than a guess.
+
+**Armour and energy shields are rolled by the target** when damage is applied, not worked out by the
+attacker. Energy shields work as the chart describes rather than as flat protection: the first
+number is the damage needed to *activate* the shield, so a light blow passes straight through
+untouched and costs no charge, while a heavy one is capped at the shield's maximum with the
+remainder getting past. Activations decrement the fusion cell.
+
+**Combat actions are rollable.** They are "not rolled, but resolved using Fight, Melee or Shoot
+skills" (p.102), so using one makes an ordinary Goal Roll with the action's pairing and modifier.
+
 ### Lifepath grant engine
 
 `module/lifepath/grants.mjs` resolves Character History stages (p.70–p.89). It has no Foundry
@@ -439,8 +471,6 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 ## Roadmap
 
 - Compendiums: Psi powers and Theurgic rites, which unlock the four occult Extra Stages
-- Combat automation: range penalties, Strength requirements, combat action modifiers and armour applied to damage
-- Initiative: the skill being used, with Wits breaking ties (p.164)
 - Character histories for the remaining houses, sects and guilds
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!F7ykdMXxKtcC0fXU",
-  "_id": "F7ykdMXxKtcC0fXU",
+  "_key": "!items!xcZerEzcCmU3Qbtp",
+  "_id": "xcZerEzcCmU3Qbtp",
   "name": "Apprenticeship: Soldier",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Military",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

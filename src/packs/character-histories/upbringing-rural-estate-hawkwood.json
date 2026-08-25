@@ -1,6 +1,6 @@
 {
-  "_key": "!items!fOFCSajfwLSwBQzZ",
-  "_id": "fOFCSajfwLSwBQzZ",
+  "_key": "!items!bTGAVk39DYv1Y2vK",
+  "_id": "bTGAVk39DYv1Y2vK",
   "name": "Upbringing: Rural Estate (Hawkwood)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hawkwood",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

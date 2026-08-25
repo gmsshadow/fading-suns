@@ -1,6 +1,6 @@
 {
-  "_key": "!items!7hpeJz75tyBZOfP0",
-  "_id": "7hpeJz75tyBZOfP0",
+  "_key": "!items!m1FJdtc25LbwoPZQ",
+  "_id": "m1FJdtc25LbwoPZQ",
   "name": "Upbringing: Country",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "environment",
     "grants": [
       {

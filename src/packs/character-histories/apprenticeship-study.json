@@ -1,6 +1,6 @@
 {
-  "_key": "!items!A4upf8LAs0ewVpPU",
-  "_id": "A4upf8LAs0ewVpPU",
+  "_key": "!items!8Sgy1b7xaY75dgVL",
+  "_id": "8Sgy1b7xaY75dgVL",
   "name": "Apprenticeship: Study",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Study",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

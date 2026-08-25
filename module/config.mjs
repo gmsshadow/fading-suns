@@ -214,7 +214,8 @@ FADING_SUNS.beneficeCategories = {
   possessions: "FADINGSUNS.Benefice.Possessions",
   artifacts: "FADINGSUNS.Benefice.Artifacts",
   riches: "FADINGSUNS.Benefice.Riches",
-  status: "FADINGSUNS.Benefice.Status"
+  status: "FADINGSUNS.Benefice.Status",
+  racial: "FADINGSUNS.Benefice.Racial"
 };
 
 /**

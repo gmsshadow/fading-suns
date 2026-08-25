@@ -489,6 +489,8 @@ export class FadingSunsStage extends FadingSunsItemBase {
       // Priests and guildsmembers share their Upbringings, so a stage may be
       // open to more than one faction. Empty means any.
       factions: new fields.ArrayField(new fields.StringField()),
+      // Alien stages belong to a race; empty means any (p.83).
+      race: new fields.StringField({ required: false, blank: true, initial: "" }),
       // A composite stage fills one slot of several. Priests and guildsmembers
       // build their Upbringing from an Environment and a Class (p.77), where a
       // noble takes a single stage filling the whole thing.

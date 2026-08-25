@@ -1,0 +1,28 @@
+{
+  "_key": "!items!FidsV159pOYZFQJ1",
+  "_id": "FidsV159pOYZFQJ1",
+  "name": "Extra Limbs",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>Six limbs in total, usable as arms or legs.</p>",
+    "polarity": "benefice",
+    "category": "racial",
+    "value": 4,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

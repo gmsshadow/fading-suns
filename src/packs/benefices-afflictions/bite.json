@@ -1,0 +1,28 @@
+{
+  "_key": "!items!xgO7DCbZaIM8KOtt",
+  "_id": "xgO7DCbZaIM8KOtt",
+  "name": "Bite",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>A Vorox's jaws. Rolled on Dexterity + Fight at -1 initiative, for three dice of damage.</p>",
+    "polarity": "benefice",
+    "category": "racial",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

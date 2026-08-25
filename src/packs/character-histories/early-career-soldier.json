@@ -1,6 +1,6 @@
 {
-  "_key": "!items!oCDRk12zaexaMdeU",
-  "_id": "oCDRk12zaexaMdeU",
+  "_key": "!items!4YuhKdMQQQXGLW7r",
+  "_id": "4YuhKdMQQQXGLW7r",
   "name": "Early Career: Soldier",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Military Command",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!9ZTlB5nYob4iufL2",
-  "_id": "9ZTlB5nYob4iufL2",
+  "_key": "!items!qP7QLJAwHHstLvlL",
+  "_id": "qP7QLJAwHHstLvlL",
   "name": "Apprenticeship: The Streets (Engineers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

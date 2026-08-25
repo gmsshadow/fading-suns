@@ -1,6 +1,6 @@
 {
-  "_key": "!items!TK1p2zHAanejd7Lp",
-  "_id": "TK1p2zHAanejd7Lp",
+  "_key": "!items!pm4TAKD7dxKWr01i",
+  "_id": "pm4TAKD7dxKWr01i",
   "name": "Apprenticeship: Guildhall (Muster)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

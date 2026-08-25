@@ -1,6 +1,6 @@
 {
-  "_key": "!items!IcocLLnJ3EPBwm2a",
-  "_id": "IcocLLnJ3EPBwm2a",
+  "_key": "!items!GbMvIKyhZtySTotb",
+  "_id": "GbMvIKyhZtySTotb",
   "name": "Upbringing: Landless (Hawkwood)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hawkwood",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

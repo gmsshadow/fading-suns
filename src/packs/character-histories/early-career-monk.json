@@ -1,6 +1,6 @@
 {
-  "_key": "!items!NFRjrIrq7Fqrtbbb",
-  "_id": "NFRjrIrq7Fqrtbbb",
+  "_key": "!items!vO2BDuVHOlaVzrZd",
+  "_id": "vO2BDuVHOlaVzrZd",
   "name": "Early Career: Monk",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

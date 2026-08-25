@@ -1,6 +1,6 @@
 {
-  "_key": "!items!YySuEiF4OqLF6opy",
-  "_id": "YySuEiF4OqLF6opy",
+  "_key": "!items!XEh8aoYKkGtx1RQo",
+  "_id": "XEh8aoYKkGtx1RQo",
   "name": "Upbringing: Wealthy",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "class",
     "grants": [
       {

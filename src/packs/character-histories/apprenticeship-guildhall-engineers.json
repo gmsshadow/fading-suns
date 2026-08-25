@@ -1,6 +1,6 @@
 {
-  "_key": "!items!B9uGcldjucztSJOh",
-  "_id": "B9uGcldjucztSJOh",
+  "_key": "!items!UQKDMgKQPK9m7RvB",
+  "_id": "UQKDMgKQPK9m7RvB",
   "name": "Apprenticeship: Guildhall (Engineers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!f3ef36olEcNIYzKc",
-  "_id": "f3ef36olEcNIYzKc",
+  "_key": "!items!h7vgWBL6Rhj9lZhW",
+  "_id": "h7vgWBL6Rhj9lZhW",
   "name": "Apprenticeship: Guildhall (Scravers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

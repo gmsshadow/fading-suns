@@ -1,6 +1,6 @@
 {
-  "_key": "!items!Hqz8QZDycRjlo2uP",
-  "_id": "Hqz8QZDycRjlo2uP",
+  "_key": "!items!RbFOrOhZNimlmq4I",
+  "_id": "RbFOrOhZNimlmq4I",
   "name": "Upbringing: High-Court (Decados)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Decados",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

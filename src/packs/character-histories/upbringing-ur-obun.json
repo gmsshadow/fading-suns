@@ -1,0 +1,170 @@
+{
+  "_key": "!items!sOBuNHdmVqRvpDGm",
+  "_id": "sOBuNHdmVqRvpDGm",
+  "name": "Upbringing: Ur-Obun",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Raised on Velisamil, or in one of the cosmopolitan colonies. Learning and philosophy above all.</p>",
+    "stageType": "upbringing",
+    "faction": "alien",
+    "group": "Ur-Obun",
+    "factions": [],
+    "race": "urObun",
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-obun-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-obun-occult",
+        "label": "Psi or Theurgy 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Psi",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "occult.psi",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Theurgy",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "occult.theurgy",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Empathy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Etiquette",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-obun-focus",
+        "label": "Focus or Stoic Mind 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Focus",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Focus",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Stoic Mind",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Stoic Mind",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "language",
+        "key": "Read",
+        "specialty": "Urthish",
+        "value": 1,
+        "points": 2
+      },
+      {
+        "kind": "blessing",
+        "key": "Compendium.fading-suns.blessings-curses.Item.FTfoTxSWoEX0MJV7",
+        "label": "Just"
+      },
+      {
+        "kind": "curse",
+        "key": "Compendium.fading-suns.blessings-curses.Item.V29geBNeoF6Eezji",
+        "label": "Condescending"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

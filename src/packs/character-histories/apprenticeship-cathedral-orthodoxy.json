@@ -1,6 +1,6 @@
 {
-  "_key": "!items!WKQSgUvC1I16cYfS",
-  "_id": "WKQSgUvC1I16cYfS",
+  "_key": "!items!cJh1iGtHUxr9zmws",
+  "_id": "cJh1iGtHUxr9zmws",
   "name": "Apprenticeship: Cathedral (Orthodoxy)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

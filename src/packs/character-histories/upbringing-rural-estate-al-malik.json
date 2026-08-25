@@ -1,6 +1,6 @@
 {
-  "_key": "!items!VQ1gSPKpef5m1gVH",
-  "_id": "VQ1gSPKpef5m1gVH",
+  "_key": "!items!jj56wDx68B7SavX3",
+  "_id": "jj56wDx68B7SavX3",
   "name": "Upbringing: Rural Estate (al-Malik)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "al-Malik",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

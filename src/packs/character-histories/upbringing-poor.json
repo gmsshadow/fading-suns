@@ -1,6 +1,6 @@
 {
-  "_key": "!items!bwGDwHidyHDScAqf",
-  "_id": "bwGDwHidyHDScAqf",
+  "_key": "!items!u8gxKtwucTQmI5CP",
+  "_id": "u8gxKtwucTQmI5CP",
   "name": "Upbringing: Poor",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "class",
     "grants": [
       {

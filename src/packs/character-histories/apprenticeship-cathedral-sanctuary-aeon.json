@@ -1,6 +1,6 @@
 {
-  "_key": "!items!d80YWJn34UezHeWy",
-  "_id": "d80YWJn34UezHeWy",
+  "_key": "!items!tpLa0xhxKbVm5ixD",
+  "_id": "tpLa0xhxKbVm5ixD",
   "name": "Apprenticeship: Cathedral (Sanctuary Aeon)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

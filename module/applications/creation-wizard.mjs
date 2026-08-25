@@ -4,7 +4,9 @@ import {
   STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP, EXTRA_COSTS
 } from "../lifepath/grants.mjs";
 import { applyLifepathToActor, parseSkillLabel } from "../lifepath/apply.mjs";
-import { characteristicBase, canAwakenOccult, tourAllowance, racialCost } from "../dice/races.mjs";
+import {
+  characteristicBase, canAwakenOccult, tourAllowance, racialCost, maxExtraStages
+} from "../dice/races.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 
@@ -156,6 +158,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       if (d.system.stageType !== stageType) return false;
       // Priests and guildsmembers share their Upbringings, so a stage may list
       // several factions; a single faction field still works for the rest.
+      // An alien stage belongs to a race, and is only offered to that race.
+      if (d.system.race && d.system.race !== this.actor.system.details.race) return false;
+
       const shared = d.system.factions ?? [];
       return shared.length ? shared.includes(faction) : d.system.faction === faction;
     });
@@ -221,7 +226,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const taken = this.draft.extraStages;
     const takenNames = new Set(taken.map(s => s.name));
     const hasExclusive = taken.some(s => s.system.exclusive);
-    const slots = hasExclusive ? 1 : 2;
+    // "Vorox can take only ONE additional tour of duty" (p.83).
+    const allowed = maxExtraStages(this.actor.system.details.race ?? "human");
+    const slots = hasExclusive ? 1 : allowed;
 
     const groups = new Map();
     for (const stage of all.filter(d => d.system.stageType === "extra")) {

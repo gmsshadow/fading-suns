@@ -1,6 +1,6 @@
 {
-  "_key": "!items!ULAGZNfQA5Z87rOz",
-  "_id": "ULAGZNfQA5Z87rOz",
+  "_key": "!items!zjq92HMvbApLcy2j",
+  "_id": "zjq92HMvbApLcy2j",
   "name": "Apprenticeship: Duelist",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Leisure",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!EdxtqtdfEdz44jAm",
-  "_id": "EdxtqtdfEdz44jAm",
+  "_key": "!items!0hg5dJADjIDEMSaq",
+  "_id": "0hg5dJADjIDEMSaq",
   "name": "Extra Stage: Adept Theurge",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Theurgic Calling",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -167,7 +168,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 8200000,
+  "sort": 9900000,
   "ownership": {
     "default": 0
   },

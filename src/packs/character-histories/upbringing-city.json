@@ -1,6 +1,6 @@
 {
-  "_key": "!items!WFCqaabjrcTDApNo",
-  "_id": "WFCqaabjrcTDApNo",
+  "_key": "!items!s0qQXUqPSqWzu96k",
+  "_id": "s0qQXUqPSqWzu96k",
   "name": "Upbringing: City",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "environment",
     "grants": [
       {

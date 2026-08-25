@@ -1,6 +1,6 @@
 {
-  "_key": "!items!8tapOUmWWUTHpbou",
-  "_id": "8tapOUmWWUTHpbou",
+  "_key": "!items!BmavEHZMSntbRibI",
+  "_id": "BmavEHZMSntbRibI",
   "name": "Upbringing: Average",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "class",
     "grants": [
       {

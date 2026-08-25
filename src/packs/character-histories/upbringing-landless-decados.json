@@ -1,6 +1,6 @@
 {
-  "_key": "!items!PCFIbRSGC7T1xi0w",
-  "_id": "PCFIbRSGC7T1xi0w",
+  "_key": "!items!v4k6B8phSdZCs5eI",
+  "_id": "v4k6B8phSdZCs5eI",
   "name": "Upbringing: Landless (Decados)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Decados",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

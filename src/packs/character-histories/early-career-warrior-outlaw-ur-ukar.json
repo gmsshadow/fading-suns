@@ -1,0 +1,267 @@
+{
+  "_key": "!items!RZGOY4ccOSuA8fMI",
+  "_id": "RZGOY4ccOSuA8fMI",
+  "name": "Early Career: Warrior/Outlaw (Ur-Ukar)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Hired out as assassin or mercenary, and rarely asked for references.</p>",
+    "stageType": "earlyCareer",
+    "faction": "alien",
+    "group": "Ur-Ukar",
+    "factions": [],
+    "race": "urUkar",
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-wq-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-wq-temper",
+        "label": "Passion or Calm +2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-wq-faith",
+        "label": "Faith or Ego +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Faith",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.faith",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Ego",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.ego",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-wq-combat",
+        "label": "Combat skill (choose Fight or Melee) +2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Impress",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Knavery",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Poisons",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Stoic Mind",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Survival",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-wq-style",
+        "label": "Choose a style",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Jox Kai Von Boxing",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.pJYRmOgkGi32hQtk",
+                "label": "Martial Fist",
+                "value": 1
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.EbSZTJRZ0OH70wcR",
+                "label": "Martial Kick",
+                "value": 2
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.qLh7uqk0MsNWwZAJ",
+                "label": "Martial Hold",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "label": "Kraxi Knife Fencing",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.0obbx8xST8r0Hqua",
+                "label": "Parry",
+                "value": 1
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.EGRE0GgffOKCrjE6",
+                "label": "Thrust",
+                "value": 2
+              },
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.7YbPKL1NlFhhVZJL",
+                "label": "Slash",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.Bqqt5DvSinF0u96e",
+        "value": 3,
+        "label": "Family Ties"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

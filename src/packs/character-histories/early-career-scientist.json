@@ -1,6 +1,6 @@
 {
-  "_key": "!items!IwchaPeB7jOXOD68",
-  "_id": "IwchaPeB7jOXOD68",
+  "_key": "!items!D8d3uf5JzqoeLqmR",
+  "_id": "D8d3uf5JzqoeLqmR",
   "name": "Early Career: Scientist",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

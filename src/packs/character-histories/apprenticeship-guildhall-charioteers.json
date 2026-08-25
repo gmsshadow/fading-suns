@@ -1,6 +1,6 @@
 {
-  "_key": "!items!ch2FY388Tcv6Ct2l",
-  "_id": "ch2FY388Tcv6Ct2l",
+  "_key": "!items!2NvZe948YJAFSMeJ",
+  "_id": "2NvZe948YJAFSMeJ",
   "name": "Apprenticeship: Guildhall (Charioteers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

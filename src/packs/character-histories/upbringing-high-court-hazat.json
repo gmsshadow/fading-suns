@@ -1,6 +1,6 @@
 {
-  "_key": "!items!2dARM8AOvWpZnlWV",
-  "_id": "2dARM8AOvWpZnlWV",
+  "_key": "!items!nY4UPoZGw3I6rXqj",
+  "_id": "nY4UPoZGw3I6rXqj",
   "name": "Upbringing: High-Court (Hazat)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hazat",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

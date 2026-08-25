@@ -1,6 +1,6 @@
 {
-  "_key": "!items!6SrPV45Y1jl8vfc3",
-  "_id": "6SrPV45Y1jl8vfc3",
+  "_key": "!items!e5QE9y313vpsDYon",
+  "_id": "e5QE9y313vpsDYon",
   "name": "Early Career: Duelist",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Court",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

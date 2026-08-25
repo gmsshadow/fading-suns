@@ -1,6 +1,6 @@
 {
-  "_key": "!items!ogn9drfFdMPVQudO",
-  "_id": "ogn9drfFdMPVQudO",
+  "_key": "!items!wtYOYP3v9swde75r",
+  "_id": "wtYOYP3v9swde75r",
   "name": "Upbringing: Rural Estate (Decados)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Decados",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

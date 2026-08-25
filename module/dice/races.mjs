@@ -87,7 +87,11 @@ export const RACES = {
     forcedPrimary: "spirit.passion",
     freeLanguage: "Speak (Voroxish)",
     // "No Occult (Cannot awaken Psi or Theurgy)" (p.83)
-    noOccult: true
+    noOccult: true,
+    // "Vorox can take only ONE additional tour of duty — either the first Tour
+    //  of Duty, the Imperial Cohort Tour of Duty or the Cybernetic
+    //  Enhancements; they cannot awaken Psi or Theurgy." (p.83)
+    maxExtraStages: 1
   }
 };
 
@@ -177,6 +181,16 @@ export function canAwakenOccult(raceKey) {
 export function tourAllowance(raceKey, stageName, printed) {
   const overrides = getRace(raceKey).tourAllowance ?? {};
   return overrides[stageName] ?? printed;
+}
+
+/**
+ * How many Extra Stages this race may take (p.84, p.83).
+ * @param {string} raceKey
+ * @param {number} [standard=2]
+ * @returns {number}
+ */
+export function maxExtraStages(raceKey, standard = 2) {
+  return getRace(raceKey).maxExtraStages ?? standard;
 }
 
 /**

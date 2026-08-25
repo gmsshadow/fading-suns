@@ -1017,6 +1017,243 @@ const GUILD_CAREER = [
   ])
 ];
 
+
+/* -------------------------------------------- */
+/*  Character Histories — aliens (p.83)         */
+/* -------------------------------------------- */
+
+/**
+ * The three alien races.
+ *
+ * Their Upbringings restate the racial bases and maxima the race itself already
+ * carries — "Strength (max 9)", "Dexterity (base 4)" — so only the deltas are
+ * granted here; module/dice/races.mjs owns the bases and ceilings.
+ *
+ * Obun and Ukari may take a human sect's or guild's Apprenticeship instead of
+ * their own (p.83), so those stages list them alongside their own faction.
+ */
+const alienStage = (race, name, type, group, description, grants, extra = {}) => ({
+  n: name, stage: type, faction: "alien", group,
+  d: description, grants, race, ...extra
+});
+
+const OBUN_UKAR_OPEN = ["alien", "priest", "merchant"];
+
+const ALIEN_HISTORY = [
+  /* ---- Ur-Obun ---- */
+  alienStage("urObun", "Ur-Obun", "upbringing", "Ur-Obun",
+    "Raised on Velisamil, or in one of the cosmopolitan colonies. Learning and philosophy above all.", [
+    ch("body.dexterity", 1), ch("mind.wits", 1),
+    orSpirit("al-obun-social", "Extrovert", "Introvert", 1),
+    ch("spirit.calm", 1), ch("spirit.faith", 1),
+    pickOne("al-obun-occult", "Psi or Theurgy 1",
+      opt("Psi", ch("occult.psi", 1)),
+      opt("Theurgy", ch("occult.theurgy", 1))),
+    sk("Empathy", 1), sk("Etiquette", 1),
+    pickOne("al-obun-focus", "Focus or Stoic Mind 1",
+      opt("Focus", sk("Focus", 1)),
+      opt("Stoic Mind", sk("Stoic Mind", 1))),
+    lang("Read", "Urthish", 2),
+    bless("Just"), curse("Condescending")
+  ]),
+  alienStage("urObun", "Umo'rin Counselor", "apprenticeship", "Ur-Obun",
+    "Trained to stand between quarrelling parties and be trusted by both.", [
+    ch("mind.wits", 2), ch("mind.perception", 1),
+    orSpirit("al-obun-couns-social", "Extrovert", "Introvert", 2),
+    sk("Charm", 2), sk("Observe", 1), sk("Empathy", 1), sk("Etiquette", 1),
+    pickOne("al-obun-couns-focus", "Focus or Stoic Mind 1",
+      opt("Focus", sk("Focus", 1)), opt("Stoic Mind", sk("Stoic Mind", 1))),
+    sk("Inquiry", 1),
+    open("al-obun-couns-lore", "Lore (choose topic) 1", "skill", 1, ["Lore"]),
+    pickOne("al-obun-couns-social-skill", "Social (Debate or Oratory) 2",
+      opt("Debate", sp("Social", "Debate", 2)), opt("Oratory", sp("Social", "Oratory", 2)))
+  ], { factions: OBUN_UKAR_OPEN }),
+  alienStage("urObun", "Voavenlohjun Priest", "apprenticeship", "Ur-Obun",
+    "Ordained into the Obun sect of the Church.", [
+    ch("mind.wits", 2), ch("spirit.introvert", 1), ch("spirit.faith", 2),
+    sk("Charm", 1), sk("Observe", 1), sk("Academia", 1), sk("Alchemy", 1),
+    sk("Focus", 2), sp("Lore", "Metaphysics", 1), sk("Remedy", 1), sk("Stoic Mind", 2)
+  ], { factions: OBUN_UKAR_OPEN }),
+  alienStage("urObun", "Vhem-saahen Champion", "apprenticeship", "Ur-Obun",
+    "The Obun who fights, which the Obun would rather not discuss.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+    orSpirit("al-obun-champ-temper", "Passion", "Calm", 1),
+    pickOne("al-obun-champ-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Shoot", 2), sk("Vigor", 1)
+  ], { factions: OBUN_UKAR_OPEN }),
+
+  alienStage("urObun", "Umo'rin Counselor", "earlyCareer", "Ur-Obun",
+    "Sent out to counsel, mediate and be listened to.", [
+    ch("body.dexterity", 1), ch("mind.wits", 2), ch("mind.perception", 1),
+    orSpirit("al-obun-c-career-social", "Extrovert", "Introvert", 2),
+    orSpirit("al-obun-c-career-temper", "Passion", "Calm", 2),
+    ch("spirit.faith", 2),
+    sk("Charm", 2), sk("Observe", 1), sk("Empathy", 1), sk("Etiquette", 1),
+    pickOne("al-obun-c-career-focus", "Focus or Stoic Mind 2",
+      opt("Focus", sk("Focus", 2)), opt("Stoic Mind", sk("Stoic Mind", 2))),
+    sk("Inquiry", 2),
+    open("al-obun-c-career-lore", "Lore (choose topic) 2", "skill", 2, ["Lore"]),
+    pickOne("al-obun-c-career-social-skill", "Social (Debate or Oratory) 2",
+      opt("Debate", sp("Social", "Debate", 2)), opt("Oratory", sp("Social", "Oratory", 2))),
+    pickOne("al-obun-c-career-read", "Read Obunish or Urthish (2 pts)",
+      opt("Read (Obunish)", lang("Read", "Obunish", 2)),
+      opt("Read (Urthish)", lang("Read", "Urthish", 2))),
+    ben("Commissioned", 3)
+  ]),
+  alienStage("urObun", "Voavenlohjun Priest", "earlyCareer", "Ur-Obun",
+    "Ordained in the Obun sect, and posted where the questions are hardest.", [
+    ch("body.dexterity", 1), ch("mind.wits", 2), ch("mind.perception", 1),
+    ch("spirit.introvert", 2),
+    orSpirit("al-obun-p-career-temper", "Passion", "Calm", 2),
+    ch("spirit.faith", 2),
+    pickOne("al-obun-p-career-social", "Charm or Observe +1",
+      opt("Charm", sk("Charm", 1)), opt("Observe", sk("Observe", 1))),
+    pickOne("al-obun-p-career-study", "Academia or Alchemy 1",
+      opt("Academia", sk("Academia", 1)), opt("Alchemy", sk("Alchemy", 1))),
+    sk("Empathy", 1), sk("Focus", 3), sk("Inquiry", 1), sp("Lore", "Metaphysics", 1),
+    sk("Physick", 1), sk("Remedy", 2), lang("Read", "Obunish", 2), sk("Stoic Mind", 2),
+    ben("Ordained", 3)
+  ]),
+  alienStage("urObun", "Vhem-saahen Champion", "earlyCareer", "Ur-Obun",
+    "The champion in the field, defending what the counsellors could not talk away.", [
+    ch("body.strength", 2), ch("body.dexterity", 2), ch("body.endurance", 2),
+    ch("mind.wits", 1), ch("mind.perception", 1),
+    orSpirit("al-obun-v-career-temper", "Passion", "Calm", 2),
+    pickOne("al-obun-v-career-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Shoot", 2), sk("Vigor", 1),
+    pickOne("al-obun-v-career-focus", "Focus or Stoic Mind 2",
+      opt("Focus", sk("Focus", 2)), opt("Stoic Mind", sk("Stoic Mind", 2))),
+    sk("Remedy", 2),
+    pickOne("al-obun-v-career-style", "Choose a style",
+      opt("Martial Arts", action("Martial Fist"), action("Martial Kick"), action("Martial Hold")),
+      opt("Fencing", action("Parry"), action("Thrust"), action("Slash"))),
+    ben("Ally", 3)
+  ]),
+
+  /* ---- Ur-Ukar ---- */
+  alienStage("urUkar", "Ur-Ukar", "upbringing", "Ur-Ukar",
+    "Raised in the caves of Kordeth, where the clans fight and the light rarely reaches.", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("mind.perception", 2),
+    orSpirit("al-ukar-temper", "Passion", "Calm", 1),
+    sk("Fight", 1), sk("Sneak", 1), sk("Knavery", 1), lang("Speak", "Urthish", 2),
+    sk("Survival", 1),
+    bless("Sensitive Touch"), curse("Bitter"), ben("Ostracized", 1)
+  ]),
+  alienStage("urUkar", "Chieftain", "apprenticeship", "Ur-Ukar",
+    "Raised to lead a clan, which among the Ukari means outliving the alternatives.", [
+    ch("body.dexterity", 1), ch("mind.wits", 1), ch("mind.perception", 1),
+    ch("spirit.extrovert", 1),
+    orSpirit("al-ukar-chief-temper", "Passion", "Calm", 1),
+    sk("Dodge", 1),
+    pickOne("al-ukar-chief-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 2), sp("Lore", "Poisons", 1),
+    sk("Stoic Mind", 1), sk("Survival", 1)
+  ], { factions: OBUN_UKAR_OPEN }),
+  alienStage("urUkar", "Warrior/Outlaw", "apprenticeship", "Ur-Ukar",
+    "The clan's blade, or the one who left and sells it elsewhere.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+    orSpirit("al-ukar-warrior-temper", "Passion", "Calm", 1),
+    sk("Dodge", 1),
+    pickOne("al-ukar-warrior-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 2), sp("Lore", "Poisons", 1),
+    sk("Stoic Mind", 1), sk("Survival", 1)
+  ], { factions: OBUN_UKAR_OPEN }),
+
+  alienStage("urUkar", "Chieftain", "earlyCareer", "Ur-Ukar",
+    "Quan of the clan, with everything that entails.", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("body.endurance", 1),
+    ch("mind.wits", 1), ch("mind.perception", 1), ch("spirit.extrovert", 2),
+    orSpirit("al-ukar-cq-temper", "Passion", "Calm", 2),
+    orSpirit("al-ukar-cq-faith", "Faith", "Ego", 1),
+    sk("Dodge", 1),
+    pickOne("al-ukar-cq-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 1), sp("Lore", "Poisons", 1),
+    sk("Stoic Mind", 1), sk("Survival", 1),
+    pickOne("al-ukar-cq-style", "Choose a style",
+      opt("Jox Kai Von Boxing", action("Martial Fist"), action("Martial Kick"), action("Martial Hold")),
+      opt("Kraxi Knife Fencing", action("Parry"), action("Thrust"), action("Slash"))),
+    ben("Nobility", 3)
+  ]),
+  alienStage("urUkar", "Warrior/Outlaw", "earlyCareer", "Ur-Ukar",
+    "Hired out as assassin or mercenary, and rarely asked for references.", [
+    ch("body.strength", 2), ch("body.dexterity", 1), ch("body.endurance", 2),
+    ch("mind.perception", 1),
+    orSpirit("al-ukar-wq-social", "Extrovert", "Introvert", 1),
+    orSpirit("al-ukar-wq-temper", "Passion", "Calm", 2),
+    orSpirit("al-ukar-wq-faith", "Faith", "Ego", 1),
+    sk("Dodge", 1),
+    pickOne("al-ukar-wq-combat", "Combat skill (choose Fight or Melee) +2",
+      opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+    sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 1), sp("Lore", "Poisons", 1),
+    sk("Stoic Mind", 1), sk("Survival", 1),
+    pickOne("al-ukar-wq-style", "Choose a style",
+      opt("Jox Kai Von Boxing", action("Martial Fist"), action("Martial Kick"), action("Martial Hold")),
+      opt("Kraxi Knife Fencing", action("Parry"), action("Thrust"), action("Slash"))),
+    ben("Family Ties", 3)
+  ]),
+
+  /* ---- Vorox ---- */
+  alienStage("vorox", "Chieftain", "upbringing", "Vorox",
+    "Raised to lead a pack on Vorox, and civilised enough afterwards to leave it.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+    ch("mind.wits", 1),
+    sk("Impress", 1), sk("Fight", 1), sk("Vigor", 1),
+    lang("Speak", "Urthish", 2), lang("Speak", "Voroxish", 2),
+    sk("Survival", 1), sk("Tracking", 1),
+    bless("Predatory"), bless("Giant"), bless("Sensitive Smell"), curse("Uncouth"),
+    ben("Bite", 3), ben("Extra Limbs", 4), ben("Poison Claw", 6),
+    ben("Ostracized", 1), ben("No Occult", 3)
+  ]),
+  alienStage("vorox", "Warrior", "upbringing", "Vorox",
+    "Raised to hunt and to fight, and civilised only as far as necessary.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+    ch("spirit.passion", 1),
+    sk("Dodge", 1), sk("Fight", 2), sk("Melee", 2), sk("Observe", 1), sk("Sneak", 1),
+    sk("Vigor", 1), sk("Remedy", 1), lang("Speak", "Voroxish", 2),
+    sk("Survival", 2), sk("Tracking", 2),
+    bless("Predatory"), bless("Giant"), bless("Sensitive Smell"), curse("Uncouth"),
+    ben("Bite", 3), ben("Extra Limbs", 4),
+    ben("Ostracized", 1), ben("No Occult", 3)
+  ]),
+  alienStage("vorox", "Civilised", "apprenticeship", "Vorox",
+    "Taught by humans to move through their society in an acceptable manner.", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("body.endurance", 1),
+    ch("mind.perception", 1), ch("spirit.passion", 1),
+    sk("Dodge", 1), sk("Fight", 2), sk("Impress", 1), sk("Melee", 1), sk("Observe", 1),
+    sk("Sneak", 1), sk("Vigor", 1), sk("Survival", 1), sk("Tracking", 1)
+  ], { factions: ["alien", "merchant"] }),
+
+  alienStage("vorox", "Chieftain", "earlyCareer", "Vorox",
+    "Knighted, and expected to hold a pack together in human company.", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("body.endurance", 1),
+    ch("mind.wits", 1), ch("mind.perception", 2),
+    orSpirit("al-vorox-cq-social", "Extrovert", "Introvert", 1),
+    ch("spirit.passion", 2),
+    orSpirit("al-vorox-cq-faith", "Faith", "Ego", 1),
+    sk("Dodge", 1), sk("Fight", 1), sk("Melee", 1), sk("Observe", 1), sk("Shoot", 1),
+    sk("Vigor", 1), sk("Tracking", 1),
+    action("Banga (Charge)"), action("Drox"),
+    ben("Nobility", 3)
+  ]),
+  alienStage("vorox", "Warrior", "earlyCareer", "Vorox",
+    "Sold as shock troops or guerrilla fighters, and worth every firebird.", [
+    ch("body.strength", 1), ch("body.dexterity", 1), ch("body.endurance", 1),
+    ch("mind.wits", 1), ch("mind.perception", 2),
+    orSpirit("al-vorox-wq-social", "Extrovert", "Introvert", 1),
+    ch("spirit.passion", 2),
+    orSpirit("al-vorox-wq-faith", "Faith", "Ego", 1),
+    sk("Dodge", 1), sk("Fight", 1), sk("Melee", 1), sk("Observe", 1), sk("Shoot", 1),
+    sk("Vigor", 1), sk("Tracking", 1),
+    action("Banga (Charge)"), action("Drox"),
+    ben("Family Ties", 3)
+  ])
+];
+
 /* -------------------------------------------- */
 /*  Extra Stages (p.84–85)                      */
 /* -------------------------------------------- */
@@ -1175,5 +1412,6 @@ export const CHARACTER_HISTORIES = [
   ...UPBRINGING, ...FREEMAN_UPBRINGING,
   ...APPRENTICESHIP, ...PRIEST_APPRENTICESHIP, ...GUILD_APPRENTICESHIP,
   ...EARLY_CAREER, ...PRIEST_CAREER, ...GUILD_CAREER,
+  ...ALIEN_HISTORY,
   ...EXTRA_STAGES
 ];

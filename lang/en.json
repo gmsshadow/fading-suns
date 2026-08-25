@@ -344,7 +344,8 @@
       "Status": "Status",
       "Points": "Benefice points",
       "Remaining": "remaining",
-      "Extras": "Extra points from Curses and Afflictions"
+      "Extras": "Extra points from Curses and Afflictions",
+      "Racial": "Racial"
     },
     "Stage": {
       "Upbringing": "Upbringing",

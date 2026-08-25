@@ -1,6 +1,6 @@
 {
-  "_key": "!items!J0mHmgoSCq1PRNX7",
-  "_id": "J0mHmgoSCq1PRNX7",
+  "_key": "!items!sFRes4r9NpjwXy6z",
+  "_id": "sFRes4r9NpjwXy6z",
   "name": "Early Career: Starman",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Military Command",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

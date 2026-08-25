@@ -1,6 +1,6 @@
 {
-  "_key": "!items!p7SvKXeDii6kHIVe",
-  "_id": "p7SvKXeDii6kHIVe",
+  "_key": "!items!rwcadpCRQKQnInZy",
+  "_id": "rwcadpCRQKQnInZy",
   "name": "Apprenticeship: Parish (Sanctuary Aeon)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

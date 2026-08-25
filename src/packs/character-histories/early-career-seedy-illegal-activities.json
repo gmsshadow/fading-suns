@@ -1,6 +1,6 @@
 {
-  "_key": "!items!stm5GeCLb8oVN0OU",
-  "_id": "stm5GeCLb8oVN0OU",
+  "_key": "!items!4ViFqF4splse4OOp",
+  "_id": "4ViFqF4splse4OOp",
   "name": "Early Career: Seedy/Illegal Activities",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

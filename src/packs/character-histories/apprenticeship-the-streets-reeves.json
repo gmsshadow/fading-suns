@@ -1,6 +1,6 @@
 {
-  "_key": "!items!YUGZeZCsh0wA5Rx6",
-  "_id": "YUGZeZCsh0wA5Rx6",
+  "_key": "!items!5yfUDXHBgZ4m0AUe",
+  "_id": "5yfUDXHBgZ4m0AUe",
   "name": "Apprenticeship: The Streets (Reeves)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

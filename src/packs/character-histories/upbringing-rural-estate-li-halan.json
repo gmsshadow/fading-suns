@@ -1,6 +1,6 @@
 {
-  "_key": "!items!6mDaWWGx1mIZpbbW",
-  "_id": "6mDaWWGx1mIZpbbW",
+  "_key": "!items!NogdpBdHKT4gFvY6",
+  "_id": "NogdpBdHKT4gFvY6",
   "name": "Upbringing: Rural Estate (Li Halan)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Li Halan",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

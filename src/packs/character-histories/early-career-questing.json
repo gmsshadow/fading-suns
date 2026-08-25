@@ -1,6 +1,6 @@
 {
-  "_key": "!items!NcCsfBdPF8zuiOz9",
-  "_id": "NcCsfBdPF8zuiOz9",
+  "_key": "!items!1jgvhiFUWrNf66LG",
+  "_id": "1jgvhiFUWrNf66LG",
   "name": "Early Career: Questing",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Questing",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

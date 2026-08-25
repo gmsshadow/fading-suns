@@ -1,6 +1,6 @@
 {
-  "_key": "!items!s4PaP4EdsXXiTaXw",
-  "_id": "s4PaP4EdsXXiTaXw",
+  "_key": "!items!zc6sy2ScUvNRdu1W",
+  "_id": "zc6sy2ScUvNRdu1W",
   "name": "Extra Stage: Cohort Tour of Duty",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Imperial Tours",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -135,7 +136,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7600000,
+  "sort": 9300000,
   "ownership": {
     "default": 0
   },

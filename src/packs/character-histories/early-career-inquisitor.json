@@ -1,6 +1,6 @@
 {
-  "_key": "!items!WC6mDt5yhxBINDwx",
-  "_id": "WC6mDt5yhxBINDwx",
+  "_key": "!items!5HAWLfqEVuutu0Yl",
+  "_id": "5HAWLfqEVuutu0Yl",
   "name": "Early Career: Inquisitor",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

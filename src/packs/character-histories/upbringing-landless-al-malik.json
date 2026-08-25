@@ -1,6 +1,6 @@
 {
-  "_key": "!items!D3TSRV7EfMB1XTut",
-  "_id": "D3TSRV7EfMB1XTut",
+  "_key": "!items!O6pkrFsbwaBV1iNd",
+  "_id": "O6pkrFsbwaBV1iNd",
   "name": "Upbringing: Landless (al-Malik)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "al-Malik",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

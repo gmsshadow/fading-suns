@@ -323,6 +323,42 @@ const RICHES = [
 ];
 
 /* -------------------------------------------- */
+/*  Racial (p.83)                               */
+/* -------------------------------------------- */
+
+/**
+ * Traits belonging to the alien races. These are not chosen freely — a Vorox
+ * pays for the ones its Character History grants, and no one else may take them.
+ */
+const RACIAL = [
+  {
+    n: "Bite", p: "benefice", c: 3, race: "vorox",
+    d: "A Vorox's jaws. Rolled on Dexterity + Fight at -1 initiative, for three dice of damage."
+  },
+  {
+    n: "Extra Limbs", p: "benefice", c: 4, race: "vorox",
+    d: "Six limbs in total, usable as arms or legs."
+  },
+  {
+    n: "Poison Claw", p: "benefice", c: 6, race: "vorox",
+    d: "The mark of a royal Vorox. Rolled on Dexterity + Fight for three dice of damage. The poison is a slow paralytic: a target that takes damage suffers a cumulative -1 per turn on all physical actions, and once the turns equal its Vitality rating it can take no physical action for the rest of the span."
+  },
+  {
+    n: "Ostracized", p: "affliction", c: 1,
+    d: "Shunned by Known Worlds society. Most aliens carry this simply for being alien.",
+    ranks: [
+      { value: 1, label: "Mild — treated with suspicion" },
+      { value: 2, label: "Moderate — refused service and shelter" },
+      { value: 3, label: "Severe — driven out, or worse" }
+    ]
+  },
+  {
+    n: "No Occult", p: "affliction", c: 3, race: "vorox",
+    d: "Cannot awaken Psi or Theurgy, ever. The Vorox mind has no door for it."
+  }
+];
+
+/* -------------------------------------------- */
 /*  Status (p.123–124)                          */
 /* -------------------------------------------- */
 
@@ -407,6 +443,7 @@ const tag = (entries, category) => entries.map(e => ({ ...e, cat: e.cat ?? categ
 
 /** Every Benefice and Affliction sampled in the core rules, p.117–p.124. */
 export const BENEFICES_AND_AFFLICTIONS = [
+  ...tag(RACIAL, "racial"),
   ...tag(BACKGROUND, "background"),
   ...tag(COMMUNITY, "community"),
   ...tag(POSSESSIONS, "possessions"),

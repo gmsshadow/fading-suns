@@ -1,0 +1,178 @@
+{
+  "_key": "!items!jycO8kNMV423Pg6T",
+  "_id": "jycO8kNMV423Pg6T",
+  "name": "Early Career: Chieftain (Vorox)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Knighted, and expected to hold a pack together in human company.</p>",
+    "stageType": "earlyCareer",
+    "faction": "alien",
+    "group": "Vorox",
+    "factions": [],
+    "race": "vorox",
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "al-vorox-cq-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.passion",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "al-vorox-cq-faith",
+        "label": "Faith or Ego +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Faith",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.faith",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Ego",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.ego",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Fight",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Melee",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Vigor",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Tracking",
+        "value": 1
+      },
+      {
+        "kind": "combatAction",
+        "key": "Compendium.fading-suns.combat-actions.Item.PArGfMymtUV0qhYT",
+        "label": "Banga (Charge)",
+        "value": 3
+      },
+      {
+        "kind": "combatAction",
+        "key": "Compendium.fading-suns.combat-actions.Item.b0hVTRv5IpCK7cH9",
+        "label": "Drox",
+        "value": 5
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.snfeMt5rY8AC8zLK",
+        "value": 3,
+        "label": "Nobility"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

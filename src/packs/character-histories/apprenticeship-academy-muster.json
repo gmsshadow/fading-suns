@@ -1,6 +1,6 @@
 {
-  "_key": "!items!LqseMdK1Zbwp31AO",
-  "_id": "LqseMdK1Zbwp31AO",
+  "_key": "!items!SNMEZihsSEBb5sXx",
+  "_id": "SNMEZihsSEBb5sXx",
   "name": "Apprenticeship: Academy (Muster)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!AmuePJZ2JRHFYx32",
-  "_id": "AmuePJZ2JRHFYx32",
+  "_key": "!items!PT3k2g6IPud1qwa2",
+  "_id": "PT3k2g6IPud1qwa2",
   "name": "Early Career: Preacher/Pastor",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!dh7JTEl9fawDzp5P",
-  "_id": "dh7JTEl9fawDzp5P",
+  "_key": "!items!WzTIEfX10OLzJS1i",
+  "_id": "WzTIEfX10OLzJS1i",
   "name": "Apprenticeship: Dandy",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Leisure",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

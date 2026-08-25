@@ -1,6 +1,6 @@
 {
-  "_key": "!items!JmDKtU1WgEH63VdT",
-  "_id": "JmDKtU1WgEH63VdT",
+  "_key": "!items!J1Svq2c0yEi7yAHl",
+  "_id": "J1Svq2c0yEi7yAHl",
   "name": "Extra Stage: Savant Psi",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Psychic Awakening",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -167,7 +168,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 8000000,
+  "sort": 9700000,
   "ownership": {
     "default": 0
   },

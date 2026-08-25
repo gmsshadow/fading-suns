@@ -62,6 +62,7 @@ const BEHAVIOR_BLESSINGS = [
 const BEHAVIOR_CURSES = [
   { n: "Argumentative", c: 2, mods: [ch(-2, "spirit.extrovert")], r: "In conversation" },
   { n: "Austere", c: 2, mods: [ch(-2, "spirit.passion")], r: "Before members of the flock" },
+  { n: "Bitter", c: 2, mods: [ch(-2, "spirit.calm")], r: "When dealing with humans" },
   { n: "Bluster", c: 2, mods: [ch(-2, "spirit.extrovert")], r: "When recounting deeds" },
   { n: "Brainwashed", c: 2, mods: [ch(-2, "mind.wits")], r: "When confronted with something that contradicts the brainwashed belief" },
   { n: "Callous", c: 2, mods: [ch(-2, "spirit.passion")], r: "When asked for aid" },
@@ -125,6 +126,7 @@ const KNACK_BLESSINGS = [
   { n: "Keen Ears", c: 2, mods: [ch(2, "mind.perception")], r: "With hearing only" },
   { n: "Keen Eyes", c: 2, mods: [ch(2, "mind.perception")], r: "With sight only" },
   { n: "Lucky at Cards", c: 2, mods: [sk(2, "Gambling")], r: "With cards" },
+  { n: "Predatory", c: 2, mods: [ch(2, "mind.perception"), ch(-2, "spirit.calm")], r: "When hungry" },
   { n: "Sensitive Smell", c: 1, mods: [ch(2, "mind.perception")], r: "With smell only" },
   { n: "Sensitive Touch", c: 1, mods: [ch(2, "mind.perception")], r: "To discern touched objects" },
   { n: "Sonorous", c: 2, mods: [ch(2, "spirit.extrovert")], r: "When impressing others through speech" },

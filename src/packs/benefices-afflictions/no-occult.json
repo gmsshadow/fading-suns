@@ -1,0 +1,28 @@
+{
+  "_key": "!items!b45li8EvSy8tXL38",
+  "_id": "b45li8EvSy8tXL38",
+  "name": "No Occult",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Cannot awaken Psi or Theurgy, ever. The Vorox mind has no door for it.</p>",
+    "polarity": "affliction",
+    "category": "racial",
+    "value": 3,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

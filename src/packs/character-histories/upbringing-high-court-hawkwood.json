@@ -1,6 +1,6 @@
 {
-  "_key": "!items!AIdHH4GB4UfqIwVb",
-  "_id": "AIdHH4GB4UfqIwVb",
+  "_key": "!items!KbbDcYlb4TFrqRGx",
+  "_id": "KbbDcYlb4TFrqRGx",
   "name": "Upbringing: High-Court (Hawkwood)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hawkwood",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

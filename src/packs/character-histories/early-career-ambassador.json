@@ -1,6 +1,6 @@
 {
-  "_key": "!items!ABTQfZAqlPj9rOU9",
-  "_id": "ABTQfZAqlPj9rOU9",
+  "_key": "!items!QRL8ZxaVjT5sEShL",
+  "_id": "QRL8ZxaVjT5sEShL",
   "name": "Early Career: Ambassador",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Court",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

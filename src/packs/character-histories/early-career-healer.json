@@ -1,6 +1,6 @@
 {
-  "_key": "!items!XjjkenUcKCQ0nKfk",
-  "_id": "XjjkenUcKCQ0nKfk",
+  "_key": "!items!xPcwJGfiwvwbcLae",
+  "_id": "xPcwJGfiwvwbcLae",
   "name": "Early Career: Healer",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

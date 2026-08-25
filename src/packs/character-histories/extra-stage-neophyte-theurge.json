@@ -1,6 +1,6 @@
 {
-  "_key": "!items!YEcHNpEZiBeLIZif",
-  "_id": "YEcHNpEZiBeLIZif",
+  "_key": "!items!90Uro5eifyHICBDH",
+  "_id": "90Uro5eifyHICBDH",
   "name": "Extra Stage: Neophyte Theurge",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Theurgic Calling",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -81,7 +82,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 8100000,
+  "sort": 9800000,
   "ownership": {
     "default": 0
   },

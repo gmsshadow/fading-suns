@@ -1,6 +1,6 @@
 {
-  "_key": "!items!K0Ioaw93LcOQBXGj",
-  "_id": "K0Ioaw93LcOQBXGj",
+  "_key": "!items!1yrQ9U7s9vhHIGkX",
+  "_id": "1yrQ9U7s9vhHIGkX",
   "name": "Upbringing: High-Court (Li Halan)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Li Halan",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

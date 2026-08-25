@@ -1,6 +1,6 @@
 {
-  "_key": "!items!cATsNjFYz9q1mdCQ",
-  "_id": "cATsNjFYz9q1mdCQ",
+  "_key": "!items!txJ4vJB4Yf1MfJgq",
+  "_id": "txJ4vJB4Yf1MfJgq",
   "name": "Early Career: Mercenary — Soldier",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

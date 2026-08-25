@@ -1,6 +1,6 @@
 {
-  "_key": "!items!xGbayL1yQmdZsshb",
-  "_id": "xGbayL1yQmdZsshb",
+  "_key": "!items!zrP92rSF0qWodtbB",
+  "_id": "zrP92rSF0qWodtbB",
   "name": "Extra Stage: Tweaked",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Cybernetics",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -31,7 +32,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7700000,
+  "sort": 9400000,
   "ownership": {
     "default": 0
   },

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!oqdYTHrn25VEDX35",
-  "_id": "oqdYTHrn25VEDX35",
+  "_key": "!items!2t8Qm8tId7TXMcWb",
+  "_id": "2t8Qm8tId7TXMcWb",
   "name": "Extra Stage: Another Tour of Duty",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Tours of Duty",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -94,7 +95,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7400000,
+  "sort": 9100000,
   "ownership": {
     "default": 0
   },

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!hC8hhz4clSH1mQxm",
+  "_id": "hC8hhz4clSH1mQxm",
+  "name": "Ostracized",
+  "type": "benefice",
+  "img": "icons/svg/downgrade.svg",
+  "system": {
+    "description": "<p>Shunned by Known Worlds society. Most aliens carry this simply for being alien.</p>",
+    "polarity": "affliction",
+    "category": "racial",
+    "value": 1,
+    "ranks": [
+      {
+        "value": 1,
+        "label": "Mild — treated with suspicion",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 2,
+        "label": "Moderate — refused service and shelter",
+        "firebirds": 0,
+        "income": 0
+      },
+      {
+        "value": 3,
+        "label": "Severe — driven out, or worse",
+        "firebirds": 0,
+        "income": 0
+      }
+    ],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

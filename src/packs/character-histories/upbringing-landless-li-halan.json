@@ -1,6 +1,6 @@
 {
-  "_key": "!items!PhlrSDu2h7fylfbj",
-  "_id": "PhlrSDu2h7fylfbj",
+  "_key": "!items!fA4ciZfOESNSldet",
+  "_id": "fA4ciZfOESNSldet",
   "name": "Upbringing: Landless (Li Halan)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Li Halan",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

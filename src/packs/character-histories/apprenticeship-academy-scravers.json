@@ -1,6 +1,6 @@
 {
-  "_key": "!items!K0wHXPeV2K0AfwGc",
-  "_id": "K0wHXPeV2K0AfwGc",
+  "_key": "!items!yW6794aMsFnxzzD3",
+  "_id": "yW6794aMsFnxzzD3",
   "name": "Apprenticeship: Academy (Scravers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

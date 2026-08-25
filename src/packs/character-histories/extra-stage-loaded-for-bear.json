@@ -1,6 +1,6 @@
 {
-  "_key": "!items!FtJG8MMtZF5oO7VP",
-  "_id": "FtJG8MMtZF5oO7VP",
+  "_key": "!items!Rdct4vPGpynoLj7B",
+  "_id": "Rdct4vPGpynoLj7B",
   "name": "Extra Stage: Loaded-for-Bear",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Cybernetics",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -31,7 +32,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7800000,
+  "sort": 9500000,
   "ownership": {
     "default": 0
   },

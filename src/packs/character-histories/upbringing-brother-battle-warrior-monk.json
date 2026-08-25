@@ -1,6 +1,6 @@
 {
-  "_key": "!items!UarEXsA6Vx0QLwh6",
-  "_id": "UarEXsA6Vx0QLwh6",
+  "_key": "!items!dA9FnVfD5OSxw5IV",
+  "_id": "dA9FnVfD5OSxw5IV",
   "name": "Upbringing: Brother Battle Warrior Monk",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "priest",
     "group": "Brother Battle",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

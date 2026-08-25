@@ -1,6 +1,6 @@
 {
-  "_key": "!items!WzWhUizEvw6RW7Tm",
-  "_id": "WzWhUizEvw6RW7Tm",
+  "_key": "!items!q4P3pcGPf2LHfou5",
+  "_id": "q4P3pcGPf2LHfou5",
   "name": "Early Career: Starship Duty",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

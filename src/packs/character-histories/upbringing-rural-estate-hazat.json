@@ -1,6 +1,6 @@
 {
-  "_key": "!items!7k7tb0Wp8EZZQ4dA",
-  "_id": "7k7tb0Wp8EZZQ4dA",
+  "_key": "!items!GwrQ7pLbhy1aGRfJ",
+  "_id": "GwrQ7pLbhy1aGRfJ",
   "name": "Upbringing: Rural Estate (Hazat)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hazat",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

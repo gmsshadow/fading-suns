@@ -279,9 +279,24 @@ function buildCharacterHistories() {
     extra: "Extra Stage"
   };
 
+  // Some stage names recur within a stage type across races and factions —
+  // Ur-Ukar and Vorox both have a Chieftain career — so those carry their
+  // grouping in the name, as the noble Upbringings already do.
+  const seen = {};
+  for (const stage of CHARACTER_HISTORIES) {
+    const key = `${stage.stage}:${stage.n}`;
+    seen[key] = (seen[key] ?? 0) + 1;
+  }
+
   return CHARACTER_HISTORIES.map((stage, index) => ({
-    _id: stableId(`Item.character-histories.${stage.stage}.${stage.n}`),
-    name: `${STAGE_LABELS[stage.stage]}: ${stage.n}`,
+    _id: stableId(`Item.character-histories.${stage.stage}.${stage.group ?? ""}.${stage.n}`),
+    // Alien stages always carry their race, since "Chieftain" alone says
+    // nothing about whether it is Ukari or Vorox. Other stages carry their
+    // grouping only where the name would otherwise collide.
+    name: (stage.race || seen[`${stage.stage}:${stage.n}`] > 1)
+      && stage.group && stage.group !== stage.n
+      ? `${STAGE_LABELS[stage.stage]}: ${stage.n} (${stage.group})`
+      : `${STAGE_LABELS[stage.stage]}: ${stage.n}`,
     type: "stage",
     img: "icons/svg/book.svg",
     system: {
@@ -290,6 +305,7 @@ function buildCharacterHistories() {
       faction: stage.faction,
       group: stage.group ?? "",
       factions: stage.factions ?? [],
+      race: stage.race ?? "",
       slot: stage.slot ?? "",
       grants: resolveReferences(stage.grants, stage.n),
       // Suggestions name a Benefice; the uuid is resolved here so the wizard can

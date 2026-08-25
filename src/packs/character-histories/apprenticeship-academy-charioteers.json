@@ -1,6 +1,6 @@
 {
-  "_key": "!items!HehvzjKeegcxk2Og",
-  "_id": "HehvzjKeegcxk2Og",
+  "_key": "!items!IL59DeUfKplcgMRD",
+  "_id": "IL59DeUfKplcgMRD",
   "name": "Apprenticeship: Academy (Charioteers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

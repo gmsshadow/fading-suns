@@ -1,6 +1,6 @@
 {
-  "_key": "!items!R8fUM4PvZV7fwGcY",
-  "_id": "R8fUM4PvZV7fwGcY",
+  "_key": "!items!spjUeJwo1vikwBqT",
+  "_id": "spjUeJwo1vikwBqT",
   "name": "Apprenticeship: Monastery (Sanctuary Aeon)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

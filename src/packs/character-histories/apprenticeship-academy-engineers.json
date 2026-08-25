@@ -1,6 +1,6 @@
 {
-  "_key": "!items!6wOY9o9N0aMZuDOI",
-  "_id": "6wOY9o9N0aMZuDOI",
+  "_key": "!items!11lNWVepwryErref",
+  "_id": "11lNWVepwryErref",
   "name": "Apprenticeship: Academy (Engineers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

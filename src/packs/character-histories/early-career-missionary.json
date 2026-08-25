@@ -1,6 +1,6 @@
 {
-  "_key": "!items!rnB2dgSY23zdSh1z",
-  "_id": "rnB2dgSY23zdSh1z",
+  "_key": "!items!shLzHrctocnF6Ja3",
+  "_id": "shLzHrctocnF6Ja3",
   "name": "Early Career: Missionary",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

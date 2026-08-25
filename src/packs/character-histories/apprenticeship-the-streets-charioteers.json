@@ -1,6 +1,6 @@
 {
-  "_key": "!items!krWi6dkBlLI7gAZx",
-  "_id": "krWi6dkBlLI7gAZx",
+  "_key": "!items!1V5Gh9L9wRg18b4k",
+  "_id": "1V5Gh9L9wRg18b4k",
   "name": "Apprenticeship: The Streets (Charioteers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

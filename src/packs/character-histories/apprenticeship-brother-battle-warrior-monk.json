@@ -1,6 +1,6 @@
 {
-  "_key": "!items!HbvjjuPH2e28336F",
-  "_id": "HbvjjuPH2e28336F",
+  "_key": "!items!8ebn7jJ86b1kVPt7",
+  "_id": "8ebn7jJ86b1kVPt7",
   "name": "Apprenticeship: Brother Battle Warrior Monk",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "priest",
     "group": "Brother Battle",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

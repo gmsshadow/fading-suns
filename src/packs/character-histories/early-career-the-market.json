@@ -1,6 +1,6 @@
 {
-  "_key": "!items!AcOqQ7Ml7SFNNEcF",
-  "_id": "AcOqQ7Ml7SFNNEcF",
+  "_key": "!items!vi02cceRV8gHx1Rj",
+  "_id": "vi02cceRV8gHx1Rj",
   "name": "Early Career: The Market",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

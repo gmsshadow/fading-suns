@@ -1,6 +1,6 @@
 {
-  "_key": "!items!HzZaEtJemndCHVos",
-  "_id": "HzZaEtJemndCHVos",
+  "_key": "!items!e8a9ZeoxuVhkEfd4",
+  "_id": "e8a9ZeoxuVhkEfd4",
   "name": "Apprenticeship: Diplomacy/Intrigue",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Diplomacy",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

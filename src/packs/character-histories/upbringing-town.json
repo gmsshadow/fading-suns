@@ -1,6 +1,6 @@
 {
-  "_key": "!items!WNjy7w3VDNWCqO3z",
-  "_id": "WNjy7w3VDNWCqO3z",
+  "_key": "!items!J5BlrBgy6xgAygRg",
+  "_id": "J5BlrBgy6xgAygRg",
   "name": "Upbringing: Town",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "merchant"
     ],
+    "race": "",
     "slot": "environment",
     "grants": [
       {

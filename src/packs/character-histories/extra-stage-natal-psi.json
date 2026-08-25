@@ -1,6 +1,6 @@
 {
-  "_key": "!items!hUjYxjlpmmEsOA1F",
-  "_id": "hUjYxjlpmmEsOA1F",
+  "_key": "!items!FLCIxaaG9s7egycL",
+  "_id": "FLCIxaaG9s7egycL",
   "name": "Extra Stage: Natal Psi",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "",
     "group": "Psychic Awakening",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -81,7 +82,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7900000,
+  "sort": 9600000,
   "ownership": {
     "default": 0
   },

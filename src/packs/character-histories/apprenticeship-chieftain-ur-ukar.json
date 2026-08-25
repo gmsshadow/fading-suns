@@ -1,0 +1,155 @@
+{
+  "_key": "!items!LCSegU0JLoXJRGLD",
+  "_id": "LCSegU0JLoXJRGLD",
+  "name": "Apprenticeship: Chieftain (Ur-Ukar)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Raised to lead a clan, which among the Ukari means outliving the alternatives.</p>",
+    "stageType": "apprenticeship",
+    "faction": "alien",
+    "group": "Ur-Ukar",
+    "factions": [
+      "alien",
+      "priest",
+      "merchant"
+    ],
+    "race": "urUkar",
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-chief-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "al-ukar-chief-combat",
+        "label": "Combat skill (choose Fight or Melee) +2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Impress",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Knavery",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Poisons",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Stoic Mind",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Survival",
+        "value": 1
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 8100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

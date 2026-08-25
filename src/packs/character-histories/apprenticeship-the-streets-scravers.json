@@ -1,6 +1,6 @@
 {
-  "_key": "!items!at9zdacFm8ULgT8n",
-  "_id": "at9zdacFm8ULgT8n",
+  "_key": "!items!XODldngTVZ3mISFO",
+  "_id": "XODldngTVZ3mISFO",
   "name": "Apprenticeship: The Streets (Scravers)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

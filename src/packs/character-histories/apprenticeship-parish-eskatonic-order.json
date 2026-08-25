@@ -1,6 +1,6 @@
 {
-  "_key": "!items!YF1bhk2iWwpEX1OH",
-  "_id": "YF1bhk2iWwpEX1OH",
+  "_key": "!items!g6P1IGl2WjZXW7Kb",
+  "_id": "g6P1IGl2WjZXW7Kb",
   "name": "Apprenticeship: Parish (Eskatonic Order)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

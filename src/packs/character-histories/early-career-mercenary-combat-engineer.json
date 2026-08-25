@@ -1,6 +1,6 @@
 {
-  "_key": "!items!TMPcoTQnn5j3ypZI",
-  "_id": "TMPcoTQnn5j3ypZI",
+  "_key": "!items!fYqyedbQ84W4bR6C",
+  "_id": "fYqyedbQ84W4bR6C",
   "name": "Early Career: Mercenary — Combat Engineer",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

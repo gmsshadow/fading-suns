@@ -1,6 +1,6 @@
 {
-  "_key": "!items!ppvGgX9qwmL4il07",
-  "_id": "ppvGgX9qwmL4il07",
+  "_key": "!items!3gKeWH5u5NlcN9j3",
+  "_id": "3gKeWH5u5NlcN9j3",
   "name": "Apprenticeship: Monastery (Orthodoxy)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

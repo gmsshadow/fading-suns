@@ -261,6 +261,27 @@ const KNOWN_SHORTFALLS = {
 const COMPOSITE = new Set(["environment", "class"]);
 
 /**
+ * Alien stages are not judged against the human budgets.
+ *
+ * A human spends 20 characteristic and 30 skill points across three stages. An
+ * alien spends Extra points on their race as well — 2 for an Ur-Obun, 10 for a
+ * Vorox — and their histories are written to different totals as a result: the
+ * Vorox Warrior Upbringing alone lists fifteen skill points where a human gets
+ * five, while the Vhem-saahen Champion Apprenticeship lists only five where a
+ * human gets ten.
+ *
+ * They are checked against their own recorded spends below instead, so a change
+ * is still caught.
+ */
+const ALIEN_SPEND = {
+  "Upbringing: Ur-Obun": { characteristics: 6, skills: 5 },
+  "Upbringing: Ur-Ukar": { characteristics: 5, skills: 6 },
+  "Upbringing: Chieftain (Vorox)": { characteristics: 5, skills: 9 },
+  "Upbringing: Warrior (Vorox)": { characteristics: 5, skills: 15 },
+  "Apprenticeship: Vhem-saahen Champion (Ur-Obun)": { characteristics: 5, skills: 5 }
+};
+
+/**
  * What a stage spends, as a range.
  *
  * A choice contributes somewhere between its cheapest and dearest option, so a
@@ -330,6 +351,7 @@ test("each stage can be spent to its published budget (p.88)", () => {
   for (const stage of stages) {
     if (stage.name in KNOWN_SHORTFALLS) continue;
     if (COMPOSITE.has(stage.system.slot)) continue;
+    if (stage.system.race) continue;
     const budget = STAGE_BUDGET[stage.system.stageType];
     const range = spendRange(stage.system.grants);
 
@@ -762,8 +784,11 @@ test("every occult power choice can be satisfied from the compendiums", () => {
 /* -------------------------------------------- */
 
 test("the priest Apprenticeship matrix is three settings by four sects (p.77)", () => {
+  // Obun and Ukari may take a human sect's Apprenticeship, so their own stages
+  // list "priest" too; the matrix is the human one.
   const priest = stages.filter(s =>
-    s.system.stageType === "apprenticeship" && s.system.factions?.includes("priest"));
+    s.system.stageType === "apprenticeship" && !s.system.race
+    && s.system.factions?.includes("priest"));
 
   const settings = {};
   for (const stage of priest) (settings[stage.system.group] ??= []).push(stage.name);
@@ -778,7 +803,8 @@ test("the priest Apprenticeship matrix is three settings by four sects (p.77)", 
 
 test("the guild Apprenticeship matrix omits the cells the book omits (p.80)", () => {
   const guild = stages.filter(s =>
-    s.system.stageType === "apprenticeship" && s.system.factions?.includes("merchant"));
+    s.system.stageType === "apprenticeship" && !s.system.race
+    && s.system.factions?.includes("merchant"));
 
   const settings = {};
   for (const stage of guild) (settings[stage.system.group] ??= []).push(stage.name);
@@ -790,7 +816,8 @@ test("the guild Apprenticeship matrix omits the cells the book omits (p.80)", ()
 
 test("nobles may join the priesthood or a guild at Apprenticeship (p.77, p.80)", () => {
   const joinable = stages.filter(s =>
-    s.system.stageType === "apprenticeship" && s.system.factions?.includes("noble"));
+    s.system.stageType === "apprenticeship" && !s.system.race
+    && s.system.factions?.includes("noble"));
   assert.ok(joinable.length >= 20, "both matrices are open to nobles");
 
   // But their Upbringings are not shared.
@@ -807,7 +834,8 @@ test("each faction's Early Careers confer the rank that faction uses", () => {
 
   for (const [faction, expected] of Object.entries(rankFor)) {
     const careers = stages.filter(s =>
-      s.system.stageType === "earlyCareer" && s.system.factions?.includes(faction));
+      s.system.stageType === "earlyCareer" && !s.system.race
+      && s.system.factions?.includes(faction));
     assert.ok(careers.length, `${faction} should have Early Careers`);
 
     for (const career of careers) {
@@ -834,4 +862,85 @@ test("the Brother Battle track teaches Combat Actions matched to its style (p.78
   const [mantok, sword] = style.options;
   assert.deepEqual(mantok.grants.map(g => g.label), ["Martial Fist", "Martial Kick", "Martial Hold"]);
   assert.deepEqual(sword.grants.map(g => g.label), ["Parry", "Thrust", "Slash"]);
+});
+
+
+/* -------------------------------------------- */
+/*  The alien races (p.83)                      */
+/* -------------------------------------------- */
+
+const alienStages = stages.filter(s => s.system.race);
+
+test("all three alien races have a full lifepath", () => {
+  const counts = {};
+  for (const stage of alienStages) {
+    const race = (counts[stage.system.race] ??= {});
+    race[stage.system.stageType] = (race[stage.system.stageType] ?? 0) + 1;
+  }
+
+  assert.deepEqual(counts, {
+    urObun: { upbringing: 1, apprenticeship: 3, earlyCareer: 3 },
+    urUkar: { upbringing: 1, apprenticeship: 2, earlyCareer: 2 },
+    // "Chieftain" and "Warrior" are separate Vorox Upbringings; the two share
+    // one "Civilised" Apprenticeship.
+    vorox: { upbringing: 2, apprenticeship: 1, earlyCareer: 2 }
+  });
+});
+
+test("alien stages spend what their entries actually list", () => {
+  for (const [name, expected] of Object.entries(ALIEN_SPEND)) {
+    const stage = byName(name);
+    assert.ok(stage, `${name} is missing from the pack`);
+    const range = spendRange(stage.system.grants);
+    assert.equal(range.characteristics[1], expected.characteristics, `${name} characteristics`);
+    assert.equal(range.skills[1], expected.skills, `${name} skills`);
+  }
+});
+
+test("every other alien stage lands on the human budget", () => {
+  for (const stage of alienStages) {
+    if (stage.name in ALIEN_SPEND) continue;
+    const budget = STAGE_BUDGET[stage.system.stageType];
+    const range = spendRange(stage.system.grants);
+    assert.ok(budget.characteristics >= range.characteristics[0]
+           && budget.characteristics <= range.characteristics[1],
+      `${stage.name}: ${range.characteristics} vs ${budget.characteristics}`);
+    assert.ok(budget.skills >= range.skills[0] && budget.skills <= range.skills[1],
+      `${stage.name}: ${range.skills} vs ${budget.skills}`);
+  }
+});
+
+test("Obun and Ukari may take a human sect's or guild's Apprenticeship (p.83)", () => {
+  const open = alienStages.filter(s =>
+    s.system.stageType === "apprenticeship" && s.system.factions?.length);
+  assert.ok(open.length >= 5);
+  for (const stage of open) {
+    assert.ok(stage.system.factions.includes("alien"));
+  }
+});
+
+test("only a Vorox carries the racial Benefices (p.83)", () => {
+  const racial = ["Bite", "Extra Limbs", "Poison Claw", "No Occult"];
+  for (const stage of stages) {
+    const granted = stage.system.grants
+      .filter(g => g.kind === "benefice" && racial.includes(g.label))
+      .map(g => g.label);
+    if (!granted.length) continue;
+    assert.equal(stage.system.race, "vorox", `${stage.name} grants ${granted}`);
+  }
+});
+
+test("only a royal Vorox has the Poison Claw (p.83)", () => {
+  const withClaw = alienStages.filter(s =>
+    s.system.grants.some(g => g.kind === "benefice" && g.label === "Poison Claw"));
+  assert.deepEqual(withClaw.map(s => s.name), ["Upbringing: Chieftain (Vorox)"],
+    "the Chieftain is the royal line; the Warrior is not");
+});
+
+test("both Vorox Early Careers teach Graa (p.83)", () => {
+  for (const name of ["Early Career: Chieftain (Vorox)", "Early Career: Warrior (Vorox)"]) {
+    const actions = byName(name).system.grants
+      .filter(g => g.kind === "combatAction").map(g => g.label);
+    assert.deepEqual(actions, ["Banga (Charge)", "Drox"]);
+  }
 });

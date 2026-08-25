@@ -1,6 +1,6 @@
 {
-  "_key": "!items!9jsEAZmgJS2ldACh",
-  "_id": "9jsEAZmgJS2ldACh",
+  "_key": "!items!uFmHU1BfFV36LGPI",
+  "_id": "uFmHU1BfFV36LGPI",
   "name": "Apprenticeship: Monastery (Eskatonic Order)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!jVYlc7Yx34kEfm8j",
-  "_id": "jVYlc7Yx34kEfm8j",
+  "_key": "!items!KfbrZ8oEd5NqIMSF",
+  "_id": "KfbrZ8oEd5NqIMSF",
   "name": "Early Career: Brother Battle Warrior Monk",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "priest",
     "group": "Brother Battle",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

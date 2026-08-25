@@ -1,6 +1,6 @@
 {
-  "_key": "!items!JgJtBgumQjjtivxN",
-  "_id": "JgJtBgumQjjtivxN",
+  "_key": "!items!tZDfvBsqISUcdl5L",
+  "_id": "tZDfvBsqISUcdl5L",
   "name": "Upbringing: High-Court (al-Malik)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "al-Malik",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

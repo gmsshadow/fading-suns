@@ -1,0 +1,99 @@
+{
+  "_key": "!items!HdGEKJbgRrc78qEb",
+  "_id": "HdGEKJbgRrc78qEb",
+  "name": "Apprenticeship: Voavenlohjun Priest (Ur-Obun)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Ordained into the Obun sect of the Church.</p>",
+    "stageType": "apprenticeship",
+    "faction": "alien",
+    "group": "Ur-Obun",
+    "factions": [
+      "alien",
+      "priest",
+      "merchant"
+    ],
+    "race": "urObun",
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.introvert",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Charm",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Academia",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Alchemy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Metaphysics",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Stoic Mind",
+        "value": 2
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

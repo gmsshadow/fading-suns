@@ -1,6 +1,6 @@
 {
-  "_key": "!items!EykN95SicsC8DHt9",
-  "_id": "EykN95SicsC8DHt9",
+  "_key": "!items!iXImuO4oXrullp55",
+  "_id": "iXImuO4oXrullp55",
   "name": "Upbringing: Landless (Hazat)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Hazat",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!wGplpyvUTQmqqCrQ",
-  "_id": "wGplpyvUTQmqqCrQ",
+  "_key": "!items!jY1IiYGjrycQDjAC",
+  "_id": "jY1IiYGjrycQDjAC",
   "name": "Apprenticeship: The Streets (Muster)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

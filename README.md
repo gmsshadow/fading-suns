@@ -124,7 +124,34 @@ base run. The Vitality contribution is applied automatically.
 the six noble Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early
 Careers are shared across all five houses, so only the Upbringings vary.
 
-**All three human factions are now complete** — 82 Character History stages:
+**All five playable races are now complete** — 99 Character History stages. The three alien races
+add seventeen:
+
+| | Upbringing | Apprenticeship | Early Career |
+|---|---|---|---|
+| Ur-Obun | 1 | 3 | 3 |
+| Ur-Ukar | 1 | 2 | 2 |
+| Vorox | 2 (Chieftain, Warrior) | 1 shared | 2 |
+
+Alien stages restate the racial bases their race already carries — *"Strength (max 9)"*,
+*"Dexterity (base 4)"* — so only the deltas are granted, with `module/dice/races.mjs` owning the
+bases and ceilings. Obun and Ukari may take a human sect's or guild's Apprenticeship instead of
+their own (p.83), so those stages are offered under either faction, while the wizard filters every
+race-tagged stage to the character's own race.
+
+**Alien histories do not follow the human budgets**, and are not judged against them. A human
+spends 20 characteristic and 30 skill points across three stages; an alien spends Extra points on
+their race as well — 2 for an Ur-Obun, 10 for a Vorox — and the printed entries reflect that. The
+Vorox Warrior Upbringing lists fifteen skill points where a human gets five; the Vhem-saahen
+Champion Apprenticeship lists five where a human gets ten. Each is pinned at its actual spend so a
+change is still caught.
+
+Five racial traits were added to the compendiums for these: the Curses **Bitter** and **Predatory**,
+and the Benefices **Bite**, **Extra Limbs**, **Poison Claw**, plus the Afflictions **Ostracized** and
+**No Occult**. Only the royal Vorox line — the Chieftain — carries the Poison Claw, and a test
+holds that.
+
+**All three human factions** — 82 of those stages:
 
 | | Upbringing | Apprenticeship | Early Career |
 |---|---|---|---|
@@ -559,8 +586,6 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Character histories for the three alien races (p.83), now that the racial rules exist
-- Vorox racial Benefices: Bite, Extra Limbs and the royal Poison Claw (p.83)
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

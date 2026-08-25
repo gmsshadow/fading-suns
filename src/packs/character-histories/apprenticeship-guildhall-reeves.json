@@ -1,6 +1,6 @@
 {
-  "_key": "!items!laznSdGYRGhN0Eas",
-  "_id": "laznSdGYRGhN0Eas",
+  "_key": "!items!kbC4ZwJavvZzb9Ck",
+  "_id": "kbC4ZwJavvZzb9Ck",
   "name": "Apprenticeship: Guildhall (Reeves)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!3E3dyA6L5Pc9UdHy",
-  "_id": "3E3dyA6L5Pc9UdHy",
+  "_key": "!items!XigXsr0RB3BXaZFE",
+  "_id": "XigXsr0RB3BXaZFE",
   "name": "Apprenticeship: Starman",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Military",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {

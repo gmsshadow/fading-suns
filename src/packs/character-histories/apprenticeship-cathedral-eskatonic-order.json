@@ -1,6 +1,6 @@
 {
-  "_key": "!items!JBlN88Calhg3X7jC",
-  "_id": "JBlN88Calhg3X7jC",
+  "_key": "!items!onTrJ4TLebKMjdux",
+  "_id": "onTrJ4TLebKMjdux",
   "name": "Apprenticeship: Cathedral (Eskatonic Order)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

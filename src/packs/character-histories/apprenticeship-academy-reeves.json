@@ -1,6 +1,6 @@
 {
-  "_key": "!items!vyKIV2VUsV7ClMHs",
-  "_id": "vyKIV2VUsV7ClMHs",
+  "_key": "!items!dDt0r3D5AeoGDaEe",
+  "_id": "dDt0r3D5AeoGDaEe",
   "name": "Apprenticeship: Academy (Reeves)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

@@ -1,6 +1,6 @@
 {
-  "_key": "!items!clGdWaVecdFtCxaD",
-  "_id": "clGdWaVecdFtCxaD",
+  "_key": "!items!2V0VaLTcYR3O6xkl",
+  "_id": "2V0VaLTcYR3O6xkl",
   "name": "Apprenticeship: Parish (Orthodoxy)",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "priest",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

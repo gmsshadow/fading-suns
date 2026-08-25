@@ -1,6 +1,6 @@
 {
-  "_key": "!items!bLxIhYAu2szdgLlv",
-  "_id": "bLxIhYAu2szdgLlv",
+  "_key": "!items!DTDi47dlSZb7JEYZ",
+  "_id": "DTDi47dlSZb7JEYZ",
   "name": "Early Career: Scholar",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -13,6 +13,7 @@
       "merchant",
       "noble"
     ],
+    "race": "",
     "slot": "",
     "grants": [
       {

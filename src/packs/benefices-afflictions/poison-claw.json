@@ -1,0 +1,28 @@
+{
+  "_key": "!items!j2FPqKqhWlP6csdn",
+  "_id": "j2FPqKqhWlP6csdn",
+  "name": "Poison Claw",
+  "type": "benefice",
+  "img": "icons/svg/coins.svg",
+  "system": {
+    "description": "<p>The mark of a royal Vorox. Rolled on Dexterity + Fight for three dice of damage. The poison is a slow paralytic: a target that takes damage suffers a cumulative -1 per turn on all physical actions, and once the turns equal its Vitality rating it can take no physical action for the rest of the span.</p>",
+    "polarity": "benefice",
+    "category": "racial",
+    "value": 6,
+    "ranks": [],
+    "firebirds": 0,
+    "income": 0,
+    "requires": "",
+    "excludes": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

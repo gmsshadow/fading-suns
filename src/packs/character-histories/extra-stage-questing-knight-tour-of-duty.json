@@ -1,6 +1,6 @@
 {
-  "_key": "!items!O7XAp34fwe5bnRer",
-  "_id": "O7XAp34fwe5bnRer",
+  "_key": "!items!d6tF87SahSqNxbD9",
+  "_id": "d6tF87SahSqNxbD9",
   "name": "Extra Stage: Questing Knight Tour of Duty",
   "type": "stage",
   "img": "icons/svg/book.svg",
@@ -10,6 +10,7 @@
     "faction": "noble",
     "group": "Imperial Tours",
     "factions": [],
+    "race": "",
     "slot": "",
     "grants": [
       {
@@ -135,7 +136,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 7500000,
+  "sort": 9200000,
   "ownership": {
     "default": 0
   },

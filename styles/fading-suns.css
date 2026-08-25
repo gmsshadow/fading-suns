@@ -1460,3 +1460,8 @@
   margin: 0 0 0.15rem;
   text-transform: uppercase;
 }
+
+.fading-suns input.combo {
+  flex: 1 1 auto;
+  min-width: 14ch;
+}

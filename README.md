@@ -328,6 +328,13 @@ existing ones, which is almost never wanted on a character already in play. Play
 a gamemaster sees an open padlock and gets a warning dialog before proceeding. Completion is
 recorded in `flags.fading-suns.creation`.
 
+**Skills are typed, not just picked.** Lore takes any topic — *"name it in the specialty"* (p.99) —
+and the histories between them name over twenty specialties the compendium does not stock: Lore
+(Theology), Lore (Heraldry), Lore (Poisons), Warfare (Starfleet Tactics) and the rest. The skill
+pickers are therefore comboboxes: the list suggests everything stocked, everything the character
+already has, and everything their chosen stages will grant, but any name may be typed. A skill that
+does not exist in the compendium is created from the name rather than refused.
+
 Purchases in Step Six take a quantity, so four levels of a skill is one action rather than four
 clicks, and removing a purchase clears the whole line.
 

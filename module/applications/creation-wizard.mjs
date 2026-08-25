@@ -10,6 +10,27 @@ import {
 
 const { ApplicationV2, HandlebarsApplicationMixin, DialogV2 } = foundry.applications.api;
 
+/**
+ * Gather every skill label a set of grants names, including inside choices.
+ *
+ * Specialties are named by the stage that grants them — "Lore (Theology)",
+ * "Lore (Heraldry)" — rather than drawn from a fixed list, so the only way to
+ * know them is to read the grants.
+ *
+ * @param {object[]} grants
+ * @param {Set<string>} into
+ */
+function collectSkillLabels(grants, into) {
+  for (const grant of grants ?? []) {
+    if (grant.kind === "skill" || grant.kind === "language") {
+      into.add(grant.specialty ? `${grant.key} (${grant.specialty})` : grant.key);
+    }
+    if (grant.kind === "choice") {
+      for (const option of grant.options ?? []) collectSkillLabels(option.grants, into);
+    }
+  }
+}
+
 /** The stages a guided lifepath walks through, in order (p.70). */
 const STAGE_ORDER = ["upbringing", "apprenticeship", "earlyCareer"];
 
@@ -673,11 +694,25 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     if (this.#skillCache) return this.#skillCache;
 
     const labels = new Set(Object.keys(CONFIG.FADING_SUNS.naturalSkills));
+
     const pack = game.packs.get("fading-suns.learned-skills");
     if (pack) {
       const index = await pack.getIndex();
       for (const entry of index) labels.add(entry.name);
     }
+
+    // Skills the character already has, which include specialties the
+    // compendium does not stock — Lore (Theology), Lore (Heraldry) and the
+    // rest are named by the stage that grants them, not by a fixed list.
+    for (const item of this.actor.items) {
+      if (item.type === "skill") labels.add(item.system.label);
+    }
+
+    // And whatever the chosen stages will grant, so those can be raised too.
+    for (const stage of [...this.chosenStages, ...this.draft.extraStages]) {
+      collectSkillLabels(stage.system.grants, labels);
+    }
+
     this.#skillCache = [...labels].sort((a, b) => a.localeCompare(b));
     return this.#skillCache;
   }
@@ -774,6 +809,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
             choice,
             pick,
             isOpen: true,
+            // Skills and languages take any name a stage cares to invent —
+            // Lore (Theology), Speak (Scraver Cant) — so those are typed rather
+            // than picked. Powers and rites must be real documents.
+            freeText: ["skill", "language"].includes(choice.pool),
+            picked,
             poolOptions: options.map(o => ({ ...o, selected: o.value === picked })),
             complete: selected.length === pick
           });
@@ -942,7 +982,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     for (const group of this.element.querySelectorAll("[data-choice-group]")) {
       const pick = Number(group.dataset.pick) || 1;
       const chosen = group.dataset.pool
-        ? (group.querySelector("select")?.value ? 1 : 0)
+        ? ((group.querySelector("select, input.combo")?.value ?? "").trim() ? 1 : 0)
         : group.querySelectorAll("input:checked").length;
       group.classList.toggle("is-complete", chosen === pick);
 
@@ -1000,6 +1040,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       ? [...chosen.filter(s => s.system.slot && s.system.slot !== slot), stage]
       : [stage];
 
+    this.#skillCache = null;
     this.render();
   }
 
@@ -1011,6 +1052,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** Stage choices are per faction, so changing it starts them over. */
   #resetStages() {
+    this.#skillCache = null;
     this.draft.stages = {};
     this.draft.choices = {};
     this.draft.picked = {};
@@ -1079,6 +1121,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const stage = await fromUuid(uuid);
     if (!stage) return;
     this.draft.extraStages.push(stage);
+    this.#skillCache = null;
     this.render();
   }
 

@@ -1037,3 +1037,26 @@ test("a career's rank plus a Tour's Benefit fit inside the ten points (p.85)", (
   assert.ok(rank.value + dearest <= 10,
     `rank ${rank.value} plus the dearest Benefit ${dearest} exceeds the ten points`);
 });
+
+test("the histories name specialties the compendium does not stock", () => {
+  // Which is why the skill pickers accept typed values: the compendium holds
+  // five Lore specialties, and the histories between them name a couple of
+  // dozen more. Refusing those would make half the stages unraisable.
+  const stocked = new Set(loadPack("learned-skills").map(d => d.name));
+
+  const named = new Set();
+  const walk = grants => {
+    for (const g of grants ?? []) {
+      if ((g.kind === "skill" || g.kind === "language") && g.specialty) {
+        named.add(`${g.key} (${g.specialty})`);
+      }
+      if (g.kind === "choice") for (const o of g.options ?? []) walk(o.grants);
+    }
+  };
+  for (const stage of allStages) walk(stage.system.grants);
+
+  const beyond = [...named].filter(n => !stocked.has(n));
+  assert.ok(beyond.length > 20,
+    "the stages name well beyond the stocked list, so free text is required");
+  assert.ok(beyond.includes("Lore (Theology)"));
+});

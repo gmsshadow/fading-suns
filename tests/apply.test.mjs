@@ -67,3 +67,29 @@ test("Wyrd bought with Extra points raises the stored bonus (p.88)", () => {
 test("no Wyrd bonus is written when none was bought", () => {
   assert.ok(!("system.wyrd.bonus" in buildActorUpdate(createState())));
 });
+
+/* -------------------------------------------- */
+/*  Typed specialties (p.99)                    */
+/* -------------------------------------------- */
+
+test("a typed specialty round-trips into name and specialty", () => {
+  // The compendium stocks five Lore specialties, but Lore takes any topic —
+  // "name it in the specialty" — and the histories grant twenty more besides.
+  for (const [label, expected] of [
+    ["Lore (Theology)", { name: "Lore", specialty: "Theology" }],
+    ["Lore (People and Places Seen)", { name: "Lore", specialty: "People and Places Seen" }],
+    ["Speak (Scraver Cant)", { name: "Speak", specialty: "Scraver Cant" }],
+    ["Warfare (Starfleet Tactics)", { name: "Warfare", specialty: "Starfleet Tactics" }]
+  ]) {
+    assert.deepEqual(parseSkillLabel(label), expected);
+  }
+});
+
+test("a specialty the compendium does not stock still creates cleanly", () => {
+  const { updates, missing } = diffSkills(
+    { "Lore (Theology)": 2, Melee: 4 },
+    [{ label: "Melee", id: "aaa", value: 3 }]
+  );
+  assert.deepEqual(missing, ["Lore (Theology)"], "it is created rather than refused");
+  assert.deepEqual(updates, [{ _id: "aaa", "system.value": 4 }]);
+});

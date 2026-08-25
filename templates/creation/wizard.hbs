@@ -95,13 +95,23 @@
               <span class="choice-label">{{entry.choice.label}}</span>
 
               {{#if entry.isOpen}}
-                <select class="pool-select" data-choice-id="{{entry.choice.id}}"
-                        data-pool="{{entry.choice.pool}}" data-pick="1">
-                  <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
-                  {{#each entry.poolOptions as |option|}}
-                    <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>{{option.label}}</option>
-                  {{/each}}
-                </select>
+                {{#if entry.freeText}}
+                  <input list="pool-{{entry.choice.id}}" class="pool-select combo"
+                         data-choice-id="{{entry.choice.id}}" data-pool="{{entry.choice.pool}}"
+                         data-pick="1" value="{{entry.picked}}"
+                         placeholder="{{localize 'FADINGSUNS.Creation.SkillPlaceholder'}}"/>
+                  <datalist id="pool-{{entry.choice.id}}">
+                    {{#each entry.poolOptions as |option|}}<option value="{{option.value}}"></option>{{/each}}
+                  </datalist>
+                {{else}}
+                  <select class="pool-select" data-choice-id="{{entry.choice.id}}"
+                          data-pool="{{entry.choice.pool}}" data-pick="1">
+                    <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
+                    {{#each entry.poolOptions as |option|}}
+                      <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>{{option.label}}</option>
+                    {{/each}}
+                  </select>
+                {{/if}}
               {{else}}
                 {{#if (gt entry.pick 1)}}
                   <span class="choice-count">0 / {{entry.pick}}</span>
@@ -295,11 +305,11 @@
       </div>
 
       <div class="picker-row">
-        <select name="extra-skill">
-          {{#each skillOptions as |option|}}
-            <option value="{{option.value}}">{{option.label}}</option>
-          {{/each}}
-        </select>
+        <input list="fs-skill-suggestions" name="extra-skill" class="combo"
+               placeholder="{{localize 'FADINGSUNS.Creation.SkillPlaceholder'}}"/>
+        <datalist id="fs-skill-suggestions">
+          {{#each skillOptions as |option|}}<option value="{{option.value}}"></option>{{/each}}
+        </datalist>
         <input type="number" class="picker-qty" name="extra-skill-qty" value="1" min="1" max="10"
                data-tooltip="{{localize 'FADINGSUNS.Creation.Levels'}}"/>
         <button type="button" class="add-btn" data-action="buyExtra" data-kind="skill">

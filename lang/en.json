@@ -445,7 +445,8 @@
       "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level.",
       "Composite": "Priests and guildsmembers build their Upbringing from an Environment and a Class — pick one of each. Brother Battle fills both on its own.",
       "RacialCost": "Spent on your race",
-      "FromYourHistory": "Already granted by your history"
+      "FromYourHistory": "Already granted by your history",
+      "SkillPlaceholder": "Choose or type a skill, e.g. Lore (Theology)"
     },
     "CombatAction": {
       "Category": "Style",

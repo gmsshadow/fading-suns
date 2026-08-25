@@ -1,0 +1,136 @@
+{
+  "_key": "!items!XjjkenUcKCQ0nKfk",
+  "_id": "XjjkenUcKCQ0nKfk",
+  "name": "Early Career: Healer",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Ordained to the wards and the roadside, where the sick are.</p>",
+    "stageType": "earlyCareer",
+    "faction": "",
+    "group": "Ministry",
+    "factions": [
+      "priest",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.tech",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Charm",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Empathy",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Local Populace",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Physick",
+        "value": 3
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 3
+      },
+      {
+        "kind": "skill",
+        "key": "Social",
+        "specialty": "Oratory",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "pr-healer-tech",
+        "label": "Tech Redemption (choose type) 1",
+        "pick": 1,
+        "pool": "skill",
+        "value": 1,
+        "filter": [
+          "Tech Redemption"
+        ],
+        "options": []
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.DA2NPdmHjSeBMEju",
+        "value": 3,
+        "label": "Ordained"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

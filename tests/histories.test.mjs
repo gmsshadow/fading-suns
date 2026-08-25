@@ -37,8 +37,18 @@ const extraStages = allStages.filter(s => s.system.stageType === "extra");
 const forFaction = faction => stages.filter(s =>
   (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
 
-/** The noble lifepath stages. */
-const nobleStages = forFaction("noble");
+/**
+ * Stages belonging to a faction exclusively.
+ *
+ * Priest and guild Apprenticeships and Early Careers are open to nobles as well
+ * — "nobles can join the priesthood at this stage" (p.77) — so membership of
+ * the noble list is no longer enough to identify the noble lifepath.
+ */
+const exclusiveTo = faction => stages.filter(s =>
+  !s.system.factions?.length && s.system.faction === faction);
+
+/** The noble lifepath stages, and no one else's. */
+const nobleStages = exclusiveTo("noble");
 const blessings = loadPack("blessings-curses");
 const benefices = loadPack("benefices-afflictions");
 const combatActions = loadPack("combat-actions");
@@ -75,7 +85,8 @@ test("the pack holds the complete noble faction", () => {
 });
 
 test("priests and guildsmembers share a composite Upbringing (p.77)", () => {
-  const shared = stages.filter(s => s.system.factions?.length);
+  const shared = stages.filter(s =>
+    s.system.stageType === "upbringing" && s.system.factions?.length);
   const slots = shared.reduce((m, s) => {
     m[s.system.slot] = (m[s.system.slot] ?? 0) + 1;
     return m;
@@ -194,8 +205,8 @@ test("characteristic targets are dot paths, not bare names", () => {
   for (const stage of allStages) walk(stage.system.grants);
 });
 
-test("every Early Career confers noble rank (p.75)", () => {
-  for (const stage of stages.filter(s => s.system.stageType === "earlyCareer")) {
+test("every noble Early Career confers noble rank (p.75)", () => {
+  for (const stage of nobleStages.filter(s => s.system.stageType === "earlyCareer")) {
     const rank = stage.system.grants.find(g => g.kind === "benefice");
     assert.ok(rank, `${stage.name} grants no Benefice`);
     assert.equal(rank.label, "Nobility");
@@ -222,6 +233,24 @@ test("every Early Career confers noble rank (p.75)", () => {
  */
 const KNOWN_SHORTFALLS = {
   "Early Career: Ambassador": 1,
+  // The Avestite Cathedral apprenticeship lists eight skill points against a
+  // budget of ten. Nothing is unmodelled in it; the printed stage is short.
+  "Apprenticeship: Cathedral (Temple Avesti)": 2,
+  // The Brother Battle Early Career comes to sixteen skill points against a
+  // budget of fifteen. Eleven are listed outright and the Combat Action it
+  // teaches is level five whichever branch is taken, so the extra point is in
+  // the printed stage rather than the transcription.
+  "Early Career: Brother Battle Warrior Monk": -1,
+  // The Scientist lists sixteen skill points against a budget of fifteen.
+  // Checked against the printed entry line by line; the book is over by one.
+  "Early Career: Scientist": -1,
+  // Starship Duty totals fourteen skill points across its common training and
+  // whichever posting is taken, against a budget of fifteen.
+  "Early Career: Starship Duty": 1,
+  // The Market comes to fifteen with a Merchant's trade and fourteen with a
+  // Money-Lender's, so the range straddles the budget rather than missing it;
+  // the shortfall recorded here is against the cheaper branch.
+  "Early Career: The Market": 0,
   // Brother Battle's Upbringing spends ten skill points against a budget of
   // five. It is printed that way, and the order's training is meant to be
   // exceptional, so it is pinned rather than trimmed.
@@ -245,6 +274,8 @@ const COMPOSITE = new Set(["environment", "class"]);
 function spendRange(grants) {
   let cMin = 0, cMax = 0, sMin = 0, sMax = 0;
 
+  // An option may itself contain a choice — the Seedy career's trades each
+  // offer a Spirit pick — so this recurses rather than counting one level.
   const flat = list => {
     let c = 0, s = 0;
     for (const g of list ?? []) {
@@ -252,6 +283,16 @@ function spendRange(grants) {
       else if (g.kind === "skill") s += g.value;
       else if (g.kind === "language") s += g.points;
       else if (g.kind === "combatAction") s += g.value;
+      else if (g.kind === "choice" && g.pool) {
+        const value = g.value * (g.pick ?? 1);
+        if (["spirit", "characteristic"].includes(g.pool)) c += value;
+        else s += value;
+      }
+      else if (g.kind === "choice") {
+        const inner = (g.options ?? []).map(o => flat(o.grants));
+        c += Math.max(...inner.map(i => i.c), 0) * (g.pick ?? 1);
+        s += Math.max(...inner.map(i => i.s), 0) * (g.pick ?? 1);
+      }
     }
     return { c, s };
   };
@@ -266,9 +307,11 @@ function spendRange(grants) {
     const pick = grant.pick ?? 1;
 
     if (grant.pool) {
-      // An open choice declares its worth; "spirit" draws on characteristics.
+      // An open choice declares its worth. Both the "spirit" and the wider
+      // "characteristic" pools draw on the characteristic budget; everything
+      // else — skills, languages, powers — comes out of the skill budget.
       const value = grant.value * pick;
-      if (grant.pool === "spirit") { cMin += value; cMax += value; }
+      if (["spirit", "characteristic"].includes(grant.pool)) { cMin += value; cMax += value; }
       else { sMin += value; sMax += value; }
       continue;
     }
@@ -712,4 +755,83 @@ test("every occult power choice can be satisfied from the compendiums", () => {
         `"${choice.label}" in ${stage.name} offers nothing at level ${level}`);
     }
   }
+});
+
+/* -------------------------------------------- */
+/*  Priests and guilds (p.77–82)                */
+/* -------------------------------------------- */
+
+test("the priest Apprenticeship matrix is three settings by four sects (p.77)", () => {
+  const priest = stages.filter(s =>
+    s.system.stageType === "apprenticeship" && s.system.factions?.includes("priest"));
+
+  const settings = {};
+  for (const stage of priest) (settings[stage.system.group] ??= []).push(stage.name);
+
+  // Temple Avesti print "See Cathedral, above" for Parish and Monastery, so
+  // those two cells are absent rather than invented: ten entries, not twelve.
+  assert.deepEqual(Object.keys(settings).sort(), ["Cathedral", "Monastery", "Parish"]);
+  assert.equal(settings.Cathedral.length, 4, "all four sects train in cathedrals");
+  assert.equal(settings.Parish.length, 3, "Avestites reuse the Cathedral entry");
+  assert.equal(settings.Monastery.length, 3, "and again for the monastery");
+});
+
+test("the guild Apprenticeship matrix omits the cells the book omits (p.80)", () => {
+  const guild = stages.filter(s =>
+    s.system.stageType === "apprenticeship" && s.system.factions?.includes("merchant"));
+
+  const settings = {};
+  for (const stage of guild) (settings[stage.system.group] ??= []).push(stage.name);
+
+  assert.equal(settings.Academy.length, 5, "all five guilds run an academy");
+  assert.equal(settings.Guildhall.length, 5);
+  assert.equal(settings["The Streets"].length, 5);
+});
+
+test("nobles may join the priesthood or a guild at Apprenticeship (p.77, p.80)", () => {
+  const joinable = stages.filter(s =>
+    s.system.stageType === "apprenticeship" && s.system.factions?.includes("noble"));
+  assert.ok(joinable.length >= 20, "both matrices are open to nobles");
+
+  // But their Upbringings are not shared.
+  const upbringings = stages.filter(s =>
+    s.system.stageType === "upbringing" && s.system.factions?.includes("noble"));
+  assert.equal(upbringings.length, 0);
+});
+
+test("each faction's Early Careers confer the rank that faction uses", () => {
+  const rankFor = {
+    priest: "Ordained",
+    merchant: "Commissioned"
+  };
+
+  for (const [faction, expected] of Object.entries(rankFor)) {
+    const careers = stages.filter(s =>
+      s.system.stageType === "earlyCareer" && s.system.factions?.includes(faction));
+    assert.ok(careers.length, `${faction} should have Early Careers`);
+
+    for (const career of careers) {
+      const rank = career.system.grants.find(g => g.kind === "benefice");
+      assert.ok(rank, `${career.name} grants no rank`);
+      assert.equal(rank.label, expected, `${career.name} should confer ${expected}`);
+    }
+  }
+});
+
+test("Brother Battle runs its own track, closed to nobles and guilds", () => {
+  const brotherBattle = stages.filter(s => s.system.group === "Brother Battle");
+  assert.equal(brotherBattle.length, 3, "an Upbringing, an Apprenticeship and an Early Career");
+  for (const stage of brotherBattle) {
+    assert.equal(stage.system.faction, "priest");
+    assert.deepEqual(stage.system.factions, []);
+  }
+});
+
+test("the Brother Battle track teaches Combat Actions matched to its style (p.78)", () => {
+  const appr = byName("Apprenticeship: Brother Battle Warrior Monk").system;
+  const style = appr.grants.find(g => g.kind === "choice" && g.id === "pr-bb-style");
+
+  const [mantok, sword] = style.options;
+  assert.deepEqual(mantok.grants.map(g => g.label), ["Martial Fist", "Martial Kick", "Martial Hold"]);
+  assert.deepEqual(sword.grants.map(g => g.label), ["Parry", "Thrust", "Slash"]);
 });

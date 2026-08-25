@@ -1,0 +1,202 @@
+{
+  "_key": "!items!TMPcoTQnn5j3ypZI",
+  "_id": "TMPcoTQnn5j3ypZI",
+  "name": "Early Career: Mercenary — Combat Engineer",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Engineers hired out to the highest bidder, and expected to fight as well as build.</p>",
+    "stageType": "earlyCareer",
+    "faction": "",
+    "group": "Contract Soldiering",
+    "factions": [
+      "merchant",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.tech",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "gu-ceng-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "gu-ceng-combat",
+        "label": "Combat skill (choose Fight or Melee) +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "gu-ceng-drive",
+        "label": "Drive (choose specialty) 2",
+        "pick": 1,
+        "pool": "skill",
+        "value": 2,
+        "filter": [
+          "Drive"
+        ],
+        "options": []
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "gu-ceng-t1",
+        "label": "Tech Redemption (choose primary) 3",
+        "pick": 1,
+        "pool": "skill",
+        "value": 3,
+        "filter": [
+          "Tech Redemption"
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "gu-ceng-t2",
+        "label": "Tech Redemption (choose secondary) 2",
+        "pick": 1,
+        "pool": "skill",
+        "value": 2,
+        "filter": [
+          "Tech Redemption"
+        ],
+        "options": []
+      },
+      {
+        "kind": "skill",
+        "key": "Science",
+        "specialty": "Engineering",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Warfare",
+        "specialty": "Artillery",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Warfare",
+        "specialty": "Demolitions",
+        "value": 1
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.C71AYPZdXGwYJw1J",
+        "value": 3,
+        "label": "Commissioned"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

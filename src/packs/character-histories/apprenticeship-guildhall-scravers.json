@@ -1,0 +1,146 @@
+{
+  "_key": "!items!f3ef36olEcNIYzKc",
+  "_id": "f3ef36olEcNIYzKc",
+  "name": "Apprenticeship: Guildhall (Scravers)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Training on the job, in back rooms and card games.</p>",
+    "stageType": "apprenticeship",
+    "faction": "",
+    "group": "Guildhall",
+    "factions": [
+      "merchant",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.ego",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Impress",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "gu-hall-scr-combat",
+        "label": "Combat skill (choose Fight, Melee or Shoot) +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Shoot",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Shoot",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Sneak",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Gambling",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Inquiry",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Knavery",
+        "value": 1
+      },
+      {
+        "kind": "language",
+        "key": "Speak",
+        "specialty": "Scraver Cant",
+        "value": 1,
+        "points": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Streetwise",
+        "value": 1
+      },
+      {
+        "kind": "blessing",
+        "key": "Compendium.fading-suns.blessings-curses.Item.YDnl30LKILnffHeC",
+        "label": "Lucky at Cards"
+      },
+      {
+        "kind": "curse",
+        "key": "Compendium.fading-suns.blessings-curses.Item.c3ocOjIxmtaE31Wz",
+        "label": "Possessive"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

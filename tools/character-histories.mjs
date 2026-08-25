@@ -521,6 +521,502 @@ const EARLY_CAREER = [
 ];
 
 
+
+/* -------------------------------------------- */
+/*  Apprenticeship — priests (p.77–78)          */
+/* -------------------------------------------- */
+
+/**
+ * The priest Apprenticeship is a matrix: three settings by four sects.
+ *
+ * Temple Avesti print "See Cathedral, above" for both Parish and Monastery, so
+ * those cells share the Cathedral entry rather than being invented.
+ *
+ * "Note that nobles can join the priesthood at this stage" (p.77), so these are
+ * open to nobles as well as priests.
+ */
+const PRIEST_FACTIONS = ["priest", "noble"];
+
+const priestStage = (name, group, description, grants, extra = {}) => ({
+  n: name, stage: "apprenticeship", faction: "", factions: PRIEST_FACTIONS,
+  group, d: description, grants, ...extra
+});
+
+const PRIEST_APPRENTICESHIP = [
+  priestStage("Cathedral (Orthodoxy)", "Cathedral",
+    "First training in a city cathedral, close to libraries, learned people and perhaps even high technology.", [
+    ch("mind.wits", 1), ch("spirit.extrovert", 1), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    pickOne("pr-cath-orth-social", "Charm or Impress +1",
+      opt("Charm", sk("Charm", 1)), opt("Impress", sk("Impress", 1))),
+    sk("Academia", 1), sk("Focus", 1), sp("Lore", "Theology", 1), sk("Physick", 1),
+    sp("Social", "Oratory", 2), lang("Read", "Latin", 2), sk("Remedy", 1),
+    bless("Pious"), curse("Austere")
+  ]),
+  priestStage("Cathedral (Eskatonic Order)", "Cathedral",
+    "First training in a city cathedral, among the order's alchemists and their close-kept books.", [
+    ch("mind.wits", 1), ch("spirit.introvert", 2), ch("spirit.faith", 2),
+    sk("Observe", 1), sk("Academia", 1), sk("Alchemy", 1), sk("Focus", 3),
+    sp("Lore", "Occult", 1), sk("Stoic Mind", 1), lang("Read", "Latin", 2),
+    bless("Curious"), curse("Subtle")
+  ]),
+  priestStage("Cathedral (Temple Avesti)", "Cathedral",
+    "First training in a city cathedral, learning where sin hides and what is done about it. Avestites train the same way in parish and monastery.", [
+    ch("body.endurance", 1), ch("mind.perception", 2), ch("spirit.faith", 2),
+    sk("Impress", 1), sk("Melee", 1), sk("Observe", 1), sk("Shoot", 1),
+    sk("Inquiry", 1), sp("Lore", "Doctrine", 1), sk("Search", 1), sk("Torture", 1),
+    bless("Pious"), curse("Righteous")
+  ]),
+  priestStage("Cathedral (Sanctuary Aeon)", "Cathedral",
+    "First training in a city cathedral, in the wards rather than the library.", [
+    ch("body.dexterity", 2), ch("mind.tech", 1), ch("spirit.calm", 1), ch("spirit.faith", 1),
+    sk("Charm", 1), sp("Arts", "Music", 1), sk("Empathy", 1), sp("Lore", "Theology", 1),
+    sk("Physick", 3), sk("Remedy", 2), sk("Stoic Mind", 1),
+    bless("Compassionate"), curse("Gullible")
+  ]),
+
+  priestStage("Parish (Orthodoxy)", "Parish",
+    "A small country or town church, preaching to the same flock every week.", [
+    ch("mind.wits", 1), ch("spirit.extrovert", 1), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    pickOne("pr-par-orth-social", "Charm or Impress +1",
+      opt("Charm", sk("Charm", 1)), opt("Impress", sk("Impress", 1))),
+    sk("Empathy", 1), sk("Focus", 1), sp("Lore", "Theology", 2), sp("Lore", "The Flock", 1),
+    sk("Physick", 1), sk("Remedy", 1), sp("Social", "Oratory", 2),
+    bless("Pious"), curse("Austere")
+  ]),
+  priestStage("Parish (Eskatonic Order)", "Parish",
+    "A small country or town church, far from the order's libraries but close to its people.", [
+    ch("mind.wits", 1), ch("spirit.introvert", 2), ch("spirit.faith", 2),
+    sk("Observe", 1), sk("Alchemy", 1), sk("Empathy", 1), sk("Focus", 3),
+    sp("Lore", "Occult", 1), sk("Remedy", 1), sk("Stoic Mind", 2),
+    bless("Curious"), curse("Subtle")
+  ]),
+  priestStage("Parish (Sanctuary Aeon)", "Parish",
+    "A small country or town church, where the healer knows every family by name.", [
+    ch("body.dexterity", 2), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    sk("Charm", 1), sp("Arts", "Music", 1), sk("Empathy", 1),
+    sp("Lore", "Lives of the Local People", 1),
+    sk("Physick", 3), sk("Remedy", 2), sk("Stoic Mind", 1),
+    bless("Compassionate"), curse("Gullible")
+  ]),
+
+  priestStage("Monastery (Orthodoxy)", "Monastery",
+    "Secluded from outsiders and given over to the spiritual life; study and contemplation over preaching.", [
+    ch("mind.wits", 1), ch("spirit.introvert", 1), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    sk("Academia", 1), sk("Focus", 2), sp("Lore", "Theology", 1), sk("Physick", 1),
+    sk("Stoic Mind", 1), lang("Read", "Latin", 2), lang("Read", "Urthish", 2),
+    bless("Pious"), curse("Austere")
+  ]),
+  priestStage("Monastery (Eskatonic Order)", "Monastery",
+    "Secluded with the order's texts and alembics, and the long silences between them.", [
+    ch("mind.wits", 1), ch("spirit.introvert", 2), ch("spirit.faith", 2),
+    sk("Academia", 1), sk("Alchemy", 1), sk("Focus", 2), sp("Lore", "Occult", 1),
+    sk("Stoic Mind", 1), lang("Read", "Latin", 2), lang("Read", "Urthish", 2),
+    bless("Curious"), curse("Subtle")
+  ]),
+  priestStage("Monastery (Sanctuary Aeon)", "Monastery",
+    "Secluded in an Amalthean house, where the sick are brought and the quiet is kept.", [
+    ch("body.dexterity", 1), ch("spirit.introvert", 1), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    sk("Empathy", 1), sp("Lore", "Theology", 1), sk("Physick", 3), sk("Remedy", 2),
+    sk("Stoic Mind", 1), lang("Read", "Urthish", 2),
+    bless("Compassionate"), curse("Gullible")
+  ]),
+
+  {
+    n: "Brother Battle Warrior Monk", stage: "apprenticeship", faction: "priest",
+    group: "Brother Battle",
+    d: "The order's training proper: the forms of Mantok, or the sword.",
+    grants: [
+      ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+      ch("spirit.faith", 1),
+      pickOne("pr-bb-combat", "Combat skill (choose Fight or Melee) +1",
+        opt("Fight", sk("Fight", 1)), opt("Melee", sk("Melee", 1))),
+      sk("Shoot", 1), sk("Remedy", 1), sk("Stoic Body", 1),
+      pickOne("pr-bb-style", "Choose a style, matching the combat skill above",
+        opt("Mantok Martial Arts", action("Martial Fist"), action("Martial Kick"), action("Martial Hold")),
+        opt("Sword Fencing", action("Parry"), action("Thrust"), action("Slash")))
+    ]
+  }
+];
+
+/* -------------------------------------------- */
+/*  Early Career — priests (p.78)               */
+/* -------------------------------------------- */
+
+const priestCareer = (name, group, description, grants, extra = {}) => ({
+  n: name, stage: "earlyCareer", faction: "", factions: PRIEST_FACTIONS,
+  group, d: description, grants: [...grants, ben("Ordained", 3)], ...extra
+});
+
+const PRIEST_CAREER = [
+  priestCareer("Preacher/Pastor", "Ministry",
+    "Ordained and posted to preach and aid the people of a cathedral, church or parish.", [
+    ch("mind.wits", 2), ch("mind.perception", 1), ch("spirit.extrovert", 2),
+    ch("spirit.introvert", 1), ch("spirit.passion", 2), ch("spirit.faith", 2),
+    pickOne("pr-preacher-social", "Charm or Impress +2",
+      opt("Charm", sk("Charm", 2)), opt("Impress", sk("Impress", 2))),
+    sk("Observe", 1), sk("Empathy", 1), sk("Focus", 1), sk("Inquiry", 1),
+    sp("Lore", "Flock", 1), sk("Physick", 1), lang("Read", "Latin", 2), sk("Remedy", 1),
+    sp("Social", "Oratory", 2), lang("Speak", "Latin", 2)
+  ]),
+  priestCareer("Monk", "Ministry",
+    "Ordained to a cloistered life of contemplation in the monastery.", [
+    open("pr-monk-body", "Body characteristic +1", "characteristic", 1),
+    ch("mind.wits", 2), ch("mind.perception", 1), ch("spirit.introvert", 2),
+    ch("spirit.calm", 2), ch("spirit.faith", 2),
+    sk("Observe", 1), sk("Academia", 1), sk("Empathy", 1), sk("Focus", 3), sk("Inquiry", 1),
+    sp("Lore", "Theology", 1), sp("Lore", "Area of Interest", 2), sk("Physick", 1),
+    lang("Read", "Latin", 2), sk("Remedy", 1), sk("Stoic Mind", 1)
+  ]),
+  priestCareer("Missionary", "Ministry",
+    "Ordained and sent to bring the good word to those the Church has not reached.", [
+    ch("body.endurance", 2), ch("mind.wits", 1), ch("mind.perception", 2),
+    ch("spirit.extrovert", 2), ch("spirit.passion", 2), ch("spirit.faith", 1),
+    pickOne("pr-miss-social", "Charm or Impress +3",
+      opt("Charm", sk("Charm", 3)), opt("Impress", sk("Impress", 3))),
+    sk("Observe", 1), sp("Drive", "Beastcraft", 1), sk("Empathy", 1), sk("Focus", 1),
+    sk("Inquiry", 1), sp("Lore", "Doctrine", 1), sk("Physick", 1), sk("Remedy", 1),
+    sk("Ride", 1), sp("Social", "Oratory", 2), sk("Streetwise", 1)
+  ]),
+  priestCareer("Healer", "Ministry",
+    "Ordained to the wards and the roadside, where the sick are.", [
+    ch("body.dexterity", 2), ch("body.endurance", 1), ch("mind.wits", 1), ch("mind.tech", 1),
+    ch("spirit.extrovert", 2), ch("spirit.calm", 1), ch("spirit.faith", 2),
+    sk("Charm", 2), sk("Observe", 1), sk("Empathy", 2), sk("Focus", 1),
+    sp("Lore", "Local Populace", 1), sk("Physick", 3), sk("Remedy", 3),
+    sp("Social", "Oratory", 1),
+    open("pr-healer-tech", "Tech Redemption (choose type) 1", "skill", 1, ["Tech Redemption"])
+  ]),
+  priestCareer("Inquisitor", "Ministry",
+    "Ordained to find heresy, and to be seen finding it.", [
+    ch("body.strength", 2), ch("body.dexterity", 1), ch("body.endurance", 2),
+    ch("mind.perception", 2), ch("spirit.passion", 2), ch("spirit.faith", 1),
+    sk("Impress", 2), sk("Observe", 2), sk("Shoot", 2), sk("Sneak", 1), sk("Vigor", 1),
+    sk("Inquiry", 1), sp("Lore", "Heresy", 1), sk("Search", 1),
+    pickOne("pr-inq-stoic", "Stoic Body or Stoic Mind 1",
+      opt("Stoic Body", sk("Stoic Body", 1)), opt("Stoic Mind", sk("Stoic Mind", 1))),
+    sk("Streetwise", 1), sk("Tracking", 1), sk("Torture", 1)
+  ]),
+  {
+    n: "Brother Battle Warrior Monk", stage: "earlyCareer", faction: "priest",
+    group: "Brother Battle",
+    d: "Sworn to the order and sent where the fighting is.",
+    grants: [
+      ch("body.strength", 3), ch("body.dexterity", 1), ch("body.endurance", 3),
+      orSpirit("pr-bbc-temper", "Passion", "Calm", 1),
+      orSpirit("pr-bbc-social", "Extrovert", "Introvert", 1),
+      ch("spirit.faith", 1),
+      sk("Dodge", 1),
+      pickOne("pr-bbc-combat-1", "Combat skill (choose Fight or Melee) +2",
+        opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
+      pickOne("pr-bbc-combat-2", "Combat skill (choose Fight or Melee) +1",
+        opt("Fight", sk("Fight", 1)), opt("Melee", sk("Melee", 1))),
+      sk("Shoot", 2), sk("Physick", 1),
+      pickOne("pr-bbc-stoic", "Focus or Stoic Body 2",
+        opt("Focus", sk("Focus", 2)), opt("Stoic Body", sk("Stoic Body", 2))),
+      sk("Survival", 1), sp("Warfare", "Military Tactics", 1),
+      pickOne("pr-bbc-style", "Choose one, matching the style already learned",
+        opt("Mantok: Claw Fist", action("Claw Fist")),
+        opt("Mantok: Tornado Kick", action("Tornado Kick")),
+        opt("Sword: Disarm", action("Disarm")),
+        opt("Sword: Feint", action("Feint"))),
+      ben("Ordained", 3)
+    ]
+  }
+];
+
+
+/* -------------------------------------------- */
+/*  Apprenticeship — guilds (p.80–81)           */
+/* -------------------------------------------- */
+
+/**
+ * The guild Apprenticeship is a matrix of three settings by five guilds.
+ * "Note that nobles can join a guild at this stage, although it is considered
+ *  scandalous" (p.80), so these are open to nobles too.
+ */
+const GUILD_FACTIONS = ["merchant", "noble"];
+
+const guildStage = (name, group, description, grants) => ({
+  n: name, stage: "apprenticeship", faction: "", factions: GUILD_FACTIONS,
+  group, d: description, grants
+});
+
+const combatChoice = (id, value, includeShoot = false) => pickOne(
+  id, `Combat skill (choose ${includeShoot ? "Fight, Melee or Shoot" : "Fight or Melee"}) +${value}`,
+  opt("Fight", sk("Fight", value)),
+  opt("Melee", sk("Melee", value)),
+  ...(includeShoot ? [opt("Shoot", sk("Shoot", value))] : [])
+);
+
+const GUILD_APPRENTICESHIP = [
+  guildStage("Academy (Charioteers)", "Academy",
+    "Enrolled in the guild's training academy, where the promising are taught properly.", [
+    ch("body.dexterity", 2), ch("mind.wits", 1), ch("spirit.extrovert", 2),
+    sk("Impress", 1),
+    open("gu-acad-char-d1", "Drive (primary specialty) 3", "skill", 3, ["Drive"]),
+    open("gu-acad-char-d2", "Drive (secondary specialty) 2", "skill", 2, ["Drive"]),
+    sp("Tech Redemption", "Mech", 2), sk("Remedy", 1), sk("Spacesuit", 1),
+    bless("Curious"), curse("Nosy")
+  ]),
+  guildStage("Academy (Engineers)", "Academy",
+    "Enrolled in the guild's training academy, among benches and half-built things.", [
+    ch("body.dexterity", 1), ch("mind.wits", 1), ch("mind.tech", 3),
+    sk("Inquiry", 1), lang("Read", "Urthtech", 1),
+    open("gu-acad-eng-t1", "Tech Redemption (primary specialty) 3", "skill", 3, ["Tech Redemption"]),
+    open("gu-acad-eng-t2", "Tech Redemption (secondary specialty) 1", "skill", 1, ["Tech Redemption"]),
+    open("gu-acad-eng-s1", "Science (primary specialty) 2", "skill", 2, ["Science"]),
+    open("gu-acad-eng-s2", "Science (secondary specialty) 1", "skill", 1, ["Science"]),
+    sk("Think Machine", 1),
+    bless("Innovative"), curse("Unnerving")
+  ]),
+  guildStage("Academy (Scravers)", "Academy",
+    "Enrolled in the guild's training academy, learning the trade and the cant that goes with it.", [
+    ch("body.strength", 2), ch("mind.perception", 2), ch("spirit.ego", 1),
+    sk("Impress", 1), combatChoice("gu-acad-scr-combat", 1, true), sk("Sneak", 1),
+    sk("Gambling", 1), sk("Inquiry", 1), sk("Knavery", 1),
+    lang("Speak", "Scraver Cant", 2), sk("Streetwise", 2),
+    bless("The Man"), curse("Possessive")
+  ]),
+  guildStage("Academy (Muster)", "Academy",
+    "Enrolled in the guild's training academy, drilled for the contract work to come.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("mind.tech", 2),
+    combatChoice("gu-acad-mus-combat", 1), sk("Impress", 1), sk("Shoot", 2),
+    open("gu-acad-mus-drive", "Drive (choose specialty) 2", "skill", 2, ["Drive"]),
+    sp("Lore", "People and Places Seen", 1), sp("Tech Redemption", "Mech", 1),
+    sk("Remedy", 1), sk("Streetwise", 1),
+    bless("Bold"), curse("Callous")
+  ]),
+  guildStage("Academy (Reeves)", "Academy",
+    "Enrolled in the guild's training academy, among ledgers, contracts and precedent.", [
+    ch("mind.wits", 2), ch("mind.perception", 2), ch("spirit.introvert", 1),
+    sk("Impress", 1), sk("Academia", 1), sp("Arts", "Rhetoric", 1), sk("Bureaucracy", 1),
+    sk("Etiquette", 1), sk("Inquiry", 1),
+    pickOne("gu-acad-ree-lore", "Lore (Finance or Law) 1",
+      opt("Lore (Finance)", sp("Lore", "Finance", 1)),
+      opt("Lore (Law)", sp("Lore", "Law", 1))),
+    lang("Read", "Latin", 2), sp("Social", "Debate", 1),
+    bless("Shrewd"), curse("Mammon")
+  ]),
+
+  guildStage("Guildhall (Charioteers)", "Guildhall",
+    "Training on the job, hanging about the guild hall and petitioning higher-ranking members for work.", [
+    ch("body.dexterity", 2), ch("mind.wits", 1), ch("spirit.extrovert", 2),
+    sk("Impress", 1),
+    open("gu-hall-char-d1", "Drive (primary specialty) 2", "skill", 2, ["Drive"]),
+    open("gu-hall-char-d2", "Drive (secondary specialty) 1", "skill", 1, ["Drive"]),
+    sk("Empathy", 1), sp("Lore", "People and Places Seen", 1),
+    sp("Tech Redemption", "Mech", 1), sk("Remedy", 1),
+    open("gu-hall-char-speak", "Speak (local dialect) 2 pts", "language", 2, ["Speak"]),
+    bless("Curious"), curse("Nosy")
+  ]),
+  guildStage("Guildhall (Engineers)", "Guildhall",
+    "Training on the job, learning from whoever will spare the time.", [
+    ch("body.dexterity", 1), ch("mind.wits", 1), ch("mind.tech", 3),
+    sk("Shoot", 1), sk("Inquiry", 1), lang("Read", "Urthtech", 1),
+    open("gu-hall-eng-t1", "Tech Redemption (primary specialty) 2", "skill", 2, ["Tech Redemption"]),
+    open("gu-hall-eng-t2", "Tech Redemption (secondary specialty) 1", "skill", 1, ["Tech Redemption"]),
+    open("gu-hall-eng-s1", "Science (primary specialty) 2", "skill", 2, ["Science"]),
+    open("gu-hall-eng-s2", "Science (secondary specialty) 1", "skill", 1, ["Science"]),
+    sk("Think Machine", 1),
+    bless("Innovative"), curse("Unnerving")
+  ]),
+  guildStage("Guildhall (Scravers)", "Guildhall",
+    "Training on the job, in back rooms and card games.", [
+    ch("body.strength", 2), ch("mind.perception", 2), ch("spirit.ego", 1),
+    sk("Impress", 1), sk("Dodge", 1), combatChoice("gu-hall-scr-combat", 1, true),
+    sk("Sneak", 1), sk("Gambling", 1), sk("Inquiry", 1), sk("Knavery", 1),
+    lang("Speak", "Scraver Cant", 2), sk("Streetwise", 1),
+    bless("Lucky at Cards"), curse("Possessive")
+  ]),
+  guildStage("Guildhall (Muster)", "Guildhall",
+    "Training on the job, taking whatever contracts the hall hands down.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("mind.tech", 2),
+    combatChoice("gu-hall-mus-combat", 1), sk("Impress", 1), sk("Shoot", 1),
+    open("gu-hall-mus-drive", "Drive (choose specialty) 1", "skill", 1, ["Drive"]),
+    sp("Lore", "People and Places Seen", 1), sp("Tech Redemption", "Mech", 1),
+    sk("Remedy", 1), sk("Search", 1), sk("Streetwise", 2),
+    bless("Bold"), curse("Callous")
+  ]),
+  guildStage("Guildhall (Reeves)", "Guildhall",
+    "Training on the job, filing and witnessing until someone trusts you with more.", [
+    ch("mind.wits", 2), ch("mind.perception", 2), ch("spirit.introvert", 1),
+    sk("Impress", 1), sk("Observe", 1), sk("Academia", 1), sk("Bureaucracy", 1),
+    sk("Etiquette", 1), sk("Inquiry", 1),
+    pickOne("gu-hall-ree-lore", "Lore (Finance or Law) 1",
+      opt("Lore (Finance)", sp("Lore", "Finance", 1)),
+      opt("Lore (Law)", sp("Lore", "Law", 1))),
+    lang("Read", "Latin", 2), sp("Social", "Debate", 1),
+    bless("Shrewd"), curse("Mammon")
+  ]),
+
+  guildStage("The Streets (Charioteers)", "The Streets",
+    "No luck at the academies or guild halls, so the toughest school of all.", [
+    ch("body.dexterity", 2), ch("mind.wits", 1), ch("spirit.extrovert", 2),
+    sk("Impress", 1),
+    open("gu-str-char-drive", "Drive (choose specialty) 2", "skill", 2, ["Drive"]),
+    sp("Lore", "People and Places Seen", 1), sk("Knavery", 1),
+    sp("Tech Redemption", "Mech", 1), sk("Remedy", 1),
+    open("gu-str-char-speak", "Speak (local dialect) 2 pts", "language", 2, ["Speak"]),
+    sk("Streetwise", 1),
+    bless("Curious"), curse("Nosy")
+  ]),
+  guildStage("The Streets (Engineers)", "The Streets",
+    "No luck at the academies or guild halls, so the toughest school of all.", [
+    ch("body.dexterity", 2), ch("mind.wits", 1), ch("mind.tech", 2),
+    sk("Shoot", 1), sk("Inquiry", 1), lang("Read", "Urthtech", 2),
+    open("gu-str-eng-tech", "Tech Redemption (choose specialty) 2", "skill", 2, ["Tech Redemption"]),
+    open("gu-str-eng-sci", "Science (choose specialty) 2", "skill", 2, ["Science"]),
+    sk("Streetwise", 1), sk("Think Machine", 1),
+    bless("Innovative"), curse("Unnerving")
+  ]),
+  guildStage("The Streets (Scravers)", "The Streets",
+    "No luck at the academies or guild halls, so the toughest school of all.", [
+    ch("body.strength", 2), ch("mind.perception", 2), ch("spirit.ego", 1),
+    sk("Impress", 1), combatChoice("gu-str-scr-combat", 1, true), sk("Sneak", 1),
+    sk("Gambling", 1), sk("Inquiry", 1), sk("Knavery", 1),
+    lang("Speak", "Scraver Cant", 2), sk("Streetwise", 2),
+    bless("Lucky at Cards"), curse("Possessive")
+  ]),
+  guildStage("The Streets (Muster)", "The Streets",
+    "No luck at the academies or guild halls, so the toughest school of all.", [
+    ch("body.strength", 2), ch("body.dexterity", 2), ch("mind.tech", 1),
+    combatChoice("gu-str-mus-combat", 1), sk("Impress", 1), sk("Shoot", 1),
+    open("gu-str-mus-drive", "Drive (choose specialty) 1", "skill", 1, ["Drive"]),
+    sk("Knavery", 1), sk("Remedy", 1), sk("Search", 1), sk("Streetwise", 2), sk("Tracking", 1),
+    bless("Bold"), curse("Callous")
+  ]),
+  guildStage("The Streets (Reeves)", "The Streets",
+    "No luck at the academies or guild halls, so the toughest school of all.", [
+    ch("body.dexterity", 1), ch("mind.wits", 2), ch("mind.perception", 2),
+    sk("Impress", 1), sk("Observe", 1), sk("Shoot", 1), sk("Sneak", 1),
+    sk("Academia", 1), sk("Etiquette", 1), sk("Inquiry", 1), sp("Lore", "Law", 1),
+    sp("Social", "Debate", 1), sk("Streetwise", 1),
+    bless("Shrewd"), curse("Mammon")
+  ])
+];
+
+/* -------------------------------------------- */
+/*  Early Career — guilds (p.81–82)             */
+/* -------------------------------------------- */
+
+const guildCareer = (name, group, description, grants) => ({
+  n: name, stage: "earlyCareer", faction: "", factions: GUILD_FACTIONS,
+  group, d: description, grants: [...grants, ben("Commissioned", 3)]
+});
+
+const GUILD_CAREER = [
+  guildCareer("The Market", "Trade",
+    "Most of her time in marketplaces across the Known Worlds, learning to sell to rubes and royals alike.", [
+    ch("body.dexterity", 1), ch("body.endurance", 1), ch("mind.wits", 2),
+    ch("mind.perception", 2), ch("spirit.extrovert", 2),
+    orSpirit("gu-market-temper", "Passion", "Calm", 2),
+    pickOne("gu-market-social", "Charm or Impress +2",
+      opt("Charm", sk("Charm", 2)), opt("Impress", sk("Impress", 2))),
+    combatChoice("gu-market-combat", 1, true),
+    sk("Observe", 2), sk("Gambling", 1), sk("Inquiry", 2), sp("Lore", "Agora", 1),
+    open("gu-market-speak", "Speak (dialect) 2 pts", "language", 2, ["Speak"]),
+    sk("Streetwise", 1),
+    // The trade plied on top of the common training (p.82).
+    pickOne("gu-market-trade", "Choose a trade",
+      opt("Merchant",
+        sk("Sneak", 1), sk("Knavery", 1), sk("Streetwise", 1)),
+      opt("Money-Lender — usually a Reeve",
+        sk("Etiquette", 1), sp("Lore", "Finance", 2)))
+  ]),
+  guildCareer("Starship Duty", "Trade",
+    "First jobs aboard starships: many new places, most of it seen from cramped quarters.", [
+    ch("body.dexterity", 2), ch("body.endurance", 1), ch("mind.wits", 2),
+    ch("mind.perception", 1), ch("mind.tech", 1),
+    orSpirit("gu-ship-social", "Extrovert", "Introvert", 2),
+    orSpirit("gu-ship-temper", "Passion", "Calm", 1),
+    pickOne("gu-ship-charm", "Charm or Impress +1",
+      opt("Charm", sk("Charm", 1)), opt("Impress", sk("Impress", 1))),
+    combatChoice("gu-ship-combat", 2, true),
+    sp("Drive", "Spacecraft", 1),
+    pickOne("gu-ship-lore", "Lore (people and places seen, or jumproads) 1",
+      opt("Lore (People and Places Seen)", sp("Lore", "People and Places Seen", 1)),
+      opt("Lore (Jumproads)", sp("Lore", "Jumproads", 1))),
+    sk("Remedy", 1), sp("Science", "Sensors", 1), sk("Spacesuit", 1),
+    open("gu-ship-tech", "Tech Redemption (choose one) 1", "skill", 1, ["Tech Redemption"]),
+    sk("Think Machine", 1), sp("Warfare", "Gunnery", 1),
+    // The berth taken aboard adds to the common training (p.82).
+    pickOne("gu-ship-post", "Choose a posting",
+      opt("Pilot — usually a Charioteer",
+        sp("Drive", "Spacecraft", 2), sp("Science", "Sensors", 1)),
+      opt("Engineer — usually an Engineer",
+        open("gu-ship-eng-tech", "Tech Redemption (Mech, Volt or High-Tech) 2", "skill", 2, ["Tech Redemption"]),
+        sp("Science", "Engineering", 1)),
+      opt("Gunner",
+        sp("Warfare", "Gunnery", 2), sk("Gambling", 1)))
+  ]),
+  guildCareer("Mercenary — Soldier", "Contract Soldiering",
+    "A contract soldier, usually Muster, occasionally a Scraver bully-boy hired out for war.", [
+    ch("body.strength", 2), ch("body.dexterity", 3), ch("body.endurance", 2), ch("mind.tech", 1),
+    orSpirit("gu-merc-temper", "Passion", "Calm", 2),
+    sk("Dodge", 1), sk("Fight", 2), sk("Impress", 1), sk("Melee", 2), sk("Shoot", 3),
+    sk("Vigor", 1),
+    open("gu-merc-drive", "Drive (choose specialty) 1", "skill", 1, ["Drive"]),
+    sp("Tech Redemption", "Mech", 1), sk("Remedy", 1), sk("Survival", 1), sk("Tracking", 1)
+  ]),
+  guildCareer("Mercenary — Combat Engineer", "Contract Soldiering",
+    "Engineers hired out to the highest bidder, and expected to fight as well as build.", [
+    ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 2),
+    ch("mind.wits", 1), ch("mind.perception", 1), ch("mind.tech", 2),
+    orSpirit("gu-ceng-temper", "Passion", "Calm", 1),
+    combatChoice("gu-ceng-combat", 1), sk("Observe", 1), sk("Shoot", 2),
+    open("gu-ceng-drive", "Drive (choose specialty) 2", "skill", 2, ["Drive"]),
+    sk("Remedy", 1),
+    open("gu-ceng-t1", "Tech Redemption (choose primary) 3", "skill", 3, ["Tech Redemption"]),
+    open("gu-ceng-t2", "Tech Redemption (choose secondary) 2", "skill", 2, ["Tech Redemption"]),
+    sp("Science", "Engineering", 1),
+    sp("Warfare", "Artillery", 1), sp("Warfare", "Demolitions", 1)
+  ]),
+  guildCareer("Scholar", "Learning",
+    "Guild-trained erudition, hired by nobles who know the Church is not the only source.", [
+    ch("mind.wits", 2), ch("mind.perception", 2), ch("mind.tech", 1),
+    ch("spirit.extrovert", 2), ch("spirit.introvert", 2),
+    orSpirit("gu-scholar-temper", "Passion", "Calm", 1),
+    pickOne("gu-scholar-social", "Charm or Impress +1",
+      opt("Charm", sk("Charm", 1)), opt("Impress", sk("Impress", 1))),
+    sk("Observe", 1), sk("Academia", 1), sk("Etiquette", 1), sk("Focus", 1), sk("Inquiry", 1),
+    open("gu-scholar-t1", "Lore or Science (primary topic) 3", "skill", 3, ["Lore", "Science"]),
+    open("gu-scholar-t2", "Lore or Science (secondary topic) 2", "skill", 2, ["Lore", "Science"]),
+    lang("Read", "Urthish", 2), sp("Social", "Debate", 1), sk("Think Machine", 1)
+  ]),
+  guildCareer("Scientist", "Learning",
+    "The Engineers are the only ones to turn to on matters of science, and they know it.", [
+    ch("mind.wits", 2), ch("mind.perception", 2), ch("mind.tech", 2),
+    ch("spirit.introvert", 2),
+    orSpirit("gu-scientist-temper", "Passion", "Calm", 1),
+    orSpirit("gu-scientist-faith", "Faith", "Ego", 1),
+    sk("Academia", 1), sk("Focus", 1), sk("Inquiry", 1),
+    open("gu-scientist-t1", "Lore or Science (primary topic) 3", "skill", 3, ["Lore", "Science"]),
+    open("gu-scientist-t2", "Lore or Science (secondary topic) 2", "skill", 2, ["Lore", "Science"]),
+    lang("Read", "Urthtech", 2),
+    open("gu-scientist-r1", "Tech Redemption (choose primary) 3", "skill", 3, ["Tech Redemption"]),
+    open("gu-scientist-r2", "Tech Redemption (choose secondary) 2", "skill", 2, ["Tech Redemption"]),
+    sk("Think Machine", 1)
+  ]),
+  guildCareer("Seedy/Illegal Activities", "The Other Jobs",
+    "The jobs best left unmentioned on a resume. The best still rise to the top of the profession.", [
+    ch("body.strength", 2), ch("body.dexterity", 2), ch("body.endurance", 2),
+    ch("mind.perception", 2),
+    combatChoice("gu-seedy-combat", 2, true), sk("Dodge", 1), sk("Gambling", 1),
+    sk("Inquiry", 1), sk("Knavery", 2), sp("Lore", "Local Underworld", 1), sk("Streetwise", 2),
+    // The base entry is two characteristic and five skill points short of the
+    // budget on its own; the trade chosen supplies the rest (p.82).
+    pickOne("gu-seedy-trade", "Choose a trade",
+      opt("Thief",
+        orSpirit("gu-seedy-thief-temper", "Passion", "Calm", 2),
+        sk("Impress", 1), sk("Observe", 1), sk("Sneak", 1), sk("Sleight of Hand", 2)),
+      opt("Spy",
+        orSpirit("gu-seedy-spy-social", "Extrovert", "Introvert", 2),
+        pickOne("gu-seedy-spy-social-skill", "Charm or Impress +2",
+          opt("Charm", sk("Charm", 2)), opt("Impress", sk("Impress", 2))),
+        sk("Observe", 2), sk("Sneak", 1)))
+  ])
+];
+
 /* -------------------------------------------- */
 /*  Extra Stages (p.84–85)                      */
 /* -------------------------------------------- */
@@ -676,6 +1172,8 @@ const EXTRA_STAGES = [
 
 /** The noble Character Histories, and the Extra Stages open to anyone (p.72–p.85). */
 export const CHARACTER_HISTORIES = [
-  ...UPBRINGING, ...FREEMAN_UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER,
+  ...UPBRINGING, ...FREEMAN_UPBRINGING,
+  ...APPRENTICESHIP, ...PRIEST_APPRENTICESHIP, ...GUILD_APPRENTICESHIP,
+  ...EARLY_CAREER, ...PRIEST_CAREER, ...GUILD_CAREER,
   ...EXTRA_STAGES
 ];

@@ -1,0 +1,137 @@
+{
+  "_key": "!items!clGdWaVecdFtCxaD",
+  "_id": "clGdWaVecdFtCxaD",
+  "name": "Apprenticeship: Parish (Orthodoxy)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>A small country or town church, preaching to the same flock every week.</p>",
+    "stageType": "apprenticeship",
+    "faction": "",
+    "group": "Parish",
+    "factions": [
+      "priest",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "pr-par-orth-social",
+        "label": "Charm or Impress +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Charm",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Charm",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Impress",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Impress",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Empathy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Theology",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "The Flock",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Physick",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Social",
+        "specialty": "Oratory",
+        "value": 2
+      },
+      {
+        "kind": "blessing",
+        "key": "Compendium.fading-suns.blessings-curses.Item.zCV4Z4nCI9fUPLef",
+        "label": "Pious"
+      },
+      {
+        "kind": "curse",
+        "key": "Compendium.fading-suns.blessings-curses.Item.gVORo3MBhjI4LYs8",
+        "label": "Austere"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

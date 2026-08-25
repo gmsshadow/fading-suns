@@ -1,0 +1,282 @@
+{
+  "_key": "!items!jVYlc7Yx34kEfm8j",
+  "_id": "jVYlc7Yx34kEfm8j",
+  "name": "Early Career: Brother Battle Warrior Monk",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Sworn to the order and sent where the fighting is.</p>",
+    "stageType": "earlyCareer",
+    "faction": "priest",
+    "group": "Brother Battle",
+    "factions": [],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 3
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 3
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-social",
+        "label": "Extrovert or Introvert +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Extrovert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.extrovert",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Introvert",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.introvert",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Dodge",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-combat-1",
+        "label": "Combat skill (choose Fight or Melee) +2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-combat-2",
+        "label": "Combat skill (choose Fight or Melee) +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Fight",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Fight",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Melee",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Melee",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Shoot",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Physick",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-stoic",
+        "label": "Focus or Stoic Body 2",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Focus",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Focus",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "label": "Stoic Body",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Stoic Body",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Survival",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Warfare",
+        "specialty": "Military Tactics",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "pr-bbc-style",
+        "label": "Choose one, matching the style already learned",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Mantok: Claw Fist",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.YSejhFu7gc2KDEKk",
+                "label": "Claw Fist",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "label": "Mantok: Tornado Kick",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.aa1VW1zs0hxuA4bt",
+                "label": "Tornado Kick",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "label": "Sword: Disarm",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.gQQeyKpsM2ugZF27",
+                "label": "Disarm",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "label": "Sword: Feint",
+            "grants": [
+              {
+                "kind": "combatAction",
+                "key": "Compendium.fading-suns.combat-actions.Item.dnV6S8kgF7aVisNa",
+                "label": "Feint",
+                "value": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.DA2NPdmHjSeBMEju",
+        "value": 3,
+        "label": "Ordained"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

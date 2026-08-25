@@ -1,0 +1,163 @@
+{
+  "_key": "!items!rnB2dgSY23zdSh1z",
+  "_id": "rnB2dgSY23zdSh1z",
+  "name": "Early Career: Missionary",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Ordained and sent to bring the good word to those the Church has not reached.</p>",
+    "stageType": "earlyCareer",
+    "faction": "",
+    "group": "Ministry",
+    "factions": [
+      "priest",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.extrovert",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.passion",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "pr-miss-social",
+        "label": "Charm or Impress +3",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Charm",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Charm",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "label": "Impress",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Impress",
+                "value": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Observe",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Drive",
+        "specialty": "Beastcraft",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Empathy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Inquiry",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Doctrine",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Physick",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Ride",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Social",
+        "specialty": "Oratory",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Streetwise",
+        "value": 1
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.DA2NPdmHjSeBMEju",
+        "value": 3,
+        "label": "Ordained"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

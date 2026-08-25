@@ -1,0 +1,35 @@
+{
+  "_key": "!items!BRgec8N01kF5RO24",
+  "_id": "BRgec8N01kF5RO24",
+  "name": "The Man",
+  "type": "blessing",
+  "img": "icons/svg/regen.svg",
+  "system": {
+    "description": "",
+    "polarity": "blessing",
+    "category": "knack",
+    "cost": 2,
+    "modifiers": [
+      {
+        "value": 2,
+        "target": "Impress",
+        "targetType": "skill"
+      }
+    ],
+    "restriction": "When leading underlings",
+    "always": false,
+    "vitalityModifier": 0,
+    "baseRun": 0,
+    "note": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

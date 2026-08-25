@@ -1,0 +1,108 @@
+{
+  "_key": "!items!d80YWJn34UezHeWy",
+  "_id": "d80YWJn34UezHeWy",
+  "name": "Apprenticeship: Cathedral (Sanctuary Aeon)",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>First training in a city cathedral, in the wards rather than the library.</p>",
+    "stageType": "apprenticeship",
+    "faction": "",
+    "group": "Cathedral",
+    "factions": [
+      "priest",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.dexterity",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.tech",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.calm",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Charm",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Arts",
+        "specialty": "Music",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Empathy",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Theology",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Physick",
+        "value": 3
+      },
+      {
+        "kind": "skill",
+        "key": "Remedy",
+        "value": 2
+      },
+      {
+        "kind": "skill",
+        "key": "Stoic Mind",
+        "value": 1
+      },
+      {
+        "kind": "blessing",
+        "key": "Compendium.fading-suns.blessings-curses.Item.V0yBL28KkZhuZSBM",
+        "label": "Compassionate"
+      },
+      {
+        "kind": "curse",
+        "key": "Compendium.fading-suns.blessings-curses.Item.gRAkHAhgkssRXdde",
+        "label": "Gullible"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

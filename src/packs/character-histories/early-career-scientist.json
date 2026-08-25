@@ -1,0 +1,200 @@
+{
+  "_key": "!items!IwchaPeB7jOXOD68",
+  "_id": "IwchaPeB7jOXOD68",
+  "name": "Early Career: Scientist",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>The Engineers are the only ones to turn to on matters of science, and they know it.</p>",
+    "stageType": "earlyCareer",
+    "faction": "",
+    "group": "Learning",
+    "factions": [
+      "merchant",
+      "noble"
+    ],
+    "slot": "",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "mind.wits",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.perception",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "mind.tech",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.introvert",
+        "value": 2
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-temper",
+        "label": "Passion or Calm +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Passion",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.passion",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Calm",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.calm",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-faith",
+        "label": "Faith or Ego +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Faith",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.faith",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Ego",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.ego",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Academia",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Focus",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Inquiry",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-t1",
+        "label": "Lore or Science (primary topic) 3",
+        "pick": 1,
+        "pool": "skill",
+        "value": 3,
+        "filter": [
+          "Lore",
+          "Science"
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-t2",
+        "label": "Lore or Science (secondary topic) 2",
+        "pick": 1,
+        "pool": "skill",
+        "value": 2,
+        "filter": [
+          "Lore",
+          "Science"
+        ],
+        "options": []
+      },
+      {
+        "kind": "language",
+        "key": "Read",
+        "specialty": "Urthtech",
+        "value": 1,
+        "points": 2
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-r1",
+        "label": "Tech Redemption (choose primary) 3",
+        "pick": 1,
+        "pool": "skill",
+        "value": 3,
+        "filter": [
+          "Tech Redemption"
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "gu-scientist-r2",
+        "label": "Tech Redemption (choose secondary) 2",
+        "pick": 1,
+        "pool": "skill",
+        "value": 2,
+        "filter": [
+          "Tech Redemption"
+        ],
+        "options": []
+      },
+      {
+        "kind": "skill",
+        "key": "Think Machine",
+        "value": 1
+      },
+      {
+        "kind": "benefice",
+        "key": "Compendium.fading-suns.benefices-afflictions.Item.C71AYPZdXGwYJw1J",
+        "value": 3,
+        "label": "Commissioned"
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 7100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

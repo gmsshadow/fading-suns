@@ -128,6 +128,7 @@ const KNACK_BLESSINGS = [
   { n: "Sensitive Smell", c: 1, mods: [ch(2, "mind.perception")], r: "With smell only" },
   { n: "Sensitive Touch", c: 1, mods: [ch(2, "mind.perception")], r: "To discern touched objects" },
   { n: "Sonorous", c: 2, mods: [ch(2, "spirit.extrovert")], r: "When impressing others through speech" },
+  { n: "The Man", c: 2, mods: [sk(2, "Impress")], r: "When leading underlings" },
   { n: "Thrifty", c: 2, mods: [ch(2, "mind.wits")], r: "In money matters" }
 ];
 

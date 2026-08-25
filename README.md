@@ -124,6 +124,22 @@ base run. The Vitality contribution is applied automatically.
 the six noble Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early
 Careers are shared across all five houses, so only the Upbringings vary.
 
+**All three human factions are now complete** — 82 Character History stages:
+
+| | Upbringing | Apprenticeship | Early Career |
+|---|---|---|---|
+| Noble | 15 | 6 | 5 |
+| Priest | 6 shared + Brother Battle | 10 + Brother Battle | 5 + Brother Battle |
+| Merchant | 6 shared | 15 | 7 |
+
+The priest Apprenticeship is a matrix of three settings by four sects, and the guild one of three
+settings by five guilds. Where Temple Avesti print *"See Cathedral, above"* for Parish and
+Monastery, those cells are absent rather than invented — ten priest entries, not twelve.
+
+Both matrices are open to nobles, since *"nobles can join the priesthood at this stage"* (p.77) and
+a guild likewise, *"although it is considered scandalous"* (p.80). Their Upbringings are not shared,
+and Brother Battle runs its own closed track from Upbringing to Early Career.
+
 **Priests and guildsmembers share a composite Upbringing** (p.77). Where a noble takes one stage,
 they take an *Environment* — City, Town or Country — and a *Class* — Wealthy, Average or Poor. The
 two come to exactly the five characteristic and five skill points a noble spends on one stage:
@@ -149,8 +165,11 @@ option, Draw & Strike with Disarm and Feint, comes to fourteen; the budget check
 if *some* legal selection lands on budget, which treats that as the bonus for having taken the
 Apprenticeship rather than an error.
 
-One stage still does not add up, and is pinned rather than padded: **Early Career: Ambassador** is
-one skill point short, with no unmodelled element to account for it. That looks like an erratum.
+Five stages do not add up and are pinned rather than padded, each checked line by line against the
+printed entry: **Ambassador** (1 short), **Cathedral (Temple Avesti)** (2 short), **Brother Battle
+Warrior Monk** — Upbringing (5 over) and Early Career (1 over) — and **Scientist** (1 over). The
+Brother Battle overages are plausible as intent, since the order's training is meant to be
+exceptional; the rest look like errata.
 
 **Benefices & Afflictions** — 52 entries from p.117–124, across Background, Community,
 Possessions, Artifacts & Relics, Riches and Status.
@@ -517,7 +536,7 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Character histories for the remaining houses, sects and guilds
+- Character histories for the alien races (p.83), which need racial rules first
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)
 - Psi and Theurgy path structures with level prerequisites (p.128)

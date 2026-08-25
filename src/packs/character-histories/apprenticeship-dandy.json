@@ -9,6 +9,8 @@
     "stageType": "apprenticeship",
     "faction": "noble",
     "group": "Leisure",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",
@@ -149,7 +151,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 2000000,
+  "sort": 2700000,
   "ownership": {
     "default": 0
   },

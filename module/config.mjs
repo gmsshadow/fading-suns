@@ -331,3 +331,9 @@ FADING_SUNS.riteComponents = {
   L: "FADINGSUNS.Occult.Litany",
   P: "FADINGSUNS.Occult.Paraphernalia"
 };
+
+/** Slots a composite Upbringing is built from (p.77). */
+FADING_SUNS.stageSlots = {
+  environment: "FADINGSUNS.Slot.Environment",
+  class: "FADINGSUNS.Slot.Class"
+};

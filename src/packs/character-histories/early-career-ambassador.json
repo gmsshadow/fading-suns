@@ -9,6 +9,8 @@
     "stageType": "earlyCareer",
     "faction": "noble",
     "group": "Court",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",
@@ -186,7 +188,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 2500000,
+  "sort": 3200000,
   "ownership": {
     "default": 0
   },

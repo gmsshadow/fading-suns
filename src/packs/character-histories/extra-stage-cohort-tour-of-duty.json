@@ -9,6 +9,8 @@
     "stageType": "extra",
     "faction": "",
     "group": "Imperial Tours",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "choice",
@@ -133,7 +135,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 3000000,
+  "sort": 3700000,
   "ownership": {
     "default": 0
   },

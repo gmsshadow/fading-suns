@@ -9,6 +9,8 @@
     "stageType": "extra",
     "faction": "",
     "group": "Tours of Duty",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "choice",
@@ -92,7 +94,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 2800000,
+  "sort": 3500000,
   "ownership": {
     "default": 0
   },

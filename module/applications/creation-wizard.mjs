@@ -37,7 +37,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       step: "mode",
       faction: "noble",
       group: "",
-      stages: {},      // stageType -> Item
+      stages: {},      // stageType -> Item[], since an Upbringing may be composite
       choices: {},     // choice id -> option index, list of indices, or grant
       picked: {},      // choice id -> the pool value chosen, for redisplay
       extraStages: [], // Extra Stages: Item documents, at most two
@@ -108,7 +108,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.stageLabel = game.i18n.localize(CONFIG.FADING_SUNS.stageTypes[step]);
       context.budget = STAGE_BUDGET[step];
       context.groups = await this.#availableStages(step);
-      context.selected = this.draft.stages[step] ?? null;
+      context.selected = this.draft.stages[step] ?? [];
+      context.slots = this.#slotCache[step] ?? [""];
+      context.composite = context.slots.length > 1;
     }
 
     if (step === "choices") context.choices = await this.#allChoices();
@@ -148,9 +150,18 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const pack = game.packs.get("fading-suns.character-histories");
     if (!pack) return [];
 
-    const documents = (await pack.getDocuments())
-      .filter(d => d.system.stageType === stageType && d.system.faction === this.draft.faction);
+    const faction = this.draft.faction;
+    const documents = (await pack.getDocuments()).filter(d => {
+      if (d.system.stageType !== stageType) return false;
+      // Priests and guildsmembers share their Upbringings, so a stage may list
+      // several factions; a single faction field still works for the rest.
+      const shared = d.system.factions ?? [];
+      return shared.length ? shared.includes(faction) : d.system.faction === faction;
+    });
 
+    this.#slotCache[stageType] = this.#slotsFor(documents);
+
+    const chosen = this.draft.stages[stageType] ?? [];
     const groups = new Map();
     for (const stage of documents) {
       const key = stage.system.group || "";
@@ -167,6 +178,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
           .map(stage => ({
             id: stage.id,
             uuid: stage.uuid,
+            selected: chosen.some(c => c.id === stage.id),
             description: stage.system.description,
             // Documents are named "Upbringing: High-Court (Hawkwood)" so the
             // compendium sidebar reads well. Under a house heading both the
@@ -504,8 +516,39 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** The chosen stages, in lifepath order. */
   get chosenStages() {
-    return STAGE_ORDER.map(type => this.draft.stages[type]).filter(Boolean);
+    return STAGE_ORDER.flatMap(type => this.draft.stages[type] ?? []);
   }
+
+  /**
+   * The slots a stage type is built from for the current faction.
+   *
+   * A noble Upbringing is one stage; a priest's or guildsmember's is an
+   * Environment plus a Class (p.77), unless they are Brother Battle, whose
+   * single stage fills the lot.
+   *
+   * @param {Item[]} available
+   * @returns {string[]}  Slot names, or [""] for a single-stage step.
+   */
+  #slotsFor(available) {
+    const slots = [...new Set(available.map(s => s.system.slot).filter(Boolean))];
+    return slots.length ? slots : [""];
+  }
+
+  /** Whether the stage step has everything it needs to move on. */
+  #stageStepComplete(stageType) {
+    const chosen = this.draft.stages[stageType] ?? [];
+    if (!chosen.length) return false;
+
+    // A stage with no slot fills the step by itself.
+    if (chosen.some(s => !s.system.slot)) return true;
+
+    const required = this.#slotCache[stageType] ?? [""];
+    const filled = new Set(chosen.map(s => s.system.slot));
+    return required.every(slot => filled.has(slot));
+  }
+
+  /** Slots required per stage type, cached as the step is prepared. */
+  #slotCache = {};
 
   /**
    * A fresh character before any stage is applied: Body and Mind at 3, one Spirit
@@ -733,7 +776,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   /** Whether the current step is complete enough to move on. */
   #canAdvance() {
     const step = this.draft.step;
-    if (STAGE_ORDER.includes(step)) return !!this.draft.stages[step];
+    if (STAGE_ORDER.includes(step)) return this.#stageStepComplete(step);
     if (step === "choices") return this.#pendingChoices().length === 0;
     return true;   // Under-spending Benefices or Extras is the player's business.
   }
@@ -866,9 +909,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   static async #onSetFaction(event, target) {
     this.draft.faction = target.dataset.faction;
     // Stages are faction-specific, so changing faction invalidates the choices.
-    this.draft.stages = {};
-    this.draft.choices = {};
-    this.draft.picked = {};
+    this.#resetStages();
     this.render();
   }
 
@@ -877,7 +918,23 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const { stageType, uuid } = target.dataset;
     const stage = await fromUuid(uuid);
     if (!stage) return;
-    this.draft.stages[stageType] = stage;
+
+    const chosen = this.draft.stages[stageType] ?? [];
+    const slot = stage.system.slot;
+
+    // Clicking a chosen stage again clears it.
+    if (chosen.some(s => s.id === stage.id)) {
+      this.draft.stages[stageType] = chosen.filter(s => s.id !== stage.id);
+      this.render();
+      return;
+    }
+
+    // A slotless stage fills the whole step; a slotted one replaces its own slot
+    // and anything slotless that was covering it.
+    this.draft.stages[stageType] = slot
+      ? [...chosen.filter(s => s.system.slot && s.system.slot !== slot), stage]
+      : [stage];
+
     this.render();
   }
 
@@ -885,6 +942,13 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   static async #onClearStage(event, target) {
     delete this.draft.stages[target.dataset.stageType];
     this.render();
+  }
+
+  /** Stage choices are per faction, so changing it starts them over. */
+  #resetStages() {
+    this.draft.stages = {};
+    this.draft.choices = {};
+    this.draft.picked = {};
   }
 
   /** @this {FadingSunsCreationWizard} */

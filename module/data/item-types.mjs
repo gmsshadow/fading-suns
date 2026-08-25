@@ -486,6 +486,13 @@ export class FadingSunsStage extends FadingSunsItemBase {
         required: true, blank: true, initial: "noble",
         choices: () => CONFIG.FADING_SUNS.factions
       }),
+      // Priests and guildsmembers share their Upbringings, so a stage may be
+      // open to more than one faction. Empty means any.
+      factions: new fields.ArrayField(new fields.StringField()),
+      // A composite stage fills one slot of several. Priests and guildsmembers
+      // build their Upbringing from an Environment and a Class (p.77), where a
+      // noble takes a single stage filling the whole thing.
+      slot: new fields.StringField({ required: false, blank: true, initial: "" }),
       // The house, sect, guild or grouping this stage belongs to, e.g. "Hawkwood",
       // "Military". Free text because minor houses are meant to be invented (p.72).
       group: new fields.StringField({ required: false, blank: true, initial: "" }),

@@ -221,6 +221,98 @@ const UPBRINGING = [
   ])
 ];
 
+
+/* -------------------------------------------- */
+/*  Upbringing — priests and guilds (p.77)      */
+/* -------------------------------------------- */
+
+/**
+ * "Most priests or guildsmembers grow up in similar towns or cities... The two
+ *  factors to consider here are the character's environment and social status."
+ *
+ * Their Upbringing is therefore composite: one Environment and one Class, which
+ * together come to the five characteristic and five skill points a noble spends
+ * on a single stage. Environment is worth 4 and 3, Class 1 and 2.
+ *
+ * Brother Battle is the exception — "monks are chosen at an early age" — and
+ * fills the whole Upbringing on its own.
+ */
+const FREEMAN_FACTIONS = ["priest", "merchant"];
+
+const freemanUpbringing = (name, slot, description, grants, extra = {}) => ({
+  n: name,
+  stage: "upbringing",
+  faction: "",
+  factions: FREEMAN_FACTIONS,
+  slot,
+  group: slot === "environment" ? "Environment" : "Class",
+  d: description,
+  grants,
+  ...extra
+});
+
+const FREEMAN_UPBRINGING = [
+  freemanUpbringing("City", "environment",
+    "Raised among crowds and commerce, where news travels fast and nothing stays private for long.", [
+    ch("mind.wits", 2), ch("mind.perception", 2),
+    sk("Observe", 1), sk("Inquiry", 1), sk("Streetwise", 1)
+  ]),
+  freemanUpbringing("Town", "environment",
+    "Raised somewhere small enough that everyone knows your family, and large enough that it matters.", [
+    ch("mind.wits", 1), ch("mind.perception", 1), ch("spirit.extrovert", 2),
+    sk("Charm", 1), sk("Vigor", 1), sk("Inquiry", 1)
+  ]),
+  freemanUpbringing("Country", "environment",
+    "Raised on the land, among beasts and weather and the long memory of a parish.", [
+    ch("body.strength", 1), ch("body.endurance", 2), ch("spirit.faith", 1),
+    sk("Vigor", 1),
+    pickOne("freeman-country-beast", "Beast Lore or Drive (Beastcraft) 1",
+      opt("Beast Lore", sk("Beast Lore", 1)),
+      opt("Drive (Beastcraft)", sp("Drive", "Beastcraft", 1))),
+    sp("Lore", "Regional", 1)
+  ]),
+
+  freemanUpbringing("Wealthy", "class",
+    "The family had money, and spent some of it on your letters.", [
+    ch("spirit.extrovert", 1), lang("Read", "Urthish", 2)
+  ]),
+  freemanUpbringing("Average", "class",
+    "Neither rich nor wanting; a household that got by.", [
+    orSpirit("freeman-average-social", "Extrovert", "Introvert", 1),
+    pickOne("freeman-average-skill", "Charm or Impress +1",
+      opt("Charm", sk("Charm", 1)),
+      opt("Impress", sk("Impress", 1))),
+    pickOne("freeman-average-lore", "Lore (Folk or Regional) 1",
+      opt("Lore (Folk)", sp("Lore", "Folk", 1)),
+      opt("Lore (Regional)", sp("Lore", "Regional", 1)))
+  ]),
+  freemanUpbringing("Poor", "class",
+    "You learned early what a coin was worth and what people would do for one.", [
+    orSpirit("freeman-poor-spirit", "Faith", "Ego", 1),
+    sk("Knavery", 1),
+    pickOne("freeman-poor-skill", "Streetwise or Survival 1",
+      opt("Streetwise", sk("Streetwise", 1)),
+      opt("Survival", sk("Survival", 1)))
+  ]),
+
+  // Brother Battle fills the whole Upbringing rather than a slot.
+  {
+    n: "Brother Battle Warrior Monk",
+    stage: "upbringing",
+    faction: "priest",
+    slot: "",
+    group: "Brother Battle",
+    d: "Taken by the order as a child. The training is harsh and begins at once.",
+    grants: [
+      ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
+      ch("spirit.faith", 1),
+      sk("Dodge", 1), sk("Fight", 2), sk("Melee", 1), sk("Shoot", 2), sk("Vigor", 1),
+      sk("Focus", 1), sk("Remedy", 1), sk("Stoic Body", 1),
+      bless("Disciplined"), curse("Clueless")
+    ]
+  }
+];
+
 /* -------------------------------------------- */
 /*  Apprenticeship — all noble houses (p.74)    */
 /* -------------------------------------------- */
@@ -584,5 +676,6 @@ const EXTRA_STAGES = [
 
 /** The noble Character Histories, and the Extra Stages open to anyone (p.72–p.85). */
 export const CHARACTER_HISTORIES = [
-  ...UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER, ...EXTRA_STAGES
+  ...UPBRINGING, ...FREEMAN_UPBRINGING, ...APPRENTICESHIP, ...EARLY_CAREER,
+  ...EXTRA_STAGES
 ];

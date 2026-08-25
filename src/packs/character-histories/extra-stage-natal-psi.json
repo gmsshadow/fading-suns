@@ -9,6 +9,8 @@
     "stageType": "extra",
     "faction": "",
     "group": "Psychic Awakening",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",
@@ -79,7 +81,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 3300000,
+  "sort": 4000000,
   "ownership": {
     "default": 0
   },

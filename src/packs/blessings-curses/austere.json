@@ -1,22 +1,22 @@
 {
-  "_key": "!items!FLyaAdR1hagU4mvo",
-  "_id": "FLyaAdR1hagU4mvo",
-  "name": "Eloquent",
+  "_key": "!items!gVORo3MBhjI4LYs8",
+  "_id": "gVORo3MBhjI4LYs8",
+  "name": "Austere",
   "type": "blessing",
-  "img": "icons/svg/regen.svg",
+  "img": "icons/svg/downgrade.svg",
   "system": {
     "description": "",
-    "polarity": "blessing",
-    "category": "knack",
+    "polarity": "curse",
+    "category": "behavior",
     "cost": 2,
     "modifiers": [
       {
-        "value": 2,
-        "target": "spirit.extrovert",
+        "value": -2,
+        "target": "spirit.passion",
         "targetType": "characteristic"
       }
     ],
-    "restriction": "When swaying others through speech",
+    "restriction": "Before members of the flock",
     "always": false,
     "vitalityModifier": 0,
     "baseRun": 0,
@@ -24,7 +24,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 6300000,
+  "sort": 2000000,
   "ownership": {
     "default": 0
   },

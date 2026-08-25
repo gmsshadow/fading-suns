@@ -61,6 +61,7 @@ const BEHAVIOR_BLESSINGS = [
 
 const BEHAVIOR_CURSES = [
   { n: "Argumentative", c: 2, mods: [ch(-2, "spirit.extrovert")], r: "In conversation" },
+  { n: "Austere", c: 2, mods: [ch(-2, "spirit.passion")], r: "Before members of the flock" },
   { n: "Bluster", c: 2, mods: [ch(-2, "spirit.extrovert")], r: "When recounting deeds" },
   { n: "Brainwashed", c: 2, mods: [ch(-2, "mind.wits")], r: "When confronted with something that contradicts the brainwashed belief" },
   { n: "Callous", c: 2, mods: [ch(-2, "spirit.passion")], r: "When asked for aid" },

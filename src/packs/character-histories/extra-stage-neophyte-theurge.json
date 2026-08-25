@@ -9,6 +9,8 @@
     "stageType": "extra",
     "faction": "",
     "group": "Theurgic Calling",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",
@@ -79,7 +81,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 3500000,
+  "sort": 4200000,
   "ownership": {
     "default": 0
   },

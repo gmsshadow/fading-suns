@@ -9,6 +9,8 @@
     "stageType": "extra",
     "faction": "",
     "group": "Cybernetics",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "note",
@@ -29,7 +31,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 3100000,
+  "sort": 3800000,
   "ownership": {
     "default": 0
   },

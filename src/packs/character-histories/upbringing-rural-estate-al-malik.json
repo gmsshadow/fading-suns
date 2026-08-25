@@ -9,6 +9,8 @@
     "stageType": "upbringing",
     "faction": "noble",
     "group": "al-Malik",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",

@@ -9,6 +9,8 @@
     "stageType": "apprenticeship",
     "faction": "noble",
     "group": "Diplomacy",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",
@@ -129,7 +131,7 @@
   },
   "effects": [],
   "folder": null,
-  "sort": 1800000,
+  "sort": 2500000,
   "ownership": {
     "default": 0
   },

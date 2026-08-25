@@ -9,6 +9,8 @@
     "stageType": "upbringing",
     "faction": "noble",
     "group": "Li Halan",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",

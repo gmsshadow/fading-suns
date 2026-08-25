@@ -124,6 +124,17 @@ base run. The Vitality contribution is applied automatically.
 the six noble Apprenticeships and the five noble Early Careers (p.72–75). Apprenticeships and Early
 Careers are shared across all five houses, so only the Upbringings vary.
 
+**Priests and guildsmembers share a composite Upbringing** (p.77). Where a noble takes one stage,
+they take an *Environment* — City, Town or Country — and a *Class* — Wealthy, Average or Poor. The
+two come to exactly the five characteristic and five skill points a noble spends on one stage:
+Environment is worth 4 and 3, Class 1 and 2. A test asserts every one of the nine combinations lands
+on budget.
+
+The wizard handles this with slots rather than a special case. A stage may declare which slot it
+fills, and the Upbringing step then asks for one of each slot the faction's stages define. Nobles
+declare no slot, so their step is unchanged. Brother Battle declares none either, which is exactly
+right: *"monks are chosen at an early age"* and their single stage fills the whole Upbringing.
+
 The stage picker groups by house for Upbringings and by pastime for Apprenticeships, so the choice
 reads *Hawkwood → High-Court* rather than as a flat list of fifteen.
 

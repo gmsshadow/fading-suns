@@ -9,6 +9,8 @@
     "stageType": "upbringing",
     "faction": "noble",
     "group": "Hawkwood",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",

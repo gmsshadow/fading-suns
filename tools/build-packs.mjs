@@ -289,6 +289,8 @@ function buildCharacterHistories() {
       stageType: stage.stage,
       faction: stage.faction,
       group: stage.group ?? "",
+      factions: stage.factions ?? [],
+      slot: stage.slot ?? "",
       grants: resolveReferences(stage.grants, stage.n),
       // Suggestions name a Benefice; the uuid is resolved here so the wizard can
       // offer it with one click, and a typo fails the build.

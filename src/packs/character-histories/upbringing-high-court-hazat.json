@@ -9,6 +9,8 @@
     "stageType": "upbringing",
     "faction": "noble",
     "group": "Hazat",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",

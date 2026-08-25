@@ -9,6 +9,8 @@
     "stageType": "upbringing",
     "faction": "noble",
     "group": "Decados",
+    "factions": [],
+    "slot": "",
     "grants": [
       {
         "kind": "characteristic",

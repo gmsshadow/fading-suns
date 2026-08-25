@@ -1,0 +1,102 @@
+{
+  "_key": "!items!bwGDwHidyHDScAqf",
+  "_id": "bwGDwHidyHDScAqf",
+  "name": "Upbringing: Poor",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>You learned early what a coin was worth and what people would do for one.</p>",
+    "stageType": "upbringing",
+    "faction": "",
+    "group": "Class",
+    "factions": [
+      "priest",
+      "merchant"
+    ],
+    "slot": "class",
+    "grants": [
+      {
+        "kind": "choice",
+        "id": "freeman-poor-spirit",
+        "label": "Faith or Ego +1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Faith",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.faith",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Ego",
+            "grants": [
+              {
+                "kind": "characteristic",
+                "key": "spirit.ego",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Knavery",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "freeman-poor-skill",
+        "label": "Streetwise or Survival 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Streetwise",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Streetwise",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Survival",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Survival",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -32,6 +32,13 @@ const stages = allStages.filter(s => s.system.stageType !== "extra");
 
 /** The Extra Stages, which are bought with Extra points instead (p.84). */
 const extraStages = allStages.filter(s => s.system.stageType === "extra");
+
+/** Stages belonging to a given faction, allowing for shared ones. */
+const forFaction = faction => stages.filter(s =>
+  (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
+
+/** The noble lifepath stages. */
+const nobleStages = forFaction("noble");
 const blessings = loadPack("blessings-curses");
 const benefices = loadPack("benefices-afflictions");
 const combatActions = loadPack("combat-actions");
@@ -60,13 +67,50 @@ function startingCharacter() {
 /* -------------------------------------------- */
 
 test("the pack holds the complete noble faction", () => {
-  assert.equal(allStages.length, 36, "26 lifepath stages plus 10 Extra Stages");
-  assert.equal(stages.length, 26);
-  const counts = stages.reduce((m, s) => {
+  const counts = nobleStages.reduce((m, s) => {
     m[s.system.stageType] = (m[s.system.stageType] ?? 0) + 1;
     return m;
   }, {});
   assert.deepEqual(counts, { upbringing: 15, apprenticeship: 6, earlyCareer: 5 });
+});
+
+test("priests and guildsmembers share a composite Upbringing (p.77)", () => {
+  const shared = stages.filter(s => s.system.factions?.length);
+  const slots = shared.reduce((m, s) => {
+    m[s.system.slot] = (m[s.system.slot] ?? 0) + 1;
+    return m;
+  }, {});
+  assert.deepEqual(slots, { environment: 3, class: 3 },
+    "City, Town and Country; Wealthy, Average and Poor");
+
+  for (const stage of shared) {
+    assert.deepEqual(stage.system.factions.sort(), ["merchant", "priest"]);
+  }
+});
+
+test("Brother Battle fills the whole Upbringing on its own (p.77)", () => {
+  const monk = byName("Upbringing: Brother Battle Warrior Monk");
+  assert.equal(monk.system.slot, "", "no slot means it fills the step");
+  assert.equal(monk.system.faction, "priest");
+  assert.deepEqual(monk.system.factions, [], "not shared with the guilds");
+});
+
+test("an Environment and a Class together come to a noble Upbringing's budget", () => {
+  // Environment is worth 4 characteristic and 3 skill points, Class 1 and 2 —
+  // five and five between them, which is what a noble spends on one stage (p.88).
+  const environment = stages.filter(s => s.system.slot === "environment");
+  const klass = stages.filter(s => s.system.slot === "class");
+
+  for (const env of environment) {
+    for (const cls of klass) {
+      const combined = [...env.system.grants, ...cls.system.grants];
+      const range = spendRange(combined);
+      assert.ok(range.characteristics[0] <= 5 && 5 <= range.characteristics[1],
+        `${env.name} + ${cls.name}: ${range.characteristics}`);
+      assert.ok(range.skills[0] <= 5 && 5 <= range.skills[1],
+        `${env.name} + ${cls.name}: ${range.skills}`);
+    }
+  }
 });
 
 test("every royal house has all three Upbringings (p.73)", () => {
@@ -92,7 +136,7 @@ test("each house grants the same Blessing and Curse across its Upbringings (p.73
     "al-Malik": ["Gracious", "Impetuous"]
   };
 
-  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+  for (const stage of nobleStages.filter(s => s.system.stageType === "upbringing")) {
     const traits = stage.system.grants
       .filter(g => g.kind === "blessing" || g.kind === "curse")
       .map(g => g.label);
@@ -177,8 +221,15 @@ test("every Early Career confers noble rank (p.75)", () => {
  * adds Draw & Strike (4) for ten.
  */
 const KNOWN_SHORTFALLS = {
-  "Early Career: Ambassador": 1
+  "Early Career: Ambassador": 1,
+  // Brother Battle's Upbringing spends ten skill points against a budget of
+  // five. It is printed that way, and the order's training is meant to be
+  // exceptional, so it is pinned rather than trimmed.
+  "Upbringing: Brother Battle Warrior Monk": -5
 };
+
+/** Composite halves are judged as a pair, not individually. */
+const COMPOSITE = new Set(["environment", "class"]);
 
 /**
  * What a stage spends, as a range.
@@ -235,6 +286,7 @@ function spendRange(grants) {
 test("each stage can be spent to its published budget (p.88)", () => {
   for (const stage of stages) {
     if (stage.name in KNOWN_SHORTFALLS) continue;
+    if (COMPOSITE.has(stage.system.slot)) continue;
     const budget = STAGE_BUDGET[stage.system.stageType];
     const range = spendRange(stage.system.grants);
 
@@ -466,7 +518,7 @@ test("every suggested Benefice resolves to a real document", () => {
 test("every noble Upbringing carries the faction's own suggestions (p.72)", () => {
   // "Suggested Benefices: Nobility, Riches" is printed against the Nobles
   // write-up rather than any one house, so it applies to all of them.
-  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+  for (const stage of nobleStages.filter(s => s.system.stageType === "upbringing")) {
     const labels = stage.system.suggestedBenefices.map(e => e.label);
     assert.ok(labels.includes("Nobility"), `${stage.name} is missing Nobility`);
     assert.ok(labels.includes("Riches"), `${stage.name} is missing Riches`);
@@ -475,7 +527,7 @@ test("every noble Upbringing carries the faction's own suggestions (p.72)", () =
 
 test("only the houses the book names carry extra suggestions (p.73)", () => {
   const extras = {};
-  for (const stage of stages.filter(s => s.system.stageType === "upbringing")) {
+  for (const stage of nobleStages.filter(s => s.system.stageType === "upbringing")) {
     const own = stage.system.suggestedBenefices
       .filter(e => !["Nobility", "Riches"].includes(e.label))
       .map(e => e.label);

@@ -439,7 +439,8 @@
         "Faction": "Not open to this faction."
       },
       "SkillAllowance": "Tour of Duty skill allowance",
-      "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level."
+      "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level.",
+      "Composite": "Priests and guildsmembers build their Upbringing from an Environment and a Class — pick one of each. Brother Battle fills both on its own."
     },
     "CombatAction": {
       "Category": "Style",
@@ -510,6 +511,10 @@
       "ContestNeeded": "The shadow has caught up. Raising this trait needs a contest of wills first (p.135).",
       "Levels": "Levels",
       "Choose": "Choose"
+    },
+    "Slot": {
+      "Environment": "Environment",
+      "Class": "Class"
     }
   }
 }

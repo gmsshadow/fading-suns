@@ -1,0 +1,96 @@
+{
+  "_key": "!items!7hpeJz75tyBZOfP0",
+  "_id": "7hpeJz75tyBZOfP0",
+  "name": "Upbringing: Country",
+  "type": "stage",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "description": "<p>Raised on the land, among beasts and weather and the long memory of a parish.</p>",
+    "stageType": "upbringing",
+    "faction": "",
+    "group": "Environment",
+    "factions": [
+      "priest",
+      "merchant"
+    ],
+    "slot": "environment",
+    "grants": [
+      {
+        "kind": "characteristic",
+        "key": "body.strength",
+        "value": 1
+      },
+      {
+        "kind": "characteristic",
+        "key": "body.endurance",
+        "value": 2
+      },
+      {
+        "kind": "characteristic",
+        "key": "spirit.faith",
+        "value": 1
+      },
+      {
+        "kind": "skill",
+        "key": "Vigor",
+        "value": 1
+      },
+      {
+        "kind": "choice",
+        "id": "freeman-country-beast",
+        "label": "Beast Lore or Drive (Beastcraft) 1",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Beast Lore",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Beast Lore",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "label": "Drive (Beastcraft)",
+            "grants": [
+              {
+                "kind": "skill",
+                "key": "Drive",
+                "specialty": "Beastcraft",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "skill",
+        "key": "Lore",
+        "specialty": "Regional",
+        "value": 1
+      }
+    ],
+    "suggestedBenefices": [],
+    "beneficeRestriction": "",
+    "extraCost": 0,
+    "allowance": {
+      "characteristics": 0,
+      "skills": 0,
+      "free": 0
+    },
+    "requires": "",
+    "exclusive": false,
+    "pending": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

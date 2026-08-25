@@ -1,0 +1,30 @@
+{
+  "_key": "!items!XNv0L43RmqaqTION",
+  "_id": "XNv0L43RmqaqTION",
+  "name": "Voice from the Past",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can channel the personality of someone who is dead. As in the film Rashomon, these ghosts of the past can sometimes be accepted as witnesses in certain murder trials. Ancient or alien personages may require a scholar on hand to overcome barriers posed by dead or unfamiliar languages. The ghost will speak through the psychic long enough to give her tale (gamemaster’s discretion). The Church claims that these are not departed people but figments of the psychic’s twisted mind or demons parading as dead loved ones, but most people in the Known Worlds believe in ghosts anyway.</p>",
+    "level": 8,
+    "path": "Omen",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "NA",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.ZKG05mNpZkohhK3f"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

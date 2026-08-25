@@ -1,0 +1,30 @@
+{
+  "_key": "!items!NonZBjwKiUfYadFq",
+  "_id": "NonZBjwKiUfYadFq",
+  "name": "Sever Bond",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can sever any type of bond between two psychics (including a Mojo Bond or a Coven Bond, below). The severing is permanent, although new bonds may be formed again using the same powers. Wyrd points may be spent to increase the targets if more than two people share the bond.</p>",
+    "level": 8,
+    "path": "Sympathy",
+    "wyrdCost": 2,
+    "wyrdNote": "",
+    "characteristic": "spirit.ego",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.S6IU60ickew4Eot3"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

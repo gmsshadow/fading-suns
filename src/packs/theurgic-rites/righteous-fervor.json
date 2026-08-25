@@ -1,0 +1,31 @@
+{
+  "_key": "!items!rdf1rKAKurJtQJhT",
+  "_id": "rdf1rKAKurJtQJhT",
+  "name": "Righteous Fervor",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Brothers Battle monks are renowned for their discipline and loyalty. The Rite of Righteous Fervor intensifies their already legendary stoicism, allowing a Brother to resist all temptations, persuasions, fast talks, etc., that would sway him from his duty. During casting, the Brother declares his duty (“No harm shall come to the bishop under my watch,” or “I shall safely deliver the writ to the Heirophant on Byzantium Secundus.”). If the casting is successful, the Brother is immune to any mental or social obstacles which would hinder his duty (such as the orders of the bishop to step down…</p>",
+    "level": 4,
+    "sect": "Brother Battle Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "One Act",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.FETCN0J2mEwPSp5q"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

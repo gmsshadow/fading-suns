@@ -1,0 +1,30 @@
+{
+  "_key": "!items!nEnSd10xVw8ChiKz",
+  "_id": "nEnSd10xVw8ChiKz",
+  "name": "Vis Flow",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can channel incoming energy to charge fusion cells, flashlights or starship engines. He must touch the item to be charged and the source of energy (a sparking live wire, a fusion charging plug, a Symbiot giving its Lifeforce). Mild shocks will not harm the psychic while this power is active, but he is not immune to energy attacks or severe power surges. It is possible to use this power when being attacked by lasers, blasters or higher levels of Vis Craft, but regardless of success on channeling the energy, the psychic will suffer any damage normally. (If an energy shield is…</p>",
+    "level": 3,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Volt Redemption",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.d8JBZ5dBfj0agpoV"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

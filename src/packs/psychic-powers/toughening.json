@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Pw3iskHyXftUWN5T",
+  "_id": "Pw3iskHyXftUWN5T",
+  "name": "Toughening",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>While this power is activated, the psychic may add 2 to his Endurance rating, plus another 1 per victory point. This does not add to Vitality, only Endurance.</p>",
+    "level": 1,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Temporary",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

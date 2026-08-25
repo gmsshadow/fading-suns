@@ -1,0 +1,31 @@
+{
+  "_key": "!items!zpmgf4IMG7lw9bOw",
+  "_id": "zpmgf4IMG7lw9bOw",
+  "name": "Exorcism",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>With this rite a theurge can drive out any dark power which is influencing or possessing the target (usually psychic or Antinomic domination and demonic possession, although the influence of Ur-artifacts and certain aliens can also be dispelled in this way). Exorcism can be a long and arduous process. It is a sustained action, and the exorcist needs to accumulate 25 victory points in order to rid the target of whatever is possessing or influencing him. He must spend the Wyrd point cost with every roll. If he runs out of Wyrd before accumulating 25 successes, the exorcism fails, and the…</p>",
+    "level": 8,
+    "sect": "Orthodox Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.QwJ1sHxlfnyDpyLH"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

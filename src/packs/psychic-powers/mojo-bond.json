@@ -1,0 +1,30 @@
+{
+  "_key": "!items!S6IU60ickew4Eot3",
+  "_id": "S6IU60ickew4Eot3",
+  "name": "Mojo Bond",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can form a bond with another person over a distance and against his will. To do so, he must have a sympathetic focus, an item that bears the target’s psychic resonance, such as a well-worn item of his clothing, a lock of hair, fingernail clippings, etc. These items must have a relatively fresh connection to the target, having been on him within the past month. The psychic does not need to meditate or spend more than 1 Wyrd point, but the duration of the Mojo Bond may not be extended—he has 10 turns in which to gain his advantage. Once successfully used, this power may not be…</p>",
+    "level": 7,
+    "path": "Sympathy",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.Cm9wKEzyjldcseTH"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

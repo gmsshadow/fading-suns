@@ -1,0 +1,30 @@
+{
+  "_key": "!items!2GYmMCFQ7PzRQQ0h",
+  "_id": "2GYmMCFQ7PzRQQ0h",
+  "name": "Emote",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can project emotions to another, to let them know how he feels (although he can fake emotions by rolling Passion+Knavery instead). The target simply senses the emotion but does not have to react in any particular way to it. The target of this power will know whose emotions he is sensing, although he may not know that his intuition is caused by a psychic power.</p>",
+    "level": 2,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Charm or Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.0jrghVqfHy50Dbne"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!W8GsN5qEPS6a22Vp",
+  "_id": "W8GsN5qEPS6a22Vp",
+  "name": "Consecration",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Consecration purifies an item from evil taint, effectively making a vestment out of it for the duration of one act. (After that act, the item returns to normal, unless a critical success was rolled, in which case the Consecration is permanent.) The Consecrated item resists being affected by psychic powers, Antinomy, Urge or Hubris; half of the casting victory points (rounded up) become a negative penalty for any of these powers attempting to target the item. Items of Tech Level 5+ are hard to consecrate; subtract one from the casting roll.</p>",
+    "level": 1,
+    "sect": "Orthodox Rituals",
+    "components": "G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "One Act",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

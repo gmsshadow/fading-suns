@@ -1,0 +1,31 @@
+{
+  "_key": "!items!zgPhVLNFP2Bjgnzj",
+  "_id": "zgPhVLNFP2Bjgnzj",
+  "name": "Cleansing",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Similar to the Orthodox Rite of Consecration, Cleansing may be used to target people as well as objects, purifying them from evil taint or influence. The Cleansed person resists being affected by psychic powers, Antinomy, Urge or Hubris; half of the casting victory points (rounded up) become a negative penalty for any of these powers attempting to affect the target. This rite has also proven effective in treating wounds when no antiseptic is available. Some Amaltheans perform this rite daily as part of their regular devotional ceremonies. A Cleansed person participating in a rite acts as a…</p>",
+    "level": 1,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Prolonged",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

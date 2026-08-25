@@ -1,0 +1,30 @@
+{
+  "_key": "!items!VyKDInpBzGjd1FDC",
+  "_id": "VyKDInpBzGjd1FDC",
+  "name": "Recovering",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>With this power, the psychic can regenerate one Vitality level per victory point.</p>",
+    "level": 7,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Remedy",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.1S3f5747nPRyEPjG"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!CwZ8Bd2EeRzxas28",
+  "_id": "CwZ8Bd2EeRzxas28",
+  "name": "Slowing",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>At this level, the psychic can slow down his bodily operations to an almost undetectable rate, feigning death and reducing his need for oxygen. The duration of this power can be increased at a cost of 1 Wyrd point per additional span.</p>",
+    "level": 8,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.VyKDInpBzGjd1FDC"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

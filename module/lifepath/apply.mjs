@@ -171,8 +171,10 @@ export async function applyLifepathToActor(actor, state, { stages = [] } = {}) {
     }
   }
 
-  // 4. Combat Actions taught by the stages or bought with Extra points (p.102).
+  // 4. Combat Actions taught by the stages or bought with Extra points (p.102),
+  //    and any psychic powers or theurgic rites granted by an occult stage.
   newItems.push(...await resolveItems((state.combatActions ?? []).map(a => a.key)));
+  newItems.push(...await resolveItems(state.powers ?? []));
 
   // 5. The stages themselves, so the character's history stays on the sheet.
   for (const stage of stages) {

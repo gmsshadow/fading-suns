@@ -1,0 +1,30 @@
+{
+  "_key": "!items!I7LbrFwcJyxoxmNA",
+  "_id": "I7LbrFwcJyxoxmNA",
+  "name": "FarSound",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Occasionally known by the old Phavian designation, “clairaudience,” FarSound allows the psychic to hear a distant place. The same modifiers for FarSight apply. (The Ur-Ukar supposedly have an additional power at this level: FarTouch.)</p>",
+    "level": 6,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Distance",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.eDbHpGgdo9CGO0wG"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

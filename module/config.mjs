@@ -309,3 +309,25 @@ FADING_SUNS.rangePenalties = {
 
 /** Goal penalty for wielding a weapon below its Strength requirement (p.296). */
 FADING_SUNS.underStrengthPenalty = -2;
+
+/* -------------------------------------------- */
+/*  Occult (p.128, p.147)                       */
+/* -------------------------------------------- */
+
+/** The psychic paths given in the core rules (p.131–p.143). */
+FADING_SUNS.psiPathList = [
+  "FarHand", "Sixth Sense", "Psyche", "Soma", "Sympathy", "Omen", "Vis Craft"
+];
+
+/** Sects whose liturgies the core rules describe (p.147–p.160). */
+FADING_SUNS.theurgySects = [
+  "Common to All Sects", "Orthodox Rituals", "Brother Battle Rituals",
+  "Eskatonic Order Rituals", "Temple Avesti Rituals", "Sanctuary Aeon Rituals"
+];
+
+/** Rite components: Gesture, Litany and Paraphernalia (p.147). */
+FADING_SUNS.riteComponents = {
+  G: "FADINGSUNS.Occult.Gesture",
+  L: "FADINGSUNS.Occult.Litany",
+  P: "FADINGSUNS.Occult.Paraphernalia"
+};

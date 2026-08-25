@@ -1394,3 +1394,7 @@
 #combat .combatant-control.is-declared {
   color: var(--fs-gold, #c9a227);
 }
+
+.fading-suns .hint.requires {
+  color: var(--fs-gold);
+}

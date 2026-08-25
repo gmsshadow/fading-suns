@@ -1,0 +1,30 @@
+{
+  "_key": "!items!O6OZSZOL1idAn2I9",
+  "_id": "O6OZSZOL1idAn2I9",
+  "name": "AirDance",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can focus the forces of AirStride upon others, levitating a number of people equal to his Wits rating, and, with an additional Wyrd expenditure, send them in as many separate directions as his victory points (otherwise they will all move in a single direction as a fixed group). Unwilling targets may resist this power with a Dexterity+Dodge roll. The duration may be extended as with AirStride. Omen The Omen path seeks to expand normal time-bound human awareness to include perceptions of the past and possible futures, known in the Phavian Institute as Postcognition and…</p>",
+    "level": 9,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.ddiyfEPcRh8vdRlV"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!dR7TzNAMDhpyeBSm",
+  "_id": "dR7TzNAMDhpyeBSm",
+  "name": "The Pulpit’s Gift",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Developed mainly for use by missionaries on new worlds, this rite increases the social influence of a theurge upon the people to whom she preaches. For the rest of the act, the theurge may add her victory points from this rite to any Charm or Impress rolls directed at a member of her new “flock.”</p>",
+    "level": 4,
+    "sect": "Common to All Sects",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Oratory",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "One Act",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.uvrQnQXaeAUYG1Yi"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

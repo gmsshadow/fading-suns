@@ -1,0 +1,30 @@
+{
+  "_key": "!items!zMIsA7CfqRkOay3b",
+  "_id": "zMIsA7CfqRkOay3b",
+  "name": "Subtle Sight",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The character can perceive the psychic auras of others. Auras can reveal general emotions and states of mind, whether someone is human or alien, and if he/she has psychic powers. Auras cannot reveal specific thoughts, although a very successful roll can supply quite a lot of useful information about the target; colors correspond to emotions, movement of the aura indicates general state of mind, and shapes within the aura can show what types of thoughts the target is thinking. See the Auras Chart.</p>",
+    "level": 3,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.rfsQiMZimCkBT0Tn"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

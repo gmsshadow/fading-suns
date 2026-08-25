@@ -1,0 +1,30 @@
+{
+  "_key": "!items!EDiB3O8NoptS1CuD",
+  "_id": "EDiB3O8NoptS1CuD",
+  "name": "FarArms",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can use all the previous powers in combination to lift, throw, hold or manipulate a number of objects equal to his Wits rating.</p>",
+    "level": 5,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.4Nql0JZenJrYiIIB"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!YaS1fwTMKPK81jtE",
+  "_id": "YaS1fwTMKPK81jtE",
+  "name": "AirStride",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic focuses directional forces upon herself sufficient to lift her body off the ground and even cruise at a maximum velocity of 10 meters per turn+5 meters for each victory point. The duration may be extended by 10 turns for each additional Wyrd point spent. Unlike other powers, the character can elect to spend this point anytime after the activation roll.</p>",
+    "level": 7,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.6x9mL7ieFonOLrJi"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

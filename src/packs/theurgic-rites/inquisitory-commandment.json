@@ -1,0 +1,31 @@
+{
+  "_key": "!items!QabsEnwdLxoOkfjR",
+  "_id": "QabsEnwdLxoOkfjR",
+  "name": "Inquisitory Commandment",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Use of this rite is the theurgic version of a shot of truth serum; the target is compelled to answer all questions addressed to her. Questions must be answered fully, comCHAPTER FIVE: OCCULT 159 159 pletely and honestly, without evasion or trickery. If the target chooses to contest the rite, the theurge’s Faith rating is subtracted from the contesting roll (see Defending Against Occult Powers, p.129).</p>",
+    "level": 7,
+    "sect": "Temple Avesti Rituals",
+    "components": "L",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Inquiry",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.OM1t4RskYDFQaAPM"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

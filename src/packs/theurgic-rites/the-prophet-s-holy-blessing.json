@@ -1,0 +1,31 @@
+{
+  "_key": "!items!I9Bi17PEKLDzKTsD",
+  "_id": "I9Bi17PEKLDzKTsD",
+  "name": "The Prophet’s Holy Blessing",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>By tracing the Church’s symbol on a companion’s forehead or in her general direction, a theurge may aid the target in a particular task, adding the victory points to the target’s goal roll. The effect lasts until the target has made the roll for the particular task blessed. (If the rite is successful, the character will receive a minimum of at least one victory die, regardless of the number of successes rolled.)</p>",
+    "level": 1,
+    "sect": "Common to All Sects",
+    "components": "G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "special (see text)",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!ddiyfEPcRh8vdRlV",
+  "_id": "ddiyfEPcRh8vdRlV",
+  "name": "Demolishing Hand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic compresses a field of energy at a point on or near the target’s body and explodes it, like coiling a spring and suddenly releasing it. The damage is equal to Wits+victory points. This is stun damage, like from a Stunner Gun, and ignores energy shields. If the target takes ANY damage (after figuring armor points), he must roll Endurance+Vigor. A failure means he is stunned that turn and the next; on a critical failure, he falls unconscious. If the damage taken is greater than the target’s Endurance, a failure means the target is knocked unconscious. Stun damage heals completely…</p>",
+    "level": 8,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.YaS1fwTMKPK81jtE"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

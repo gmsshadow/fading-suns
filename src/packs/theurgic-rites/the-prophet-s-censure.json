@@ -1,0 +1,31 @@
+{
+  "_key": "!items!uvrQnQXaeAUYG1Yi",
+  "_id": "uvrQnQXaeAUYG1Yi",
+  "name": "The Prophet’s Censure",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>The theurge may give an enemy of the faith a small taste of divine displeasure by repeating the first two lines of the Prophet’s Admonishment of the Unbelievers and making the sign of the barred jumpgate in the target’s direction. The reverse of the Holy Blessing, Censure penalizes the target in a particular task, subtracting the theurge’s victory points from the target’s goal roll. The effect lasts until the target has made the roll for the particular task censured.</p>",
+    "level": 4,
+    "sect": "Common to All Sects",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.6h5UPS35qAfN7yw8"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

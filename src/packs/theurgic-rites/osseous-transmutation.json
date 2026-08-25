@@ -1,0 +1,31 @@
+{
+  "_key": "!items!NdWa6ySqTda2snKX",
+  "_id": "NdWa6ySqTda2snKX",
+  "name": "Osseous Transmutation",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>By calling upon the transformative powers of his own indwelling portion of the Holy Flame, an Eskatonic priest can fossilize any object or body of substance less than or equal to his Theurgy rating times 20 in kilograms. (Additional mass can be bought at 10 kilograms per Wyrd point.) The transmuted object is composed of a gray chalky sandstone-like stuff, which is just strong enough to support a human’s weight but brittle enough to crack or crumble with sharp impact. The effect is permanent. Ur-artifacts are not affected by this rite. Living organic tissue cannot be affected with this…</p>",
+    "level": 5,
+    "sect": "Eskatonic Order Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Alchemy",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.NXAye8h4wPt5qz2r"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

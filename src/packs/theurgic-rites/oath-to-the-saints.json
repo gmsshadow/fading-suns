@@ -1,0 +1,31 @@
+{
+  "_key": "!items!WDbPhLFz4EJewrmH",
+  "_id": "WDbPhLFz4EJewrmH",
+  "name": "Oath to the Saints",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Inspired by the Oath of Fellowship pledged by Zebulon’s eight disciples to one another in their time of worst trial, this rite allows a party to pledge themselves to each other under the patronage of a saint. This rite must be cast by an ordained priest not of the party (a witness before the Pancreator), although any theurges within the party may assist in the rite (see Group Rites, p.156). This is similar to the psychic power of Bonding, for it allows all members of the party bonuses when casting theurgy upon one another (+2 goal roll). The particular saint whose name is invoked lends…</p>",
+    "level": 5,
+    "sect": "Common to All Sects",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Oratory",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.dR7TzNAMDhpyeBSm"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

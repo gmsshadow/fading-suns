@@ -1,0 +1,30 @@
+{
+  "_key": "!items!m0pqHgrF8Pd2aDIt",
+  "_id": "m0pqHgrF8Pd2aDIt",
+  "name": "Totem",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The character can create a bond with an item, allowing him to use his powers easier in association with that item. Wyrd costs are one less, and all tasks are considered Natural (+2)—although this does not allow him to more easily use the item itself; a think machine may be just as baffling before a Totem Bond as after. In addition, the character gains such an affinity with the item that he always knows where it is anywhere within his sensory range. This does not confer any form of FarSight, it is simply a sense of the item’s location. Wyrd points may be spent to extend this range for one…</p>",
+    "level": 5,
+    "path": "Sympathy",
+    "wyrdCost": 0,
+    "wyrdNote": "varies",
+    "characteristic": "mind.wits",
+    "skill": "relevant Skill",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.iBcrb4a8ghJMu2Yz"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

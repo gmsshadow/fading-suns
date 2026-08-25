@@ -1,0 +1,31 @@
+{
+  "_key": "!items!yajcvJedyKMj98fL",
+  "_id": "yajcvJedyKMj98fL",
+  "name": "Sanctuary",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Perhaps the foundation of Sanctuary Aeon’s political survival through the ages, this rite acts as a powerful “damper field” preventing any violent or harmful actions. Affecting either a large room or a 10 meter radius around the theurge, any roll made within the Sanctuary using Fight, Melee or Shoot only succeeds on a 1, and any other malevolent or overly aggressive action, such as psychic attack, will be contested by the rite’s roll.</p>",
+    "level": 8,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Charm",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.8vSMk16ncIb8VQIS"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

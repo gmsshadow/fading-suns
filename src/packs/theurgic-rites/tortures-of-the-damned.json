@@ -1,0 +1,31 @@
+{
+  "_key": "!items!kvFSwTdi4ULbzLbn",
+  "_id": "kvFSwTdi4ULbzLbn",
+  "name": "Tortures of the Damned",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite has basically the same effect as the psychic power BrainBlast, incapacitating the target with unimaginable pain, except that this theurgic version floods the target’s mind with images of Gehenne (hell). These visions may take the form of Orthodox and Avestite description, burning hellfire or numbing cold lasting (or at least seeming to last) for eternity, or may take a more personal form, the reliving of a traumatic event or seeing one’s greatest fears come to pass, or some amalgamation of both. In either case, the target will be a pathetic, sobbing wreck for at least seven turns…</p>",
+    "level": 8,
+    "sect": "Temple Avesti Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.QabsEnwdLxoOkfjR"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

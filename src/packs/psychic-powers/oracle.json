@@ -1,0 +1,30 @@
+{
+  "_key": "!items!8uxD7TIDLRL3lmne",
+  "_id": "8uxD7TIDLRL3lmne",
+  "name": "Oracle",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can foretell the future with accuracy—but cryptically. The psychic goes into a trance and says things which must then be interpreted (i.e., he speaks of events to come in metaphors, abstractions, or inconclusive sentence fragments). The gamemaster is the “voice” for these omens, and he should use this power to reveal the possible future for the characters in his drama. For example, a psychic player character uses Oracle to try to ascertain whether one of the other player characters will be heir to a Hawkwood barony on Leminkainen. The gamemaster knows that there is a rival who…</p>",
+    "level": 9,
+    "path": "Omen",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "NA",
+    "duration": "NA",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.XNv0L43RmqaqTION"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

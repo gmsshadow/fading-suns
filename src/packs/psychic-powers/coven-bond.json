@@ -1,0 +1,30 @@
+{
+  "_key": "!items!XdN89hgXdyVHQqcc",
+  "_id": "XdN89hgXdyVHQqcc",
+  "name": "Coven Bond",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Two or more psychics who share a Bond (level 3) can merge their psyches into greater sympathy, allowing them to place Wyrd points into a collective pool from which any of them can draw upon at will for the duration of the span. The amount of Wyrd spent at activation by each of the participants is the amount of the collective Wyrd pool; a psychic’s Psi rating determines the maximum amount of Wyrd he may contribute. This pool exists for only one span, after which it disappears; the participants do not get any unspent Wyrd points back. While only one of the participants activates this power,…</p>",
+    "level": 9,
+    "path": "Sympathy",
+    "wyrdCost": 0,
+    "wyrdNote": "varies",
+    "characteristic": "spirit.extrovert",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.NonZBjwKiUfYadFq"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

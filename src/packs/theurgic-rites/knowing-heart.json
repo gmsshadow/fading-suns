@@ -1,0 +1,31 @@
+{
+  "_key": "!items!Jfng2GeBq12d6yvN",
+  "_id": "Jfng2GeBq12d6yvN",
+  "name": "Knowing Heart",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite combines the effects of the psychic abilities Intuit and MindSight, in that it allows the theurge to observe the internal workings of the target’s psyche, both emotional and intellectual. The same restrictions for MindSight apply here, in that only the current state of mind may be read (or felt); subconscious or deeply buried feelings, thoughts or intentions are not disclosed by the Knowing Heart, but may, if the gamemaster allows, be probed for with a critical success.</p>",
+    "level": 4,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.pzIqgj7GaRkJdvN3"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

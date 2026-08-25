@@ -1,0 +1,31 @@
+{
+  "_key": "!items!XI1oh6BZWT2KfuiI",
+  "_id": "XI1oh6BZWT2KfuiI",
+  "name": "Light",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite creates a glowing insubstantial sphere in the theurge’s palm capable of casting enough light to read by in a three-meter radius. This radius is extended by one meter per victory point (at caster’s choice). An alternate version of this rite creates a tight searchlight-type beam which extends from the theurge’s palm, which can be used to search darkened rooms or blind enemies of the Faith. The range for this beam is 10 meters plus two meters per victory point.</p>",
+    "level": 2,
+    "sect": "Orthodox Rituals",
+    "components": "G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.W8GsN5qEPS6a22Vp"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!3ha8hI64R23bcHKx",
+  "_id": "3ha8hI64R23bcHKx",
+  "name": "Sympaticus",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can easily communicate with, or feel the emotions of, bonded targets, allowing the formation of a telepathic network among non-psychic characters (all information must flow through the psychic using this power, i.e., non-psychic targets may not communicate directly, except through normal channels). However, use of Sympaticus actually makes it harder to manipulate or control these targets (–4 on all rolls to do so).</p>",
+    "level": 8,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.UM97WpbrXMCOvfqS"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

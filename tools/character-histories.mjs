@@ -17,6 +17,7 @@
  *   lang(name, spec, p) a language costing p points, refundable if already known
  *   bless(name)  curse(name)  ben(name, rank)
  *   action(name)        a Combat Action, costed at its level (p.102)
+ *   wyrd(n)             raises the Wyrd maximum by n
  *   note(text)          something not yet modelled, recorded for the player
  *   pickOne(id, label, ...options)   an enumerated choice
  *   pickN(id, label, n, ...options)  an enumerated choice picking several
@@ -35,6 +36,7 @@ const curse = key => ({ kind: "curse", key });
 const ben = (key, value) => ({ kind: "benefice", key, value });
 const note = text => ({ kind: "note", text });
 const action = name => ({ kind: "combatAction", key: name });
+const wyrd = value => ({ kind: "wyrd", value });
 
 const opt = (label, ...grants) => ({ label, grants });
 const pickOne = (id, label, ...options) => ({ kind: "choice", id, label, pick: 1, options });
@@ -522,54 +524,60 @@ const EXTRA_STAGES = [
     grants: [note("Spend 40 Extra points on cybernetic devices, associated characteristics (3 per level) or skills (1 per level). See Chapter Seven, p.220.")]
   },
 
-  // The occult stages are listed so the step is complete, but cannot be taken
-  // until the Psi and Theurgy compendiums exist.
   {
     n: "Natal Psi", stage: "extra", faction: "", group: "Psychic Awakening",
     d: "The Wyrd stirs. Characters of any faction except the Vorox may awaken as psychics.",
-    cost: 20, allowance: { skills: 1 }, pending: true,
+    cost: 20, allowance: { skills: 1 },
     grants: [
       ch("occult.psi", 3),
-      note("Wyrd +2"),
-      note("Choose a primary path: Level 1, Level 2 and Level 3 powers"),
-      note("+1 to a skill related to a Psi power")
+      wyrd(2),
+      open("extra-natal-1", "Primary path: Level 1 power", "psiPower", 1, [1]),
+      open("extra-natal-2", "Primary path: Level 2 power", "psiPower", 1, [2]),
+      open("extra-natal-3", "Primary path: Level 3 power", "psiPower", 1, [3]),
+      open("extra-natal-skill", "A skill related to a Psi power +1", "skill", 1)
     ]
   },
   {
     n: "Savant Psi", stage: "extra", faction: "", group: "Psychic Awakening",
     d: "Deeper training in the paths already opened.",
-    cost: 20, allowance: {}, pending: true,
+    cost: 20, allowance: {},
     requires: "Natal Psi",
     grants: [
       ch("occult.psi", 2),
-      note("Wyrd +1"),
-      note("Primary path: Level 4 and Level 5 powers"),
-      note("Choose a secondary path: Level 1 and Level 2 powers"),
-      note("Choose one Worldly Benefit from the regular Tour of Duty")
+      wyrd(1),
+      open("extra-savant-4", "Primary path: Level 4 power", "psiPower", 1, [4]),
+      open("extra-savant-5", "Primary path: Level 5 power", "psiPower", 1, [5]),
+      open("extra-savant-s1", "Secondary path: Level 1 power", "psiPower", 1, [1]),
+      open("extra-savant-s2", "Secondary path: Level 2 power", "psiPower", 1, [2]),
+      worldlyBenefits("extra-savant")
     ]
   },
   {
     n: "Neophyte Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
     d: "The Pancreator answers. A calling to the rites of the Church.",
-    cost: 20, allowance: { skills: 1 }, pending: true,
+    cost: 20, allowance: { skills: 1 },
     grants: [
       ch("occult.theurgy", 3),
-      note("Wyrd +2"),
-      note("Rites: Level 1, Level 2 and Level 3"),
-      note("+1 to a skill related to a rite")
+      wyrd(2),
+      open("extra-neophyte-1", "Rite: Level 1", "rite", 1, [1]),
+      open("extra-neophyte-2", "Rite: Level 2", "rite", 1, [2]),
+      open("extra-neophyte-3", "Rite: Level 3", "rite", 1, [3]),
+      open("extra-neophyte-skill", "A skill related to a rite +1", "skill", 1)
     ]
   },
   {
     n: "Adept Theurge", stage: "extra", faction: "", group: "Theurgic Calling",
     d: "Deeper study of the rites already learned.",
-    cost: 20, allowance: {}, pending: true,
+    cost: 20, allowance: {},
     requires: "Neophyte Theurge",
     grants: [
       ch("occult.theurgy", 2),
-      note("Wyrd +1"),
-      note("Rites: Level 4 and Level 5"),
-      note("Two further rites at Level 1 and Level 2, or one at Level 3"),
-      note("Choose one Worldly Benefit from the regular Tour of Duty")
+      wyrd(1),
+      open("extra-adept-4", "Rite: Level 4", "rite", 1, [4]),
+      open("extra-adept-5", "Rite: Level 5", "rite", 1, [5]),
+      open("extra-adept-x1", "A further rite: Level 1", "rite", 1, [1]),
+      open("extra-adept-x2", "A further rite: Level 2", "rite", 1, [2]),
+      worldlyBenefits("extra-adept")
     ]
   }
 ];

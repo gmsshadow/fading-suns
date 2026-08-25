@@ -1,0 +1,31 @@
+{
+  "_key": "!items!andYigx62a1jWQyB",
+  "_id": "andYigx62a1jWQyB",
+  "name": "Faithful Heart",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite shields the soul and mind of a true believer against mental invasion or domination by psychics and their Urges, theurgists, alien telepaths or Antinomists. It can be cast by the theurge upon himself or another. The victory points for casting become a negative penalty on all mental attacks directed at the target.</p>",
+    "level": 4,
+    "sect": "Orthodox Rituals",
+    "components": "L, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Stoic Mind",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.HGSIZ9f92304nJfn"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

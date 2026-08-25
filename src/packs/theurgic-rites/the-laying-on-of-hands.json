@@ -1,0 +1,31 @@
+{
+  "_key": "!items!6h5UPS35qAfN7yw8",
+  "_id": "6h5UPS35qAfN7yw8",
+  "name": "The Laying On of Hands",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>By calling upon Amalthea, Patron Saint of healing and compassion, disciple of the Prophet, the theurge may bring comfort to his injured comrades by touching their wounds. Each victory point heals one wound level.</p>",
+    "level": 3,
+    "sect": "Common to All Sects",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Remedy",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.YjQYyuwop69C2VDJ"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

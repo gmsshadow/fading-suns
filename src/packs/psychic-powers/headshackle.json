@@ -1,0 +1,30 @@
+{
+  "_key": "!items!WW4plgEJb4IyT7k9",
+  "_id": "WW4plgEJb4IyT7k9",
+  "name": "HeadShackle",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic gains the ability to telepathically dominate the minds of others. Detailed commands may be projected, which the target will carry out to the best of her ability, but only as long as this power is actively used upon her (this requires one action per turn). Once again, language can be an obstacle.</p>",
+    "level": 6,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Charm or Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.5jfnU6mibXfxkRKE"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

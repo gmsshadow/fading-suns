@@ -1,0 +1,31 @@
+{
+  "_key": "!items!zaTt269z59obnsnS",
+  "_id": "zaTt269z59obnsnS",
+  "name": "Sealing the Temple",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>In times of great trouble, Orthodox priests used this rite to protect their flock (and, in some unfortunate cases, protect themselves from their flock) by turning their temple into a temporary fortress. When ritually sealed in this way, a temple is considered to have a large energy shield surrounding it; the maximum armor rating is 20, the minimum damage which will activate the seal is the caster’s Hubris rating (if he has no Hubris, then 1 point is the minimum), and it can take a number of hits equal to double the caster’s Theurgy rating. (Additional hits can be purchased at a rate of one…</p>",
+    "level": 9,
+    "sect": "Orthodox Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.zpmgf4IMG7lw9bOw"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

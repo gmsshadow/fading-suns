@@ -1,0 +1,30 @@
+{
+  "_key": "!items!0jrghVqfHy50Dbne",
+  "_id": "0jrghVqfHy50Dbne",
+  "name": "Intuit",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can read another’s surface emotional state, whether she is angry or sad, happy or confused. Emotions are read directly from the target’s mind, as opposed to aura reading, which can be subject to misinterpretation.</p>",
+    "level": 1,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

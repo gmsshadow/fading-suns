@@ -1,0 +1,30 @@
+{
+  "_key": "!items!UM97WpbrXMCOvfqS",
+  "_id": "UM97WpbrXMCOvfqS",
+  "name": "BrainBlast",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>BrainBlast instantly overloads all pain receptor sites in the target’s brain, effectively “wounding” him without inflicting any physical injury. For each victory point on the psychic’s roll, the target suffers a –1 wound penalty as if actually wounded (the Vitality rating itself is not affected); note that the penalty affects ALL rolls the target may make, and this lasts for the rest of the span.</p>",
+    "level": 7,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.WW4plgEJb4IyT7k9"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

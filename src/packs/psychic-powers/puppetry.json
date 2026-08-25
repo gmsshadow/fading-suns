@@ -1,0 +1,30 @@
+{
+  "_key": "!items!pDpZyMjcyqjxJ5yW",
+  "_id": "pDpZyMjcyqjxJ5yW",
+  "name": "Puppetry",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can telepathically project her will upon a target, dominating them completely and possessing them body and soul. The psychic’s own body must remain inactive during the possession, but the gamemaster may allow actions to be taken with an additional expenditure of Wyrd points (one per action). Sixth Sense Known in the old Phavian Institute as Extra-Sensory Perception, this path seeks to cultivate modes of perception which are considered to be inherent in all sentient beings, but which are seldom or never consciously accessed.</p>",
+    "level": 9,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.ego",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.3ha8hI64R23bcHKx"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!eDbHpGgdo9CGO0wG",
+  "_id": "eDbHpGgdo9CGO0wG",
+  "name": "FarSight",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Occasionally known by the old Phavian designation, “clairvoyance,” FarSight allows the psychic to see a distant place. The goal roll to activate FarSight is modified according to the familiarity of the target location: Easy (+4)—The psychic’s own home. Natural (+2)—The psychic’s home town or neighborhood, her regular haunts, etc.. Standard—A place with which the psychic is personally familiar, i.e., anywhere he has been to and can consciously remember. Hard (–2)—An unfamiliar place which the psychic knows about, e.g., famous public places on Byzantium Secundus or Holy Terra, or somewhere…</p>",
+    "level": 5,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Distance",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.RG2DkCm5w9Uh4jDS"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

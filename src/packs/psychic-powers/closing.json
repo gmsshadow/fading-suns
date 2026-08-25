@@ -1,0 +1,30 @@
+{
+  "_key": "!items!NfcFVWor7X5UJQfA",
+  "_id": "NfcFVWor7X5UJQfA",
+  "name": "Closing",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Closing renders the psychic immune to adverse environmental effects, such as airborne drugs and toxins, conventional diseases, extreme weather, etc.. Closing does not render one immune to heat or cold in excess of freezing or boiling temperatures, corrosive atmospheres, explosive decompression or Symbiot invasion. Sympathy This path was little known to the Phavian Institute, perhaps because research on psychic groups was rare, as most psychics tended to work alone. With the rise of the psychic covens of the Dark Ages—a response to the Church’s ban on psychic powers—this path became…</p>",
+    "level": 9,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.CwZ8Bd2EeRzxas28"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!QTkxJxio44KEW39G",
+  "_id": "QTkxJxio44KEW39G",
+  "name": "Bonding",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>A character can psychically bond with another person(s). This makes it easier to use psychic powers on that person later. The target of the bond must be willing, although he may be scared into accepting the bond (Impress) or fooled into it (Charm or Knavery). He may also be psychically forced to do so. It costs the psychic a number of Wyrd points equal to the target’s Ego or Faith (whichever is higher) to bond him, and a full span must be spent in meditation (the target does not have to meditate, but he must be present during the meditation). When using powers against Bonded targets, the…</p>",
+    "level": 3,
+    "path": "Sympathy",
+    "wyrdCost": 0,
+    "wyrdNote": "varies",
+    "characteristic": "spirit.extrovert",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

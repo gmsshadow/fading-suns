@@ -1,0 +1,31 @@
+{
+  "_key": "!items!PDjkZBvB79tn7jHl",
+  "_id": "PDjkZBvB79tn7jHl",
+  "name": "Shield of Faith",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Similar to the technological energy shield, this rite creates a hemispherical field with a three meter radius around the theurge, and moves as she moves. The Shield lasts for the rest of the span, and the radius can be extended with additional Wyrd points at a rate of one meter per point spent. The maximum armor rating for the Shield of Faith is 15 plus the theurge’s victory points; the minimum amount of damage which will activate the Shield is the theurge’s Hubris rating. (If she has no Hubris, then 1 point is the minimum.) The Shield can take a number of hits (see Energy Shields in…</p>",
+    "level": 8,
+    "sect": "Common to All Sects",
+    "components": "G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.B4jPDepCWE1I5f5S"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

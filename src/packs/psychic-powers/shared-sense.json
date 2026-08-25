@@ -1,0 +1,30 @@
+{
+  "_key": "!items!VCfRIAbci5oYPuBh",
+  "_id": "VCfRIAbci5oYPuBh",
+  "name": "Shared Sense",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>This power opens a direct sensory conduit from a bonded target to the psychic, who can then see what the target sees, hear what he hears, and so on. Shared Sense allows the psychic to use her powers from a bonded target’s perspective, treating the target’s touch, sight and sensory ranges as her own. In other words, she can sense danger to the target with Premonitions, see from the target’s eyes with Subtle Sight, etc..</p>",
+    "level": 7,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Distance",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.I7LbrFwcJyxoxmNA"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

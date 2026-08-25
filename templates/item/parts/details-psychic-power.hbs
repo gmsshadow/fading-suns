@@ -16,4 +16,12 @@
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Range"}}</span>
     <input type="text" name="system.range" value="{{system.range}}"/></label>
 </div>
+{{#if system.requires}}
+  <p class="hint requires"><i class="fa-solid fa-link"></i>
+    {{localize "FADINGSUNS.Occult.Requires"}}: {{system.requires}}</p>
+{{/if}}
+{{#if system.wyrdNote}}
+  <p class="hint">{{localize "FADINGSUNS.Field.WyrdCost"}}: {{system.wyrdNote}}</p>
+{{/if}}
 <p class="hint">{{localize "FADINGSUNS.Hint.OccultCost"}}</p>
+<p class="hint">{{localize "FADINGSUNS.Hint.PathChain"}}</p>

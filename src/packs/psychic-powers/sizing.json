@@ -1,0 +1,30 @@
+{
+  "_key": "!items!7Hq72cPqvLLA7Afa",
+  "_id": "7Hq72cPqvLLA7Afa",
+  "name": "Sizing",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>With Sizing, the psychic may physically become shorter or taller, broader or thinner. This does not affect physical characteristic ratings. The amount by which size may be changed is based on the psychic’s victory points for the activation roll: Victory Height Height Weight Weight Points Increase Decrease Increase Decrease 1 +10% –10% +20% –10% 2 +20% –20% +40% –20% 3 +30% –30% +60% –30% 4 +40% –40% +75% –40% 5 +45% –45% +90% –45% 6 +50% –50% +100% –50%</p>",
+    "level": 5,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.ibfE2hj1gba3Pb9R"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

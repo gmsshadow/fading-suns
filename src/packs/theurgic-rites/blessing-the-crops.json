@@ -1,0 +1,31 @@
+{
+  "_key": "!items!QwJ1sHxlfnyDpyLH",
+  "_id": "QwJ1sHxlfnyDpyLH",
+  "name": "Blessing the Crops",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Growing from the traditional role of the priesthood in agrarian cultures, this rite enables a theurge to purify or enrich an amount of food equal to his Theurgy rating in kilograms. Crop Blessing will neutralize impurities and organic poisons, restore perishable foods within two days of their having spoiled, and, in the case of untainted foodstuffs, make them more nutritious and fulfilling by 50% (e.g.: a ten day supply of rations can be stretched out to fifteen days). This rite is very valuable on many worlds, where the fading suns fail to nourish crops.</p>",
+    "level": 7,
+    "sect": "Orthodox Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Survival",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.s8X5ESUWHMhelZFo"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

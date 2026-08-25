@@ -1,0 +1,31 @@
+{
+  "_key": "!items!rQBFDFHt9ERwXdLV",
+  "_id": "rQBFDFHt9ERwXdLV",
+  "name": "Torchbearing",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>With this rite the theurge can create a flame without using lighters, matches or flint and steel. After the first 10 turns, the fire will need fuel to burn like any other, but it can be kept burning without fuel by spending one Wyrd point for each extra five turns. Normally the flame can only be ignited at touch, but a 6th level version of this rite exists in which the flame can be created anywhere in sight.</p>",
+    "level": 4,
+    "sect": "Temple Avesti Rituals",
+    "components": "G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.MPEAYIItRUx13kti"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

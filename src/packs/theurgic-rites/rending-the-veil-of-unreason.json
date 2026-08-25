@@ -1,0 +1,31 @@
+{
+  "_key": "!items!25GyEgk7H2vVWogb",
+  "_id": "25GyEgk7H2vVWogb",
+  "name": "Rending the Veil of Unreason",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite grants the theurge the equivalent of the psychic power Subtle Sight, except that the auric image that the theurge actually perceives is based on the Eskatonic conception of the soul. Rending the Veil shows the actual “mirror” reflecting the light of the Celestial Sun, the Holy Flame of the spirit, centered on the heart region within the conventional aura. The size of the reflected Flame indicates the target’s Faith rating; with a Faith of 10, the Flame is large and bright, filling the surface of the “mirror,” while a Faith of 1 shows up as a candle flame seen at the end of a dark…</p>",
+    "level": 3,
+    "sect": "Eskatonic Order Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.hVcVTjnDmGOMXmkk"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

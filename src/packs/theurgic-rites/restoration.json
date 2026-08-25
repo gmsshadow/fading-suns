@@ -1,0 +1,31 @@
+{
+  "_key": "!items!PqKU8VCtWUVBG0cq",
+  "_id": "PqKU8VCtWUVBG0cq",
+  "name": "Restoration",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>By invoking the compassion of Saint Amalthea, a theurge can restore a body’s spiritual humours to their proper balance: diseases can be cured and poisons expelled. Damage from these ills is not healed but the cause of the problem is removed, allowing patients to recover normally. In the case of disease, the patient’s own immune system wins over the virus, while poisons are expelled from the body, leaving evidence which may be analyzed by investigators attempting to trace the poisoner. Additionally, emotional turbulence can be soothed; the symptoms of neuroses or psychoses are abated, and a…</p>",
+    "level": 5,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Stoic Mind",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.gXtJdcZ1sz0kG1oO"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

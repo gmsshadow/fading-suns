@@ -1,0 +1,31 @@
+{
+  "_key": "!items!4TwKxstungZll184",
+  "_id": "4TwKxstungZll184",
+  "name": "The Tongues of Babel",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Also common among missionaries, the Tongues of Babel enables a theurge to understand and speak almost any language he does not already understand. For some time before the rite, he must hear the language spoken frequently by natives or other fluent speakers. The victory points for this roll provide bonuses for any roll involved in communicating in that language during that span, whether it be orating before a crowd or reading a moving sermon. This rite does not confer the ability to read the language, unless it is normally written (or happens to be spelled out phonetically) in the Urthish…</p>",
+    "level": 6,
+    "sect": "Common to All Sects",
+    "components": "G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.WDbPhLFz4EJewrmH"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

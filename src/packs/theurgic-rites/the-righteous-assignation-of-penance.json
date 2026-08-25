@@ -1,0 +1,31 @@
+{
+  "_key": "!items!J9Mu45PjvVK6XEhG",
+  "_id": "J9Mu45PjvVK6XEhG",
+  "name": "The Righteous Assignation of Penance",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite is central to the Church’s function in the Known Worlds, since this is how humanity learns, through confession, to make good its sins. In most cases, of course, the rite is no more than a ceremonial formality, but when the sins in question are of overwhelming enormity, or have occult implications beyond simple personal salvation, theurgic Assignation can prove to be the only way of navigating these dark mysteries. The effect of the Righteous Assignation is primarily concerned with roleplaying rather than rules; most penances tend to be charitable donations, community or personal…</p>",
+    "level": 7,
+    "sect": "Common to All Sects",
+    "components": "L, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.4TwKxstungZll184"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

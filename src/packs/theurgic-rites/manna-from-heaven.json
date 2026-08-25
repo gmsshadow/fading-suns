@@ -1,0 +1,31 @@
+{
+  "_key": "!items!bGyPaqFE1uTnMtKp",
+  "_id": "bGyPaqFE1uTnMtKp",
+  "name": "Manna from Heaven",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Casting this rite creates a sufficient amount of food to feed 10 adults for one day per point of Wyrd spent. The quality and variety of food created is dependent on the victory points: 5 or 6 yields fully prepared meals, 3 or 4 a simple but hearty assortment of meats, vegetables, etc., and 1 yielding a chewy dense substance somewhere between jerky and old bread.</p>",
+    "level": 6,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.PqKU8VCtWUVBG0cq"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!kUrJfEgBiAZWzRga",
+  "_id": "kUrJfEgBiAZWzRga",
+  "name": "Hearth",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Favored by missionaries on uncivilized worlds, this rite creates what appears to be a campfire, generating enough light to see in a 10 meter radius, and enough heat to boil water or cook food. Unlike the Avesti rite Torchbearing, however, the flame created is not a natural fire; it is not hot enough to fire pottery or smelt ore, and cannot be used to start other fires or ignite flammable materials. No fuel is needed, but a cleared space must be prepared for the rite. Hearth lasts for one span per Wyrd point.</p>",
+    "level": 2,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.zgPhVLNFP2Bjgnzj"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

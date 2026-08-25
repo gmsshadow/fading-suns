@@ -1,0 +1,30 @@
+{
+  "_key": "!items!iBcrb4a8ghJMu2Yz",
+  "_id": "iBcrb4a8ghJMu2Yz",
+  "name": "Sanctum",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic may attune himself to a particular place so that his powers may be used easier in connection with that place. While the place may be anywhere (it does not Resolving Urge and Hubris Conflicts Psi/Urge and Theurgy/Hubris are unique resisted traits. Psi and Theurgy will come into conflict when a character tries to raise one trait past the level of his Urge or Hubris. For example, Eusebius has Psi 5 and an Urge 5 and wants to raise his Psi to 6; he must first tame a level of Urge. Because the two traits have come into direct conflict, the character can choose to enter a combat of…</p>",
+    "level": 4,
+    "path": "Sympathy",
+    "wyrdCost": 3,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.QTkxJxio44KEW39G"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!eiwkNrokk5grbtSy",
+  "_id": "eiwkNrokk5grbtSy",
+  "name": "Smiting Hand",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Using this rite to channel the force of the Holy Flame through his limbs, a Brother may strike down his foes with righteous power. The victory dice from casting this rite may be added to the Brother’s fist, kick or melee weapon damage—in addition to normal damage from the weapon and the goal roll’s victory dice. (If the rite is successful, the character will receive a minimum of at least one victory die, regardless of the number of successes rolled.)</p>",
+    "level": 6,
+    "sect": "Brother Battle Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.KdRBXifoXSScbPFs"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!tfpiiCeceJ53rVRE",
+  "_id": "tfpiiCeceJ53rVRE",
+  "name": "Vis Bolt",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can project energy at a target from a distance. The damage is equal to Endurance plus victory dice, plus one die for each extra Wyrd point spent (max =Psi rating). In addition, this damage can bleed through energy shields on damage dice results of 1 or 2.</p>",
+    "level": 6,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.anGlVvyu30SAvZhI"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

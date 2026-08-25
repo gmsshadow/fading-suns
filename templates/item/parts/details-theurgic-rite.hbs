@@ -1,8 +1,11 @@
 <div class="form-grid">
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Level"}}</span>
     <input type="number" name="system.level" value="{{system.level}}" min="1" max="9"/></label>
-  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Ritual"}}</span>
-    <input type="text" name="system.ritual" value="{{system.ritual}}"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Occult.Sect"}}</span>
+    <input type="text" name="system.sect" value="{{system.sect}}"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Occult.Components"}}</span>
+    <input type="text" name="system.components" value="{{system.components}}"
+           placeholder="{{localize 'FADINGSUNS.Occult.ComponentsHint'}}"/></label>
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.WyrdCost"}}</span>
     <input type="number" name="system.wyrdCost" value="{{system.wyrdCost}}" min="0"/></label>
   <label class="form-group">
@@ -16,4 +19,9 @@
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Range"}}</span>
     <input type="text" name="system.range" value="{{system.range}}"/></label>
 </div>
+{{#if system.requires}}
+  <p class="hint requires"><i class="fa-solid fa-link"></i>
+    {{localize "FADINGSUNS.Occult.Requires"}}: {{system.requires}}</p>
+{{/if}}
 <p class="hint">{{localize "FADINGSUNS.Hint.OccultCost"}}</p>
+<p class="hint">{{localize "FADINGSUNS.Hint.Components"}}</p>

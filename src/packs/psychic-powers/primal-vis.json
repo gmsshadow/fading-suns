@@ -1,0 +1,30 @@
+{
+  "_key": "!items!anUtRtVQP8ItWOKp",
+  "_id": "anUtRtVQP8ItWOKp",
+  "name": "Primal Vis",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can tap into an invisible, universal spiritual power grid to replenish and/or add to his Wyrd points. This power may be used only once per span, but it can generate an amount of Wyrd equal to 1 plus the victory points gained on the activation roll. In times of dire need, however, the psychic may call on his Urge for aid: he gains an extra amount that span equal to his Urge rating. The psychic must roll to resist its awakening (Ego+Stoic Mind); failure means that the Urge is awake. Even if the psychic had no levels in Urge, he may elect to take one level to gain the Wyrd.…</p>",
+    "level": 9,
+    "path": "Vis Craft",
+    "wyrdCost": 0,
+    "wyrdNote": "NA",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.l6l7aTd5DFg8U73j"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

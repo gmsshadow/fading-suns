@@ -1,0 +1,31 @@
+{
+  "_key": "!items!n1i7MUMP4EDgFbk4",
+  "_id": "n1i7MUMP4EDgFbk4",
+  "name": "Fearsome Majesty (Brother Battle)",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Casting Multiple Rituals A person can potentially be under the spell of multiple rites per turn. In other words, a Brother Battle could cast upon himself Soul’s Vessel, Armor of the Pancreator, Liturgy of the Wrathful Host and Smiting Hand. However, each rite after the first costs one extra Wyrd point to cast. In addition, casting so many powers upon oneself is vain act; each extra rite increases the chance of gaining Hubris should a casting fail miserably. Every time a theurgist fumbles a theurgy rite casting roll, he must roll Theurgy+Focus or else gain a level of Hubris. Casting…</p>",
+    "level": 7,
+    "sect": "Brother Battle Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.kUhRyul4N1MalOWA"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

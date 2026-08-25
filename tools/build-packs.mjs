@@ -34,6 +34,7 @@ import { BENEFICES_AND_AFFLICTIONS } from "./benefices.mjs";
 import { CHARACTER_HISTORIES } from "./character-histories.mjs";
 import { COMBAT_ACTIONS } from "./combat-actions.mjs";
 import { WEAPONS, ARMOURS } from "./equipment.mjs";
+import { PSI_POWERS, THEURGIC_RITES } from "./occult.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -412,6 +413,146 @@ function buildArmour() {
   }));
 }
 
+/**
+ * Split a printed roll such as "Extrovert + Focus" into a characteristic path
+ * and a skill name.
+ * @param {string} roll
+ * @returns {{characteristic: string, skill: string}}
+ */
+function parseRoll(roll) {
+  const printed = String(roll ?? "").trim();
+
+  // A few rites give no pairing at all — "Special (see text)" — and the printed
+  // line is kept rather than forced into a characteristic and skill.
+  if (!printed.includes("+")) return { characteristic: "", skill: "", note: printed };
+
+  const [rawCharacteristic, ...rest] = printed.split("+").map(s => s.trim());
+  const path = Object.keys(FADING_SUNS_CHARACTERISTICS)
+    .find(key => key.endsWith(`.${rawCharacteristic.toLowerCase()}`));
+
+  return { characteristic: path ?? "", skill: rest.join(" + "), note: "" };
+}
+
+/** Characteristic dot paths, for resolving the printed roll lines. */
+const FADING_SUNS_CHARACTERISTICS = {
+  "body.strength": 1, "body.dexterity": 1, "body.endurance": 1,
+  "mind.wits": 1, "mind.perception": 1, "mind.tech": 1,
+  "spirit.extrovert": 1, "spirit.introvert": 1, "spirit.passion": 1,
+  "spirit.calm": 1, "spirit.faith": 1, "spirit.ego": 1,
+  "occult.psi": 1, "occult.theurgy": 1, "occult.urge": 1, "occult.hubris": 1
+};
+
+/**
+ * Chain each entry to the one below it in the same path or sect.
+ *
+ * "A character chooses a path and must buy each level consecutively" (p.128).
+ * The prerequisite is the next lowest level actually published in that group,
+ * so Sympathy's level 3 and Omen's level 6 correctly have none.
+ *
+ * @param {object[]} entries
+ * @param {string} groupKey
+ * @param {string} pack
+ * @returns {Map<string, string>}  Entry name to prerequisite uuid.
+ */
+function chainPrerequisites(entries, groupKey, pack) {
+  const chain = new Map();
+  const groups = {};
+  for (const entry of entries) (groups[entry[groupKey]] ??= []).push(entry);
+
+  for (const group of Object.values(groups)) {
+    const ordered = [...group].sort((a, b) => a.lvl - b.lvl);
+    for (let i = 1; i < ordered.length; i++) {
+      const previous = ordered[i - 1];
+      chain.set(ordered[i].n, referenceUuid(pack, previous[groupKey], previous.n));
+    }
+  }
+  return chain;
+}
+
+/**
+ * Build the documents for the Psychic Powers pack (p.131–p.143).
+ * @returns {object[]}
+ */
+function buildPsychicPowers() {
+  const chain = chainPrerequisites(PSI_POWERS, "path", "psychic-powers");
+
+  return PSI_POWERS.map((power, index) => {
+    const { characteristic, skill, note } = parseRoll(power.roll);
+    const wyrd = Number.parseInt(power.wyrd, 10);
+    return {
+      _id: stableId(`Item.psychic-powers.${power.path}.${power.n}`),
+      name: power.n,
+      type: "psychicPower",
+      img: "icons/svg/aura.svg",
+      system: {
+        description: `<p>${power.d}</p>`,
+        level: power.lvl,
+        path: power.path,
+        wyrdCost: Number.isFinite(wyrd) ? wyrd : 0,
+        wyrdNote: Number.isFinite(wyrd) ? "" : power.wyrd,
+        characteristic: note ? "" : (characteristic || "occult.psi"),
+        skill,
+        rollNote: note,
+        range: power.rng,
+        duration: power.dur,
+        requires: chain.get(power.n) ?? ""
+      },
+      effects: [],
+      folder: null,
+      sort: (index + 1) * 100000,
+      ownership: { default: 0 },
+      flags: {},
+      _stats: { systemId: "fading-suns" }
+    };
+  });
+}
+
+/**
+ * Build the documents for the Theurgic Rites pack (p.147–p.160).
+ * @returns {object[]}
+ */
+function buildTheurgicRites() {
+  const chain = chainPrerequisites(THEURGIC_RITES, "sect", "theurgic-rites");
+
+  // Two rite names appear in more than one sect's liturgy — Armor of the
+  // Pancreator and Fearsome Majesty — as genuinely different rites. Those get
+  // their sect in the name so the sidebar can tell them apart.
+  const counts = {};
+  for (const rite of THEURGIC_RITES) counts[rite.n] = (counts[rite.n] ?? 0) + 1;
+  const sectLabel = sect => sect.replace(/ Rituals$/, "");
+
+  return THEURGIC_RITES.map((rite, index) => {
+    const { characteristic, skill, note } = parseRoll(rite.roll);
+    const wyrd = Number.parseInt(rite.wyrd, 10);
+    return {
+      _id: stableId(`Item.theurgic-rites.${rite.sect}.${rite.n}`),
+      name: counts[rite.n] > 1 ? `${rite.n} (${sectLabel(rite.sect)})` : rite.n,
+      type: "theurgicRite",
+      img: "icons/svg/holy-shield.svg",
+      system: {
+        description: `<p>${rite.d}</p>`,
+        level: rite.lvl,
+        sect: rite.sect,
+        components: rite.comp,
+        wyrdCost: Number.isFinite(wyrd) ? wyrd : 0,
+        wyrdNote: Number.isFinite(wyrd) ? "" : rite.wyrd,
+        characteristic: note ? "" : (characteristic || "occult.theurgy"),
+        skill,
+        rollNote: note,
+        range: rite.rng,
+        duration: rite.dur,
+        requires: chain.get(rite.n) ?? ""
+      },
+      effects: [],
+      folder: null,
+      sort: (index + 1) * 100000,
+      ownership: { default: 0 },
+      flags: {},
+      _stats: { systemId: "fading-suns" }
+    };
+  });
+}
+
 /** Packs to build, keyed by the pack name declared in system.json. */
 const PACKS = {
   "learned-skills": { type: "Item", documents: buildLearnedSkills },
@@ -420,6 +561,8 @@ const PACKS = {
   "combat-actions": { type: "Item", documents: buildCombatActions },
   weapons: { type: "Item", documents: buildWeapons },
   armour: { type: "Item", documents: buildArmour },
+  "psychic-powers": { type: "Item", documents: buildPsychicPowers },
+  "theurgic-rites": { type: "Item", documents: buildTheurgicRites },
   "character-histories": { type: "Item", documents: buildCharacterHistories }
 };
 

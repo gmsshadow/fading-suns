@@ -1,0 +1,31 @@
+{
+  "_key": "!items!s8X5ESUWHMhelZFo",
+  "_id": "s8X5ESUWHMhelZFo",
+  "name": "Consecration of Land",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Usually a prerequisite when building a temple, this rite acts as the single-item Consecration above, but is applied to an area equal to the theurge’s Extrovert rating ×10 in square meters. Consecrated ground is impassable to the walking dead, and occult powers originating from unpenitent psychics, Antinomists or negative Ur-artifacts receive a penalty equal to the victory points from casting the Consecration. Note that this does not only apply to powers being used from within the Consecrated area, but also when the area is targeted from without. For example, an unpenitent psychic on the…</p>",
+    "level": 6,
+    "sect": "Orthodox Rituals",
+    "components": "G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "One Act",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.jOIZtEZNPuIjuwqA"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

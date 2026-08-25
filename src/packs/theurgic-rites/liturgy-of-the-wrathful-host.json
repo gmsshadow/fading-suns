@@ -1,0 +1,31 @@
+{
+  "_key": "!items!KdRBXifoXSScbPFs",
+  "_id": "KdRBXifoXSScbPFs",
+  "name": "Liturgy of the Wrathful Host",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This passage from the Omega Gospels is read to Brothers about to go into combat so that their hearts may be filled with the fire of their holy cause, whatever it may happen to be. For the next span, the victory points from the reading may be added to the goal number of all listeners’ rolls involving Faith or Passion. The Liturgy takes about 10 minutes to read, and the range of this effect is not extended by PA systems or long-distance communications. Characters under the effect of the Liturgy may not Incite Passion or employ Steady Hand.</p>",
+    "level": 5,
+    "sect": "Brother Battle Rituals",
+    "components": "L, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Charm",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.rdf1rKAKurJtQJhT"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

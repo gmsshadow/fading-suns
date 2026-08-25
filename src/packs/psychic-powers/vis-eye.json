@@ -1,0 +1,30 @@
+{
+  "_key": "!items!UPulmFVF3U2pX7mG",
+  "_id": "UPulmFVF3U2pX7mG",
+  "name": "Vis Eye",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can sense the use of energy around him (a foe’s active energy shield, a laser sight trained on the psychic, a spy camera filming him) and discern the type of energy (electrical, fusion) and trace its source (although this may require a sustained roll if the source is well-hidden). A level 3 version of this power allows the psychic to sense and discern spiritual energies, such as Wyrd, Symbiot Lifeforce or even the strange energy used by Anunnaki tech.</p>",
+    "level": 1,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "SIght",
+    "duration": "Temporary",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

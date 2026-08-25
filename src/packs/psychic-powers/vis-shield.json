@@ -1,0 +1,30 @@
+{
+  "_key": "!items!anGlVvyu30SAvZhI",
+  "_id": "anGlVvyu30SAvZhI",
+  "name": "Vis Shield",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic may use his own bioelectrical energy to erect a personal energy shield around himself. This acts similar a standard energy shield; it allows 10 hits per power activation and the protection rating is 5/10. In addition, the field fluctuates at need, so the character can wear any form of armor he desires without compromising the field. Note that this field does not interfere with the Vis Flow power (above); attacks absorbed by this power can be transferred elsewhere.</p>",
+    "level": 5,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "body.endurance",
+    "skill": "Stoic Body",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "special (see text)",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.PT9dEq3XfKt6hRll"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

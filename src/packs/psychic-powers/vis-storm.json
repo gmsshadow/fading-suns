@@ -1,0 +1,30 @@
+{
+  "_key": "!items!l6l7aTd5DFg8U73j",
+  "_id": "l6l7aTd5DFg8U73j",
+  "name": "Vis Storm",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can unleash an energy surge on an area from a distance. The base radius from the shock point is 10 meters, and anyone standing within this radius is affected. The radius may be increased by 5 meters per extra Wyrd point spent. The damage is equal to Endurance plus victory dice, plus one die for each extra Wyrd point spent (max = Psi rating). In addition, this damage can bleed through energy shields on damage dice results of 1 or 2.</p>",
+    "level": 8,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.FnGYmWPOKzUTyJTA"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

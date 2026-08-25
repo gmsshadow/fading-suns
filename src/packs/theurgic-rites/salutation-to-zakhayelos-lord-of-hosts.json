@@ -1,0 +1,31 @@
+{
+  "_key": "!items!vn2HYZnWCBkncWgN",
+  "_id": "vn2HYZnWCBkncWgN",
+  "name": "Salutation to Zakhayelos, Lord of Hosts",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This exceptionally rare and powerful rite, a closely guarded secret of the order, enables a theurge to contact and summon to the physical world one of the “bodiless powers of the Empyrean,” the strong and warlike intelligence known as Zakhayelos. According to Eskatonic doctrine, Zakhayelos rules in the Fifth Emanation from the Celestial Sun, among the ranks of the Imperitories. Zakhayelos is the pure embodiment of all the military virtues to which the order aspires: strength, courage, discipline, a perfect understanding of strategy and logistics. As with all of the Empyrean powers,…</p>",
+    "level": 9,
+    "sect": "Brother Battle Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.tQwybEg3F9If0mhs"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!aUs2rlZlBbodIald",
+  "_id": "aUs2rlZlBbodIald",
+  "name": "Petition to Jachemuyelos, Lord of Judgment",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This exceptionally rare and powerful rite, a closely guarded secret of the sect, enables a theurge to contact and summon to the physical world one of the “bodiless powers of the Empyrean,” the stern but fair arbiter of disputes known as Jachemuyelos. According to Eskatonic doctrine, Jachemuyelos rules in the Fourth Emanation from the Celestial Sun, among the ranks of the Dominions. Odd as it may seem to outsiders, the guidance of Jachemuyelos is what keeps the more fervent and overzealous inquisitors in check; this is not an entity of blind wrath and damnation, but a truly objective…</p>",
+    "level": 9,
+    "sect": "Temple Avesti Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.kvFSwTdi4ULbzLbn"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

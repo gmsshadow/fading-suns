@@ -1,0 +1,30 @@
+{
+  "_key": "!items!ZKG05mNpZkohhK3f",
+  "_id": "ZKG05mNpZkohhK3f",
+  "name": "Shadows to Come",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Future Resonance allows the psychic to see, hear and feel what will happen in the future around a particular object, place or person (the room a person will be in, who will be with them, etc.). These are shadows of the future, not what WILL happen. Multiple items may not be selected. The psychic chooses the time period, but it can be accompanied with a request for a particular event (“Where will the duke hold his birthday ball?”). How far she can see into the future depends on her successes: one month per success or years with a critical success. The psychic can see a future period of…</p>",
+    "level": 7,
+    "path": "Omen",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.CNhG9Z5dEHIj9ACl"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

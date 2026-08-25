@@ -1,0 +1,30 @@
+{
+  "_key": "!items!FnGYmWPOKzUTyJTA",
+  "_id": "FnGYmWPOKzUTyJTA",
+  "name": "Vis Vortex",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can generate power, which he can use to recharge fusion cells, power skimmers, etc. Use the chart given with the Vis Drain power, above, to determine the Wyrd point costs per power generated. The maximum amount of points the psychic may spend on Wyrd to generate power is equal to his Psi rating. The range and duration of this power may be increased normally.</p>",
+    "level": 7,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "body.endurance",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.tfpiiCeceJ53rVRE"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

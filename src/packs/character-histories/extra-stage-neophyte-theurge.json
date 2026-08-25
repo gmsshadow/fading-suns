@@ -16,16 +16,53 @@
         "value": 3
       },
       {
-        "kind": "note",
-        "text": "Wyrd +2"
+        "kind": "wyrd",
+        "value": 2
       },
       {
-        "kind": "note",
-        "text": "Rites: Level 1, Level 2 and Level 3"
+        "kind": "choice",
+        "id": "extra-neophyte-1",
+        "label": "Rite: Level 1",
+        "pick": 1,
+        "pool": "rite",
+        "value": 1,
+        "filter": [
+          1
+        ],
+        "options": []
       },
       {
-        "kind": "note",
-        "text": "+1 to a skill related to a rite"
+        "kind": "choice",
+        "id": "extra-neophyte-2",
+        "label": "Rite: Level 2",
+        "pick": 1,
+        "pool": "rite",
+        "value": 1,
+        "filter": [
+          2
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-neophyte-3",
+        "label": "Rite: Level 3",
+        "pick": 1,
+        "pool": "rite",
+        "value": 1,
+        "filter": [
+          3
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-neophyte-skill",
+        "label": "A skill related to a rite +1",
+        "pick": 1,
+        "pool": "skill",
+        "value": 1,
+        "options": []
       }
     ],
     "suggestedBenefices": [],
@@ -38,7 +75,7 @@
     },
     "requires": "",
     "exclusive": false,
-    "pending": true
+    "pending": false
   },
   "effects": [],
   "folder": null,

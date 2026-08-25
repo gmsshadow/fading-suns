@@ -1,0 +1,31 @@
+{
+  "_key": "!items!8LsyAm0Guolkv92L",
+  "_id": "8LsyAm0Guolkv92L",
+  "name": "Refinement of Essence",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>A more specialized form of the Rite of Osseous Transmutation, the Rite of Refinement enables the theurge to cast out impurities or non-essential elements from an object or body of substance less than or equal to his Theurgy rating times 20 in kilograms. (Additional mass can be bought at 10 kilograms per Wyrd point.) Refinement may be used to purify fuel, strengthen building materials and detoxify food, water or the atmosphere of an enclosed and sealed space. CHAPTER FIVE: OCCULT 157 157 Unlike Transmutation, Refinement may be used on living beings for beneficial effects, but the same…</p>",
+    "level": 7,
+    "sect": "Eskatonic Order Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Alchemy",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.OwRug90ZzawGXdAM"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

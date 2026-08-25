@@ -1,0 +1,30 @@
+{
+  "_key": "!items!h0qZUd01Gkvly8W3",
+  "_id": "h0qZUd01Gkvly8W3",
+  "name": "Throwing Hand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can perform simple manipulations of two such directional fields, enabling her to both lift AND propel an object with appreciable velocity and force. A maximum weight equal to 10 kg per level of the psychic’s Wits may be thrown. (Additional mass can be bought at 5 kg per Wyrd point.) When aiming at a moving target (another person), the psychic must roll Passion+Throwing. Damage is determined by the object thrown (the gamemaster should declare a base damage for the object, using the weapon damages given in Chapter Six: Combat, p.186, as a guideline) plus the victory dice gained…</p>",
+    "level": 2,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.tHt89FiYC2VLDnXe"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

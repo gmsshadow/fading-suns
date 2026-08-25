@@ -1,0 +1,30 @@
+{
+  "_key": "!items!XjySOhuLnTq7FuMf",
+  "_id": "XjySOhuLnTq7FuMf",
+  "name": "Crushing Hand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>This slightly more complex manipulation involves turning two or more directional forces against themselves, enabling the psychic to hold an object steady (when it is being pushed by normal physical forces from varying directions), or crush it altogether. To hold an object, use the grappling rules (Chapter Six: Combat, p.164), substituting the above roll. To punch a target with Crushing Hand, the above roll is used as a goal roll. The damage is 3 plus any victory dice gained from the activation roll. Wyrd points only have to be spent when the power is activated, not for every punch or grapple.</p>",
+    "level": 3,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Fight",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.h0qZUd01Gkvly8W3"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -65,7 +65,21 @@ Reading the resolution code against the Core Rules turned up several errors, all
 
 ### Compendiums
 
-Seven compendiums ship with the system.
+Nine compendiums ship with the system.
+
+**Psychic Powers** — 56 across the seven paths the core rules describe, and **Theurgic Rites** — 56
+across five sect liturgies plus a set common to all. These are what the book contains rather than a
+selection: *"Only one representative power is given per level in the examples below. Also, the tenth
+levels are not revealed here, as they are far beyond the ken of beginning characters."* (p.128)
+
+Paths are bought consecutively — level N needs level N-1 of the same path (p.128) — so each entry
+names its prerequisite explicitly rather than inferring it from the level number. That matters
+because two paths do not start at one: **Sympathy begins at level 3 and Omen at level 6**. Tests
+walk every chain, checking it stays within its own path, never skips a published level and contains
+no cycles.
+
+The four occult Extra Stages are no longer greyed. Natal Psi and Neophyte Theurge now offer real
+pickers filtered to the level being granted, and their Wyrd bonuses raise the character's maximum.
 
 **Weapons** — 61 from the charts on p.296–299: 23 melee including the energy and artifact blades,
 4 thrown, 6 bows and crossbows, 13 slug guns, 12 energy guns and 4 heavy weapons. Each carries its
@@ -470,7 +484,7 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: Psi powers and Theurgic rites, which unlock the four occult Extra Stages
+- Occult mechanics: gaining, losing and resolving Urge and Hubris (p.144)
 - Character histories for the remaining houses, sects and guilds
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

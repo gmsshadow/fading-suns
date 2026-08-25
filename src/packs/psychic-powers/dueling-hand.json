@@ -1,0 +1,30 @@
+{
+  "_key": "!items!4Nql0JZenJrYiIIB",
+  "_id": "4Nql0JZenJrYiIIB",
+  "name": "Dueling Hand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Complex and precise manipulations of single objects are now possible, enabling the psychic to operate a machine or fight with melee weapons or firearms using only the mind. CHAPTER FIVE: OCCULT 133 133 A successful activation roll must be made to lift a weapon into the air, after which the weapon remains aloft under the mental control of the psychic for the duration of the power. However, she must make a successful Extrovert+Melee or Shoot roll to swing or fire the weapon at a target (although she does not have to spend more Wyrd).</p>",
+    "level": 4,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Melee of Shoot",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.XjySOhuLnTq7FuMf"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

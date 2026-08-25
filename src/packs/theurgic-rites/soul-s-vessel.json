@@ -1,0 +1,31 @@
+{
+  "_key": "!items!Y7yO2PRqRpfvdXYy",
+  "_id": "Y7yO2PRqRpfvdXYy",
+  "name": "Soul’s Vessel",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>One of the core teachings of Brother Battle is the perfection of the physical body as the instrument of action in the service of the Pancreator. This rite aids the theurge by adding three to the goal number of all non-combat rolls involving physical traits (running, jumping, lifting, etc.). Rightfully Guided Hand</p>",
+    "level": 1,
+    "sect": "Brother Battle Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Stoic Body",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

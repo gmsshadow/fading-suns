@@ -1,0 +1,31 @@
+{
+  "_key": "!items!MPEAYIItRUx13kti",
+  "_id": "MPEAYIItRUx13kti",
+  "name": "Sting of Conscience",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite is usually accompanied by a verbal harangue from the theurge or another Avestite, the two combining to make the target feel incredibly guilty about some past sin or misdeed. If uncontested, the target will feel compelled to confess and make up for the transgression. The target may choose to contest with a roll of Calm+Stoic Mind. When this rite is cast without the verbal accusations to guide it, there is no telling exactly what its effect may be. A relatively guiltless person may begin to obsess on some minor bit of mischief from childhood, while a truly sinful person may be…</p>",
+    "level": 3,
+    "sect": "Temple Avesti Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.0vB7cpIk8TaVVEZO"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

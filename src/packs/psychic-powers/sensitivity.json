@@ -1,0 +1,30 @@
+{
+  "_key": "!items!F00a1ZKWxzV73ll7",
+  "_id": "F00a1ZKWxzV73ll7",
+  "name": "Sensitivity",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>This power improves the physical senses, allowing the character to see in darker situations (but it does not confer IR or UV vision—he still cannot see in total darkness), hear better, and even smell or taste drugs or poisons in food and drink (at the gamemaster’s discretion). If successful, the character gains +3 to his Perception. This bonus can help offset any negative Perception modifiers due to adverse conditions or darkness (see the Perception Modifiers in Chapter Six: Combat, p.165).</p>",
+    "level": 1,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

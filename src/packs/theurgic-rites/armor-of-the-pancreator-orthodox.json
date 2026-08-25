@@ -1,0 +1,31 @@
+{
+  "_key": "!items!HGSIZ9f92304nJfn",
+  "_id": "HGSIZ9f92304nJfn",
+  "name": "Armor of the Pancreator (Orthodox)",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>A more exact equivalent of the energy shield, this theurgic force field protects the target by conforming itself to the target’s body. Unlike Shield of Faith, the Armor of the Pancreator does not need to be centered on the theurge herself, but can be projected around another person. (The target must be declared when this rite is cast, and cannot be transferred to anyone else.) The Armor lasts for one span. The maximum armor rating for the Armor of the Pancreator is 10 plus the theurge’s victory points; the minimum damage which will activate the Armor is the theurge’s Hubris rating. (If she…</p>",
+    "level": 3,
+    "sect": "Orthodox Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Dodge",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.Y7yO2PRqRpfvdXYy"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

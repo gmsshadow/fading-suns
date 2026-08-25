@@ -1,0 +1,30 @@
+{
+  "_key": "!items!kNnxO2lti3qGQrJl",
+  "_id": "kNnxO2lti3qGQrJl",
+  "name": "Wyrd Sight",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can perceive normally invisible occult activity, such as theurgy rites, psychic powers, occult artifacts, etc.. This can be considered an extremely refined form of Subtle Sight, revealing things which do not register at the lower level. For instance, the aura of a psychic shows a brilliant scintillating white light in the forehead; a beam extending from this light to another person can indicate a telepathic connection or Shared Sense. Most theurgic activity appears to be enveloped in a large unflickering candle-flame, the top point of which stretches up to infinity. Wyrd Sight…</p>",
+    "level": 8,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.VCfRIAbci5oYPuBh"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

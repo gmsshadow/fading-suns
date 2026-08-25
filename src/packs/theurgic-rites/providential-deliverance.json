@@ -1,0 +1,31 @@
+{
+  "_key": "!items!hitAOV5GrxhQlawH",
+  "_id": "hitAOV5GrxhQlawH",
+  "name": "Providential Deliverance",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite enables a theurge in an extremely dangerous situation to escape in some unlikely manner that may even border on the miraculous. A successful casting of Deliverance means that the gamemaster must orchestrate events in such a way as to allow the caster to make a clean getaway from the peril in which he finds himself. This does not mean that the impossible can happen, only the highly improbable; Deliverance can take such forms as a unknown assailant attacking someone who is about to kill the theurge, or a captor accidentally dropping his keys while visiting the theurge’s dungeon…</p>",
+    "level": 9,
+    "sect": "Common to All Sects",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.PDjkZBvB79tn7jHl"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

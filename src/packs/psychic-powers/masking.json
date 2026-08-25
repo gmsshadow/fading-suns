@@ -1,0 +1,30 @@
+{
+  "_key": "!items!1S3f5747nPRyEPjG",
+  "_id": "1S3f5747nPRyEPjG",
+  "name": "Masking",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>At this level, the psychic may physically change her facial features (bone structure, eye color, skin color and texture, hair length and color). One feature may be changed with CHAPTER FIVE: OCCULT 139 139 each victory point. With complementary rolls in Disguise and Acting, the psychic can mimic others.</p>",
+    "level": 6,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Charm",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.7Hq72cPqvLLA7Afa"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

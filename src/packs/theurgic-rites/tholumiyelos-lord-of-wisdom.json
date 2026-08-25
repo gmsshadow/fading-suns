@@ -1,0 +1,31 @@
+{
+  "_key": "!items!TjpMOw2HMNY43td9",
+  "_id": "TjpMOw2HMNY43td9",
+  "name": "Tholumiyelos, Lord of Wisdom",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This exceptionally rare and powerful rite, a closely guarded secret of the order, enables a theurge to contact and summon to the physical world one of the “bodiless powers of the Empyrean,” the clever and insightful intelligence known as Tholumiyelos. According to Eskatonic doctrine, which describes the Empyrean as being presided over by “luminous sentiences” occupying a hierarchy of concentric Emanations from the Celestial Sun, Tholumiyelos rules in the Eighth Emanation, among the ranks of the Archons. Embodying the Eskatonic virtues of questing for secret lore and the cultivation of…</p>",
+    "level": 9,
+    "sect": "Eskatonic Order Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.isfGzvHdbddieIOi"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

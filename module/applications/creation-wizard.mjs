@@ -587,6 +587,23 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         .map(([key, label]) => ({ value: `spirit.${key}`, label: game.i18n.localize(label) }));
     }
 
+    // Psychic powers and theurgic rites, narrowed to the level the stage grants.
+    if (choice.pool === "psiPower" || choice.pool === "rite") {
+      const pack = game.packs.get(
+        choice.pool === "psiPower" ? "fading-suns.psychic-powers" : "fading-suns.theurgic-rites"
+      );
+      if (!pack) return [];
+
+      const level = choice.filter?.[0];
+      const documents = await pack.getDocuments();
+      const group = choice.pool === "psiPower" ? "path" : "sect";
+
+      return documents
+        .filter(d => !level || d.system.level === level)
+        .sort((a, b) => a.system[group].localeCompare(b.system[group]) || a.name.localeCompare(b.name))
+        .map(d => ({ value: d.uuid, label: `${d.system[group]} — ${d.name}` }));
+    }
+
     if (choice.pool === "characteristic") {
       // "Characteristic (choose another) +1" must differ from the first, so
       // whatever the sibling choice took is removed from this one's list.
@@ -615,6 +632,9 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * @returns {object}
    */
   #grantFromPool(choice, value) {
+    if (choice.pool === "psiPower" || choice.pool === "rite") {
+      return { kind: "power", key: value };
+    }
     if (choice.pool === "spirit" || choice.pool === "characteristic") {
       return { kind: "characteristic", key: value, value: choice.value ?? 1 };
     }

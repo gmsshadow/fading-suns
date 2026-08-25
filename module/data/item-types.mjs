@@ -221,13 +221,20 @@ export class FadingSunsPsychicPower extends FadingSunsItemBase {
   /** @inheritDoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      level: new fields.NumberField({ required: true, integer: true, min: 1, max: 9, initial: 1 }),
+      level: new fields.NumberField({ required: true, integer: true, min: 1, max: 10, initial: 1 }),
       path: new fields.StringField({ required: true, blank: true, initial: "" }),
       wyrdCost: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
-      characteristic: new fields.StringField({ required: true, blank: false, initial: "occult.psi" }),
+      wyrdNote: new fields.StringField({ required: false, blank: true, initial: "" }),
+      characteristic: new fields.StringField({ required: true, blank: true, initial: "occult.psi" }),
       skill: new fields.StringField({ required: true, blank: true, initial: "Focus" }),
+      // A handful of entries print "Special (see text)" instead of a pairing.
+      rollNote: new fields.StringField({ required: false, blank: true, initial: "" }),
       duration: new fields.StringField({ required: false, blank: true, initial: "" }),
-      range: new fields.StringField({ required: false, blank: true, initial: "" })
+      range: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // "A character chooses a path and must buy each level consecutively"
+      // (p.128). Stored rather than inferred, because Sympathy begins at level
+      // three and Omen at level six.
+      requires: new fields.StringField({ required: false, blank: true, initial: "" })
     });
   }
 
@@ -249,13 +256,21 @@ export class FadingSunsTheurgicRite extends FadingSunsItemBase {
   /** @inheritDoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      level: new fields.NumberField({ required: true, integer: true, min: 1, max: 9, initial: 1 }),
+      level: new fields.NumberField({ required: true, integer: true, min: 1, max: 10, initial: 1 }),
       ritual: new fields.StringField({ required: true, blank: true, initial: "" }),
+      // The sect whose liturgy this rite belongs to; rites outside a character's
+      // own sect cost more to learn (p.147).
+      sect: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // Gesture, Litany and Paraphernalia, as the rite requires (p.147).
+      components: new fields.StringField({ required: false, blank: true, initial: "" }),
       wyrdCost: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
-      characteristic: new fields.StringField({ required: true, blank: false, initial: "occult.theurgy" }),
+      wyrdNote: new fields.StringField({ required: false, blank: true, initial: "" }),
+      characteristic: new fields.StringField({ required: true, blank: true, initial: "occult.theurgy" }),
       skill: new fields.StringField({ required: true, blank: true, initial: "Focus" }),
+      rollNote: new fields.StringField({ required: false, blank: true, initial: "" }),
       duration: new fields.StringField({ required: false, blank: true, initial: "" }),
-      range: new fields.StringField({ required: false, blank: true, initial: "" })
+      range: new fields.StringField({ required: false, blank: true, initial: "" }),
+      requires: new fields.StringField({ required: false, blank: true, initial: "" })
     });
   }
 

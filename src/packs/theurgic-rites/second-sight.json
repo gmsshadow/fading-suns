@@ -1,0 +1,31 @@
+{
+  "_key": "!items!NXAye8h4wPt5qz2r",
+  "_id": "NXAye8h4wPt5qz2r",
+  "name": "Second Sight",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite is the theurgic equivalent of the psychic power Wyrd Sight, but with more of an emphasis on the moral forces at work in the targeted viewing area. A theurge casting Second Sight may see a psychic’s Urge, for example, as a dark fetal form in the psychic’s brain (at lower levels) or as a fully formed shadow which moves independently of the psychic casting it. Second Sight reveals the presence of demonic influence, with their dark forms hovering in the air around a Antinomist, or coiled up in the body of someone who is possessed. Second Sight also shows the theurge details of any…</p>",
+    "level": 4,
+    "sect": "Eskatonic Order Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.25GyEgk7H2vVWogb"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

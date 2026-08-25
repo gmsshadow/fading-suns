@@ -1,0 +1,30 @@
+{
+  "_key": "!items!5jfnU6mibXfxkRKE",
+  "_id": "5jfnU6mibXfxkRKE",
+  "name": "Heart’s Command",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can actually telepathically control another’s emotions. Language is not a factor here, but differences in alien psychology can pose a problem, as is illustrated by the story of the psychic who, in attempting to ingratiate himself to a feral Vorox, accidentally triggered the predator’s violent mating behavior.</p>",
+    "level": 5,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.XKKfW2feMve1oF4r"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

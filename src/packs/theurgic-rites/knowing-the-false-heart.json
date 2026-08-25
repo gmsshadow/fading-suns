@@ -1,0 +1,31 @@
+{
+  "_key": "!items!mNm6N4UZ2Ln06hna",
+  "_id": "mNm6N4UZ2Ln06hna",
+  "name": "Knowing the False Heart",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Essential to the Avestite pursuit of justice, this rite allows the theurge to act as a human lie detector. Since this rite focuses only on intentional dishonesty and deliberate untruthfulness, it is sometimes possible for the target to dissemble, hiding or twisting the truth with a contested roll of Wits or Calm+Charm. This roll can receive a negative modifier if the target is trying to hide a sin of his own, and a positive one if the target is protecting an innocent under suspicion. The Avestite may still detect half-truths with three or more victory points, and may guess their exact…</p>",
+    "level": 1,
+    "sect": "Temple Avesti Rituals",
+    "components": "G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

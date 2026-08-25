@@ -1,0 +1,31 @@
+{
+  "_key": "!items!hVcVTjnDmGOMXmkk",
+  "_id": "hVcVTjnDmGOMXmkk",
+  "name": "Divine Revelation",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Developed from the common prayer for guidance, this rite guarantees the theurge some kind of significant insight into whatever problem is vexing her. The gamemaster should adjust the degree of insight according to the victory points: one would furnish only the slightest of clues, something which might not even seem important to the player; three provides a more substantial answer that will lead most characters to a solution; five or six will grant the theurge a clear indication to the exact nature of her dilemma and what needs to be done to alleviate it. With a critical success, profound…</p>",
+    "level": 2,
+    "sect": "Eskatonic Order Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.uJq4juQYpRIje4C5"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

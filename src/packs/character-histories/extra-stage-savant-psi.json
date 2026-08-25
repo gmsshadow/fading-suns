@@ -16,20 +16,139 @@
         "value": 2
       },
       {
-        "kind": "note",
-        "text": "Wyrd +1"
+        "kind": "wyrd",
+        "value": 1
       },
       {
-        "kind": "note",
-        "text": "Primary path: Level 4 and Level 5 powers"
+        "kind": "choice",
+        "id": "extra-savant-4",
+        "label": "Primary path: Level 4 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          4
+        ],
+        "options": []
       },
       {
-        "kind": "note",
-        "text": "Choose a secondary path: Level 1 and Level 2 powers"
+        "kind": "choice",
+        "id": "extra-savant-5",
+        "label": "Primary path: Level 5 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          5
+        ],
+        "options": []
       },
       {
-        "kind": "note",
-        "text": "Choose one Worldly Benefit from the regular Tour of Duty"
+        "kind": "choice",
+        "id": "extra-savant-s1",
+        "label": "Secondary path: Level 1 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          1
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-savant-s2",
+        "label": "Secondary path: Level 2 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          2
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-savant-benefit",
+        "label": "Worldly Benefits (choose one)",
+        "pick": 1,
+        "options": [
+          {
+            "label": "Promotion and rewards — rise one rank, Well-Off Riches or 1,000 firebirds",
+            "grants": [
+              {
+                "kind": "note",
+                "text": "Rise in rank one level"
+              },
+              {
+                "kind": "benefice",
+                "key": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+                "value": 5,
+                "label": "Cash"
+              }
+            ]
+          },
+          {
+            "label": "High promotion — rise two ranks, Good Riches or 600 firebirds",
+            "grants": [
+              {
+                "kind": "note",
+                "text": "Rise in rank two levels"
+              },
+              {
+                "kind": "benefice",
+                "key": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+                "value": 3,
+                "label": "Cash"
+              }
+            ]
+          },
+          {
+            "label": "Rich rewards — Wealthy Riches or 2,000 firebirds",
+            "grants": [
+              {
+                "kind": "benefice",
+                "key": "Compendium.fading-suns.benefices-afflictions.Item.TA7PpGqfBGdkFsEs",
+                "value": 7,
+                "label": "Assets"
+              }
+            ]
+          },
+          {
+            "label": "Friends — 100 firebirds and 6 points of connections",
+            "grants": [
+              {
+                "kind": "benefice",
+                "key": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+                "value": 1,
+                "label": "Cash"
+              },
+              {
+                "kind": "note",
+                "text": "Choose 6 points from Ally, Contact, Gossip Network, Retinue, Passage Contracts or Refuge"
+              }
+            ]
+          },
+          {
+            "label": "Promotion and friends — rise one rank, 100 firebirds, 4 points of connections",
+            "grants": [
+              {
+                "kind": "note",
+                "text": "Rise in rank one level"
+              },
+              {
+                "kind": "benefice",
+                "key": "Compendium.fading-suns.benefices-afflictions.Item.Oy8C9aIjBKm3mhOB",
+                "value": 1,
+                "label": "Cash"
+              },
+              {
+                "kind": "note",
+                "text": "Choose 4 points from Ally, Contact, Gossip Network, Retinue, Passage Contracts or Refuge"
+              }
+            ]
+          }
+        ]
       }
     ],
     "suggestedBenefices": [],
@@ -42,7 +161,7 @@
     },
     "requires": "Extra Stage: Natal Psi",
     "exclusive": false,
-    "pending": true
+    "pending": false
   },
   "effects": [],
   "folder": null,

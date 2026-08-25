@@ -1,0 +1,31 @@
+{
+  "_key": "!items!YjQYyuwop69C2VDJ",
+  "_id": "YjQYyuwop69C2VDJ",
+  "name": "The Devotional Liturgy",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Recitation of this passage from the Omega Gospels is the traditional way of boosting morale, usually before battle. The liturgy takes about fifteen minutes to read, and all true believers within earshot add the theurge’s victory points to all rolls involving Faith or Calm for the next span. (The range of this effect is not extended by PA systems or long-distance communications.) Characters under the effect of the Liturgy may not Incite Passion or employ Steady Hand.</p>",
+    "level": 2,
+    "sect": "Common to All Sects",
+    "components": "L",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Oratory",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.I9Bi17PEKLDzKTsD"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

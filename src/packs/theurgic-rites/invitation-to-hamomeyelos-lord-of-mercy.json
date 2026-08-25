@@ -1,0 +1,31 @@
+{
+  "_key": "!items!TKyT7WNo2aT35yHx",
+  "_id": "TKyT7WNo2aT35yHx",
+  "name": "Invitation to Hamomeyelos, Lord of Mercy",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This exceptionally rare and powerful rite, a closely guarded secret of the order, enables a theurge to contact and summon to the physical world one of the “bodiless powers of the Empyrean,” the compassionate and beneficent intelligence known as Hamomeyelos. According to Eskatonic doctrine, Hamomeyelos rules in the Sixth Emanation from the Celestial Sun, among the ranks of the Virtues. Hamomeyelos has never revealed itself directly to anyone, but always manifests in a tangible physical form under the guise of a good Samaritan, a kindly stranger, a timely messenger, or any manner of helpful…</p>",
+    "level": 9,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.yajcvJedyKMj98fL"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

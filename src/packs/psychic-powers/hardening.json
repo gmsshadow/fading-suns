@@ -1,0 +1,30 @@
+{
+  "_key": "!items!ibfE2hj1gba3Pb9R",
+  "_id": "ibfE2hj1gba3Pb9R",
+  "name": "Hardening",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>This power actually hardens the skin to a steely consistency, providing an armor rating of 3+1d per victory point against hand-to-hand, melee and conventional firearm attacks, and 1 +1d per victory point against energy weapons. There is no Dexterity or Vigor penalty.</p>",
+    "level": 4,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.introvert",
+    "skill": "Stoic Body",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.bczSNfipokn217cU"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

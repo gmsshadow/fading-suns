@@ -1,0 +1,31 @@
+{
+  "_key": "!items!OwRug90ZzawGXdAM",
+  "_id": "OwRug90ZzawGXdAM",
+  "name": "All-Seeing Eye",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>The equivalent of the psychic power FarSight, the Rite of the All-Seeing Eye allows the theurge to observe a place in which she is not actually present. Consult the description of FarSight to see how the casting roll should be modified according to the familiarity of the targeted place.</p>",
+    "level": 6,
+    "sect": "Eskatonic Order Rituals",
+    "components": "L, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.NdWa6ySqTda2snKX"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

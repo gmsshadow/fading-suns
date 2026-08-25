@@ -1,0 +1,30 @@
+{
+  "_key": "!items!CNhG9Z5dEHIj9ACl",
+  "_id": "CNhG9Z5dEHIj9ACl",
+  "name": "Shadows Gone By",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Past Resonance allows the psychic to see, hear and feel what has happened in the past around a particular object. For instance, a knife used in a killing can be “read” to get a vision of the murderer, as well as the room where it took place, etc. Multiple items may not be selected. The psychic chooses the time period, but it can be accompanied with a request for a particular event (“Who used this knife to kill the marquis?”). How far she can see into the past depends on her successes: one year per success or centuries with a critical success. The psychic can see a past period of about 10…</p>",
+    "level": 6,
+    "path": "Omen",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

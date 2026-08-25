@@ -1,0 +1,31 @@
+{
+  "_key": "!items!tQwybEg3F9If0mhs",
+  "_id": "tQwybEg3F9If0mhs",
+  "name": "Oath of the Shieldmates",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Similar to the psychic power Sympaticus (see the Psyche path, p.134), this rite allows a Brother to band his comrades into an elite fighting unit. He can easily communicate with, or feel the emotions of, chosen targets, allowing the formation of a telepathic network among non-theurgic characters (all information must flow through the Brother who cast the rite, i.e., non-theurgic targets may not communicate directly, except through normal channels). However, use of this rite actually makes it harder to manipulate or control these targets (–4 on all rolls to do so). Not just any target can…</p>",
+    "level": 8,
+    "sect": "Brother Battle Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "occult.theurgy",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.n1i7MUMP4EDgFbk4"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

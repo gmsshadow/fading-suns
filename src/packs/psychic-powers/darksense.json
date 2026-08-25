@@ -1,0 +1,30 @@
+{
+  "_key": "!items!rfsQiMZimCkBT0Tn",
+  "_id": "rfsQiMZimCkBT0Tn",
+  "name": "Darksense",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Darksense allows the character to perceive when there is no light or when she is somehow blinded. She suffers none of the usual negative Perception modifiers for darkness and can use her Sixth Sense powers in the dark. Darksense manifests in a variety of ways, including sonar-like acuity of hearing, tactile hypersensitivity to ground vibrations or minute air currents, and using the character’s own biomagnetic field as a kind of radar. Printed words or pictures may not be seen with Darksense.</p>",
+    "level": 2,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.wits",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.F00a1ZKWxzV73ll7"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

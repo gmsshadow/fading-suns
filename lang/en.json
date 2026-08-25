@@ -250,7 +250,9 @@
       "Stage": "Drag a stage from the Character Histories compendium onto a character to record it.",
       "ExtraPoints": "Extra points are the only way to buy Blessings, occult characteristics and powers. Curses and Afflictions grant more (p.88).",
       "CombatAction": "Combat actions are rated by the level of skill needed to learn them, and cost one Extra point per level (p.102, p.88).",
-      "ExtraStages": "A character may take two Extra Stages, at 20 Extra points each — which is the whole allowance (p.84). Take fewer to keep points for Step Six."
+      "ExtraStages": "A character may take two Extra Stages, at 20 Extra points each — which is the whole allowance (p.84). Take fewer to keep points for Step Six.",
+      "PathChain": "Paths are bought consecutively: each level needs the one below it in the same path (p.128).",
+      "Components": "G is a gesture, L a spoken litany, P paraphernalia. A rite cannot be performed without them (p.147)."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -487,6 +489,17 @@
       "MultipleActions": "Multiple actions",
       "Situational": "Situational",
       "Distance": "Measured distance"
+    },
+    "Occult": {
+      "Sect": "Sect",
+      "Components": "Components",
+      "ComponentsHint": "G, L, P",
+      "Gesture": "Gesture",
+      "Litany": "Litany",
+      "Paraphernalia": "Paraphernalia",
+      "Requires": "Requires",
+      "Path": "Path",
+      "Level": "Level"
     }
   }
 }

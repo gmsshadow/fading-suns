@@ -32,7 +32,7 @@
 /** Every grant kind a stage may contain. */
 export const GRANT_KINDS = [
   "characteristic", "skill", "language", "blessing", "curse", "benefice",
-  "combatAction", "note", "choice"
+  "combatAction", "wyrd", "power", "note", "choice"
 ];
 
 /**
@@ -134,6 +134,7 @@ export function createState({ characteristics = {}, skills = {}, primary = {} } 
     curses: [],
     benefices: [],
     combatActions: [],
+    powers: [],
     notes: [],
     sparePoints: 0
   };
@@ -204,6 +205,16 @@ export function applyGrants(state, grants) {
         if (!state.combatActions.some(a => a.key === grant.key)) {
           state.combatActions.push({ key: grant.key, level: grant.value ?? 0 });
         }
+        break;
+
+      case "wyrd":
+        // Occult training raises the Wyrd maximum above its derived base (p.84).
+        state.wyrdBonus = (state.wyrdBonus ?? 0) + (grant.value ?? 0);
+        break;
+
+      case "power":
+        // A psychic power or theurgic rite, referenced by uuid.
+        if (!state.powers.includes(grant.key)) state.powers.push(grant.key);
         break;
 
       case "note":

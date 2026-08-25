@@ -1,0 +1,30 @@
+{
+  "_key": "!items!Cm9wKEzyjldcseTH",
+  "_id": "Cm9wKEzyjldcseTH",
+  "name": "Coven Brand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>A particular psychic is declared anathema, and has a sort of anti-bond placed upon him whereby it is harder for him to use his own powers against the psychic. This is usually performed by members of a psychic coven upon an outcast from their coven, to prevent him from easily working against them at a later date. This is mainly used by the Favyana rather CHAPTER FIVE: OCCULT 141 141 than the Invisible Path, who punish most extreme transgressions against them with death instead of exile. It is only effective between the user of this power and the recipient. This is cast just like Bonding…</p>",
+    "level": 6,
+    "path": "Sympathy",
+    "wyrdCost": 0,
+    "wyrdNote": "varies",
+    "characteristic": "spirit.ego",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.m0pqHgrF8Pd2aDIt"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

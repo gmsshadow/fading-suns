@@ -1,0 +1,31 @@
+{
+  "_key": "!items!kUhRyul4N1MalOWA",
+  "_id": "kUhRyul4N1MalOWA",
+  "name": "Fault of the Soulless",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Developed soon after the Fall, this rite targets a piece of high-tech and causes it to malfunction. Normally used against personal technology (blasters, comlinks, a single computer terminal, a robot of human size or smaller), this rite can be used to target larger machines with an additional Wyrd expenditure based on size and complexity (e.g., 2 points to disable a personal land vehicle, 5 points for a building’s security system, and 50 points to take out a starship. At the gamemaster’s discretion, this can be adjusted by circumstances; for example, a theurge with sufficient tech knowledge…</p>",
+    "level": 5,
+    "sect": "Temple Avesti Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "",
+    "skill": "",
+    "rollNote": "Special (see text)",
+    "range": "Sight",
+    "duration": "Special (see text)",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.rQBFDFHt9ERwXdLV"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -556,12 +556,11 @@ test("prerequisites point at stages that exist", () => {
   }
 });
 
-test("only the occult stages are marked pending", () => {
-  const pending = extraStages.filter(s => s.system.pending).map(s => s.name).sort();
-  assert.deepEqual(pending, [
-    "Extra Stage: Adept Theurge", "Extra Stage: Natal Psi",
-    "Extra Stage: Neophyte Theurge", "Extra Stage: Savant Psi"
-  ], "the four occult stages wait on the Psi and Theurgy compendiums");
+test("no Extra Stage is marked pending", () => {
+  // The four occult stages waited on the Psi and Theurgy compendiums; those
+  // now exist, so nothing should be greyed out.
+  const pending = extraStages.filter(s => s.system.pending).map(s => s.name);
+  assert.deepEqual(pending, []);
 });
 
 test("Tours of Duty hand out a skill allowance rather than fixed skills (p.84)", () => {
@@ -619,4 +618,46 @@ test("each Tour offers its Worldly Benefits under a distinct choice id", () => {
     .flatMap(s => s.system.grants.filter(g => g.kind === "choice").map(g => g.id));
   assert.equal(new Set(ids).size, ids.length, "choice ids must be unique across the pack");
   assert.ok(ids.length >= 4, "each of the four tours offers a benefit choice");
+});
+
+test("the occult Extra Stages are takeable now the compendiums exist", () => {
+  const pending = extraStages.filter(s => s.system.pending);
+  assert.deepEqual(pending, [], "no Extra Stage should still be waiting on content");
+});
+
+test("occult stages grant powers by level, not by note (p.84)", () => {
+  const expected = {
+    "Extra Stage: Natal Psi": { pool: "psiPower", levels: [1, 2, 3], occult: "occult.psi", wyrd: 2 },
+    "Extra Stage: Savant Psi": { pool: "psiPower", levels: [4, 5, 1, 2], occult: "occult.psi", wyrd: 1 },
+    "Extra Stage: Neophyte Theurge": { pool: "rite", levels: [1, 2, 3], occult: "occult.theurgy", wyrd: 2 },
+    "Extra Stage: Adept Theurge": { pool: "rite", levels: [4, 5, 1, 2], occult: "occult.theurgy", wyrd: 1 }
+  };
+
+  for (const [name, want] of Object.entries(expected)) {
+    const stage = extraStages.find(s => s.name === name).system;
+
+    const picks = stage.grants.filter(g => g.kind === "choice" && g.pool === want.pool);
+    assert.deepEqual(picks.map(p => p.filter[0]), want.levels, `${name} power levels`);
+
+    const trait = stage.grants.find(g => g.kind === "characteristic");
+    assert.equal(trait.key, want.occult, `${name} raises the right occult trait`);
+
+    const wyrd = stage.grants.find(g => g.kind === "wyrd");
+    assert.equal(wyrd.value, want.wyrd, `${name} Wyrd bonus`);
+  }
+});
+
+test("every occult power choice can be satisfied from the compendiums", () => {
+  const powers = loadPack("psychic-powers");
+  const rites = loadPack("theurgic-rites");
+
+  for (const stage of extraStages) {
+    for (const choice of stage.system.grants.filter(g => ["psiPower", "rite"].includes(g.pool))) {
+      const source = choice.pool === "psiPower" ? powers : rites;
+      const level = choice.filter[0];
+      const available = source.filter(d => d.system.level === level);
+      assert.ok(available.length > 0,
+        `"${choice.label}" in ${stage.name} offers nothing at level ${level}`);
+    }
+  }
 });

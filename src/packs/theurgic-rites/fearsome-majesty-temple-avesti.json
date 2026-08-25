@@ -1,0 +1,31 @@
+{
+  "_key": "!items!OM1t4RskYDFQaAPM",
+  "_id": "OM1t4RskYDFQaAPM",
+  "name": "Fearsome Majesty (Temple Avesti)",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite is identical to the level 6 Brother Battle rite of the same name.</p>",
+    "level": 6,
+    "sect": "Temple Avesti Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.kUhRyul4N1MalOWA"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!63L8P6AxlGrwJ2va",
+  "_id": "63L8P6AxlGrwJ2va",
+  "name": "Strengthening",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>While this power is activated, the psychic may add 2 to her Strength rating, plus another 1 per victory point.</p>",
+    "level": 2,
+    "path": "Soma",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Vigor",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.Pw3iskHyXftUWN5T"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

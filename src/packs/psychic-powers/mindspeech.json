@@ -1,0 +1,30 @@
+{
+  "_key": "!items!XKKfW2feMve1oF4r",
+  "_id": "XKKfW2feMve1oF4r",
+  "name": "MindSpeech",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic is able to project her thoughts into the mind of another. The psychic can choose to hide the source of these thoughts, but the target may become aware that something is happening if a thought seems too strange or unfamiliar to him. As with MindSight, language can be a barrier.</p>",
+    "level": 4,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Charm",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.7x3mdfYjEwunrtoX"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

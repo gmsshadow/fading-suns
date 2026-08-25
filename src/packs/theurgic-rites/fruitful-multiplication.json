@@ -1,0 +1,31 @@
+{
+  "_key": "!items!gXtJdcZ1sz0kG1oO",
+  "_id": "gXtJdcZ1sz0kG1oO",
+  "name": "Fruitful Multiplication",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Most often used to help feed famine areas, this rite increases the mass of a single targeted substance (such as food, water, cloth, building materials, breathable air, etc.) by a factor equal to the victory points. This rite will not replicate manufactured items, only basic materials. Attempting to use this rite on money or precious metals is grounds for excommunication. To use Fruitful Multiplication, the Theurge rolls Faith+ Vigor or Sleight of Hand.</p>",
+    "level": 5,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "",
+    "skill": "",
+    "rollNote": "Special (see text)",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.Jfng2GeBq12d6yvN"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

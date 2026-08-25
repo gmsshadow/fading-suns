@@ -1,0 +1,30 @@
+{
+  "_key": "!items!RG2DkCm5w9Uh4jDS",
+  "_id": "RG2DkCm5w9Uh4jDS",
+  "name": "Premonition",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>Auras Chart General Types of Auras Race/Condition Aura Type Human Simple elongated ovals Ur-Obun Exaggerated egg-shapes, with the big end at the top Ur-Ukar Exaggerated egg-shapes, with the big end at the bottom Vorox Torn, raggedy edges Vau Sleek wedges, pointed at the head Symbiot Tiny filament-threads stretching out to infinity (which cannot be detected without a critical success) The Changed Folded or crimped around the altered body part Unconscious Pale, empty aura Asleep Pale, empty aura, with all color and activity concentrated in the center Psychic/Theurge Deeper, more…</p>",
+    "level": 4,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.zMIsA7CfqRkOay3b"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

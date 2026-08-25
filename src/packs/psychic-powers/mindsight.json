@@ -1,0 +1,30 @@
+{
+  "_key": "!items!7x3mdfYjEwunrtoX",
+  "_id": "7x3mdfYjEwunrtoX",
+  "name": "MindSight",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>MindSight allows the psychic to read another’s surface thoughts. Note that surface thoughts are only what is occupying the target’s attention at that moment, and rarely involve long-range plans, habitual behavior or detailed recollections. Language barriers can get in the way, as can differences in the psychology of alien races from beyond the Known Worlds. A level 5 version of this power, MindSearch, allows the psychic to delve deeper, into the target’s deepest thoughts and memories. The number of victory points should act as a guideline as to how deep or private are the memories which…</p>",
+    "level": 3,
+    "path": "Psyche",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.2GYmMCFQ7PzRQQ0h"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

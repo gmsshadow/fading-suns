@@ -1,0 +1,31 @@
+{
+  "_key": "!items!uJq4juQYpRIje4C5",
+  "_id": "uJq4juQYpRIje4C5",
+  "name": "Celestial Alignment",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>One of the earliest rites developed by Eskatonic theurges was that of Celestial Alignment, which proved useful to explorers on new planets seeking Ur-artifacts or forgotten wisdom. This rite enables a theurge to keep perfect mental notation of all the movements of the surrounding solar system, as well as the constellations (as they appear to an observer on planetside). Thus the theurge, with but a glance at the sky, can reckon sidereal time and track his position, direction and motion as he travels across the planet. The effect of this rite is permanent, but applies only to the planet upon…</p>",
+    "level": 1,
+    "sect": "Eskatonic Order Rituals",
+    "components": "P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Observe",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Perpetual",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

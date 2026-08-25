@@ -1,0 +1,30 @@
+{
+  "_key": "!items!tHt89FiYC2VLDnXe",
+  "_id": "tHt89FiYC2VLDnXe",
+  "name": "Lifting Hand",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The first level of FarHand enables the psychic to generate a simple field of directional force which can either slowly lift a single object up (1 meter per turn) OR move it to one side (but not both—that requires another separate field). A maximum weight equal to 25 kg per level of the psychic’s Wits may be lifted. (Additional mass can be bought at 10 kg per Wyrd point.) The only limit to how high an object can be lifted is the range of the power when activated. Once the duration is exceeded, the object will drop from whatever height it was raised to.</p>",
+    "level": 1,
+    "path": "FarHand",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Temporary",
+    "requires": ""
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

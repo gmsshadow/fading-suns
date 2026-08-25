@@ -1,0 +1,31 @@
+{
+  "_key": "!items!B4jPDepCWE1I5f5S",
+  "_id": "B4jPDepCWE1I5f5S",
+  "name": "Sanctification",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>The theurge sanctifies an object, turning it into a Vestment (see above). While this rite does not provide the occult protections that the level 1 Orthodoxy rite of Consecration does, it is permanent. Although vestment’s may lose their sanctity over time and neglect, as long as they are wellcared for, they will continue to add bonuses to a theurge’s rites. This rite may be cast a number of times per week equal to the theurge’s Theurgy rating; it is not intended to allow priests to run vestment factories. A 8th level version of this rite allows the theurge to create an Article of Faith; its…</p>",
+    "level": 7,
+    "sect": "Common to All Sects",
+    "components": "G, P",
+    "wyrdCost": 2,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.J9Mu45PjvVK6XEhG"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

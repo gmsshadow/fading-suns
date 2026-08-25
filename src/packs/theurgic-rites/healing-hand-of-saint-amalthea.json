@@ -1,0 +1,31 @@
+{
+  "_key": "!items!8vSMk16ncIb8VQIS",
+  "_id": "8vSMk16ncIb8VQIS",
+  "name": "Healing Hand of Saint Amalthea",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>By meditating upon Saint Amalthea and reciting all the names of the Pancreator from the Compassionate Truths, the theurge may not only heal back one Vitality point per victory point (as in the Church level 3 Rite Laying On of Hands, above), but may also reattach severed limbs and remove deeply embedded shrapnel, diseased organs or insidious parasites. At the gamemaster’s discretion, the newly dead may be revived with a critical success.</p>",
+    "level": 7,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Physick",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.bGyPaqFE1uTnMtKp"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

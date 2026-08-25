@@ -1,0 +1,30 @@
+{
+  "_key": "!items!8ECvVTZmvUMU6mty",
+  "_id": "8ECvVTZmvUMU6mty",
+  "name": "Senses Shock",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>With Senses Shock the psychic can break down his target’s natural adjustment of the intensity of sensory input, overloading the target’s senses: mild light becomes blinding, whispers are screams, a massage becomes a pummeling, and so on. If activation is successful, the target is stunned and incapacitated for one turn per victory point on the activation roll (perhaps more if she is subjected to bright lights, loud sounds, a pummeling, etc.). If the target was a psychic using a Sixth Sense power, she may roll Introvert+Stoic Mind to resist being stunned. Soma The path of Soma (also called…</p>",
+    "level": 9,
+    "path": "Sixth Sense",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.extrovert",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.kNnxO2lti3qGQrJl"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_key": "!items!PT9dEq3XfKt6hRll",
+  "_id": "PT9dEq3XfKt6hRll",
+  "name": "Vis Shock",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can transform her own bioelectrical field into a high voltage discharge with a hand-to-hand or melee attack. This normally adds four dice to any damage roll. However, a character can also attempt to slowly slip under shields and hit the target once his fist or weapon is past the shield (suffer –2 to Initiative, withhold victory dice and hope the damage does not exceed the shield’s impact threshold). Once the blow contacts a surface, the psychic can release the charge (four dice, ignore energy shields but not other armor). The range on this power may not be increased. CHAPTER…</p>",
+    "level": 4,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "body.dexterity",
+    "skill": "Fight or Melee",
+    "rollNote": "",
+    "range": "Touch (see text)",
+    "duration": "Instant",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.nEnSd10xVw8ChiKz"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

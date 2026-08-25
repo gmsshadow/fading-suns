@@ -16,16 +16,53 @@
         "value": 3
       },
       {
-        "kind": "note",
-        "text": "Wyrd +2"
+        "kind": "wyrd",
+        "value": 2
       },
       {
-        "kind": "note",
-        "text": "Choose a primary path: Level 1, Level 2 and Level 3 powers"
+        "kind": "choice",
+        "id": "extra-natal-1",
+        "label": "Primary path: Level 1 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          1
+        ],
+        "options": []
       },
       {
-        "kind": "note",
-        "text": "+1 to a skill related to a Psi power"
+        "kind": "choice",
+        "id": "extra-natal-2",
+        "label": "Primary path: Level 2 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          2
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-natal-3",
+        "label": "Primary path: Level 3 power",
+        "pick": 1,
+        "pool": "psiPower",
+        "value": 1,
+        "filter": [
+          3
+        ],
+        "options": []
+      },
+      {
+        "kind": "choice",
+        "id": "extra-natal-skill",
+        "label": "A skill related to a Psi power +1",
+        "pick": 1,
+        "pool": "skill",
+        "value": 1,
+        "options": []
       }
     ],
     "suggestedBenefices": [],
@@ -38,7 +75,7 @@
     },
     "requires": "",
     "exclusive": false,
-    "pending": true
+    "pending": false
   },
   "effects": [],
   "folder": null,

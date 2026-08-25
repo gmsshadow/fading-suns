@@ -1,0 +1,30 @@
+{
+  "_key": "!items!d8JBZ5dBfj0agpoV",
+  "_id": "d8JBZ5dBfj0agpoV",
+  "name": "Vis Drain",
+  "type": "psychicPower",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "<p>The psychic can drain or cut off the flow of the power to or from various items, such as fusion cells or a building’s power grid (this power is not transferred anywhere useful unless the character also uses the Vis Flow power, below). The amount of Wyrd points spent determines how much power can be drained from a source. The psychic can spend Wyrd to increase the duration to prolonged. Wyrd Power (equivalents) 1 (base) 1 fusion cell 2 10 fusion cells; enough energy to power a small room or skimmer 3 Enough energy to power a building or flitter 4 Enough energy to power a city block or…</p>",
+    "level": 2,
+    "path": "Vis Craft",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Volt Redemption",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.psychic-powers.Item.UPulmFVF3U2pX7mG"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

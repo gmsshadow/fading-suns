@@ -1,0 +1,31 @@
+{
+  "_key": "!items!pzIqgj7GaRkJdvN3",
+  "_id": "pzIqgj7GaRkJdvN3",
+  "name": "Calming",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Considered something of a joke by outsiders, the Calming rite disperses the negative energies of rage, hate, fear and even less negative (but sometimes equally destructive) simple excitement. This rite has prevented many confrontations from escalating to violence, which accounts for the Amaltheans’ reputation as diplomats. In addition, Calming may be effective for targets who are psychically manipulated or possessed by demons; while it does not actually cure or prevent these conditions, it may aid the target by, for instance, silencing the possessed so that the Exorcism may continue…</p>",
+    "level": 3,
+    "sect": "Sanctuary Aeon Rituals",
+    "components": "G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Charm",
+    "rollNote": "",
+    "range": "Sight",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.kUrJfEgBiAZWzRga"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

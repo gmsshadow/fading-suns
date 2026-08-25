@@ -1,0 +1,31 @@
+{
+  "_key": "!items!jOIZtEZNPuIjuwqA",
+  "_id": "jOIZtEZNPuIjuwqA",
+  "name": "Dispersal of Darkness",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>The theurge may act as a kind of physical repulsion field against certain servitors of evil, such as the husks of the dead (see Chapter Eight: Gamemastering, p.255), the Doppelgangers of psychics, those under malicious influence from a negative Ur-artifact, etc.. The number of successes represents the closest distance in meters to which an evil minion can approach the theurge. The duration may be extended by 10 turns for each extra Wyrd point spent (these points can be spent any time after activation). CHAPTER FIVE: OCCULT 151 151</p>",
+    "level": 5,
+    "sect": "Orthodox Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.passion",
+    "skill": "Impress",
+    "rollNote": "",
+    "range": "Special (see text)",
+    "duration": "Temporary",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.andYigx62a1jWQyB"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "_key": "!items!FETCN0J2mEwPSp5q",
+  "_id": "FETCN0J2mEwPSp5q",
+  "name": "Armor of the Pancreator (Brother Battle)",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>This rite is identical to the level 3 Orthodoxy rite, above, except that the Brother Battle version can be expanded to include bulkier armor which has been Sanctified or Consecrated.</p>",
+    "level": 3,
+    "sect": "Brother Battle Rituals",
+    "components": "L, G",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.faith",
+    "skill": "Dodge",
+    "rollNote": "",
+    "range": "Self",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.Y7yO2PRqRpfvdXYy"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

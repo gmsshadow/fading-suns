@@ -1,0 +1,31 @@
+{
+  "_key": "!items!0vB7cpIk8TaVVEZO",
+  "_id": "0vB7cpIk8TaVVEZO",
+  "name": "Scent of Evil",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>Casting Scent of Evil enables a theurge to “sniff out” acts of Antinomy, the actions of a psychic’s Urge and the presence of demons or alien artifacts with a negative influence. This rite only indicates the presence of such evil, but does not show the theurge exactly what is going on; some degree of precision is possible, however, with a more successful roll. One victory point, for example, merely signals evil’s presence in a general area (“There is evil in this house!”); with three, a more specific area can be sensed (“Somebody in this room…”); five or six gives the theurge a sense of the…</p>",
+    "level": 2,
+    "sect": "Temple Avesti Rituals",
+    "components": "G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "mind.perception",
+    "skill": "Empathy",
+    "rollNote": "",
+    "range": "Sensory",
+    "duration": "Prolonged",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.mNm6N4UZ2Ln06hna"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

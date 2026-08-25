@@ -1,0 +1,31 @@
+{
+  "_key": "!items!isfGzvHdbddieIOi",
+  "_id": "isfGzvHdbddieIOi",
+  "name": "Investiture",
+  "type": "theurgicRite",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "description": "<p>The Rite of Investiture is used to create a Wyrd Tabernacle (see Relics, p.147) out of a targeted object. The maximum number of Wyrd points which the Invested Tabernacle may store is equal to the number of successes on the casting roll, and may be increased up to a maximum of 20 through repetition of the rite. Note that the Rite of Investiture does not actually bind any Wyrd points into the Tabernacle; this is a separate process involving a Theurgy+Focus roll, as described above under Wyrd Tabernacle. Knowledge and Conversation of</p>",
+    "level": 8,
+    "sect": "Eskatonic Order Rituals",
+    "components": "L, G, P",
+    "wyrdCost": 1,
+    "wyrdNote": "",
+    "characteristic": "spirit.calm",
+    "skill": "Focus",
+    "rollNote": "",
+    "range": "Touch",
+    "duration": "Perpetual",
+    "requires": "Compendium.fading-suns.theurgic-rites.Item.8LsyAm0Guolkv92L"
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

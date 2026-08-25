@@ -1,0 +1,46 @@
+{
+  "_key": "!items!FDqWFemDMUzCxae1",
+  "_id": "FDqWFemDMUzCxae1",
+  "name": "Laser Rifle",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 30,
+      "long": 40
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 23,
+      "max": 23
+    },
+    "autofire": false,
+    "cost": 500,
+    "costNote": "10 per cell",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

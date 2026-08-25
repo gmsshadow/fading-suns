@@ -1,0 +1,46 @@
+{
+  "_key": "!items!ZZsDM4QV5WFsBRIn",
+  "_id": "ZZsDM4QV5WFsBRIn",
+  "name": "Stunner",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Any damage forces an Endurance + Vigor roll or the target is stunned for that turn and the next; a critical failure knocks them out. Damage exceeding Endurance knocks them out on a failure. Heals completely after one span.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 4,
+      "type": "stun"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 15,
+      "max": 15
+    },
+    "autofire": false,
+    "cost": 300,
+    "costNote": "10 per cell",
+    "notes": "Any damage forces an Endurance + Vigor roll or the target is stunned for that turn and the next; a critical failure knocks them out. Damage exceeding Endurance knocks them out on a failure. Heals completely after one span.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

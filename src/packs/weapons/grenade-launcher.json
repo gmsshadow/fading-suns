@@ -1,0 +1,46 @@
+{
+  "_key": "!items!sQg6zGzgsUZDBaB2",
+  "_id": "sQg6zGzgsUZDBaB2",
+  "name": "Grenade Launcher",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Damage varies with the grenade used.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 0,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 15,
+      "long": 25
+    },
+    "strength": 0,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 1,
+      "max": 1
+    },
+    "autofire": false,
+    "cost": 500,
+    "costNote": "65 per grenade",
+    "notes": "Damage varies with the grenade used.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

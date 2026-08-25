@@ -1,0 +1,46 @@
+{
+  "_key": "!items!2ZSOhR7jfUtDN2zh",
+  "_id": "2ZSOhR7jfUtDN2zh",
+  "name": "Long Bow",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 6,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Archery",
+    "range": {
+      "short": 40,
+      "long": 60
+    },
+    "strength": 6,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 10,
+    "costNote": "1 wing per arrow",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

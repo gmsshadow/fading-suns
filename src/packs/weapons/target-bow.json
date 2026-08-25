@@ -1,0 +1,46 @@
+{
+  "_key": "!items!joXjVKgVQ4p6a1kz",
+  "_id": "joXjVKgVQ4p6a1kz",
+  "name": "Target Bow",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 3,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Archery",
+    "range": {
+      "short": 30,
+      "long": 40
+    },
+    "strength": 3,
+    "size": "M",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 7,
+    "costNote": "1 wing per arrow",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

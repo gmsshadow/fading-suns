@@ -1,0 +1,46 @@
+{
+  "_key": "!items!9MgBARtw3EMJE5so",
+  "_id": "9MgBARtw3EMJE5so",
+  "name": "Rocketeer",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 9,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 20,
+      "long": 30
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": -2,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 5,
+      "max": 5
+    },
+    "autofire": false,
+    "cost": 400,
+    "costNote": "25 per grenade",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

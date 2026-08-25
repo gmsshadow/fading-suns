@@ -1,0 +1,46 @@
+{
+  "_key": "!items!wEtvVYhENprfRs5e",
+  "_id": "wEtvVYhENprfRs5e",
+  "name": "Throwing Star",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Up to three may be thrown in one action, at -1 to the goal per extra star.</p>",
+    "weaponType": "thrown",
+    "damage": {
+      "dice": 2,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Throwing",
+    "range": {
+      "short": 5,
+      "long": 10
+    },
+    "strength": 2,
+    "size": "XS",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 2,
+    "costNote": "",
+    "notes": "Up to three may be thrown in one action, at -1 to the goal per extra star.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

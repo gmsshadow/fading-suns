@@ -1,0 +1,46 @@
+{
+  "_key": "!items!y1bUxFUdiv8IKKy3",
+  "_id": "y1bUxFUdiv8IKKy3",
+  "name": "Flamegun",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Heat damage: dice rolling 1 ignore all armour, including shields. Three further dice of burning damage each turn after the first, without victory dice, until a turn rolls no damage.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 5,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 2,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 10,
+      "max": 10
+    },
+    "autofire": false,
+    "cost": 150,
+    "costNote": "5 per canister",
+    "notes": "Heat damage: dice rolling 1 ignore all armour, including shields. Three further dice of burning damage each turn after the first, without victory dice, until a turn rolls no damage.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

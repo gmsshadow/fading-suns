@@ -1,0 +1,46 @@
+{
+  "_key": "!items!e2f5Z32Tt2dBhMW5",
+  "_id": "e2f5Z32Tt2dBhMW5",
+  "name": "Light Revolver (.32)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 4,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 3,
+    "shots": {
+      "value": 6,
+      "max": 6
+    },
+    "autofire": false,
+    "cost": 100,
+    "costNote": "5 slugs per firebird",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

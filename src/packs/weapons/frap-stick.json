@@ -1,0 +1,46 @@
+{
+  "_key": "!items!MTqhm13ny2qxY7cx",
+  "_id": "MTqhm13ny2qxY7cx",
+  "name": "Frap Stick",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Inflicts three dice if used as a club.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 6,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 5,
+    "size": "L",
+    "initiativeModifier": -1,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 15,
+    "costNote": "",
+    "notes": "Inflicts three dice if used as a club.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2000000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

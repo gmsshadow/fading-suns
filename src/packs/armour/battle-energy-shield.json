@@ -1,0 +1,45 @@
+{
+  "_key": "!items!NFJi9KhCPNNLQzUG",
+  "_id": "NFJi9KhCPNNLQzUG",
+  "name": "Battle Energy Shield",
+  "type": "armour",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "",
+    "protection": {
+      "dice": 0
+    },
+    "coverage": "body",
+    "armourType": "energyShield",
+    "penalties": {
+      "strength": 0,
+      "dexterity": 0,
+      "vigor": 0
+    },
+    "energyShieldCompatible": false,
+    "shieldDamage": 0,
+    "energyShield": {
+      "min": 5,
+      "max": 20,
+      "hits": {
+        "value": 30,
+        "max": 30
+      }
+    },
+    "cost": 5000,
+    "costNote": "",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

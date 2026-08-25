@@ -1,0 +1,46 @@
+{
+  "_key": "!items!s8g1yCzxzPEYvZpA",
+  "_id": "s8g1yCzxzPEYvZpA",
+  "name": "Two-handed Sword",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 8,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 6,
+    "size": "XL",
+    "initiativeModifier": 1,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 30,
+    "costNote": "",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_key": "!items!S1XLtkuOl9uLBeeL",
+  "_id": "S1XLtkuOl9uLBeeL",
+  "name": "Flux Sword",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Leaks through energy shields: damage dice rolling 1 or 2 ignore shields.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 3,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 15000,
+    "costNote": "Tech level 10",
+    "notes": "Leaks through energy shields: damage dice rolling 1 or 2 ignore shields.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

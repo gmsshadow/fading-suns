@@ -1,0 +1,46 @@
+{
+  "_key": "!items!aM3IafGi47GpDGhZ",
+  "_id": "aM3IafGi47GpDGhZ",
+  "name": "Derringer (.32)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 3,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 5,
+      "long": 10
+    },
+    "strength": 0,
+    "size": "XS",
+    "initiativeModifier": 0,
+    "goalModifier": -1,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 4,
+      "max": 4
+    },
+    "autofire": false,
+    "cost": 50,
+    "costNote": "5 slugs per firebird",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

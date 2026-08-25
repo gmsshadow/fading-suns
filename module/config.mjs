@@ -281,3 +281,31 @@ FADING_SUNS.factionBenefices = {
   merchant: [],
   alien: []
 };
+
+/* -------------------------------------------- */
+/*  Equipment charts (p.296)                    */
+/* -------------------------------------------- */
+
+FADING_SUNS.weaponSizes = {
+  XS: "FADINGSUNS.Size.XS",
+  S: "FADINGSUNS.Size.S",
+  M: "FADINGSUNS.Size.M",
+  L: "FADINGSUNS.Size.L",
+  XL: "FADINGSUNS.Size.XL"
+};
+
+FADING_SUNS.armourTypes = {
+  armour: "FADINGSUNS.ArmourType.Armour",
+  shield: "FADINGSUNS.ArmourType.Shield",
+  energyShield: "FADINGSUNS.ArmourType.EnergyShield"
+};
+
+/** Goal penalties by range band (p.296). */
+FADING_SUNS.rangePenalties = {
+  short: 0,
+  long: -2,
+  extreme: -4
+};
+
+/** Goal penalty for wielding a weapon below its Strength requirement (p.296). */
+FADING_SUNS.underStrengthPenalty = -2;

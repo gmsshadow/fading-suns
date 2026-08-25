@@ -1,0 +1,46 @@
+{
+  "_key": "!items!OdUbqesNZsY5pjzo",
+  "_id": "OdUbqesNZsY5pjzo",
+  "name": "Garrote",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Requires a successful grapple first, at -6 to the goal unless the target is unaware. Damage plus victory dice is then rolled each turn.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 3,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 3,
+    "size": "XS",
+    "initiativeModifier": -1,
+    "goalModifier": -1,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 5,
+    "costNote": "",
+    "notes": "Requires a successful grapple first, at -6 to the goal unless the target is unaware. Damage plus victory dice is then rolled each turn.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

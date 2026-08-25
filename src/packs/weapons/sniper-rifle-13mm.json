@@ -1,0 +1,46 @@
+{
+  "_key": "!items!kwwu8J84XudcGLrf",
+  "_id": "kwwu8J84XudcGLrf",
+  "name": "Sniper Rifle (13mm)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 8,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 50,
+      "long": 70
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 5,
+      "max": 5
+    },
+    "autofire": false,
+    "cost": 700,
+    "costNote": "3 firebirds per slug",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

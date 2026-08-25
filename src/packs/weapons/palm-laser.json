@@ -1,0 +1,46 @@
+{
+  "_key": "!items!cITA5eqAqHuK2U6Y",
+  "_id": "cITA5eqAqHuK2U6Y",
+  "name": "Palm Laser",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 3,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 5,
+      "long": 10
+    },
+    "strength": 0,
+    "size": "XS",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 7,
+      "max": 7
+    },
+    "autofire": false,
+    "cost": 200,
+    "costNote": "10 per cell",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

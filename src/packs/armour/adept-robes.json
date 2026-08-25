@@ -1,0 +1,45 @@
+{
+  "_key": "!items!0JoCycxGudfHw3JK",
+  "_id": "0JoCycxGudfHw3JK",
+  "name": "Adept Robes",
+  "type": "armour",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "description": "<p>Brother Battle only. Use the ceramsteel penalties if unpowered.</p>",
+    "protection": {
+      "dice": 14
+    },
+    "coverage": "body",
+    "armourType": "armour",
+    "penalties": {
+      "strength": 2,
+      "dexterity": 1,
+      "vigor": 0
+    },
+    "energyShieldCompatible": false,
+    "shieldDamage": 0,
+    "energyShield": {
+      "min": 0,
+      "max": 0,
+      "hits": {
+        "value": 0,
+        "max": 0
+      }
+    },
+    "cost": 0,
+    "costNote": "Not for sale",
+    "notes": "Brother Battle only. Use the ceramsteel penalties if unpowered.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

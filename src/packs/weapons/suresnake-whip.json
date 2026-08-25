@@ -1,0 +1,46 @@
+{
+  "_key": "!items!jMfvqclvDjBZalKG",
+  "_id": "jMfvqclvDjBZalKG",
+  "name": "Suresnake Whip",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>The bonus applies against one chosen target, who must not leave sight for more than three turns.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 3,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 4,
+    "size": "XL",
+    "initiativeModifier": 1,
+    "goalModifier": 3,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 100,
+    "costNote": "",
+    "notes": "The bonus applies against one chosen target, who must not leave sight for more than three turns.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

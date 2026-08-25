@@ -1,0 +1,46 @@
+{
+  "_key": "!items!JDN0mn9VtKG5X4w8",
+  "_id": "JDN0mn9VtKG5X4w8",
+  "name": "Wireblade",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Ignores physical armour, though not energy shields.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 8,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 2,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 10000,
+    "costNote": "Tech level 10",
+    "notes": "Ignores physical armour, though not energy shields.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

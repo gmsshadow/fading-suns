@@ -1,0 +1,45 @@
+{
+  "_key": "!items!r9543cW4bWVdSFFz",
+  "_id": "r9543cW4bWVdSFFz",
+  "name": "Half Plate",
+  "type": "armour",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "description": "",
+    "protection": {
+      "dice": 6
+    },
+    "coverage": "body",
+    "armourType": "armour",
+    "penalties": {
+      "strength": 0,
+      "dexterity": -1,
+      "vigor": 0
+    },
+    "energyShieldCompatible": false,
+    "shieldDamage": 0,
+    "energyShield": {
+      "min": 0,
+      "max": 0,
+      "hits": {
+        "value": 0,
+        "max": 0
+      }
+    },
+    "cost": 30,
+    "costNote": "",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

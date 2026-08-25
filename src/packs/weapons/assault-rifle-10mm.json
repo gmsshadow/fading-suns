@@ -1,0 +1,46 @@
+{
+  "_key": "!items!Ah6cx3KbuueikzP0",
+  "_id": "Ah6cx3KbuueikzP0",
+  "name": "Assault Rifle (10mm)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 40,
+      "long": 60
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 3,
+    "shots": {
+      "value": 30,
+      "max": 30
+    },
+    "autofire": true,
+    "cost": 500,
+    "costNote": "2 firebirds per slug",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

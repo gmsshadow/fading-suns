@@ -1,0 +1,46 @@
+{
+  "_key": "!items!z9amSwC6DO3vgTik",
+  "_id": "z9amSwC6DO3vgTik",
+  "name": "Shotgun (slug, .47)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 30,
+      "long": 40
+    },
+    "strength": 0,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 7,
+      "max": 7
+    },
+    "autofire": false,
+    "cost": 300,
+    "costNote": "1 slug per firebird",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

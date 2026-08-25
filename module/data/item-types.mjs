@@ -55,12 +55,23 @@ export class FadingSunsWeapon extends FadingSunsPhysicalItem {
       }),
       characteristic: new fields.StringField({ required: true, blank: false, initial: "body.dexterity" }),
       skill: new fields.StringField({ required: true, blank: true, initial: "Melee" }),
-      // Range bands impose their own penalties (p.174); stored in metres.
+      // The charts give two ranges in metres; anything past long is Extreme.
+      // Long costs -2 to the goal roll and Extreme -4 (p.296).
       range: new fields.SchemaField({
         short: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-        medium: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
         long: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
       }),
+      // Strength needed to wield it; below this the goal roll takes -2 (p.296).
+      strength: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+      size: new fields.StringField({
+        required: false, blank: true, initial: "M",
+        choices: () => CONFIG.FADING_SUNS.weaponSizes
+      }),
+      initiativeModifier: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+      goalModifier: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+      autofire: new fields.BooleanField({ initial: false }),
+      costNote: new fields.StringField({ required: false, blank: true, initial: "" }),
+      notes: new fields.StringField({ required: false, blank: true, initial: "" }),
       rateOfFire: new fields.NumberField({ required: true, integer: true, min: 0, initial: 1 }),
       shots: new fields.SchemaField({
         value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
@@ -71,6 +82,12 @@ export class FadingSunsWeapon extends FadingSunsPhysicalItem {
 
   /** @inheritDoc */
   static migrateData(source) {
+    // The charts give Short and Long only, so a stored medium band folds into
+    // long rather than being discarded.
+    if (source?.range && ("medium" in source.range)) {
+      if (!source.range.long) source.range.long = source.range.medium;
+      delete source.range.medium;
+    }
     // v0.1.0 stored bare characteristic names such as "dexterity".
     if (typeof source?.characteristic === "string" && !source.characteristic.includes(".")) {
       const map = {
@@ -89,6 +106,16 @@ export class FadingSunsWeapon extends FadingSunsPhysicalItem {
 export class FadingSunsArmour extends FadingSunsPhysicalItem {
 
   /** @inheritDoc */
+  static migrateData(source) {
+    // A single penalty became one per characteristic, matching the chart.
+    if (source && ("penalty" in source) && !("penalties" in source)) {
+      source.penalties = { strength: 0, dexterity: Number(source.penalty) || 0, vigor: 0 };
+      delete source.penalty;
+    }
+    return super.migrateData(source);
+  }
+
+  /** @inheritDoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       protection: new fields.SchemaField({
@@ -98,8 +125,32 @@ export class FadingSunsArmour extends FadingSunsPhysicalItem {
         required: true, blank: false, initial: "body",
         choices: () => CONFIG.FADING_SUNS.armourCoverage
       }),
-      // Some armour hinders movement and dexterous action (p.196).
-      penalty: new fields.NumberField({ required: true, integer: true, initial: 0 })
+      armourType: new fields.StringField({
+        required: true, blank: false, initial: "armour",
+        choices: () => CONFIG.FADING_SUNS.armourTypes
+      }),
+      // Heavy armour hinders movement and dexterous action (p.299).
+      penalties: new fields.SchemaField({
+        strength: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+        dexterity: new fields.NumberField({ required: true, integer: true, initial: 0 }),
+        vigor: new fields.NumberField({ required: true, integer: true, initial: 0 })
+      }),
+      // Whether an energy shield may be worn over it (p.299).
+      energyShieldCompatible: new fields.BooleanField({ initial: false }),
+      // A physical shield may be rammed into a target (p.174).
+      shieldDamage: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+      // Energy shields absorb between a minimum and maximum, for a number of
+      // hits before the cell is spent (p.300).
+      energyShield: new fields.SchemaField({
+        min: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+        hits: new fields.SchemaField({
+          value: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
+          max: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
+        })
+      }),
+      costNote: new fields.StringField({ required: false, blank: true, initial: "" }),
+      notes: new fields.StringField({ required: false, blank: true, initial: "" })
     });
   }
 }

@@ -1,0 +1,46 @@
+{
+  "_key": "!items!L4t6Ubuuzk5KdYsG",
+  "_id": "L4t6Ubuuzk5KdYsG",
+  "name": "Blaster Pistol",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Leaks through energy shields: damage dice rolling 1 or 2 ignore shields.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 10,
+      "max": 10
+    },
+    "autofire": false,
+    "cost": 700,
+    "costNote": "10 per cell",
+    "notes": "Leaks through energy shields: damage dice rolling 1 or 2 ignore shields.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

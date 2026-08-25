@@ -1,0 +1,45 @@
+{
+  "_key": "!items!5MFDeRzuN9peusdN",
+  "_id": "5MFDeRzuN9peusdN",
+  "name": "Padded Clothing",
+  "type": "armour",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "description": "",
+    "protection": {
+      "dice": 1
+    },
+    "coverage": "body",
+    "armourType": "armour",
+    "penalties": {
+      "strength": 0,
+      "dexterity": 0,
+      "vigor": 0
+    },
+    "energyShieldCompatible": true,
+    "shieldDamage": 0,
+    "energyShield": {
+      "min": 0,
+      "max": 0,
+      "hits": {
+        "value": 0,
+        "max": 0
+      }
+    },
+    "cost": 0,
+    "costNote": "Varies",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

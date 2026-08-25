@@ -1,0 +1,46 @@
+{
+  "_key": "!items!1i8W7gqlJlAbWg0T",
+  "_id": "1i8W7gqlJlAbWg0T",
+  "name": "Screecher (Sonic)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Halve damage against targets with hearing protection.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 5,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 15,
+      "max": 15
+    },
+    "autofire": false,
+    "cost": 300,
+    "costNote": "10 per cell",
+    "notes": "Halve damage against targets with hearing protection.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5400000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

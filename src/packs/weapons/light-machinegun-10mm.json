@@ -1,0 +1,46 @@
+{
+  "_key": "!items!GlR1qIMbIgSiobhx",
+  "_id": "GlR1qIMbIgSiobhx",
+  "name": "Light Machinegun (10mm)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 7,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 50,
+      "long": 70
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 3,
+    "shots": {
+      "value": 50,
+      "max": 50
+    },
+    "autofire": true,
+    "cost": 750,
+    "costNote": "2 firebirds per slug",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

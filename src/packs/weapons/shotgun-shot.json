@@ -1,0 +1,46 @@
+{
+  "_key": "!items!NE2JVPdVgxdVdQeh",
+  "_id": "NE2JVPdVgxdVdQeh",
+  "name": "Shotgun (shot)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>One damage die fewer per five metres from the target.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 8,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 20,
+      "long": 30
+    },
+    "strength": 0,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 7,
+      "max": 7
+    },
+    "autofire": false,
+    "cost": 300,
+    "costNote": "2 loads per firebird",
+    "notes": "One damage die fewer per five metres from the target.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 4500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

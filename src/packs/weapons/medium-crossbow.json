@@ -1,0 +1,46 @@
+{
+  "_key": "!items!AmBUfmHuPoRf4iTc",
+  "_id": "AmBUfmHuPoRf4iTc",
+  "name": "Medium Crossbow",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Strength 6 is needed to recock it. Reloading takes two actions.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 6,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 20,
+      "long": 30
+    },
+    "strength": 3,
+    "size": "M",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 10,
+    "costNote": "1 crest per bolt",
+    "notes": "Strength 6 is needed to recock it. Reloading takes two actions.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

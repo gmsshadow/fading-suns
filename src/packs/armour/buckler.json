@@ -1,0 +1,45 @@
+{
+  "_key": "!items!RiOlO6gFlxZAT59q",
+  "_id": "RiOlO6gFlxZAT59q",
+  "name": "Buckler",
+  "type": "armour",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "description": "",
+    "protection": {
+      "dice": 4
+    },
+    "coverage": "arms",
+    "armourType": "shield",
+    "penalties": {
+      "strength": 0,
+      "dexterity": 0,
+      "vigor": 0
+    },
+    "energyShieldCompatible": false,
+    "shieldDamage": 3,
+    "energyShield": {
+      "min": 0,
+      "max": 0,
+      "hits": {
+        "value": 0,
+        "max": 0
+      }
+    },
+    "cost": 7,
+    "costNote": "12 for plastic",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

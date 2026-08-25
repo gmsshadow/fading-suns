@@ -1,0 +1,46 @@
+{
+  "_key": "!items!1phHo2LMzyZvKcnS",
+  "_id": "1phHo2LMzyZvKcnS",
+  "name": "Blaster Shotgun",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Leaks through energy shields. One damage die fewer per five metres from the target.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 9,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "L",
+    "initiativeModifier": 0,
+    "goalModifier": 2,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 8,
+      "max": 8
+    },
+    "autofire": false,
+    "cost": 1200,
+    "costNote": "10 per cell",
+    "notes": "Leaks through energy shields. One damage die fewer per five metres from the target.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

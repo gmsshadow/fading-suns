@@ -1,0 +1,45 @@
+{
+  "_key": "!items!iL4V0CloLRvkse7l",
+  "_id": "iL4V0CloLRvkse7l",
+  "name": "Standard Energy Shield",
+  "type": "armour",
+  "img": "icons/svg/aura.svg",
+  "system": {
+    "description": "",
+    "protection": {
+      "dice": 0
+    },
+    "coverage": "body",
+    "armourType": "energyShield",
+    "penalties": {
+      "strength": 0,
+      "dexterity": 0,
+      "vigor": 0
+    },
+    "energyShieldCompatible": false,
+    "shieldDamage": 0,
+    "energyShield": {
+      "min": 5,
+      "max": 10,
+      "hits": {
+        "value": 10,
+        "max": 10
+      }
+    },
+    "cost": 500,
+    "costNote": "",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2500000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

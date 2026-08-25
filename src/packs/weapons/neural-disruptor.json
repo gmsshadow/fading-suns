@@ -1,0 +1,46 @@
+{
+  "_key": "!items!UiOF5Cvtg06B5ydw",
+  "_id": "UiOF5Cvtg06B5ydw",
+  "name": "Neural Disruptor",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Damage exceeding the target's Endurance or Psi, whichever is higher, renders them unconscious. Armour does not protect, except a Psi Cloak. Psychics may roll Psi + Stoic Mind against the attacker's successes.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 5,
+      "type": "energy"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": -3,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 6,
+      "max": 6
+    },
+    "autofire": false,
+    "cost": 3000,
+    "costNote": "10 per cell",
+    "notes": "Damage exceeding the target's Endurance or Psi, whichever is higher, renders them unconscious. Armour does not protect, except a Psi Cloak. Psychics may roll Psi + Stoic Mind against the attacker's successes.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 5700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

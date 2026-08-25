@@ -1,0 +1,46 @@
+{
+  "_key": "!items!zo3NiO1Dsk1GZDxO",
+  "_id": "zo3NiO1Dsk1GZDxO",
+  "name": "Rock",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Thrown on Dexterity + Vigor, or Dexterity + Throwing at +1 to the goal.</p>",
+    "weaponType": "thrown",
+    "damage": {
+      "dice": 2,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Throwing",
+    "range": {
+      "short": 5,
+      "long": 10
+    },
+    "strength": 2,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 2,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 0,
+    "costNote": "",
+    "notes": "Thrown on Dexterity + Vigor, or Dexterity + Throwing at +1 to the goal.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 2700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

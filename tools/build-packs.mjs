@@ -33,6 +33,7 @@ import { BLESSINGS_AND_CURSES } from "./blessings-curses.mjs";
 import { BENEFICES_AND_AFFLICTIONS } from "./benefices.mjs";
 import { CHARACTER_HISTORIES } from "./character-histories.mjs";
 import { COMBAT_ACTIONS } from "./combat-actions.mjs";
+import { WEAPONS, ARMOURS } from "./equipment.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -324,12 +325,101 @@ function buildCharacterHistories() {
   }));
 }
 
+/**
+ * Build the documents for the Weapons pack (p.296–p.299).
+ * @returns {object[]}
+ */
+function buildWeapons() {
+  return WEAPONS.map((weapon, index) => ({
+    _id: stableId(`Item.weapons.${weapon.cat}.${weapon.n}`),
+    name: weapon.n,
+    type: "weapon",
+    img: weapon.t === "melee" ? "icons/svg/sword.svg" : "icons/svg/target.svg",
+    system: {
+      description: weapon.e ? `<p>${weapon.e}</p>` : "",
+      weaponType: weapon.t,
+      damage: { dice: weapon.d ?? 0, type: weapon.dmgType ?? "wound" },
+      characteristic: "body.dexterity",
+      skill: weapon.sk,
+      range: { short: weapon.rng?.[0] ?? 0, long: weapon.rng?.[1] ?? 0 },
+      strength: weapon.str ?? 0,
+      size: weapon.sz ?? "",
+      initiativeModifier: weapon.ini ?? 0,
+      goalModifier: weapon.goal ?? 0,
+      rateOfFire: weapon.rate ?? 1,
+      shots: { value: weapon.sh ?? 0, max: weapon.sh ?? 0 },
+      autofire: !!weapon.auto,
+      cost: weapon.c ?? 0,
+      costNote: weapon.cn ?? "",
+      notes: weapon.e ?? "",
+      quantity: 1,
+      equipped: false
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
+/**
+ * Build the documents for the Armour pack (p.299–p.300).
+ * @returns {object[]}
+ */
+function buildArmour() {
+  const icons = {
+    armour: "icons/svg/shield.svg",
+    shield: "icons/svg/shield.svg",
+    energyShield: "icons/svg/aura.svg"
+  };
+
+  return ARMOURS.map((entry, index) => ({
+    _id: stableId(`Item.armour.${entry.cat}.${entry.n}`),
+    name: entry.n,
+    type: "armour",
+    img: icons[entry.cat],
+    system: {
+      description: entry.e ? `<p>${entry.e}</p>` : "",
+      protection: { dice: entry.def ?? 0 },
+      coverage: entry.cat === "shield" ? "arms" : "body",
+      armourType: entry.cat,
+      penalties: {
+        strength: entry.str ?? 0,
+        dexterity: entry.dex ?? 0,
+        vigor: entry.vig ?? 0
+      },
+      energyShieldCompatible: !!entry.es,
+      shieldDamage: entry.shieldDamage ?? 0,
+      energyShield: {
+        min: entry.min ?? 0,
+        max: entry.max ?? 0,
+        hits: { value: entry.hits ?? 0, max: entry.hits ?? 0 }
+      },
+      cost: entry.c ?? 0,
+      costNote: entry.cn ?? "",
+      notes: entry.e ?? "",
+      quantity: 1,
+      equipped: false
+    },
+    effects: [],
+    folder: null,
+    sort: (index + 1) * 100000,
+    ownership: { default: 0 },
+    flags: {},
+    _stats: { systemId: "fading-suns" }
+  }));
+}
+
 /** Packs to build, keyed by the pack name declared in system.json. */
 const PACKS = {
   "learned-skills": { type: "Item", documents: buildLearnedSkills },
   "blessings-curses": { type: "Item", documents: buildBlessings },
   "benefices-afflictions": { type: "Item", documents: buildBenefices },
   "combat-actions": { type: "Item", documents: buildCombatActions },
+  weapons: { type: "Item", documents: buildWeapons },
+  armour: { type: "Item", documents: buildArmour },
   "character-histories": { type: "Item", documents: buildCharacterHistories }
 };
 

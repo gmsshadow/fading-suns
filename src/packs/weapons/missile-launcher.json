@@ -1,0 +1,46 @@
+{
+  "_key": "!items!8bdGEXnViD71R0Cd",
+  "_id": "8bdGEXnViD71R0Cd",
+  "name": "Missile Launcher",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "<p>Damage varies with the missile. High explosive inflicts 18 dice as a grenade; armour piercing inflicts 13 dice against one target, and armour rolls only half its protection dice.</p>",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 0,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 75,
+      "long": 100
+    },
+    "strength": 0,
+    "size": "XL",
+    "initiativeModifier": 0,
+    "goalModifier": 1,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 1,
+      "max": 1
+    },
+    "autofire": false,
+    "cost": 800,
+    "costNote": "100 per missile",
+    "notes": "Damage varies with the missile. High explosive inflicts 18 dice as a grenade; armour piercing inflicts 13 dice against one target, and armour rolls only half its protection dice.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 6100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

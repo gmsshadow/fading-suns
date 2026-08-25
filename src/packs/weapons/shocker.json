@@ -1,0 +1,46 @@
+{
+  "_key": "!items!nPgxoZz8SZXNrdGm",
+  "_id": "nPgxoZz8SZXNrdGm",
+  "name": "Shocker",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>An electrified melee weapon; use the weapon's own traits, with three extra damage dice.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 0,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 0,
+    "size": "",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 30,
+    "costNote": "",
+    "notes": "An electrified melee weapon; use the weapon's own traits, with three extra damage dice.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1800000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

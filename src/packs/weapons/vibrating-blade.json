@@ -1,0 +1,46 @@
+{
+  "_key": "!items!VQF6PaezRpzFy7Us",
+  "_id": "VQF6PaezRpzFy7Us",
+  "name": "Vibrating Blade",
+  "type": "weapon",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "description": "<p>Use the blade's own traits.</p>",
+    "weaponType": "melee",
+    "damage": {
+      "dice": 0,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Melee",
+    "range": {
+      "short": 0,
+      "long": 0
+    },
+    "strength": 0,
+    "size": "",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 1,
+    "shots": {
+      "value": 0,
+      "max": 0
+    },
+    "autofire": false,
+    "cost": 100,
+    "costNote": "",
+    "notes": "Use the blade's own traits.",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 1900000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

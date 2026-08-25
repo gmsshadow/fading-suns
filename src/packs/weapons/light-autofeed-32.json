@@ -1,0 +1,46 @@
+{
+  "_key": "!items!OhUvBPpWDTyE4O9t",
+  "_id": "OhUvBPpWDTyE4O9t",
+  "name": "Light Autofeed (.32)",
+  "type": "weapon",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "description": "",
+    "weaponType": "ranged",
+    "damage": {
+      "dice": 4,
+      "type": "wound"
+    },
+    "characteristic": "body.dexterity",
+    "skill": "Shoot",
+    "range": {
+      "short": 10,
+      "long": 20
+    },
+    "strength": 0,
+    "size": "S",
+    "initiativeModifier": 0,
+    "goalModifier": 0,
+    "rateOfFire": 3,
+    "shots": {
+      "value": 13,
+      "max": 13
+    },
+    "autofire": false,
+    "cost": 150,
+    "costNote": "5 slugs per firebird",
+    "notes": "",
+    "quantity": 1,
+    "equipped": false
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 3600000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "systemId": "fading-suns"
+  }
+}

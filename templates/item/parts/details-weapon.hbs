@@ -30,16 +30,28 @@
   </label>
 </div>
 
+<div class="form-grid">
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Strength"}}</span>
+    <input type="number" name="system.strength" value="{{system.strength}}" min="0"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.Size"}}</span>
+    <select name="system.size">{{selectOptions config.weaponSizes selected=system.size localize=true}}</select></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.CombatAction.Initiative"}}</span>
+    <input type="number" name="system.initiativeModifier" value="{{system.initiativeModifier}}"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.CombatAction.Goal"}}</span>
+    <input type="number" name="system.goalModifier" value="{{system.goalModifier}}"/></label>
+</div>
+
 <fieldset class="range-block">
   <legend>{{localize "FADINGSUNS.Field.Range"}}</legend>
   <p class="hint">{{localize "FADINGSUNS.Hint.Range"}}</p>
   <div class="form-grid">
     <label class="form-group"><span>{{localize "FADINGSUNS.Field.RangeShort"}}</span>
       <input type="number" name="system.range.short" value="{{system.range.short}}" min="0"/></label>
-    <label class="form-group"><span>{{localize "FADINGSUNS.Field.RangeMedium"}}</span>
-      <input type="number" name="system.range.medium" value="{{system.range.medium}}" min="0"/></label>
     <label class="form-group"><span>{{localize "FADINGSUNS.Field.RangeLong"}}</span>
       <input type="number" name="system.range.long" value="{{system.range.long}}" min="0"/></label>
+    <label class="form-group checkbox">
+      <input type="checkbox" name="system.autofire" {{checked system.autofire}}/>
+      <span>{{localize "FADINGSUNS.Field.Autofire"}}</span></label>
   </div>
 </fieldset>
 
@@ -52,6 +64,8 @@
     <input type="number" name="system.techLevel" value="{{system.techLevel}}" min="0" max="12"/></label>
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Cost"}}</span>
     <input type="number" name="system.cost" value="{{system.cost}}" min="0"/></label>
+  <label class="form-group"><span>{{localize "FADINGSUNS.Field.CostNote"}}</span>
+    <input type="text" name="system.costNote" value="{{system.costNote}}"/></label>
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Weight"}}</span>
     <input type="number" name="system.weight" value="{{system.weight}}" min="0" step="0.1"/></label>
   <label class="form-group"><span>{{localize "FADINGSUNS.Field.Quantity"}}</span>

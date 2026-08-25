@@ -65,7 +65,19 @@ Reading the resolution code against the Core Rules turned up several errors, all
 
 ### Compendiums
 
-Five compendiums ship with the system.
+Seven compendiums ship with the system.
+
+**Weapons** — 61 from the charts on p.296–299: 23 melee including the energy and artifact blades,
+4 thrown, 6 bows and crossbows, 13 slug guns, 12 energy guns and 4 heavy weapons. Each carries its
+damage dice, Strength requirement, both range bands, shots, rate, size and cost.
+
+**Armour & Shields** — 28 entries: 22 armours with their per-characteristic penalties, 2 physical
+shields with ram damage, and 4 energy shields with absorption bands and hit counts.
+
+Two schema corrections came out of the charts. Weapons now carry **two** range bands rather than
+three — the book gives Short and Long, with anything beyond Long counting as Extreme — and armour
+penalties are **per characteristic** rather than a single number, since chain mail costs -1
+Dexterity but -2 Vigor. Both migrate existing items rather than discarding data.
 
 **Combat Actions** — all 65 from the charts on p.292–295: 24 Martial Arts, 20 Fencing, 15 Firearms,
 3 Shield and the 3 Graa actions of the Vorox. Each carries its level, which is both the skill rating
@@ -426,7 +438,9 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Compendiums: weapons and armour from Chapter Seven; Psi powers and Theurgic rites, which unlock the four occult Extra Stages
+- Compendiums: Psi powers and Theurgic rites, which unlock the four occult Extra Stages
+- Combat automation: range penalties, Strength requirements, combat action modifiers and armour applied to damage
+- Initiative: the skill being used, with Wits breaking ties (p.164)
 - Character histories for the remaining houses, sects and guilds
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

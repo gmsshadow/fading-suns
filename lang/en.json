@@ -202,7 +202,6 @@
       "Penalty": "Penalty",
       "Range": "Range",
       "RangeShort": "Short",
-      "RangeMedium": "Medium",
       "RangeLong": "Long",
       "RateOfFire": "Rate of Fire",
       "Shots": "Shots",
@@ -211,7 +210,18 @@
       "Cost": "Cost",
       "Weight": "Weight",
       "Quantity": "Quantity",
-      "Duration": "Duration"
+      "Duration": "Duration",
+      "Strength": "Strength required",
+      "Size": "Size",
+      "Autofire": "Capable of autofire",
+      "CostNote": "Cost note",
+      "VigorPenalty": "Vigor",
+      "EnergyShieldCompatible": "May be worn with an energy shield",
+      "ShieldDamage": "Ram damage",
+      "ShieldMin": "Minimum absorbed",
+      "ShieldMax": "Maximum absorbed",
+      "ShieldHits": "Hits remaining",
+      "ShieldHitsMax": "Hits"
     },
     "Placeholder": {
       "Specialty": "e.g. Jumproads, Latin, lute",
@@ -228,8 +238,8 @@
       "ExcessiveGoal": "Bonus Victory Points from a Goal Number above 20 (p.66).",
       "PullPunch": "Ctrl-click to pull the punch and use only one victory die (p.65).",
       "EffectDice": "Effect dice succeed on 1–4; each success is one point (p.65).",
-      "Range": "Ranges are in metres. Long range is Hard (-2), maximum range Demanding (-4).",
-      "Armour": "Armour dice are rolled without victory dice. Each armour point cancels one wound point (p.65).",
+      "Range": "Ranges are in metres: short and long. Long range costs -2 to the goal roll, and anything beyond it is Extreme at -4 (p.296).",
+      "Armour": "Armour dice are rolled without victory dice. Each armour point cancels one wound point (p.65). Wielding a weapon below its Strength requirement costs -2 to the goal roll (p.296).",
       "Skill": "Natural skills start at 3; learned skills must be bought (p.97, p.99).",
       "OccultCost": "Wyrd is spent only if the roll succeeds, or on a critical failure (p.128).",
       "Accent": "Spend one Wyrd point to add to your die result — but beware of overshooting the Goal (p.69).",
@@ -441,6 +451,19 @@
       "Firearms": "Firearms",
       "Graa": "Graa (Vorox)",
       "Untrained": "No training needed"
+    },
+    "Size": {
+      "XS": "Extra small",
+      "S": "Small",
+      "M": "Medium",
+      "L": "Large",
+      "XL": "Extra large"
+    },
+    "ArmourType": {
+      "Label": "Kind",
+      "Armour": "Armour",
+      "Shield": "Shield",
+      "EnergyShield": "Energy Shield"
     }
   }
 }

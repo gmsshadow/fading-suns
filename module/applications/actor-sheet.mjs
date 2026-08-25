@@ -23,6 +23,7 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       itemToggle: FadingSunsActorSheet.#onItemToggle,
       rollDamage: FadingSunsActorSheet.#onRollDamage,
       rollArmour: FadingSunsActorSheet.#onRollArmour,
+      rollShadow: FadingSunsActorSheet.#onRollShadow,
       openCreation: FadingSunsActorSheet.#onOpenCreation
     }
   };
@@ -76,7 +77,8 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
       items: this.#categoriseItems(),
       characteristics: this.#prepareCharacteristics(),
       spiritPairs: this.#prepareSpiritPairs(),
-      benefices: this.#prepareBeneficeTotals()
+      benefices: this.#prepareBeneficeTotals(),
+      occult: this.#prepareOccult()
     });
 
     context.enrichedBiography = await TextEditor.implementation.enrichHTML(
@@ -126,6 +128,33 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     return CONFIG.FADING_SUNS.spiritPairs.map(pair => ({
       primary: describe(pair.primary),
       opposed: describe(pair.opposed)
+    }));
+  }
+
+  /**
+   * The two occult trait pairs, each with a warning when the shadow has caught up.
+   *
+   * "Psi and Theurgy will come into conflict when a character tries to raise one
+   *  trait past the level of his Urge or Hubris" (p.135), so the sheet says so
+   *  rather than leaving the player to notice.
+   *
+   * @returns {Array<object>}
+   */
+  #prepareOccult() {
+    const label = key => game.i18n.localize(CONFIG.FADING_SUNS.occult[key]);
+
+    return [
+      { trait: "psi", shadow: "urge", contestKey: "urge" },
+      { trait: "theurgy", shadow: "hubris", contestKey: "hubris" }
+    ].map(pair => ({
+      ...pair,
+      traitLabel: label(pair.trait),
+      shadowLabel: label(pair.shadow),
+      traitValue: this.actor.system.occult[pair.trait].value,
+      shadowValue: this.actor.system.occult[pair.shadow].value,
+      active: this.actor.system.occult[pair.trait].value > 0
+        || this.actor.system.occult[pair.shadow].value > 0,
+      blocked: this.actor.needsContest(pair.contestKey)
     }));
   }
 
@@ -308,6 +337,18 @@ export class FadingSunsActorSheet extends HandlebarsApplicationMixin(ActorSheetV
     const item = this.#getItem(target);
     if (!item) return;
     return this.actor.rollArmour(item.id);
+  }
+
+  /**
+   * Roll against a taboo or deed (p.144, p.162).
+   * @this {FadingSunsActorSheet}
+   */
+  static async #onRollShadow(event, target) {
+    const { shadow, kind } = target.dataset;
+    const { promptOccultTrigger } = await import("./occult-dialog.mjs");
+    const choice = await promptOccultTrigger({ actor: this.actor, shadow, kind });
+    if (!choice) return;
+    return this.actor.rollOccultTrigger({ shadow, kind, ...choice });
   }
 
   /**

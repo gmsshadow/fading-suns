@@ -252,7 +252,8 @@
       "CombatAction": "Combat actions are rated by the level of skill needed to learn them, and cost one Extra point per level (p.102, p.88).",
       "ExtraStages": "A character may take two Extra Stages, at 20 Extra points each — which is the whole allowance (p.84). Take fewer to keep points for Step Six.",
       "PathChain": "Paths are bought consecutively: each level needs the one below it in the same path (p.128).",
-      "Components": "G is a gesture, L a spoken litany, P paraphernalia. A rite cannot be performed without them (p.147)."
+      "Components": "G is a gesture, L a spoken litany, P paraphernalia. A rite cannot be performed without them (p.147).",
+      "OccultLevels": "Leave blank to use the lowest level of the printed band. The gamemaster decides where in the band a deed falls."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -499,7 +500,16 @@
       "Paraphernalia": "Paraphernalia",
       "Requires": "Requires",
       "Path": "Path",
-      "Level": "Level"
+      "Level": "Level",
+      "Taboo": "Taboo",
+      "Deed": "Great deed",
+      "TabooHint": "Fail this roll and the shadow grows (p.144).",
+      "DeedHint": "Succeed at this roll to shed a level (p.144).",
+      "Gained": "{name} gains {levels} level(s) of {shadow}.",
+      "Shed": "{name} sheds {levels} level(s) of {shadow}.",
+      "ContestNeeded": "The shadow has caught up. Raising this trait needs a contest of wills first (p.135).",
+      "Levels": "Levels",
+      "Choose": "Choose"
     }
   }
 }

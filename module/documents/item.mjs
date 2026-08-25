@@ -99,6 +99,20 @@ export class FadingSunsItem extends Item {
       const spent = await this.actor.spendWyrd(cost);
       if (spent === null) ui.notifications.warn(game.i18n.localize("FADINGSUNS.Warning.NoWyrd"));
     }
+
+    // "Fumbling a psychic power roll" and "Fumbling a theurgy rite" are taboos
+    // in their own right (p.144, p.162), so a critical failure invites the
+    // shadow — resisted, as always, by a roll the character must pass.
+    if (outcome.criticalFailure) {
+      const psychic = this.type === "psychicPower";
+      await this.actor.rollOccultTrigger({
+        shadow: psychic ? "urge" : "hubris",
+        kind: "taboo",
+        key: psychic ? "fumbledPower" : "fumbledRite",
+        skipDialog: true
+      });
+    }
+
     return outcome;
   }
 

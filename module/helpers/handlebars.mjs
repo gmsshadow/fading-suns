@@ -38,7 +38,8 @@ export function preloadTemplates() {
 
     // Character creation wizard
     "fadingSuns.creationWizard": `${ROOT}/creation/wizard.hbs`,
-    "fadingSuns.declareInitiative": `${ROOT}/dialog/declare-initiative.hbs`
+    "fadingSuns.declareInitiative": `${ROOT}/dialog/declare-initiative.hbs`,
+    "fadingSuns.occultTrigger": `${ROOT}/dialog/occult-trigger.hbs`
   });
 }
 

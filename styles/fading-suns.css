@@ -1398,3 +1398,45 @@
 .fading-suns .hint.requires {
   color: var(--fs-gold);
 }
+
+/* ---------- Urge and Hubris ---------- */
+
+.fading-suns .shadow-pairs {
+  margin-bottom: 0.7rem;
+}
+
+.fading-suns .shadow-pair {
+  align-items: center;
+  background: var(--fs-panel);
+  border: 1px solid var(--fs-line);
+  border-radius: 4px;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.fading-suns .shadow-pair.is-dormant {
+  opacity: 0.45;
+}
+
+.fading-suns .shadow-pair.is-blocked {
+  border-color: var(--fs-failure);
+}
+
+.fading-suns .shadow-trait {
+  color: var(--fs-gold);
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.fading-suns .shadow-shadow {
+  color: var(--fs-failure);
+  flex: 1;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.fading-suns .warning-text {
+  color: var(--fs-failure);
+}

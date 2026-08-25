@@ -1,6 +1,9 @@
 import { goalRoll, damageRoll, armourRoll } from "../dice/rolls.mjs";
 import { applyArmour } from "../dice/effect-dice.mjs";
 import { attackModifiers, rangeBand, energyShieldAbsorb } from "../dice/combat.mjs";
+import {
+  SHADOWS, findTrigger, triggerCharacteristic, resolveTrigger, requiresContest
+} from "../dice/occult.mjs";
 import { promptGoalRoll } from "../applications/roll-dialog.mjs";
 
 /**
@@ -316,6 +319,88 @@ export class FadingSunsActor extends Actor {
   async healDamage(points) {
     const value = Math.min(this.system.vitality.max, this.system.vitality.value + Math.abs(points));
     return this.update({ "system.vitality.value": value });
+  }
+
+  /* -------------------------------------------- */
+  /*  Urge and Hubris (p.144, p.162)              */
+  /* -------------------------------------------- */
+
+  /**
+   * Whether raising an occult trait would need a contest of wills first (p.135).
+   * @param {"urge"|"hubris"} shadow
+   * @returns {boolean}
+   */
+  needsContest(shadow) {
+    const { trait, shadow: shadowPath } = SHADOWS[shadow];
+    return requiresContest(this.system.getCharacteristic(trait),
+                           this.system.getCharacteristic(shadowPath));
+  }
+
+  /**
+   * Roll against a taboo or deed, and apply whatever it costs or sheds.
+   *
+   * Taboos are resisted — failing the roll is what gains Urge — while deeds must
+   * succeed to shed a level (p.144).
+   *
+   * @param {object} options
+   * @param {"urge"|"hubris"} options.shadow
+   * @param {"taboo"|"deed"} options.kind
+   * @param {string} options.key            Which taboo or deed.
+   * @param {number} [options.levels]       The gamemaster's choice within the band.
+   * @param {boolean} [options.skipDialog]
+   * @returns {Promise<object|null>}
+   */
+  async rollOccultTrigger({ shadow, kind, key, levels, skipDialog = false } = {}) {
+    const trigger = findTrigger(shadow, kind, key);
+    if (!trigger) return null;
+
+    const characteristic = triggerCharacteristic(trigger, {
+      "spirit.faith": this.system.spirit.faith.primary,
+      "spirit.ego": this.system.spirit.ego.primary
+    });
+
+    // The chart offers a choice of skills for some entries; take the best one.
+    const skill = trigger.skills
+      .map(name => this.getSkill(name))
+      .filter(Boolean)
+      .sort((a, b) => b.system.value - a.system.value)[0];
+
+    const outcome = await this.rollGoal({
+      characteristic,
+      skillId: skill?.id,
+      skipDialog,
+      flavor: game.i18n.localize(`FADINGSUNS.Occult.${kind === "taboo" ? "Taboo" : "Deed"}`)
+        + ": " + trigger.label
+    });
+    if (!outcome) return null;
+
+    const { change, applied } = resolveTrigger({ kind, success: outcome.success, trigger, levels });
+    if (applied) await this.adjustShadow(shadow, change);
+
+    return { ...outcome, trigger, change, applied };
+  }
+
+  /**
+   * Raise or lower Urge or Hubris, never below zero.
+   * @param {"urge"|"hubris"} shadow
+   * @param {number} change
+   * @returns {Promise<Actor>}
+   */
+  async adjustShadow(shadow, change) {
+    const path = SHADOWS[shadow].shadow;
+    const current = this.system.getCharacteristic(path);
+    const value = Math.max(0, current + change);
+
+    await this.update({ [`system.${path}.value`]: value });
+
+    const message = change > 0 ? "FADINGSUNS.Occult.Gained" : "FADINGSUNS.Occult.Shed";
+    ui.notifications.info(game.i18n.format(message, {
+      name: this.name,
+      levels: Math.abs(change),
+      shadow: game.i18n.localize(`FADINGSUNS.Characteristic.${SHADOWS[shadow].label}`)
+    }));
+
+    return this;
   }
 
   /**

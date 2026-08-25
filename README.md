@@ -369,6 +369,26 @@ remainder getting past. Activations decrement the fusion cell.
 **Combat actions are rollable.** They are "not rolled, but resolved using Fight, Melee or Shoot
 skills" (p.102), so using one makes an ordinary Goal Roll with the action's pairing and modifier.
 
+### Urge and Hubris
+
+Psi is shadowed by Urge and Theurgy by Hubris (p.144, p.162). Both charts are implemented — 12 and
+13 taboos, 7 and 11 great deeds — each with the roll the rulebook gives.
+
+The direction matters and is easy to get backwards. A **taboo is resisted**: *"the character must
+fail this roll or else gain Urge"*. A **deed must succeed** to shed a level. Tests pin both.
+
+Entries reading *"Faith (or Ego, if primary)"* use whichever of that pair the character has marked
+primary. Where the chart gives a band — 1–2, 2–3 — the dialog offers it rather than deciding, since
+the rulebook leaves that to the gamemaster.
+
+**Fumbling an occult power triggers its taboo automatically.** A critical failure on a psychic power
+or theurgic rite makes the resistance roll without being asked, because that is exactly what the
+charts say happens.
+
+The occult tab pairs each trait with its shadow and warns when the shadow has caught up: *"Psi and
+Theurgy will come into conflict when a character tries to raise one trait past the level of his Urge
+or Hubris"* (p.135). The sheet says so rather than leaving the player to notice.
+
 ### Lifepath grant engine
 
 `module/lifepath/grants.mjs` resolves Character History stages (p.70–p.89). It has no Foundry
@@ -476,6 +496,8 @@ message that names neither the class nor the file. The check flags any such assi
 
 ```js
 game.fadingsuns.rules      // victory charts, resolveGoalRoll, vitalityPenalty
+game.fadingsuns.combat     // range bands, initiative, energy shields
+game.fadingsuns.occult     // Urge and Hubris taboos, deeds and contests
 game.fadingsuns.effects    // countEffectSuccesses, damagePool, applyArmour
 game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 ```
@@ -484,7 +506,6 @@ game.fadingsuns.dice       // goalRoll, effectRoll, damageRoll, armourRoll
 
 ## Roadmap
 
-- Occult mechanics: gaining, losing and resolving Urge and Hubris (p.144)
 - Character histories for the remaining houses, sects and guilds
 - Range band penalties applied automatically from token distance (p.174)
 - Contested action helper wired to the chat cards (`resolveContest` already exists)

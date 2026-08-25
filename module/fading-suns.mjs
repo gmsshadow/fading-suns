@@ -24,6 +24,8 @@ import {
 import * as dice from "./dice/rolls.mjs";
 import * as rules from "./dice/victory-chart.mjs";
 import * as effects from "./dice/effect-dice.mjs";
+import * as combat from "./dice/combat.mjs";
+import * as occult from "./dice/occult.mjs";
 import * as lifepath from "./lifepath/grants.mjs";
 
 const SYSTEM_ID = "fading-suns";
@@ -43,6 +45,8 @@ Hooks.once("init", () => {
     dice,
     rules,
     effects,
+    combat,
+    occult,
     lifepath
   };
 

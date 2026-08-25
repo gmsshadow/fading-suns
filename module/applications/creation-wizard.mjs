@@ -342,8 +342,14 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       });
     }
 
+    // "The base 10 pts of Benefices were spent on rank at the end of the Early
+    //  Career stage and the rest were spent on Worldly Benefits during the Extra
+    //  Stages." (p.85) The rank a career confers and any Benefit a Tour grants
+    //  therefore come out of the same ten points, not on top of them.
     const budget = CONFIG.FADING_SUNS.startingBeneficePoints;
-    const spent = beneficeSpend(this.draft.benefices);
+    const fromStages = this.grantedBenefices;
+    const spentOnStages = fromStages.reduce((n, b) => n + b.value, 0);
+    const spent = beneficeSpend(this.draft.benefices) + spentOnStages;
 
     return {
       beneficeGroups: [...groups.entries()]
@@ -354,6 +360,8 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
           entries
         })),
       chosenBenefices: this.draft.benefices,
+      grantedBenefices: fromStages,
+      beneficeFromStages: spentOnStages,
       suggestions: this.#suggestedBenefices(),
       beneficeRestrictions: this.chosenStages
         .map(stage => stage.system.beneficeRestriction)
@@ -363,6 +371,33 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       beneficeRemaining: budget - spent,
       beneficeOver: spent > budget
     };
+  }
+
+  /**
+   * Benefices the chosen stages confer — the rank at the end of an Early Career,
+   * and whatever a Tour of Duty's Worldly Benefit hands over (p.85).
+   *
+   * Choices are resolved first, so a Benefit that has not been decided yet does
+   * not count against the budget until it is.
+   *
+   * @returns {Array<{label: string, value: number, from: string}>}
+   */
+  get grantedBenefices() {
+    const granted = [];
+
+    for (const stage of [...this.chosenStages, ...this.draft.extraStages]) {
+      const { grants } = resolveChoices(stage.system.grants, this.draft.choices);
+      for (const grant of grants) {
+        if (grant.kind !== "benefice") continue;
+        granted.push({
+          label: grant.label ?? grant.key,
+          value: grant.value ?? 0,
+          from: stage.name.replace(/^[^:]+:\s*/, "")
+        });
+      }
+    }
+
+    return granted;
   }
 
   /**

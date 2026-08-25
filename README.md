@@ -368,9 +368,15 @@ listed and removable. Both steps run in Custom Creation too.
 
 Two rules corrected here, both of which the rulebook states more than once and not identically:
 
-- **Benefice points are ten, not five.** Step Five of the creation procedure says ten (p.88); the
-  Benefices chapter says five (p.117). Ten is the default since Step Five is the procedure being
-  followed, and the world setting *Benefice Points at Creation* overrides it.
+- **Benefice points are ten, not five.** Step Five of the creation procedure says ten (p.88), the
+  Benefices chapter says five (p.117), and the designers' note on p.85 settles it: *"The base 10 pts
+  of Benefices were spent on rank at the end of the Early Career stage and the rest were spent on
+  Worldly Benefits during the Extra Stages."* Ten is the default, and the world setting *Benefice
+  Points at Creation* overrides it.
+- **The rank a career confers comes out of those ten**, not on top of them, and so does whatever a
+  Tour of Duty's Worldly Benefit hands over. The Benefices step lists them under *Already granted by
+  your history* and counts them against the budget, so a knight arrives with Nobility 3 and seven
+  points left rather than ten.
 - **Afflictions do not enlarge the Benefice budget.** They "give the character additional Extras to
   spend on more Benefices or any other trait" (p.117), so they feed the Extra pool, as Curses do.
   A point spent straight back on a Benefice comes to the same arithmetic, but it need not be —
@@ -493,8 +499,11 @@ than an erratum.
 | Apprenticeship: Cathedral (Temple Avesti) | -2 |
 | Apprenticeship: Vhem-saahen Champion | -5 |
 
-The alien overages are explicable — those races pay Extra points for the privilege, so their
-histories are written to different totals. The Brother Battle and Duelist overages read as intent,
+The alien overages are not errata at all. The designers' note on p.85 says so directly: *"Vorox
+spend many of their Extra points during their Upbringing (those beefed up traits are expensive!),
+allowing them to take only one other Extra Stage instead of two."* The overspend is paid for out of
+Extra points, which is exactly why the Vorox get one Extra Stage rather than two — a restriction the
+wizard already enforces. The Brother Battle and Duelist overages read as intent,
 both being exceptional training the book gates behind prerequisites. The five small deficits look
 like errata.
 

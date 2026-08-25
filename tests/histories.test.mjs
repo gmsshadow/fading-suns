@@ -1002,3 +1002,38 @@ test("the Ur-Obun racial trait is not charged to the Upbringing (p.88)", () => {
   assert.equal(spendRange(obun.grants).characteristics[1], 5,
     "without it the Upbringing spends exactly five");
 });
+
+/* -------------------------------------------- */
+/*  Where the ten Benefice points go (p.85)     */
+/* -------------------------------------------- */
+
+test("every Early Career confers a rank worth three points (p.85)", () => {
+  // "The base 10 pts of Benefices were spent on rank at the end of the Early
+  //  Career stage and the rest were spent on Worldly Benefits during the Extra
+  //  Stages." Every career that confers rank does so at three.
+  const ranks = ["Nobility", "Ordained", "Commissioned"];
+
+  for (const stage of stages.filter(s => s.system.stageType === "earlyCareer")) {
+    const rank = stage.system.grants.find(g =>
+      g.kind === "benefice" && ranks.includes(g.label));
+    if (!rank) continue;
+    assert.equal(rank.value, 3, `${stage.name} confers ${rank.label} at ${rank.value}`);
+  }
+});
+
+test("a career's rank plus a Tour's Benefit fit inside the ten points (p.85)", () => {
+  const career = byName("Early Career: Soldier");
+  const rank = career.system.grants.find(g => g.kind === "benefice");
+  assert.equal(rank.value, 3);
+
+  // A Tour of Duty's Worldly Benefits are the "rest" the passage describes, so
+  // the dearest of them must still leave the total inside ten.
+  const tour = extraStages.find(s => s.name === "Extra Stage: Tour of Duty");
+  const benefit = tour.system.grants.find(g => g.kind === "choice" && g.id === "extra-tour-benefit");
+
+  const dearest = Math.max(...benefit.options.map(o =>
+    (o.grants ?? []).filter(g => g.kind === "benefice").reduce((n, g) => n + g.value, 0)));
+
+  assert.ok(rank.value + dearest <= 10,
+    `rank ${rank.value} plus the dearest Benefit ${dearest} exceeds the ten points`);
+});

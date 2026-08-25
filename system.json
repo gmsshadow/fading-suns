@@ -2,7 +2,7 @@
   "id": "fading-suns",
   "title": "Fading Suns 2nd Edition Revised",
   "description": "An unofficial game system for Fading Suns 2nd Edition Revised, built for Foundry VTT v13/v14 using ApplicationV2 sheets and TypeDataModel schemas.",
-  "version": "0.21.1",
+  "version": "0.22.0",
   "compatibility": {
     "minimum": "13",
     "verified": "14"

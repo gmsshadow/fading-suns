@@ -253,7 +253,8 @@
       "ExtraStages": "A character may take two Extra Stages, at 20 Extra points each — which is the whole allowance (p.84). Take fewer to keep points for Step Six.",
       "PathChain": "Paths are bought consecutively: each level needs the one below it in the same path (p.128).",
       "Components": "G is a gesture, L a spoken litany, P paraphernalia. A rite cannot be performed without them (p.147).",
-      "OccultLevels": "Leave blank to use the lowest level of the printed band. The gamemaster decides where in the band a deed falls."
+      "OccultLevels": "Leave blank to use the lowest level of the printed band. The gamemaster decides where in the band a deed falls.",
+      "GrantedBenefices": "The rank an Early Career confers, and any Worldly Benefit a Tour of Duty grants, come out of these ten points rather than on top of them (p.85)."
     },
     "Empty": {
       "Skills": "No natural skills. Add the nine natural skills to begin.",
@@ -443,7 +444,8 @@
       "SkillAllowance": "Tour of Duty skill allowance",
       "SkillAllowanceHint": "Skill levels are taken from this first, then from Extra points. Both cost one per level.",
       "Composite": "Priests and guildsmembers build their Upbringing from an Environment and a Class — pick one of each. Brother Battle fills both on its own.",
-      "RacialCost": "Spent on your race"
+      "RacialCost": "Spent on your race",
+      "FromYourHistory": "Already granted by your history"
     },
     "CombatAction": {
       "Category": "Style",

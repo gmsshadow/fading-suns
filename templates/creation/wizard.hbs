@@ -180,6 +180,22 @@
       </p>
       <p class="hint">{{localize "FADINGSUNS.Hint.BeneficePoints"}}</p>
 
+      {{#if grantedBenefices.length}}
+        <section class="granted">
+          <h4>{{localize "FADINGSUNS.Creation.FromYourHistory"}}</h4>
+          <ol class="suggestion-list">
+            {{#each grantedBenefices as |entry|}}
+              <li class="suggestion">
+                <span class="suggestion-label">{{entry.label}}</span>
+                <span class="suggestion-from">{{entry.from}}</span>
+                <span class="chosen-value">{{entry.value}}</span>
+              </li>
+            {{/each}}
+          </ol>
+          <p class="hint">{{localize "FADINGSUNS.Hint.GrantedBenefices"}}</p>
+        </section>
+      {{/if}}
+
       {{#each beneficeRestrictions as |restriction|}}
         <p class="warning"><i class="fa-solid fa-triangle-exclamation"></i> {{restriction}}</p>
       {{/each}}

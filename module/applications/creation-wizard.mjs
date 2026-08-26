@@ -136,6 +136,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       context.groups = await this.#availableStages(step);
       context.selected = this.draft.stages[step] ?? [];
       context.slots = this.#slotCache[step] ?? [""];
+      context.otherPaths = this.#otherPaths;
+      context.currentPath = game.i18n.localize(
+        CONFIG.FADING_SUNS.factions[this.currentPath] ?? this.currentPath
+      );
+      context.switched = this.currentPath !== this.draft.faction;
       context.composite = context.slots.length > 1;
     }
 
@@ -190,13 +195,27 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
     this.#slotCache[stageType] = this.#slotsFor(documents);
 
+    // A noble may take a priest's or guild's Apprenticeship — "nobles can join
+    // the priesthood at this stage" (p.77) — but doing so means leaving their
+    // own path, and the Early Career section spells out the cost: they "do not
+    // receive noble rank". So the two are shown apart rather than mixed.
+    const own = documents.filter(d => this.#isOwnPath(d));
+    const other = documents.filter(d => !this.#isOwnPath(d));
+
     const chosen = this.draft.stages[stageType] ?? [];
-    const groups = new Map();
-    for (const stage of documents) {
-      const key = stage.system.group || "";
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(stage);
-    }
+
+    const build = list => {
+      const groups = new Map();
+      for (const stage of list) {
+        const key = stage.system.group || "";
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(stage);
+      }
+      return groups;
+    };
+
+    const groups = build(own);
+    this.#otherPaths = this.#describeOtherPaths(other, chosen);
 
     return [...groups.entries()]
       .sort(([a], [b]) => a.localeCompare(b))
@@ -658,6 +677,79 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   get chosenStages() {
     return STAGE_ORDER.flatMap(type => this.draft.stages[type] ?? []);
   }
+
+  /**
+   * Whether a stage belongs to the character's own lifepath.
+   *
+   * Freeman Upbringings are shared between priests and guildsmembers, and alien
+   * stages belong to the race rather than a faction, so both count as own.
+   *
+   * @param {Item} stage
+   * @returns {boolean}
+   */
+  #isOwnPath(stage) {
+    const path = stage.system.path;
+    if (!path || path === "freeman" || path === "alien") return true;
+    return path === this.currentPath;
+  }
+
+  /**
+   * The lifepath the character is currently on.
+   *
+   * The switch happens at the Apprenticeship: a noble joining the priesthood
+   * chooses that stage "instead of choosing a noble Apprenticeship" (p.77), and
+   * a guild likewise (p.80). So from that point the Early Career follows the
+   * Apprenticeship rather than the faction picked at the start — a character
+   * trained in a cathedral is offered the priests' postings, not the knight's.
+   *
+   * @returns {string}
+   */
+  get currentPath() {
+    const apprenticeship = (this.draft.stages.apprenticeship ?? [])[0];
+    const path = apprenticeship?.system.path;
+    if (path && path !== "freeman" && path !== "alien") return path;
+    return this.draft.faction;
+  }
+
+  /**
+   * Stages from another faction's lifepath, gathered under that faction with a
+   * note on what taking one costs.
+   *
+   * @param {Item[]} stages
+   * @param {Item[]} chosen
+   * @returns {Array<object>}
+   */
+  #describeOtherPaths(stages, chosen) {
+    const paths = new Map();
+    for (const stage of stages) {
+      const key = stage.system.path;
+      if (!paths.has(key)) paths.set(key, []);
+      paths.get(key).push(stage);
+    }
+
+    return [...paths.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([key, list]) => ({
+      key,
+      label: game.i18n.format("FADINGSUNS.Creation.JoiningPath", {
+        faction: game.i18n.localize(CONFIG.FADING_SUNS.factions[key] ?? key)
+      }),
+      warning: game.i18n.localize(`FADINGSUNS.Creation.LeavingPath.${key}`),
+      groups: [...new Set(list.map(s => s.system.group))].sort().map(group => ({
+        name: group,
+        stages: list.filter(s => s.system.group === group)
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(stage => ({
+            id: stage.id,
+            uuid: stage.uuid,
+            description: stage.system.description,
+            selected: chosen.some(c => c.id === stage.id),
+            label: stage.name.replace(/^[^:]+:\s*/, "").replace(group ? ` (${group})` : "", "").trim()
+          }))
+      }))
+    }));
+  }
+
+  /** Stages from other factions' lifepaths, built as the step is prepared. */
+  #otherPaths = [];
 
   /**
    * The slots a stage type is built from for the current faction.
@@ -1165,6 +1257,10 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     this.draft.stages[stageType] = slot
       ? [...chosen.filter(s => s.system.slot && s.system.slot !== slot), stage]
       : [stage];
+
+    // The Apprenticeship sets the path, so a career chosen under the old one no
+    // longer applies.
+    if (stageType === "apprenticeship") delete this.draft.stages.earlyCareer;
 
     this.#skillCache = null;
     this.render();

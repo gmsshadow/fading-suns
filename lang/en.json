@@ -455,7 +455,14 @@
       "FromYourHistory": "Already granted by your history",
       "SkillPlaceholder": "Choose or type a skill, e.g. Lore (Theology)",
       "NoAfflictions": "None taken.",
-      "AfflictionExtras": "Extra points these grant"
+      "AfflictionExtras": "Extra points these grant",
+      "JoiningPath": "Leaving your path: joining the {faction}",
+      "LeavingPath": {
+        "priest": "Nobles may join the priesthood at this stage (p.77). A noble who takes a priest's Early Career is ordained rather than knighted, and receives no noble rank — still royal, but with none of the benefits or responsibilities of noble station (p.75).",
+        "merchant": "Nobles may join a guild at this stage, though it is considered scandalous (p.80). A noble who takes a guild Early Career is commissioned rather than knighted, and receives no noble rank (p.75).",
+        "noble": "This belongs to the noble lifepath."
+      },
+      "OnPath": "Your Apprenticeship put you on another path. You are now following:"
     },
     "CombatAction": {
       "Category": "Style",

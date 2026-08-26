@@ -167,6 +167,28 @@ Both matrices are open to nobles, since *"nobles can join the priesthood at this
 a guild likewise, *"although it is considered scandalous"* (p.80). Their Upbringings are not shared,
 and Brother Battle runs its own closed track from Upbringing to Early Career.
 
+**Each stage records the path it belongs to, separately from who may take it.** A noble's
+Apprenticeship step therefore lists only the four groups the book gives them — Military, Diplomacy,
+Leisure and Study — with the priest and guild matrices folded away behind *Leaving your path*, which
+carries the consequence the rulebook spells out:
+
+> *"Those nobles who do not pass through this stage, but who become priests or guildsmembers
+> instead, do not receive noble rank. While they are still considered royal, they receive none of the
+> benefits or responsibilities of noble station."* (p.75)
+
+**The Apprenticeship sets the path, and the Early Career follows it.** Both switching notes use the
+same word — a character joining the priesthood chooses that stage *"instead of choosing a noble
+Apprenticeship"* — so the choice is an either/or made once, and from then on the Early Career step
+offers that faction's postings. A noble trained in a cathedral is shown the Ministry careers, not
+the knight's; changing the Apprenticeship afterwards clears the career chosen under the old one.
+
+Each path confers only its own rank — Nobility, Ordained or Commissioned — which is what makes the
+p.75 warning bite, and a test holds it.
+
+So the cross-faction options remain available, because the rules allow them, but they no longer read
+as ordinary noble choices. The freeman Upbringing counts as own to both priests and guildsmembers,
+since they genuinely share it, and alien stages belong to the race rather than a faction.
+
 **Priests and guildsmembers share a composite Upbringing** (p.77). Where a noble takes one stage,
 they take an *Environment* — City, Town or Country — and a *Class* — Wealthy, Average or Poor. The
 two come to exactly the five characteristic and five skill points a noble spends on one stage:

@@ -11,6 +11,7 @@
     "group": "Vorox",
     "factions": [],
     "race": "vorox",
+    "path": "alien",
     "slot": "",
     "grants": [
       {

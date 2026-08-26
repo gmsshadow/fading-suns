@@ -11,6 +11,7 @@
     "group": "Ur-Obun",
     "factions": [],
     "race": "urObun",
+    "path": "alien",
     "slot": "",
     "grants": [
       {

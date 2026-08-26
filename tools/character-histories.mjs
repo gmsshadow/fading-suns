@@ -244,6 +244,7 @@ const freemanUpbringing = (name, slot, description, grants, extra = {}) => ({
   stage: "upbringing",
   faction: "",
   factions: FREEMAN_FACTIONS,
+  path: "freeman",
   slot,
   group: slot === "environment" ? "Environment" : "Class",
   d: description,
@@ -539,7 +540,7 @@ const PRIEST_FACTIONS = ["priest", "noble"];
 
 const priestStage = (name, group, description, grants, extra = {}) => ({
   n: name, stage: "apprenticeship", faction: "", factions: PRIEST_FACTIONS,
-  group, d: description, grants, ...extra
+  path: "priest", group, d: description, grants, ...extra
 });
 
 const PRIEST_APPRENTICESHIP = [
@@ -644,7 +645,7 @@ const PRIEST_APPRENTICESHIP = [
 
 const priestCareer = (name, group, description, grants, extra = {}) => ({
   n: name, stage: "earlyCareer", faction: "", factions: PRIEST_FACTIONS,
-  group, d: description, grants: [...grants, ben("Ordained", 3)], ...extra
+  path: "priest", group, d: description, grants: [...grants, ben("Ordained", 3)], ...extra
 });
 
 const PRIEST_CAREER = [
@@ -738,7 +739,7 @@ const GUILD_FACTIONS = ["merchant", "noble"];
 
 const guildStage = (name, group, description, grants) => ({
   n: name, stage: "apprenticeship", faction: "", factions: GUILD_FACTIONS,
-  group, d: description, grants
+  path: "merchant", group, d: description, grants
 });
 
 const combatChoice = (id, value, includeShoot = false) => pickOne(
@@ -901,7 +902,7 @@ const GUILD_APPRENTICESHIP = [
 
 const guildCareer = (name, group, description, grants) => ({
   n: name, stage: "earlyCareer", faction: "", factions: GUILD_FACTIONS,
-  group, d: description, grants: [...grants, ben("Commissioned", 3)]
+  path: "merchant", group, d: description, grants: [...grants, ben("Commissioned", 3)]
 });
 
 const GUILD_CAREER = [
@@ -1033,7 +1034,7 @@ const GUILD_CAREER = [
  * their own (p.83), so those stages list them alongside their own faction.
  */
 const alienStage = (race, name, type, group, description, grants, extra = {}) => ({
-  n: name, stage: type, faction: "alien", group,
+  n: name, stage: type, faction: "alien", path: "alien", group,
   d: description, grants, race, ...extra
 });
 

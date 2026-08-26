@@ -1109,3 +1109,95 @@ test("only Afflictions grant Extra points, and only Benefices spend the ten", ()
     .reduce((n, e) => n + e.value, 0);
   assert.equal(spent, expected);
 });
+
+/* -------------------------------------------- */
+/*  Lifepaths stay separate (p.77, p.80, p.75)  */
+/* -------------------------------------------- */
+
+test("every lifepath stage records the path it belongs to", () => {
+  for (const stage of stages) {
+    assert.ok(stage.system.path, `${stage.name} names no path`);
+    assert.ok(["noble", "priest", "merchant", "freeman", "alien"].includes(stage.system.path),
+      `${stage.name} has an odd path: "${stage.system.path}"`);
+  }
+});
+
+test("a noble's own Apprenticeships are the four the book lists (p.74)", () => {
+  const own = stages.filter(s =>
+    s.system.stageType === "apprenticeship" && s.system.path === "noble");
+  assert.deepEqual([...new Set(own.map(s => s.system.group))].sort(),
+    ["Diplomacy", "Leisure", "Military", "Study"]);
+  assert.equal(own.length, 6);
+});
+
+test("a noble's own Early Careers are the three the book lists (p.75)", () => {
+  const own = stages.filter(s =>
+    s.system.stageType === "earlyCareer" && s.system.path === "noble");
+  assert.deepEqual([...new Set(own.map(s => s.system.group))].sort(),
+    ["Court", "Military Command", "Questing"]);
+  assert.equal(own.length, 5);
+});
+
+test("priest and guild stages keep their own path even when open to nobles", () => {
+  // "Nobles can join the priesthood at this stage" (p.77) — but it is still the
+  // priests' stage, and the wizard shows it as leaving the noble path.
+  for (const stage of stages) {
+    if (!stage.system.factions?.includes("noble")) continue;
+    assert.notEqual(stage.system.path, "noble",
+      `${stage.name} is open to nobles but should not be a noble stage`);
+    assert.ok(["priest", "merchant"].includes(stage.system.path));
+  }
+});
+
+test("no faction sees another's stages as its own", () => {
+  const isOwn = (stage, faction) => {
+    const path = stage.system.path;
+    return !path || path === "freeman" || path === "alien" || path === faction;
+  };
+
+  for (const faction of ["noble", "priest", "merchant"]) {
+    const visible = stages.filter(s =>
+      !s.system.race
+      && (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
+
+    for (const stage of visible.filter(s => isOwn(s, faction))) {
+      const path = stage.system.path;
+      assert.ok(!path || path === "freeman" || path === faction,
+        `${faction} treats ${stage.name} (${path}) as its own`);
+    }
+  }
+});
+
+test("the freeman Upbringing counts as own for both who share it (p.77)", () => {
+  const shared = stages.filter(s => s.system.path === "freeman");
+  assert.equal(shared.length, 6);
+  for (const stage of shared) {
+    assert.deepEqual(stage.system.factions.sort(), ["merchant", "priest"]);
+  }
+});
+
+test("switching path costs noble rank, and only the noble career confers it (p.75)", () => {
+  // "Those nobles who do not pass through this stage, but who become priests or
+  //  guildsmembers instead, do not receive noble rank."
+  const rankFor = { noble: "Nobility", priest: "Ordained", merchant: "Commissioned" };
+
+  for (const stage of stages.filter(s => s.system.stageType === "earlyCareer")) {
+    const rank = stage.system.grants.find(g =>
+      g.kind === "benefice" && Object.values(rankFor).includes(g.label));
+    if (!rank) continue;
+
+    const expected = rankFor[stage.system.path];
+    if (!expected) continue;   // alien careers confer Nobility or Family Ties
+    assert.equal(rank.label, expected,
+      `${stage.name} is on the ${stage.system.path} path but confers ${rank.label}`);
+  }
+});
+
+test("no Early Career confers two ranks", () => {
+  const ranks = ["Nobility", "Ordained", "Commissioned"];
+  for (const stage of stages.filter(s => s.system.stageType === "earlyCareer")) {
+    const conferred = stage.system.grants
+      .filter(g => g.kind === "benefice" && ranks.includes(g.label));
+    assert.ok(conferred.length <= 1, `${stage.name} confers ${conferred.length} ranks`);
+  }
+});

@@ -1504,3 +1504,25 @@
 .fading-suns .rank-ladder:disabled {
   opacity: 0.5;
 }
+
+/* ---------- Leaving your own lifepath ---------- */
+
+.fading-suns .other-path {
+  border: 1px dashed var(--fs-line);
+  border-radius: 4px;
+  margin: 0.6rem 0;
+  padding: 0.35rem 0.55rem;
+}
+
+.fading-suns .other-path summary {
+  color: var(--fs-muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.fading-suns .other-path[open] summary {
+  color: var(--fs-gold);
+  margin-bottom: 0.25rem;
+}

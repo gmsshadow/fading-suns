@@ -69,6 +69,32 @@
         <p class="empty">{{localize "FADINGSUNS.Creation.NoStages"}}</p>
       {{/if}}
 
+      {{#if switched}}
+        <p class="hint warning-text"><i class="fa-solid fa-signs-post"></i>
+          {{localize "FADINGSUNS.Creation.OnPath"}} <strong>{{currentPath}}</strong></p>
+      {{/if}}
+
+      {{#each otherPaths as |path|}}
+        <details class="other-path">
+          <summary>{{path.label}}</summary>
+          <p class="hint warning-text">{{path.warning}}</p>
+          {{#each path.groups as |group|}}
+            {{#if group.name}}<h4 class="stage-group-heading">{{group.name}}</h4>{{/if}}
+            <ol class="stage-list">
+              {{#each group.stages as |stage|}}
+                <li class="stage-option {{#if stage.selected}}is-selected{{/if}}">
+                  <button type="button" class="stage-pick" data-action="chooseStage"
+                          data-stage-type="{{../../../stageType}}" data-uuid="{{stage.uuid}}">
+                    <span class="stage-name">{{stage.label}}</span>
+                  </button>
+                  <div class="stage-summary">{{{stage.description}}}</div>
+                </li>
+              {{/each}}
+            </ol>
+          {{/each}}
+        </details>
+      {{/each}}
+
       {{#if composite}}
         <p class="hint">{{localize "FADINGSUNS.Creation.Composite"}}</p>
       {{/if}}

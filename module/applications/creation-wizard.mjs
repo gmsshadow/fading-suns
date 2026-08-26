@@ -1,6 +1,6 @@
 import {
   applyStages, createState, resolveChoices, findOverages, clampToCap,
-  beneficeSpend, extraPointBudget, extraPointSpend, applyExtraPurchases,
+  extraPointBudget, extraPointSpend, applyExtraPurchases,
   STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP, EXTRA_COSTS
 } from "../lifepath/grants.mjs";
 import {
@@ -406,7 +406,6 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
         .filter(b => b.polarity === "affliction")
         .reduce((n, b) => n + b.value, 0),
       grantedBenefices: fromStages,
-      beneficeFromStages: spentOnStages,
       suggestions: this.#suggestedBenefices(),
       beneficeRestrictions: this.chosenStages
         .map(stage => stage.system.beneficeRestriction)

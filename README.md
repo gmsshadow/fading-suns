@@ -631,8 +631,14 @@ or Foundry will keep checking the branch.
 
 ### Validation
 
-`npm run validate` runs on every push and pull request. It catches the classes of mistake that
-fail silently at runtime rather than throwing:
+`npm run lint` and `npm run validate` both run on every push and pull request.
+
+**ESLint** catches what syntax checking cannot. `node --check` accepts a reference to a variable that
+an edit removed — it is valid JavaScript — and the error only appears when that code path runs. In a
+wizard step that means the step fails to render and looks like it was skipped. `no-undef`,
+`no-dupe-keys` and `no-dupe-class-members` catch all three shapes at build time.
+
+**The validator** catches the rest:
 
 - every Handlebars template compiles
 - every helper a template calls actually exists — Handlebars compiles an unknown helper happily and

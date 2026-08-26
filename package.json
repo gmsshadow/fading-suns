@@ -1,18 +1,20 @@
 {
   "name": "fading-suns",
-  "version": "0.24.0",
+  "version": "0.24.1",
   "private": true,
   "type": "module",
   "description": "Build tooling for the Fading Suns Foundry VTT system.",
   "scripts": {
     "test": "node --test \"tests/**/*.test.mjs\"",
-    "validate": "node tools/validate.mjs",
+    "validate": "eslint module tools tests && node tools/validate.mjs",
     "build:packs": "node tools/build-packs.mjs",
-    "build": "npm run build:packs && npm run validate && npm test"
+    "build": "npm run build:packs && npm run validate && npm test",
+    "lint": "eslint module tools tests"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "^1.0.4",
     "classic-level": "^1.4.1",
+    "eslint": "^9.0.0",
     "handlebars": "^4.7.8"
   }
 }

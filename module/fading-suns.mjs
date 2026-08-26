@@ -120,7 +120,7 @@ function registerSheets() {
     if (!legacy) continue;
     try {
       DocumentSheetConfig.unregisterSheet(documentClass, "core", legacy);
-    } catch (err) {
+    } catch {
       console.debug(`${SYSTEM_ID} | Core ${documentClass.documentName} sheet was not registered.`);
     }
   }

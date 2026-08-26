@@ -33,10 +33,6 @@ const stages = allStages.filter(s => s.system.stageType !== "extra");
 /** The Extra Stages, which are bought with Extra points instead (p.84). */
 const extraStages = allStages.filter(s => s.system.stageType === "extra");
 
-/** Stages belonging to a given faction, allowing for shared ones. */
-const forFaction = faction => stages.filter(s =>
-  (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
-
 /**
  * Stages belonging to a faction exclusively.
  *

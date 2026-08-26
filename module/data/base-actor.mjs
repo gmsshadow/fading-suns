@@ -1,5 +1,5 @@
 import { vitalityPenalty } from "../dice/victory-chart.mjs";
-import { characteristicMax, getRace, HUMAN_MAX } from "../dice/races.mjs";
+import { characteristicMax, getRace } from "../dice/races.mjs";
 
 const fields = foundry.data.fields;
 

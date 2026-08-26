@@ -34,8 +34,11 @@ jobs:
             exit 1
           fi
 
+      - name: Lint
+        run: npm run lint
+
       - name: Validate manifest, templates and localisation
-        run: npm run validate
+        run: node tools/validate.mjs
 
       - name: Rules engine tests
         run: npm test

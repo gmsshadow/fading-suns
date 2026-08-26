@@ -529,30 +529,6 @@ export class FadingSunsStage extends FadingSunsItemBase {
       exclusive: new fields.BooleanField({ initial: false }),
       // Listed but not yet takeable, pending the Psi and Theurgy compendiums.
       pending: new fields.BooleanField({ initial: false }),
-      // "Suggested Benefices" as printed alongside each house, sect or guild.
-      // Advisory only: the wizard collates them at Step Five (p.72–p.85).
-      suggestedBenefices: new fields.ArrayField(new fields.SchemaField({
-        label: new fields.StringField({ required: true, blank: false }),
-        uuid: new fields.StringField({ required: false, blank: true, initial: "" }),
-        value: new fields.NumberField({ required: false, integer: true, min: 0, initial: 0 })
-      })),
-      // "Benefice Restriction: Riches (7 pts maximum)" and the like.
-      beneficeRestriction: new fields.StringField({ required: false, blank: true, initial: "" }),
-
-      // Extra Stages only (p.84). Each costs 20 of the 40 Extra points, and most
-      // hand the player an allowance to distribute rather than fixed traits.
-      extraCost: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-      allowance: new fields.SchemaField({
-        characteristics: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-        skills: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 }),
-        free: new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 })
-      }),
-      // Another Tour of Duty may only follow a Tour of Duty, and so on.
-      requires: new fields.StringField({ required: false, blank: true, initial: "" }),
-      // Loaded-for-Bear may be taken alone: "can take no other Extra Stages".
-      exclusive: new fields.BooleanField({ initial: false }),
-      // Listed but not yet takeable, pending the Psi and Theurgy compendiums.
-      pending: new fields.BooleanField({ initial: false })
     });
   }
 

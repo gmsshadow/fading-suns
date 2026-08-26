@@ -5,7 +5,6 @@
  * because it resolves compendium documents.
  */
 
-import { skillLabel } from "./grants.mjs";
 
 /* -------------------------------------------- */
 /*  Pure                                        */

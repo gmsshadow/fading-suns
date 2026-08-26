@@ -9,10 +9,7 @@
     "stageType": "apprenticeship",
     "faction": "alien",
     "group": "Vorox",
-    "factions": [
-      "alien",
-      "merchant"
-    ],
+    "factions": [],
     "race": "vorox",
     "path": "alien",
     "slot": "",

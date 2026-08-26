@@ -11,7 +11,8 @@
     "group": "Trade",
     "factions": [
       "merchant",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "merchant",

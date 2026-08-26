@@ -11,7 +11,8 @@
     "group": "The Streets",
     "factions": [
       "merchant",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "merchant",

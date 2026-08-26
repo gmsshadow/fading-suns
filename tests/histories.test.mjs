@@ -908,12 +908,14 @@ test("every other alien stage lands on the human budget", () => {
   }
 });
 
-test("Obun and Ukari may take a human sect's or guild's Apprenticeship (p.83)", () => {
-  const open = alienStages.filter(s =>
-    s.system.stageType === "apprenticeship" && s.system.factions?.length);
-  assert.ok(open.length >= 5);
-  for (const stage of open) {
-    assert.ok(stage.system.factions.includes("alien"));
+test("alien stages are the races' own, not shared with any human faction (p.83)", () => {
+  // An earlier reading had this backwards, offering Obun and Ukari roles to
+  // human priests and guildsmembers. The traffic runs the other way: aliens may
+  // join a guild, but no human trains as an Umo'rin Counselor.
+  for (const stage of alienStages) {
+    assert.equal(stage.system.path, "alien");
+    assert.deepEqual(stage.system.factions ?? [], [],
+      `${stage.name} should belong to its race alone`);
   }
 });
 
@@ -1199,5 +1201,66 @@ test("no Early Career confers two ranks", () => {
     const conferred = stage.system.grants
       .filter(g => g.kind === "benefice" && ranks.includes(g.label));
     assert.ok(conferred.length <= 1, `${stage.name} confers ${conferred.length} ranks`);
+  }
+});
+
+/* -------------------------------------------- */
+/*  What aliens may join (p.83)                 */
+/* -------------------------------------------- */
+
+const visibleTo = (faction, race, type) => stages.filter(s =>
+  s.system.stageType === type
+  && !(s.system.race && s.system.race !== race)
+  && (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
+
+test("every alien race may hold a Commission in the League (p.83)", () => {
+  // "Any of them can hold a Commission in the League or Rank in their own
+  //  noble caste."
+  for (const race of ["urObun", "urUkar", "vorox"]) {
+    const guild = visibleTo("alien", race, "earlyCareer")
+      .filter(s => s.system.path === "merchant");
+    assert.ok(guild.length > 0, `${race} should be able to join a guild`);
+
+    const appr = visibleTo("alien", race, "apprenticeship")
+      .filter(s => s.system.path === "merchant");
+    assert.ok(appr.length > 0, `${race} should be able to train with a guild`);
+  }
+});
+
+test("no alien race is offered a human sect's stages (p.83)", () => {
+  // "An Obun may be Ordained in the Obun sect of the Church (Voavenlohjun)" —
+  // that sect and no other, and the Ukari and Vorox not at all.
+  for (const race of ["urObun", "urUkar", "vorox"]) {
+    for (const type of ["apprenticeship", "earlyCareer"]) {
+      const priest = visibleTo("alien", race, type).filter(s => s.system.path === "priest");
+      assert.deepEqual(priest, [], `${race} is offered human ${type} sect stages`);
+    }
+  }
+});
+
+test("only the Obun may be ordained, and only in their own sect (p.83)", () => {
+  const ordained = stages.filter(s =>
+    s.system.race && s.system.grants.some(g => g.kind === "benefice" && g.label === "Ordained"));
+
+  assert.equal(ordained.length, 1);
+  assert.equal(ordained[0].system.race, "urObun");
+  assert.match(ordained[0].name, /Voavenlohjun/);
+});
+
+test("alien stages belong to the races and are not offered to humans", () => {
+  for (const stage of stages.filter(s => s.system.race)) {
+    for (const faction of ["noble", "priest", "merchant"]) {
+      assert.ok(!stage.system.factions?.includes(faction),
+        `${stage.name} should not be offered to ${faction} characters`);
+    }
+  }
+});
+
+test("the Ukari and Vorox take rank in their own caste instead (p.83)", () => {
+  for (const race of ["urUkar", "vorox"]) {
+    const own = stages.filter(s => s.system.race === race && s.system.stageType === "earlyCareer");
+    const nobility = own.filter(s =>
+      s.system.grants.some(g => g.kind === "benefice" && g.label === "Nobility"));
+    assert.ok(nobility.length > 0, `${race} should have a career conferring their own rank`);
   }
 });

@@ -11,7 +11,8 @@
     "group": "Contract Soldiering",
     "factions": [
       "merchant",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "merchant",

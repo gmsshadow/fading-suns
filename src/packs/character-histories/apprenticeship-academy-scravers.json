@@ -11,7 +11,8 @@
     "group": "Academy",
     "factions": [
       "merchant",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "merchant",

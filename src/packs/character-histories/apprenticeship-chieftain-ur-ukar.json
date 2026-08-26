@@ -9,11 +9,7 @@
     "stageType": "apprenticeship",
     "faction": "alien",
     "group": "Ur-Ukar",
-    "factions": [
-      "alien",
-      "priest",
-      "merchant"
-    ],
+    "factions": [],
     "race": "urUkar",
     "path": "alien",
     "slot": "",

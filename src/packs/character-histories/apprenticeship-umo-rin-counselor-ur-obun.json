@@ -9,11 +9,7 @@
     "stageType": "apprenticeship",
     "faction": "alien",
     "group": "Ur-Obun",
-    "factions": [
-      "alien",
-      "priest",
-      "merchant"
-    ],
+    "factions": [],
     "race": "urObun",
     "path": "alien",
     "slot": "",

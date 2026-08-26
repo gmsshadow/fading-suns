@@ -11,7 +11,8 @@
     "group": "Learning",
     "factions": [
       "merchant",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "merchant",

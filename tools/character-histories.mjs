@@ -735,7 +735,7 @@ const PRIEST_CAREER = [
  * "Note that nobles can join a guild at this stage, although it is considered
  *  scandalous" (p.80), so these are open to nobles too.
  */
-const GUILD_FACTIONS = ["merchant", "noble"];
+const GUILD_FACTIONS = ["merchant", "noble", "alien"];
 
 const guildStage = (name, group, description, grants) => ({
   n: name, stage: "apprenticeship", faction: "", factions: GUILD_FACTIONS,
@@ -1030,15 +1030,19 @@ const GUILD_CAREER = [
  * carries — "Strength (max 9)", "Dexterity (base 4)" — so only the deltas are
  * granted here; module/dice/races.mjs owns the bases and ceilings.
  *
- * Obun and Ukari may take a human sect's or guild's Apprenticeship instead of
- * their own (p.83), so those stages list them alongside their own faction.
+ * "Any of them can hold a Commission in the League or Rank in their own noble
+ *  caste" (p.83), so the guild lifepath is open to every race — see
+ *  GUILD_FACTIONS above. The Church is not: "An Obun may be Ordained in the
+ *  Obun sect of the Church (Voavenlohjun)", and that sect alone, which is the
+ *  Voavenlohjun Priest stage below. Neither the Ukari nor the Vorox may be
+ *  ordained at all.
+ *
+ * These stages themselves belong to the races, and are not offered to humans.
  */
 const alienStage = (race, name, type, group, description, grants, extra = {}) => ({
   n: name, stage: type, faction: "alien", path: "alien", group,
   d: description, grants, race, ...extra
 });
-
-const OBUN_UKAR_OPEN = ["alien", "priest", "merchant"];
 
 const ALIEN_HISTORY = [
   /* ---- Ur-Obun ---- */
@@ -1073,13 +1077,13 @@ const ALIEN_HISTORY = [
     open("al-obun-couns-lore", "Lore (choose topic) 1", "skill", 1, ["Lore"]),
     pickOne("al-obun-couns-social-skill", "Social (Debate or Oratory) 2",
       opt("Debate", sp("Social", "Debate", 2)), opt("Oratory", sp("Social", "Oratory", 2)))
-  ], { factions: OBUN_UKAR_OPEN }),
+  ]),
   alienStage("urObun", "Voavenlohjun Priest", "apprenticeship", "Ur-Obun",
     "Ordained into the Obun sect of the Church.", [
     ch("mind.wits", 2), ch("spirit.introvert", 1), ch("spirit.faith", 2),
     sk("Charm", 1), sk("Observe", 1), sk("Academia", 1), sk("Alchemy", 1),
     sk("Focus", 2), sp("Lore", "Metaphysics", 1), sk("Remedy", 1), sk("Stoic Mind", 2)
-  ], { factions: OBUN_UKAR_OPEN }),
+  ]),
   alienStage("urObun", "Vhem-saahen Champion", "apprenticeship", "Ur-Obun",
     "The Obun who fights, which the Obun would rather not discuss.", [
     ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
@@ -1087,7 +1091,7 @@ const ALIEN_HISTORY = [
     pickOne("al-obun-champ-combat", "Combat skill (choose Fight or Melee) +2",
       opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
     sk("Shoot", 2), sk("Vigor", 1)
-  ], { factions: OBUN_UKAR_OPEN }),
+  ]),
 
   alienStage("urObun", "Umo'rin Counselor", "earlyCareer", "Ur-Obun",
     "Sent out to counsel, mediate and be listened to.", [
@@ -1157,7 +1161,7 @@ const ALIEN_HISTORY = [
       opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
     sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 2), sp("Lore", "Poisons", 1),
     sk("Stoic Mind", 1), sk("Survival", 1)
-  ], { factions: OBUN_UKAR_OPEN }),
+  ]),
   alienStage("urUkar", "Warrior/Outlaw", "apprenticeship", "Ur-Ukar",
     "The clan's blade, or the one who left and sells it elsewhere.", [
     ch("body.strength", 1), ch("body.dexterity", 2), ch("body.endurance", 1),
@@ -1167,7 +1171,7 @@ const ALIEN_HISTORY = [
       opt("Fight", sk("Fight", 2)), opt("Melee", sk("Melee", 2))),
     sk("Impress", 1), sk("Shoot", 1), sk("Knavery", 2), sp("Lore", "Poisons", 1),
     sk("Stoic Mind", 1), sk("Survival", 1)
-  ], { factions: OBUN_UKAR_OPEN }),
+  ]),
 
   alienStage("urUkar", "Chieftain", "earlyCareer", "Ur-Ukar",
     "Quan of the clan, with everything that entails.", [
@@ -1232,7 +1236,7 @@ const ALIEN_HISTORY = [
     ch("mind.perception", 1), ch("spirit.passion", 1),
     sk("Dodge", 1), sk("Fight", 2), sk("Impress", 1), sk("Melee", 1), sk("Observe", 1),
     sk("Sneak", 1), sk("Vigor", 1), sk("Survival", 1), sk("Tracking", 1)
-  ], { factions: ["alien", "merchant"] }),
+  ]),
 
   alienStage("vorox", "Chieftain", "earlyCareer", "Vorox",
     "Knighted, and expected to hold a pack together in human company.", [

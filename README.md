@@ -133,6 +133,15 @@ add seventeen:
 | Ur-Ukar | 1 | 2 | 2 |
 | Vorox | 2 (Chieftain, Warrior) | 1 shared | 2 |
 
+**What an alien may join** is set out in one sentence: *"Any of them can hold a Commission in the
+League or Rank in their own noble caste"* (p.83). So the guild lifepath is open to all three races
+from the Apprenticeship on, while the Church is not — *"An Obun may be Ordained in the Obun sect of
+the Church (Voavenlohjun)"*, that sect alone, and the Ukari and Vorox not at all. The Ukari and
+Vorox take rank in their own caste instead, which their Chieftain careers confer.
+
+The alien stages themselves belong to the races and are never offered to human characters: nobody
+human trains as an Umo'rin Counselor.
+
 Alien stages restate the racial bases their race already carries — *"Strength (max 9)"*,
 *"Dexterity (base 4)"* — so only the deltas are granted, with `module/dice/races.mjs` owning the
 bases and ceilings. Obun and Ukari may take a human sect's or guild's Apprenticeship instead of

@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 import {
   resolveChoices, applyGrants, applyStages, createState,
-  findOverages, GRANT_KINDS, STAGE_BUDGET, CUSTOM_BUDGET
+  findOverages, GRANT_KINDS, STAGE_BUDGET, CUSTOM_BUDGET, beneficeSpend
 } from "../module/lifepath/grants.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -1059,4 +1059,57 @@ test("the histories name specialties the compendium does not stock", () => {
   assert.ok(beyond.length > 20,
     "the stages name well beyond the stocked list, so free text is required");
   assert.ok(beyond.includes("Lore (Theology)"));
+});
+
+/* -------------------------------------------- */
+/*  Benefices and Afflictions are distinct      */
+/* -------------------------------------------- */
+
+test("every catalogue entry is one or the other, never both", () => {
+  const catalogue = loadPack("benefices-afflictions");
+  for (const entry of catalogue) {
+    assert.ok(["benefice", "affliction"].includes(entry.system.polarity),
+      `${entry.name} has polarity "${entry.system.polarity}"`);
+  }
+
+  const counts = catalogue.reduce((m, e) => {
+    m[e.system.polarity] = (m[e.system.polarity] ?? 0) + 1;
+    return m;
+  }, {});
+  assert.deepEqual(counts, { benefice: 39, affliction: 18 });
+});
+
+test("both lists carry entries in every category they claim", () => {
+  // The wizard offers each polarity in its own picker, grouped by category, so
+  // an empty group would render a heading with nothing under it.
+  const catalogue = loadPack("benefices-afflictions");
+  const groups = {};
+  for (const entry of catalogue) {
+    const bucket = (groups[entry.system.polarity] ??= {});
+    bucket[entry.system.category] = (bucket[entry.system.category] ?? 0) + 1;
+  }
+  for (const [polarity, categories] of Object.entries(groups)) {
+    for (const [category, count] of Object.entries(categories)) {
+      assert.ok(count > 0, `${polarity}/${category} is empty`);
+    }
+  }
+  assert.ok(Object.keys(groups.affliction).length >= 4,
+    "afflictions span several categories, so they need grouping too");
+});
+
+test("only Afflictions grant Extra points, and only Benefices spend the ten", () => {
+  const catalogue = loadPack("benefices-afflictions");
+  const benefices = catalogue.filter(e => e.system.polarity === "benefice");
+  const afflictions = catalogue.filter(e => e.system.polarity === "affliction");
+
+  // beneficeSpend ignores Afflictions entirely (p.117).
+  const mixed = [
+    ...benefices.slice(0, 3).map(e => ({ value: e.system.value, polarity: "benefice" })),
+    ...afflictions.slice(0, 3).map(e => ({ value: e.system.value, polarity: "affliction" }))
+  ];
+  const spent = beneficeSpend(mixed);
+  const expected = mixed
+    .filter(e => e.polarity === "benefice")
+    .reduce((n, e) => n + e.value, 0);
+  assert.equal(spent, expected);
 });

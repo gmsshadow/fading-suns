@@ -1465,3 +1465,33 @@
   flex: 1 1 auto;
   min-width: 14ch;
 }
+
+/* ---------- Benefices split from Afflictions ---------- */
+
+.fading-suns .benefice-picker {
+  border: 1px solid var(--fs-line);
+  border-left: 3px solid var(--fs-gold-dim);
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  padding: 0.45rem 0.55rem;
+}
+
+.fading-suns .benefice-picker.is-affliction {
+  border-left-color: var(--fs-failure);
+}
+
+.fading-suns .benefice-picker h4 {
+  color: var(--fs-gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.1rem;
+  text-transform: uppercase;
+}
+
+.fading-suns .benefice-picker.is-affliction h4 {
+  color: var(--fs-failure);
+}
+
+.fading-suns .benefice-picker .chosen-list {
+  margin-top: 0.35rem;
+}

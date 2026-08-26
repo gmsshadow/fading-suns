@@ -363,7 +363,19 @@ Extra point costs three per level and carries no such restriction. Pooling those
 overcharge the player, so they are modelled as what they are: two choices, appearing on the Choices
 step alongside every other decision, with the second picker excluding whatever the first took.
 
-**Step Five (Benefices)** offers the whole catalogue grouped by category, with a rank field, running
+**Benefices and Afflictions are offered separately**, in two pickers rather than one mixed list.
+They pull in opposite directions — a Benefice spends the ten points, an Affliction costs nothing and
+adds to the Extra pool instead (p.117) — so reading them off one dropdown meant checking each entry
+to work out which it was. Each picker keeps its own chosen list, and the Affliction side totals the
+Extra points it has granted.
+
+**Step Five (Benefices)** offers Benefices and Afflictions in **separate pickers**, since the two
+pull in opposite directions: a Benefice spends the ten points, while an Affliction costs nothing and
+adds to the Extra pool instead (p.117). Mixed into one list they were hard to tell apart. Each has
+its own chosen list, and the Afflictions show the Extra points they have granted.
+
+Both pickers offer the catalogue grouped by category — 39 Benefices, 18 Afflictions — with a rank
+field, running
 against a budget of ten points. It also shows the
 **Suggested Benefices** the rulebook prints against each faction and house (p.72–76), merged across
 whichever stages were chosen, each addable at the suggested rank with one click. They are advice

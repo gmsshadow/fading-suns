@@ -234,36 +234,84 @@
         </section>
       {{/if}}
 
-      <div class="picker-row">
-        <select name="beneficePick">
-          <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
-          {{#each beneficeGroups as |group|}}
-            <optgroup label="{{group.label}}">
-              {{#each group.entries as |entry|}}
-                <option value="{{entry.uuid}}">{{entry.name}} ({{entry.value}})</option>
-              {{/each}}
-            </optgroup>
-          {{/each}}
-        </select>
-        <input type="number" name="beneficeRank" min="0" placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
-        <button type="button" class="add-btn" data-action="addBenefice">
-          <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
-        </button>
-      </div>
+      <section class="benefice-picker">
+        <h4>{{localize "FADINGSUNS.Benefice.Benefice"}}</h4>
+        <p class="hint">{{localize "FADINGSUNS.Hint.PickBenefice"}}</p>
+        <div class="picker-row">
+          <select name="beneficePick">
+            <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
+            {{#each beneficeGroups as |group|}}
+              <optgroup label="{{group.label}}">
+                {{#each group.entries as |entry|}}
+                  <option value="{{entry.uuid}}">{{entry.name}} ({{entry.value}})</option>
+                {{/each}}
+              </optgroup>
+            {{/each}}
+          </select>
+          <input type="number" name="beneficeRank" min="0" class="picker-qty"
+                 placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+          <button type="button" class="add-btn" data-action="addBenefice" data-kind="benefice">
+            <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+          </button>
+        </div>
 
-      <ol class="chosen-list">
-        {{#each chosenBenefices as |entry index|}}
-          <li class="{{#if (eq entry.polarity "affliction")}}is-curse{{/if}}">
-            <span class="chosen-name">{{entry.name}}</span>
-            <span class="chosen-value">{{entry.value}}</span>
-            <button type="button" class="icon-btn danger" data-action="removeBenefice" data-index="{{index}}">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </li>
-        {{else}}
-          <li class="empty">{{localize "FADINGSUNS.Creation.NoBenefices"}}</li>
-        {{/each}}
-      </ol>
+        <ol class="chosen-list">
+          {{#each chosenBenefices as |entry|}}
+            <li>
+              <span class="chosen-name">{{entry.name}}</span>
+              <span class="chosen-value">{{entry.value}}</span>
+              <button type="button" class="icon-btn danger" data-action="removeBenefice"
+                      data-uuid="{{entry.uuid}}" data-value="{{entry.value}}">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </li>
+          {{else}}
+            <li class="empty">{{localize "FADINGSUNS.Creation.NoBenefices"}}</li>
+          {{/each}}
+        </ol>
+      </section>
+
+      <section class="benefice-picker is-affliction">
+        <h4>{{localize "FADINGSUNS.Benefice.Affliction"}}</h4>
+        <p class="hint">{{localize "FADINGSUNS.Hint.PickAffliction"}}</p>
+        <div class="picker-row">
+          <select name="afflictionPick">
+            <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
+            {{#each afflictionGroups as |group|}}
+              <optgroup label="{{group.label}}">
+                {{#each group.entries as |entry|}}
+                  <option value="{{entry.uuid}}">{{entry.name}} (+{{entry.value}})</option>
+                {{/each}}
+              </optgroup>
+            {{/each}}
+          </select>
+          <input type="number" name="afflictionRank" min="0" class="picker-qty"
+                 placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+          <button type="button" class="add-btn" data-action="addBenefice" data-kind="affliction">
+            <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
+          </button>
+        </div>
+
+        <ol class="chosen-list">
+          {{#each chosenAfflictions as |entry|}}
+            <li class="is-curse">
+              <span class="chosen-name">{{entry.name}}</span>
+              <span class="chosen-value">+{{entry.value}}</span>
+              <button type="button" class="icon-btn danger" data-action="removeBenefice"
+                      data-uuid="{{entry.uuid}}" data-value="{{entry.value}}">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </li>
+          {{else}}
+            <li class="empty">{{localize "FADINGSUNS.Creation.NoAfflictions"}}</li>
+          {{/each}}
+        </ol>
+
+        {{#if afflictionExtras}}
+          <p class="hint allowance">{{localize "FADINGSUNS.Creation.AfflictionExtras"}}:
+            <strong>+{{afflictionExtras}}</strong></p>
+        {{/if}}
+      </section>
     {{/if}}
 
     {{#if (eq step "extras")}}

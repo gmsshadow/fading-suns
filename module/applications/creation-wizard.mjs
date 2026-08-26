@@ -350,18 +350,33 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const pack = game.packs.get("fading-suns.benefices-afflictions");
     const catalogue = pack ? await pack.getDocuments() : [];
 
-    const groups = new Map();
+    // Benefices and Afflictions are offered separately. Mixed into one list the
+    // two are hard to tell apart, and they pull in opposite directions: one
+    // spends the ten points, the other adds to the Extra pool (p.117).
+    const groups = { benefice: new Map(), affliction: new Map() };
+
     for (const entry of catalogue.sort((a, b) => a.name.localeCompare(b.name))) {
+      const polarity = entry.system.polarity;
       const key = entry.system.category;
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push({
+      const bucket = groups[polarity];
+      if (!bucket) continue;
+      if (!bucket.has(key)) bucket.set(key, []);
+      bucket.get(key).push({
         uuid: entry.uuid,
         name: entry.name,
-        polarity: entry.system.polarity,
+        polarity,
         value: entry.system.value,
         ranks: entry.system.ranks
       });
     }
+
+    const asGroups = bucket => [...bucket.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, entries]) => ({
+        key,
+        label: game.i18n.localize(CONFIG.FADING_SUNS.beneficeCategories[key] ?? key),
+        entries
+      }));
 
     // "The base 10 pts of Benefices were spent on rank at the end of the Early
     //  Career stage and the rest were spent on Worldly Benefits during the Extra
@@ -372,15 +387,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const spentOnStages = fromStages.reduce((n, b) => n + b.value, 0);
     const spent = beneficeSpend(this.draft.benefices) + spentOnStages;
 
+    const chosen = this.draft.benefices;
+
     return {
-      beneficeGroups: [...groups.entries()]
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([key, entries]) => ({
-          key,
-          label: game.i18n.localize(CONFIG.FADING_SUNS.beneficeCategories[key] ?? key),
-          entries
-        })),
-      chosenBenefices: this.draft.benefices,
+      beneficeGroups: asGroups(groups.benefice),
+      afflictionGroups: asGroups(groups.affliction),
+      chosenBenefices: chosen.filter(b => b.polarity !== "affliction"),
+      chosenAfflictions: chosen.filter(b => b.polarity === "affliction"),
+      afflictionExtras: chosen
+        .filter(b => b.polarity === "affliction")
+        .reduce((n, b) => n + b.value, 0),
       grantedBenefices: fromStages,
       beneficeFromStages: spentOnStages,
       suggestions: this.#suggestedBenefices(),
@@ -1078,14 +1094,16 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    * Add the Benefice currently selected, at the rank chosen beside it.
    * @this {FadingSunsCreationWizard}
    */
-  static async #onAddBenefice() {
-    const uuid = this.element.querySelector("[name=beneficePick]")?.value;
+  static async #onAddBenefice(event, target) {
+    const kind = target.dataset.kind === "affliction" ? "affliction" : "benefice";
+
+    const uuid = this.element.querySelector(`[name=${kind}Pick]`)?.value;
     if (!uuid) return;
 
     const document = await fromUuid(uuid);
     if (!document) return;
 
-    const rankField = this.element.querySelector("[name=beneficeRank]");
+    const rankField = this.element.querySelector(`[name=${kind}Rank]`);
     const value = Number(rankField?.value) || document.system.value;
 
     this.draft.benefices.push({
@@ -1148,7 +1166,10 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   /** @this {FadingSunsCreationWizard} */
   static async #onRemoveBenefice(event, target) {
-    this.draft.benefices.splice(Number(target.dataset.index), 1);
+    const { uuid, value } = target.dataset;
+    const index = this.draft.benefices.findIndex(b =>
+      b.uuid === uuid && b.value === Number(value));
+    if (index >= 0) this.draft.benefices.splice(index, 1);
     this.render();
   }
 

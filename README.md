@@ -392,11 +392,23 @@ Two rules corrected here, both of which the rulebook states more than once and n
   of Benefices were spent on rank at the end of the Early Career stage and the rest were spent on
   Worldly Benefits during the Extra Stages."* Ten is the default, and the world setting *Benefice
   Points at Creation* overrides it.
-- **Ranked Benefices pool into one entry.** The rank tables give a *cumulative* cost rather than an
-  increment — Ordained 5 is a Deacon and costs five points, not three plus five (p.123) — so a
-  career's Ordained 3 and two more points bought at Step Five arrive as a single Deacon rather than
-  two Novices. This applies whether the points come from the wizard or from dragging an entry onto
-  the sheet.
+- **A rank is a total, and you buy the difference.** Ordained 3 is a Novice and Ordained 5 a Deacon,
+  so a priest whose career conferred Novice pays **two** to become a Deacon, not another three
+  (p.123). The picker offers the ladder with each rung priced from where the character already
+  stands, and rungs already held are greyed:
+
+  ```
+  Novice    already held
+  Deacon    2 pts
+  Fellow    4 pts
+  Crafter   6 pts
+  ```
+
+  The ladders are not evenly spaced — Nobility runs 3, 5, 7, 9, 11, 13 while Cash runs
+  1, 2, 3, 5, 7, 9, 11 — so the cost is computed from the table rather than assumed.
+- **Ranked Benefices pool into one entry**, keeping the highest rank reached rather than adding the
+  figures together. A career's Ordained 3 and a Deacon bought at Step Five make one entry reading 5,
+  whether the points come through the wizard or from dragging an entry onto the sheet.
 
   28 of the 57 entries are marked as singular: all Status ranks, all forms of Riches, the racial
   traits and the background facts that describe a character rather than name a thing. The other 29

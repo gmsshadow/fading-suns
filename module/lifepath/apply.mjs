@@ -76,10 +76,10 @@ export function diffSkills(skills, existing) {
 /**
  * Pool Benefices a character may only hold one of.
  *
- * The rank tables give a **cumulative** cost rather than an increment: Ordained
- * 5 is a Deacon and costs five points, not three plus five (p.123). So a career
- * that confers Ordained 3 and two more points spent at Step Five come to
- * Ordained 5, a Deacon — one entry, not two.
+ * A rank is a **total**, not an increment: Ordained 3 is a Novice and Ordained 5
+ * a Deacon, so climbing from one to the other costs the difference of two, and
+ * the entry ends up reading 5 rather than 8 (p.123). Pooling therefore keeps the
+ * highest rank reached rather than adding the figures together.
  *
  * Entries that name a thing rather than describe the character are left alone:
  * two Allies are two different people, and pooling them into "Ally 8" would be
@@ -100,7 +100,7 @@ export function poolBenefices(entries = []) {
       pooled.set(entry.uuid, { ...entry, value: entry.value ?? 0, pooledFrom: [entry.value ?? 0] });
       continue;
     }
-    existing.value += entry.value ?? 0;
+    existing.value = Math.max(existing.value, entry.value ?? 0);
     existing.pooledFrom.push(entry.value ?? 0);
   }
 
@@ -253,4 +253,40 @@ export async function applyLifepathToActor(actor, state, { stages = [] } = {}) {
   if (newItems.length) await actor.createEmbeddedDocuments("Item", newItems);
 
   return actor;
+}
+
+
+/* -------------------------------------------- */
+/*  Rank ladders (p.123)                        */
+/* -------------------------------------------- */
+
+/**
+ * What it costs to climb a ranked Benefice from where you are to a given rank.
+ *
+ * The published figure is the total, and the ladders are not evenly spaced:
+ * Nobility runs 3, 5, 7, 9, 11, 13 — three for the first step and two for each
+ * after — while Cash runs 1, 2, 3, 5, 7, 9, 11.
+ *
+ * @param {number} target   The rank being bought.
+ * @param {number} [current=0]   The rank already held, whether granted or bought.
+ * @returns {number}        Points to spend; never negative.
+ */
+export function rankCost(target, current = 0) {
+  return Math.max(0, (target ?? 0) - (current ?? 0));
+}
+
+/**
+ * The rungs of a ranked Benefice, with what each costs from where you are.
+ *
+ * @param {Array<{value: number, label: string}>} ranks
+ * @param {number} [current=0]
+ * @returns {Array<{value: number, label: string, cost: number, held: boolean}>}
+ */
+export function rankLadder(ranks = [], current = 0) {
+  return ranks.map(rank => ({
+    value: rank.value,
+    label: rank.label,
+    cost: rankCost(rank.value, current),
+    held: rank.value <= current
+  }));
 }

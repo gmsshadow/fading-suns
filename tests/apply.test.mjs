@@ -9,7 +9,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import {
-  buildActorUpdate, parseSkillLabel, diffSkills, poolBenefices
+  buildActorUpdate, parseSkillLabel, diffSkills, poolBenefices, rankCost, rankLadder
 } from "../module/lifepath/apply.mjs";
 import { createState, applyGrants } from "../module/lifepath/grants.mjs";
 
@@ -103,17 +103,25 @@ test("a specialty the compendium does not stock still creates cleanly", () => {
 const ORDAINED = "Compendium.fading-suns.benefices-afflictions.Item.ordained";
 const ALLY = "Compendium.fading-suns.benefices-afflictions.Item.ally";
 
-test("a career's rank and points bought later pool into one entry (p.123)", () => {
-  // The rank tables give a cumulative cost, not an increment: Ordained 5 is a
-  // Deacon and costs five points, so 3 from the career plus 2 bought is 5.
+test("a career's rank and a higher one bought later make one entry (p.123)", () => {
+  // A rank is a total: Ordained 3 is a Novice, Ordained 5 a Deacon. A career
+  // conferring 3 and a Deacon bought at Step Five is one entry reading 5.
   const pooled = poolBenefices([
     { uuid: ORDAINED, value: 3, unique: true },
-    { uuid: ORDAINED, value: 2, unique: true }
+    { uuid: ORDAINED, value: 5, unique: true }
   ]);
 
   assert.equal(pooled.length, 1, "one Ordained, not two");
-  assert.equal(pooled[0].value, 5, "Deacon");
-  assert.deepEqual(pooled[0].pooledFrom, [3, 2], "and it records where the points came from");
+  assert.equal(pooled[0].value, 5, "Deacon, not eight points of nothing");
+  assert.deepEqual(pooled[0].pooledFrom, [3, 5]);
+});
+
+test("a lesser rank never demotes a greater one", () => {
+  const [pooled] = poolBenefices([
+    { uuid: ORDAINED, value: 7, unique: true },
+    { uuid: ORDAINED, value: 3, unique: true }
+  ]);
+  assert.equal(pooled.value, 7, "a Fellow does not become a Novice");
 });
 
 test("entries that name a thing stay separate", () => {
@@ -135,18 +143,18 @@ test("a single instance is not marked as pooled", () => {
 test("pooling handles three or more sources", () => {
   const [pooled] = poolBenefices([
     { uuid: ORDAINED, value: 3, unique: true },
-    { uuid: ORDAINED, value: 2, unique: true },
-    { uuid: ORDAINED, value: 2, unique: true }
+    { uuid: ORDAINED, value: 7, unique: true },
+    { uuid: ORDAINED, value: 5, unique: true }
   ]);
-  assert.equal(pooled.value, 7, "Fellow");
-  assert.deepEqual(pooled.pooledFrom, [3, 2, 2]);
+  assert.equal(pooled.value, 7, "the highest rank reached");
+  assert.deepEqual(pooled.pooledFrom, [3, 7, 5]);
 });
 
 test("unique and repeatable entries coexist without interfering", () => {
   const pooled = poolBenefices([
     { uuid: ORDAINED, value: 3, unique: true },
     { uuid: ALLY, value: 3, unique: false },
-    { uuid: ORDAINED, value: 4, unique: true },
+    { uuid: ORDAINED, value: 7, unique: true },
     { uuid: ALLY, value: 5, unique: false }
   ]);
   assert.equal(pooled.length, 3, "one Ordained and two Allies");
@@ -156,4 +164,49 @@ test("unique and repeatable entries coexist without interfering", () => {
 test("an empty list pools to nothing", () => {
   assert.deepEqual(poolBenefices([]), []);
   assert.deepEqual(poolBenefices(), []);
+});
+
+
+/* -------------------------------------------- */
+/*  Rank ladders (p.123)                        */
+/* -------------------------------------------- */
+
+test("climbing a rank costs the difference, not the full price again (p.123)", () => {
+  // Nobility runs 3, 5, 7, 9, 11, 13 — three for the first step, two thereafter.
+  assert.equal(rankCost(3, 0), 3, "a commoner becoming a knight pays three");
+  assert.equal(rankCost(5, 3), 2, "a knight becoming a baronet pays two");
+  assert.equal(rankCost(13, 11), 2, "a count becoming a duke pays two");
+  assert.equal(rankCost(13, 0), 13, "and a duke from nothing pays the lot");
+});
+
+test("a rank already held costs nothing, and never refunds", () => {
+  assert.equal(rankCost(3, 3), 0);
+  assert.equal(rankCost(3, 7), 0, "holding better than the rank asked for is free, not negative");
+});
+
+test("the ladder prices every rung from where the character stands", () => {
+  const NOBILITY = [
+    { value: 3, label: "Knight" }, { value: 5, label: "Baronet" },
+    { value: 7, label: "Baron" }, { value: 9, label: "Marquis or Earl" },
+    { value: 11, label: "Count" }, { value: 13, label: "Duke" }
+  ];
+
+  // A character with nothing pays the printed total.
+  assert.deepEqual(rankLadder(NOBILITY, 0).map(r => r.cost), [3, 5, 7, 9, 11, 13]);
+
+  // A knight pays the difference, and Knight itself is already held.
+  const asKnight = rankLadder(NOBILITY, 3);
+  assert.deepEqual(asKnight.map(r => r.cost), [0, 2, 4, 6, 8, 10]);
+  assert.deepEqual(asKnight.map(r => r.held), [true, false, false, false, false, false]);
+});
+
+test("uneven ladders are priced correctly too", () => {
+  // Cash runs 1, 2, 3, 5, 7, 9, 11 — one for each of the first three steps.
+  const CASH = [1, 2, 3, 5, 7, 9, 11].map(v => ({ value: v, label: `${v}` }));
+  assert.deepEqual(rankLadder(CASH, 3).map(r => r.cost), [0, 0, 0, 2, 4, 6, 8]);
+});
+
+test("an unranked Benefice has no ladder", () => {
+  assert.deepEqual(rankLadder([], 0), []);
+  assert.deepEqual(rankLadder(), []);
 });

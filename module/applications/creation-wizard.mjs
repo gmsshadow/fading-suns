@@ -3,7 +3,9 @@ import {
   beneficeSpend, extraPointBudget, extraPointSpend, applyExtraPurchases,
   STAGE_BUDGET, CUSTOM_BUDGET, STARTING_CAP, EXTRA_COSTS
 } from "../lifepath/grants.mjs";
-import { applyLifepathToActor, parseSkillLabel } from "../lifepath/apply.mjs";
+import {
+  applyLifepathToActor, parseSkillLabel, rankCost, rankLadder
+} from "../lifepath/apply.mjs";
 import {
   characteristicBase, canAwakenOccult, tourAllowance, racialCost, maxExtraStages
 } from "../dice/races.mjs";
@@ -361,12 +363,15 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       const bucket = groups[polarity];
       if (!bucket) continue;
       if (!bucket.has(key)) bucket.set(key, []);
+      if (entry.system.unique) this.#uniqueBenefices.add(entry.uuid);
+      this.#beneficeCatalogue.set(entry.uuid, entry);
+
       bucket.get(key).push({
         uuid: entry.uuid,
         name: entry.name,
         polarity,
         value: entry.system.value,
-        ranks: entry.system.ranks
+        ranked: entry.system.ranks.length > 0
       });
     }
 
@@ -384,15 +389,18 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     //  therefore come out of the same ten points, not on top of them.
     const budget = CONFIG.FADING_SUNS.startingBeneficePoints;
     const fromStages = this.grantedBenefices;
-    const spentOnStages = fromStages.reduce((n, b) => n + b.value, 0);
-    const spent = beneficeSpend(this.draft.benefices) + spentOnStages;
+    const spent = this.beneficeSpend;
 
     const chosen = this.draft.benefices;
 
     return {
       beneficeGroups: asGroups(groups.benefice),
       afflictionGroups: asGroups(groups.affliction),
-      chosenBenefices: chosen.filter(b => b.polarity !== "affliction"),
+      chosenBenefices: chosen.filter(b => b.polarity !== "affliction").map(b => ({
+        ...b,
+        granted: this.grantedRank(b.uuid),
+        cost: rankCost(b.value, this.grantedRank(b.uuid))
+      })),
       chosenAfflictions: chosen.filter(b => b.polarity === "affliction"),
       afflictionExtras: chosen
         .filter(b => b.polarity === "affliction")
@@ -419,6 +427,42 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
    *
    * @returns {Array<{label: string, value: number, from: string}>}
    */
+  /**
+   * What the character has of a ranked Benefice already, from their history.
+   * @param {string} uuid
+   * @returns {number}
+   */
+  grantedRank(uuid) {
+    return this.grantedBenefices
+      .filter(b => b.uuid === uuid)
+      .reduce((highest, b) => Math.max(highest, b.value), 0);
+  }
+
+  /**
+   * Points spent on Benefices.
+   *
+   * A rank is a total, so a career's Ordained 3 and a Deacon bought at Step Five
+   * come to five between them, not eight. Entries a character may hold several
+   * of are simply added up.
+   *
+   * @returns {number}
+   */
+  get beneficeSpend() {
+    const highest = new Map();
+    let total = 0;
+
+    for (const entry of [...this.grantedBenefices, ...this.draft.benefices]) {
+      if (entry.polarity === "affliction") continue;
+
+      const uuid = entry.uuid ?? entry.label;
+      if (!entry.unique) { total += entry.value; continue; }
+      highest.set(uuid, Math.max(highest.get(uuid) ?? 0, entry.value));
+    }
+
+    for (const value of highest.values()) total += value;
+    return total;
+  }
+
   get grantedBenefices() {
     const granted = [];
 
@@ -427,8 +471,10 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       for (const grant of grants) {
         if (grant.kind !== "benefice") continue;
         granted.push({
+          uuid: grant.key,
           label: grant.label ?? grant.key,
           value: grant.value ?? 0,
+          unique: this.#uniqueBenefices.has(grant.key),
           from: stage.name.replace(/^[^:]+:\s*/, "")
         });
       }
@@ -735,6 +781,12 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
 
   #skillCache = null;
 
+  /** Uuids of Benefices a character may only hold one of. */
+  #uniqueBenefices = new Set();
+
+  /** The Benefice catalogue, for building rank ladders as the picker changes. */
+  #beneficeCatalogue = new Map();
+
   /**
    * The options an open choice offers, narrowed by its filter where it has one.
    * @param {object} choice
@@ -929,6 +981,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       input.addEventListener("change", this.#onChoiceChange.bind(this));
     }
     this.#refreshChoiceState();
+
+    for (const select of this.element.querySelectorAll("[data-rank-for]")) {
+      select.addEventListener("change", this.#onBeneficePicked.bind(this));
+      this.#fillRankLadder(select);
+    }
   }
 
   /**
@@ -989,6 +1046,60 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       if (found) return found;
     }
     return null;
+  }
+
+  /**
+   * Rebuild the rank ladder beside a Benefice picker.
+   *
+   * The published figure is a total, and the rungs are unevenly spaced, so the
+   * cost of each is shown from whatever the character already holds: a knight
+   * reaching Baronet pays two, not five (p.123).
+   *
+   * @param {HTMLSelectElement} picker
+   */
+  #fillRankLadder(picker) {
+    const kind = picker.dataset.rankFor;
+    const ladder = this.element.querySelector(`[name=${kind}Rank]`);
+    if (!ladder) return;
+
+    const entry = this.#beneficeCatalogue.get(picker.value);
+    ladder.replaceChildren();
+
+    if (!entry) {
+      ladder.disabled = true;
+      return;
+    }
+
+    ladder.disabled = false;
+    const current = entry.system.unique ? this.grantedRank(picker.value) : 0;
+    const ranks = entry.system.ranks;
+
+    // An unranked Benefice has a single price.
+    if (!ranks.length) {
+      const option = document.createElement("option");
+      option.value = String(entry.system.value);
+      option.textContent = `${entry.system.value}`;
+      ladder.append(option);
+      return;
+    }
+
+    for (const rung of rankLadder(ranks, current)) {
+      const option = document.createElement("option");
+      option.value = String(rung.value);
+      option.disabled = rung.held;
+      option.textContent = rung.held
+        ? game.i18n.format("FADINGSUNS.Benefice.RankHeld", { label: rung.label })
+        : game.i18n.format("FADINGSUNS.Benefice.RankCost", { label: rung.label, cost: rung.cost });
+      ladder.append(option);
+    }
+
+    const firstAvailable = [...ladder.options].find(o => !o.disabled);
+    if (firstAvailable) ladder.value = firstAvailable.value;
+  }
+
+  /** @param {Event} event */
+  #onBeneficePicked(event) {
+    this.#fillRankLadder(event.currentTarget);
   }
 
   /** Update each choice's counter and enable Next once every choice is settled. */
@@ -1106,12 +1217,21 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     const rankField = this.element.querySelector(`[name=${kind}Rank]`);
     const value = Number(rankField?.value) || document.system.value;
 
-    this.draft.benefices.push({
+    const entry = {
       uuid,
       name: document.name,
       polarity: document.system.polarity,
+      unique: document.system.unique,
       value
-    });
+    };
+
+    // A rank is a total, so picking a higher one replaces the earlier choice
+    // rather than stacking on top of it.
+    if (document.system.unique) {
+      this.draft.benefices = this.draft.benefices.filter(b => b.uuid !== uuid);
+    }
+
+    this.draft.benefices.push(entry);
     this.render();
   }
 

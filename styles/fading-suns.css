@@ -1495,3 +1495,12 @@
 .fading-suns .benefice-picker .chosen-list {
   margin-top: 0.35rem;
 }
+
+.fading-suns .rank-ladder {
+  flex: 0 1 22ch;
+  min-width: 12ch;
+}
+
+.fading-suns .rank-ladder:disabled {
+  opacity: 0.5;
+}

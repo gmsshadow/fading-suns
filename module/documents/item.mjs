@@ -36,14 +36,15 @@ export class FadingSunsItem extends Item {
     }
 
     // A Benefice a character may only hold one of pools into the entry they
-    // already have, rather than arriving as a second copy. The rank tables are
-    // cumulative, so Ordained 3 plus Ordained 2 is a Deacon at 5 (p.123).
+    // already have, rather than arriving as a second copy. A rank is a total
+    // rather than an increment, so the higher of the two stands (p.123).
     if (this.type === "benefice" && this.system.unique && this.actor) {
       const existing = this.actor.items.find(i =>
         i.type === "benefice" && i.name === this.name && i !== this);
 
       if (existing) {
-        const value = existing.system.value + (this.system.value ?? 0);
+        // A rank is a total, so dropping a Novice on a Deacon leaves a Deacon.
+        const value = Math.max(existing.system.value, this.system.value ?? 0);
         await existing.update({ "system.value": value });
         ui.notifications.info(game.i18n.format("FADINGSUNS.Benefice.Pooled", {
           name: this.name,

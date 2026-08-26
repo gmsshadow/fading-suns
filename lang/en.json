@@ -255,7 +255,7 @@
       "Components": "G is a gesture, L a spoken litany, P paraphernalia. A rite cannot be performed without them (p.147).",
       "OccultLevels": "Leave blank to use the lowest level of the printed band. The gamemaster decides where in the band a deed falls.",
       "GrantedBenefices": "The rank an Early Career confers, and any Worldly Benefit a Tour of Duty grants, come out of these ten points rather than on top of them (p.85).",
-      "PickBenefice": "These spend the ten points.",
+      "PickBenefice": "These spend the ten points. A rank is a total, so climbing from Knight to Baronet costs the difference, not the full price again (p.123).",
       "PickAffliction": "These cost nothing and grant Extra points for Step Six instead (p.117)."
     },
     "Empty": {
@@ -350,7 +350,10 @@
       "Extras": "Extra points from Curses and Afflictions",
       "Racial": "Racial",
       "Pooled": "{name} raised to {value} — {rank}",
-      "Unique": "Only one — points pool into a single rank"
+      "Unique": "Only one — points pool into a single rank",
+      "RankCost": "{label} — {cost} pts",
+      "RankHeld": "{label} — already held",
+      "FromHistory": "already at"
     },
     "Stage": {
       "Upbringing": "Upbringing",

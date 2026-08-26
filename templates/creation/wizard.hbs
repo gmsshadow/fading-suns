@@ -238,7 +238,7 @@
         <h4>{{localize "FADINGSUNS.Benefice.Benefice"}}</h4>
         <p class="hint">{{localize "FADINGSUNS.Hint.PickBenefice"}}</p>
         <div class="picker-row">
-          <select name="beneficePick">
+          <select name="beneficePick" data-rank-for="benefice">
             <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
             {{#each beneficeGroups as |group|}}
               <optgroup label="{{group.label}}">
@@ -248,8 +248,7 @@
               </optgroup>
             {{/each}}
           </select>
-          <input type="number" name="beneficeRank" min="0" class="picker-qty"
-                 placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+          <select name="beneficeRank" class="rank-ladder" disabled></select>
           <button type="button" class="add-btn" data-action="addBenefice" data-kind="benefice">
             <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
           </button>
@@ -258,8 +257,11 @@
         <ol class="chosen-list">
           {{#each chosenBenefices as |entry|}}
             <li>
-              <span class="chosen-name">{{entry.name}}</span>
-              <span class="chosen-value">{{entry.value}}</span>
+              <span class="chosen-name">{{entry.name}} {{entry.value}}</span>
+              {{#if entry.granted}}
+                <span class="chosen-levels">{{localize "FADINGSUNS.Benefice.FromHistory"}} {{entry.granted}}</span>
+              {{/if}}
+              <span class="chosen-value">{{entry.cost}}</span>
               <button type="button" class="icon-btn danger" data-action="removeBenefice"
                       data-uuid="{{entry.uuid}}" data-value="{{entry.value}}">
                 <i class="fa-solid fa-xmark"></i>
@@ -275,7 +277,7 @@
         <h4>{{localize "FADINGSUNS.Benefice.Affliction"}}</h4>
         <p class="hint">{{localize "FADINGSUNS.Hint.PickAffliction"}}</p>
         <div class="picker-row">
-          <select name="afflictionPick">
+          <select name="afflictionPick" data-rank-for="affliction">
             <option value="">{{localize "FADINGSUNS.Creation.PickOne"}}</option>
             {{#each afflictionGroups as |group|}}
               <optgroup label="{{group.label}}">
@@ -285,8 +287,7 @@
               </optgroup>
             {{/each}}
           </select>
-          <input type="number" name="afflictionRank" min="0" class="picker-qty"
-                 placeholder="{{localize 'FADINGSUNS.Benefice.Value'}}"/>
+          <select name="afflictionRank" class="rank-ladder" disabled></select>
           <button type="button" class="add-btn" data-action="addBenefice" data-kind="affliction">
             <i class="fa-solid fa-plus"></i> {{localize "FADINGSUNS.Control.Add"}}
           </button>

@@ -37,7 +37,13 @@ function collectSkillLabels(grants, into) {
 const STAGE_ORDER = ["upbringing", "apprenticeship", "earlyCareer"];
 
 /** The wizard's steps, in order. */
-const STEPS = ["mode", "upbringing", "apprenticeship", "earlyCareer", "choices", "extraStages", "benefices", "extras", "review"];
+const STEPS = [
+  "mode", "upbringing", "apprenticeship", "earlyCareer",
+  // Extra Stages come before Choices: an occult stage grants powers as choices,
+  // and Neophyte Theurge's rites would otherwise never be offered.
+  "extraStages", "choices",
+  "benefices", "extras", "review"
+];
 
 /**
  * The character creation wizard (p.70–p.89).
@@ -88,6 +94,7 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
     actions: {
       setMode: FadingSunsCreationWizard.#onSetMode,
       setFaction: FadingSunsCreationWizard.#onSetFaction,
+      setRace: FadingSunsCreationWizard.#onSetRace,
       chooseStage: FadingSunsCreationWizard.#onChooseStage,
       clearStage: FadingSunsCreationWizard.#onClearStage,
       back: FadingSunsCreationWizard.#onBack,
@@ -123,6 +130,11 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       step,
       steps: this.#stepList(),
       isCustom: this.draft.mode === "custom",
+      isAlien: this.draft.faction === "alien",
+      race: this.actor.system.details.race,
+      alienRaces: Object.fromEntries(
+        Object.entries(CONFIG.FADING_SUNS.races).filter(([key]) => key !== "human")
+      ),
       customBudget: CUSTOM_BUDGET,
       cap: STARTING_CAP,
       canGoBack: STEPS.indexOf(step) > 0,
@@ -1238,7 +1250,30 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
   /** @this {FadingSunsCreationWizard} */
   static async #onSetFaction(event, target) {
     this.draft.faction = target.dataset.faction;
+
+    // Every alien stage belongs to a race, so a character who is still recorded
+    // as human would be offered nothing at all. Human factions set it back.
+    if (this.draft.faction !== "alien") {
+      await this.actor.update({ "system.details.race": "human" });
+    } else if (this.actor.system.details.race === "human") {
+      await this.actor.update({ "system.details.race": "urObun" });
+    }
+
     // Stages are faction-specific, so changing faction invalidates the choices.
+    this.#resetStages();
+    this.render();
+  }
+
+  /**
+   * Choose which alien race the character is.
+   *
+   * Race governs the stages on offer as much as faction does, so it is asked
+   * for here rather than left to the sheet (p.83).
+   *
+   * @this {FadingSunsCreationWizard}
+   */
+  static async #onSetRace(event, target) {
+    await this.actor.update({ "system.details.race": target.dataset.race });
     this.#resetStages();
     this.render();
   }

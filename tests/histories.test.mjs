@@ -1332,3 +1332,45 @@ test("the Upbringing offers only what the faction is entitled to", () => {
   assert.ok(priest.includes("Upbringing: Brother Battle Warrior Monk"));
   assert.ok(!guild.includes("Upbringing: Brother Battle Warrior Monk"));
 });
+
+/* -------------------------------------------- */
+/*  Choices must be reachable                   */
+/* -------------------------------------------- */
+
+test("every Extra Stage choice is offered after the stage is taken", () => {
+  // The Choices step resolves what the chosen stages grant, so it has to come
+  // after the step that grants them. With the order reversed, a Neophyte
+  // Theurge's rites were never offered at all.
+  const STEPS = [
+    "mode", "upbringing", "apprenticeship", "earlyCareer",
+    "extraStages", "choices", "benefices", "extras", "review"
+  ];
+
+  assert.ok(STEPS.indexOf("extraStages") < STEPS.indexOf("choices"),
+    "Extra Stages must precede Choices");
+
+  // And the occult stages genuinely do carry choices that need resolving.
+  const occult = extraStages.filter(s =>
+    ["Psychic Awakening", "Theurgic Calling"].includes(s.system.group));
+  assert.equal(occult.length, 4);
+
+  for (const stage of occult) {
+    const pools = stage.system.grants.filter(g => g.kind === "choice" && g.pool);
+    assert.ok(pools.length >= 2, `${stage.name} should offer powers to pick`);
+  }
+});
+
+test("an alien character has stages to pick, for every race", () => {
+  // A character recorded as human but with the alien faction was offered
+  // nothing, since every alien stage names a race.
+  for (const race of ["urObun", "urUkar", "vorox"]) {
+    for (const type of ["upbringing", "apprenticeship", "earlyCareer"]) {
+      const available = visibleTo("alien", race, type);
+      assert.ok(available.length > 0, `${race} has no ${type} to choose`);
+    }
+  }
+
+  // And a human is offered none of them.
+  const asHuman = visibleTo("alien", "human", "upbringing");
+  assert.deepEqual(asHuman, [], "a human on the alien path should match no race");
+});

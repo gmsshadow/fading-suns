@@ -41,6 +41,19 @@
           {{/each}}
         </div>
         <p class="hint">{{localize "FADINGSUNS.Creation.FactionHint"}}</p>
+
+        {{#if isAlien}}
+          <h3>{{localize "FADINGSUNS.Race.Label"}}</h3>
+          <div class="option-cards">
+            {{#each alienRaces as |label key|}}
+              <button type="button" class="option-card {{#if (eq key ../race)}}is-selected{{/if}}"
+                      data-action="setRace" data-race="{{key}}">
+                <strong>{{localize label}}</strong>
+              </button>
+            {{/each}}
+          </div>
+          <p class="hint">{{localize "FADINGSUNS.Creation.RaceHint"}}</p>
+        {{/if}}
       {{/if}}
     {{/if}}
 

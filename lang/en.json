@@ -462,7 +462,8 @@
         "merchant": "Nobles may join a guild at this stage, though it is considered scandalous (p.80). A noble who takes a guild Early Career is commissioned rather than knighted, and receives no noble rank (p.75).",
         "noble": "This belongs to the noble lifepath."
       },
-      "OnPath": "Your Apprenticeship put you on another path. You are now following:"
+      "OnPath": "Your Apprenticeship put you on another path. You are now following:",
+      "RaceHint": "Race decides which stages are on offer, and what playing one costs in Extra points (p.83, p.88)."
     },
     "CombatAction": {
       "Category": "Style",

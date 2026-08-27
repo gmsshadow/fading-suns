@@ -366,6 +366,10 @@ Drive specialties, *Speak (choose dialect)* the seven languages, *Any skill* all
 asserts every open choice can be satisfied from content that exists, because an unanswerable choice
 blocks the wizard outright.
 
+The Choices step runs **after** Extra Stages, because an occult stage grants its powers as choices:
+a Neophyte Theurge picks three rites, and with the steps the other way round those picks were never
+offered. A test holds the ordering.
+
 Choices are presented as radio buttons or, where a stage picks more than one, checkboxes with a
 running count. A choice turns green when settled and *Next* stays disabled until every one is,
 with a tooltip saying how many are outstanding. Ticking a third option in a "choose two" releases
@@ -388,7 +392,11 @@ does not exist in the compendium is created from the name rather than refused.
 Purchases in Step Six take a quantity, so four levels of a skill is one action rather than four
 clicks, and removing a purchase clears the whole line.
 
-**Extra Stages (p.84)** come between the lifepath and Step Five. A character takes two, at 20 Extra
+**The Method step asks for race as well as faction** when the alien path is chosen. Race governs
+which stages are on offer as much as faction does, so leaving it on the sheet meant a character
+recorded as human but set to the alien faction was offered nothing at all.
+
+**Extra Stages (p.84)** come between the lifepath and the Choices step. A character takes two, at 20 Extra
 points each — which is the whole 40-point allowance, since the rulebook is explicit that *"Extra
 points are spent during the extra stages"* (p.85). Taking fewer leaves points for Step Six, which
 nets off whatever the stages consumed.

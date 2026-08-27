@@ -186,8 +186,15 @@ export class FadingSunsCreationWizard extends HandlebarsApplicationMixin(Applica
       if (d.system.stageType !== stageType) return false;
       // Priests and guildsmembers share their Upbringings, so a stage may list
       // several factions; a single faction field still works for the rest.
+      const race = this.actor.system.details.race;
+
       // An alien stage belongs to a race, and is only offered to that race.
-      if (d.system.race && d.system.race !== this.actor.system.details.race) return false;
+      if (d.system.race && d.system.race !== race) return false;
+
+      // And a human faction's stage may be closed to some races: every race may
+      // join a guild, but only the Obun a human sect (p.82).
+      const allowed = d.system.alienRaces ?? [];
+      if (faction === "alien" && allowed.length && !allowed.includes(race)) return false;
 
       const shared = d.system.factions ?? [];
       return shared.length ? shared.includes(faction) : d.system.faction === faction;

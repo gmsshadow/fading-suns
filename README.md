@@ -133,11 +133,21 @@ add seventeen:
 | Ur-Ukar | 1 | 2 | 2 |
 | Vorox | 2 (Chieftain, Warrior) | 1 shared | 2 |
 
-**What an alien may join** is set out in one sentence: *"Any of them can hold a Commission in the
-League or Rank in their own noble caste"* (p.83). So the guild lifepath is open to all three races
-from the Apprenticeship on, while the Church is not — *"An Obun may be Ordained in the Obun sect of
-the Church (Voavenlohjun)"*, that sect alone, and the Ukari and Vorox not at all. The Ukari and
-Vorox take rank in their own caste instead, which their Chieftain careers confer.
+**What an alien may join** is stated once per race, and the three differ:
+
+| Race | | |
+|---|---|---|
+| Ur-Obun | guild **or human sect** | *"for their Apprenticeship and Early Career stages"* (p.82) |
+| Ur-Ukar | guild only | *"Many Ukari join a guild instead of learning the traditional clan careers"* (p.83) |
+| Vorox | guild only | *"Vorox can choose to join a guild instead"* (p.84) |
+
+So the guild lifepath is open to all three, and the human sects to the Obun alone. The Obun also
+have a sect of their own — *"An Obun may be Ordained in the Obun sect of the Church
+(Voavenlohjun)"* (p.83) — while the Ukari and Vorox take rank in their own caste, which their
+Chieftain careers confer.
+
+Stages therefore carry an `alienRaces` list: empty means open to any alien, and the human sects
+name the Obun.
 
 The alien stages themselves belong to the races and are never offered to human characters: nobody
 human trains as an Umo'rin Counselor.
@@ -175,6 +185,15 @@ Monastery, those cells are absent rather than invented — ten priest entries, n
 Both matrices are open to nobles, since *"nobles can join the priesthood at this stage"* (p.77) and
 a guild likewise, *"although it is considered scandalous"* (p.80). Their Upbringings are not shared,
 and Brother Battle runs its own closed track from Upbringing to Early Career.
+
+**Switching is only possible at the Apprenticeship.** Both notes place it there — a character joining
+the priesthood chooses that stage *"instead of choosing a noble Apprenticeship"* — so the Upbringing
+step offers nothing but your own faction's options, grouped by house, class or race. A test holds
+that no faction is ever shown another's Upbringing.
+
+From the Apprenticeship on, **the core options come first under their own headings, and any switch
+sits below them in a collapsed fold** headed *Leaving your path*, with the consequence attached.
+Nothing is mixed together.
 
 **Each stage records the path it belongs to, separately from who may take it.** A noble's
 Apprenticeship step therefore lists only the four groups the book gives them — Military, Diplomacy,

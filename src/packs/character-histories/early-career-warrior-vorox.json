@@ -12,6 +12,7 @@
     "factions": [],
     "race": "vorox",
     "path": "alien",
+    "alienRaces": [],
     "slot": "",
     "grants": [
       {

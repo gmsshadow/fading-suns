@@ -910,8 +910,8 @@ test("every other alien stage lands on the human budget", () => {
 
 test("alien stages are the races' own, not shared with any human faction (p.83)", () => {
   // An earlier reading had this backwards, offering Obun and Ukari roles to
-  // human priests and guildsmembers. The traffic runs the other way: aliens may
-  // join a guild, but no human trains as an Umo'rin Counselor.
+  // human priests and guildsmembers. The traffic runs one way: an alien may
+  // join a human faction, but no human trains as an Umo'rin Counselor.
   for (const stage of alienStages) {
     assert.equal(stage.system.path, "alien");
     assert.deepEqual(stage.system.factions ?? [], [],
@@ -1208,10 +1208,19 @@ test("no Early Career confers two ranks", () => {
 /*  What aliens may join (p.83)                 */
 /* -------------------------------------------- */
 
-const visibleTo = (faction, race, type) => stages.filter(s =>
-  s.system.stageType === type
-  && !(s.system.race && s.system.race !== race)
-  && (s.system.factions?.length ? s.system.factions.includes(faction) : s.system.faction === faction));
+const visibleTo = (faction, race, type) => stages.filter(s => {
+  if (s.system.stageType !== type) return false;
+  if (s.system.race && s.system.race !== race) return false;
+
+  const open = s.system.factions?.length
+    ? s.system.factions.includes(faction)
+    : s.system.faction === faction;
+  if (!open) return false;
+
+  // Some human stages are closed to some races.
+  const allowed = s.system.alienRaces ?? [];
+  return !(faction === "alien" && allowed.length && !allowed.includes(race));
+});
 
 test("every alien race may hold a Commission in the League (p.83)", () => {
   // "Any of them can hold a Commission in the League or Rank in their own
@@ -1227,24 +1236,37 @@ test("every alien race may hold a Commission in the League (p.83)", () => {
   }
 });
 
-test("no alien race is offered a human sect's stages (p.83)", () => {
-  // "An Obun may be Ordained in the Obun sect of the Church (Voavenlohjun)" —
-  // that sect and no other, and the Ukari and Vorox not at all.
-  for (const race of ["urObun", "urUkar", "vorox"]) {
-    for (const type of ["apprenticeship", "earlyCareer"]) {
-      const priest = visibleTo("alien", race, type).filter(s => s.system.path === "priest");
-      assert.deepEqual(priest, [], `${race} is offered human ${type} sect stages`);
+test("only the Obun may join a human sect (p.82, p.83, p.84)", () => {
+  // "Obun can instead choose to join a guild or human sect for their
+  //  Apprenticeship and Early Career stages" (p.82). The Ukari and the Vorox
+  //  are offered guilds only.
+  for (const type of ["apprenticeship", "earlyCareer"]) {
+    const obun = visibleTo("alien", "urObun", type).filter(s => s.system.path === "priest");
+    assert.ok(obun.length > 0, `an Obun should be offered human sect ${type} stages`);
+
+    for (const race of ["urUkar", "vorox"]) {
+      const closed = visibleTo("alien", race, type).filter(s => s.system.path === "priest");
+      assert.deepEqual(closed, [], `${race} should not be offered human sect ${type} stages`);
     }
   }
 });
 
-test("only the Obun may be ordained, and only in their own sect (p.83)", () => {
-  const ordained = stages.filter(s =>
+test("the Obun may join a human sect at both stages, not just one (p.82)", () => {
+  // "...for their Apprenticeship and Early Career stages" — both are named.
+  for (const type of ["apprenticeship", "earlyCareer"]) {
+    assert.ok(visibleTo("alien", "urObun", type).some(s => s.system.path === "priest"),
+      `the Obun sect option is missing at ${type}`);
+  }
+});
+
+test("the Obun have their own sect as well as the human ones (p.83)", () => {
+  // "An Obun may be Ordained in the Obun sect of the Church (Voavenlohjun)."
+  const own = stages.filter(s =>
     s.system.race && s.system.grants.some(g => g.kind === "benefice" && g.label === "Ordained"));
 
-  assert.equal(ordained.length, 1);
-  assert.equal(ordained[0].system.race, "urObun");
-  assert.match(ordained[0].name, /Voavenlohjun/);
+  assert.equal(own.length, 1, "one alien career confers Ordained");
+  assert.equal(own[0].system.race, "urObun");
+  assert.match(own[0].name, /Voavenlohjun/);
 });
 
 test("alien stages belong to the races and are not offered to humans", () => {
@@ -1263,4 +1285,50 @@ test("the Ukari and Vorox take rank in their own caste instead (p.83)", () => {
       s.system.grants.some(g => g.kind === "benefice" && g.label === "Nobility"));
     assert.ok(nobility.length > 0, `${race} should have a career conferring their own rank`);
   }
+});
+
+/* -------------------------------------------- */
+/*  Where a switch is possible                  */
+/* -------------------------------------------- */
+
+test("no faction may switch path at the Upbringing (p.77, p.80)", () => {
+  // Both switching notes sit at the Apprenticeship: a character chooses that
+  // stage "instead of choosing a noble Apprenticeship". Nothing at the
+  // Upbringing offers a way out of your own faction.
+  const isOwn = (stage, faction) => {
+    const path = stage.system.path;
+    return !path || path === "freeman" || path === "alien" || path === faction;
+  };
+
+  for (const faction of ["noble", "priest", "merchant"]) {
+    const visible = visibleTo(faction, "human", "upbringing");
+    const foreign = visible.filter(s => !isOwn(s, faction));
+    assert.deepEqual(foreign, [],
+      `${faction} is offered another path's Upbringing`);
+  }
+});
+
+test("every faction's own Upbringings are grouped by house, class or race", () => {
+  const expected = {
+    noble: ["Decados", "Hawkwood", "Hazat", "Li Halan", "al-Malik"],
+    priest: ["Brother Battle", "Class", "Environment"],
+    merchant: ["Class", "Environment"]
+  };
+
+  for (const [faction, groups] of Object.entries(expected)) {
+    const own = visibleTo(faction, "human", "upbringing");
+    assert.deepEqual([...new Set(own.map(s => s.system.group))].sort(), groups);
+  }
+});
+
+test("the Upbringing offers only what the faction is entitled to", () => {
+  // Priests and guildsmembers share their Upbringing, so each sees the same six
+  // halves; the priests additionally get Brother Battle, which the guilds do not.
+  const priest = visibleTo("priest", "human", "upbringing").map(s => s.name).sort();
+  const guild = visibleTo("merchant", "human", "upbringing").map(s => s.name).sort();
+
+  assert.equal(guild.length, 6);
+  assert.equal(priest.length, 7);
+  assert.ok(priest.includes("Upbringing: Brother Battle Warrior Monk"));
+  assert.ok(!guild.includes("Upbringing: Brother Battle Warrior Monk"));
 });

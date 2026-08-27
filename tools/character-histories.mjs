@@ -536,10 +536,24 @@ const EARLY_CAREER = [
  * "Note that nobles can join the priesthood at this stage" (p.77), so these are
  * open to nobles as well as priests.
  */
-const PRIEST_FACTIONS = ["priest", "noble"];
+const PRIEST_FACTIONS = ["priest", "noble", "alien"];
+
+/**
+ * Which alien races may take the human sects' stages.
+ *
+ * "Obun can instead choose to join a guild or human sect for their
+ *  Apprenticeship and Early Career stages (especially true of off-world Obun)."
+ *  (p.82)
+ *
+ * The Ukari and the Vorox are offered guilds only — "Many Ukari join a guild
+ * instead of learning the traditional clan careers" (p.83), "Vorox can choose
+ * to join a guild instead" (p.84) — so neither may be ordained in a human sect.
+ */
+const PRIEST_ALIEN_RACES = ["urObun"];
 
 const priestStage = (name, group, description, grants, extra = {}) => ({
   n: name, stage: "apprenticeship", faction: "", factions: PRIEST_FACTIONS,
+  alienRaces: PRIEST_ALIEN_RACES,
   path: "priest", group, d: description, grants, ...extra
 });
 
@@ -645,6 +659,7 @@ const PRIEST_APPRENTICESHIP = [
 
 const priestCareer = (name, group, description, grants, extra = {}) => ({
   n: name, stage: "earlyCareer", faction: "", factions: PRIEST_FACTIONS,
+  alienRaces: PRIEST_ALIEN_RACES,
   path: "priest", group, d: description, grants: [...grants, ben("Ordained", 3)], ...extra
 });
 

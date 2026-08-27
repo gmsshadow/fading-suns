@@ -11,10 +11,14 @@
     "group": "Cathedral",
     "factions": [
       "priest",
-      "noble"
+      "noble",
+      "alien"
     ],
     "race": "",
     "path": "priest",
+    "alienRaces": [
+      "urObun"
+    ],
     "slot": "",
     "grants": [
       {

@@ -12,6 +12,7 @@
     "factions": [],
     "race": "urObun",
     "path": "alien",
+    "alienRaces": [],
     "slot": "",
     "grants": [
       {

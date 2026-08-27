@@ -15,6 +15,7 @@
     ],
     "race": "",
     "path": "freeman",
+    "alienRaces": [],
     "slot": "environment",
     "grants": [
       {

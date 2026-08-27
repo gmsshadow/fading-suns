@@ -12,6 +12,7 @@
     "factions": [],
     "race": "",
     "path": "noble",
+    "alienRaces": [],
     "slot": "",
     "grants": [
       {

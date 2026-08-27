@@ -12,6 +12,7 @@
     "factions": [],
     "race": "",
     "path": "priest",
+    "alienRaces": [],
     "slot": "",
     "grants": [
       {

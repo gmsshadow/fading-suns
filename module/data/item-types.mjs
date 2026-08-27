@@ -500,6 +500,9 @@ export class FadingSunsStage extends FadingSunsItemBase {
       path: new fields.StringField({ required: false, blank: true, initial: "" }),
       // Alien stages belong to a race; empty means any (p.83).
       race: new fields.StringField({ required: false, blank: true, initial: "" }),
+      // Which alien races may take a human faction's stage. Empty means all of
+      // them: every race may join a guild, but only the Obun a human sect.
+      alienRaces: new fields.ArrayField(new fields.StringField()),
       // A composite stage fills one slot of several. Priests and guildsmembers
       // build their Upbringing from an Environment and a Class (p.77), where a
       // noble takes a single stage filling the whole thing.

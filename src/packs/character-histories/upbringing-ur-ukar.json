@@ -12,6 +12,7 @@
     "factions": [],
     "race": "urUkar",
     "path": "alien",
+    "alienRaces": [],
     "slot": "",
     "grants": [
       {
